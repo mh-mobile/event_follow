@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUsers < ActiveRecord::Migration[6.0]
   def up
     create_table :users, force: :cascade, id: false do |t|
