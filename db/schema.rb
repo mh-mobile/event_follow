@@ -10,14 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_043917) do
+ActiveRecord::Schema.define(version: 2020_11_13_094417) do
 
-  create_table "users", force: :cascade do |t|
-    t.string "uid", default: "", null: false
-    t.string "provider", default: "", null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "user_tokens", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "access_token", null: false
+    t.string "access_token_secret", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+    t.index ["user_id"], name: "index_user_tokens_on_user_id"
   end
 
+  create_table "users", id: :bigint, default: nil, force: :cascade do |t|
+    t.string "screen_name", null: false
+    t.string "name", null: false
+    t.string "profile_image", null: false
+  end
+
+  add_foreign_key "user_tokens", "users"
 end
