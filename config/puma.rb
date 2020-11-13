@@ -34,5 +34,15 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # preload_app!
 
+if Rails.env.development?
+  key_file = Rails.root.join("config", "certs", "privkey.pem")
+  cert_file = Rails.root.join("config", "certs", "fullchain.pem")
+
+  ssl_bind "0.0.0.0", "3443", {
+   key: key_file.to_path,
+   cert: cert_file.to_path 
+  }
+end
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
