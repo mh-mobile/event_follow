@@ -2,5 +2,6 @@
 
 class EventsController < ApplicationController
   def index
+    @events = Event.page(params[:page]).preload(tweets: :user)
   end
 end
