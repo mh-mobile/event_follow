@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUserEventSettings < ActiveRecord::Migration[6.0]
   def change
     create_table :user_event_settings do |t|
