@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_041618) do
+ActiveRecord::Schema.define(version: 2020_11_14_044126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_11_14_041618) do
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
+  create_table "user_event_settings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "event_sort_type", default: 0
+    t.integer "time_filter_time", default: 1
+    t.integer "friends_filter_type", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_event_settings_on_user_id"
+  end
+
   create_table "user_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "access_token", null: false
@@ -82,5 +92,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_041618) do
   add_foreign_key "tweets", "tweets", column: "quoted_tweet_id"
   add_foreign_key "tweets", "tweets", column: "retweeted_tweet_id"
   add_foreign_key "tweets", "users"
+  add_foreign_key "user_event_settings", "users"
   add_foreign_key "user_tokens", "users"
 end
