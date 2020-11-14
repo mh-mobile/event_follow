@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
       redirect_to unauthenticated_root_path
     end
   end
+
+  def destory
+    log_out
+    redirect_to unauthenticated_root_path
+  end
 end
