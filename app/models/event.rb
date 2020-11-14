@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :site
   has_many :tweets, -> { order(tweeted_at: :desc) }, dependent: :delete_all
+  paginates_per 50
 
   scope :following_events, -> (user, event_sort_type, event_filter_type) {
     scope = joins(:tweets)
