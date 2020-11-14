@@ -16,6 +16,8 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "omniauth"
 gem "omniauth-twitter"
 gem "pg"
+gem "kaminari"
+gem "bulma-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
