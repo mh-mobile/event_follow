@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_040037) do
+ActiveRecord::Schema.define(version: 2020_11_14_041618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 2020_11_14_040037) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tweets", id: :bigint, default: nil, force: :cascade do |t|
+    t.text "text", null: false
+    t.datetime "tweeted_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "quoted_tweet_id"
+    t.bigint "retweeted_tweet_id"
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_tweets_on_event_id"
+    t.index ["quoted_tweet_id"], name: "index_tweets_on_quoted_tweet_id"
+    t.index ["retweeted_tweet_id"], name: "index_tweets_on_retweeted_tweet_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
   create_table "user_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "access_token", null: false
@@ -63,5 +78,9 @@ ActiveRecord::Schema.define(version: 2020_11_14_040037) do
   add_foreign_key "events", "sites"
   add_foreign_key "friendships", "users", column: "followed_id"
   add_foreign_key "friendships", "users", column: "follower_id"
+  add_foreign_key "tweets", "events"
+  add_foreign_key "tweets", "tweets", column: "quoted_tweet_id"
+  add_foreign_key "tweets", "tweets", column: "retweeted_tweet_id"
+  add_foreign_key "tweets", "users"
   add_foreign_key "user_tokens", "users"
 end
