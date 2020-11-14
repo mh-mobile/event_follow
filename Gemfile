@@ -18,6 +18,8 @@ gem "omniauth-twitter"
 gem "pg"
 gem "kaminari"
 gem "bulma-rails"
+gem "slim-rails"
+gem "html2slim"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
