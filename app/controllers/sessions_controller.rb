@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     if auth.present?
       user = User.find_or_create_from_auth(request.env["omniauth.auth"])
-      session[:user_id] = user.id
+      log_in(user)
       flash[:success] = "ログインしました。"
       redirect_to authenticated_root_path
     else
