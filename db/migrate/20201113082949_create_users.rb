@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.string :profile_image, null: false
     end
-    
+
     reversible do |direction|
       direction.up { execute "ALTER TABLE users ADD PRIMARY KEY (id);" }
     end
