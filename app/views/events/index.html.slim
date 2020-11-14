@@ -1,6 +1,12 @@
-= link_to "logout", logout_path, method: :delete
+.header
+  .container
+    .logo
+      | EVENT FOLLOW
+    .profile
+      = link_to "logout", logout_path, method: :delete
 
-- @events.each do |event|
-  li
-    = event.title
-= paginate @events
+.container
+  - @events.each do |event|
+    li
+      = event.title
+  = paginate @events

@@ -1,1 +1,33 @@
 @import "bulma";
+
+.header {
+  padding: 5px;
+  background: #ccc;
+
+  .container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 5px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    .logo {
+      margin-right: auto;      
+      font-size: 1.5em;
+    }
+
+  }
+
+}
+
+.container {
+  max-width: 50rem;
+  margin: 20px auto;
+
+  .pagination {
+    margin-top: 50px;
+  }
+}
