@@ -1,10 +1,11 @@
 .header
   .container
     .logo
-      = link_to "EVENT FOLLOW", authenticated_root_path
+      = link_to image_tag("logo_transparent.png"), authenticated_root_path
 
-    .profile
-      = link_to "logout", logout_path, method: :delete
+    .profile_icon
+      = image_tag current_user.profile_image
+      / = link_to "logout", logout_path, method: :delete
 
 .event_container
   = render partial: "event_list_header", locals: { events: @events }

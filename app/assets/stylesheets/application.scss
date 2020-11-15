@@ -15,7 +15,7 @@ body {
   padding-bottom: 100px;
   .header {
     padding: 5px;
-    background-color: #84afa2;
+    background-color: #efe9e5;
 
     .container {
       max-width: 50rem;
@@ -26,11 +26,21 @@ body {
       flex-direction: row;
       align-items: center;
       justify-content: flex-end;
-
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    
       .logo {
         margin-right: auto;      
-        font-size: 2em;
-        font-weight: bold
+        width: 100px;
+        height: auto;
+      }
+
+      .profile_icon {
+        width: 48px;
+        height: 48px;
+        overflow: hidden;
+        border-radius: 50%;
       }
 
     }
