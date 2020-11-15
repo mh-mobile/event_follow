@@ -6,8 +6,7 @@
     .profile
       = link_to "logout", logout_path, method: :delete
 
-.container
-  = paginate @events
-  ul
-    = render partial: "event", collection: @events
-  = paginate @events
+.event_container
+  = render partial: "event_list_header", locals: { events: @events }
+  = render partial: "event_list_content", locals: { events: @events }
+  = render partial: "event_list_footer", locals: { events: @events }
