@@ -7,7 +7,7 @@
       = link_to "logout", logout_path, method: :delete
 
 .container
-  - @events.each do |event|
-    li
-      = event.title
+  = paginate @events
+  ul
+    = render partial: "event", collection: @events
   = paginate @events
