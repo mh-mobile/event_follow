@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_044126) do
+ActiveRecord::Schema.define(version: 2020_11_15_040309) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_044126) do
     t.string "url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
     t.index ["site_id", "site_event_id"], name: "index_events_on_site_and_site_event_id", unique: true
     t.index ["site_id"], name: "index_events_on_site_id"
   end
