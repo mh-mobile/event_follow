@@ -1,11 +1,18 @@
 @import "bulma";
 
-
+html {
+  background-color: #d7d7d8;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
 
 body {
-  height: 100%;
   background-color: #d7d7d8;
-
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding-bottom: 100px;
   .header {
     padding: 5px;
     background-color: #84afa2;
@@ -32,12 +39,15 @@ body {
 
   .event_container {
     max-width: 50rem;
-    margin: 20px auto;
-    padding: 50px;
-    box-sizing: border-box;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 5px;
-
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     .event_list_header {
       display: flex;
       flex-direction: column;
@@ -62,6 +72,10 @@ body {
       .event_header_bottom {
         display: flex;
         flex-direction: row;
+
+        .pagination {
+          margin-top: 20px;
+        }
       }
     }
 
@@ -180,8 +194,11 @@ body {
       }
     }
 
-    .pagination {
-      margin-top: 50px;
+    .event_list_footer {
+      .pagination {
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
     }
   }
 }
