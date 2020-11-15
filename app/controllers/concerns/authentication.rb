@@ -4,7 +4,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    helper_method :user_signed_in?
+    helper_method :user_signed_in?, :current_user
   end
 
   def log_in(user)
