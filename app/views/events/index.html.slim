@@ -1,7 +1,8 @@
 .header
   .container
     .logo
-      | EVENT FOLLOW
+      = link_to "EVENT FOLLOW", authenticated_root_path
+
     .profile
       = link_to "logout", logout_path, method: :delete
 
