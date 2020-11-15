@@ -25,6 +25,9 @@ module Authentication
   end
 
   def require_login
-    redirect_to unauthenticated_root_path unless user_signed_in?
+    unless user_signed_in?
+      session.delete(:user_id)
+      redirect_to unauthenticated_root_path
+    end
   end
 end
