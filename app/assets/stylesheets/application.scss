@@ -72,6 +72,8 @@ body {
       .event_header_bottom {
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
+
 
         .pagination {
           margin-top: 20px;
@@ -195,6 +197,10 @@ body {
     }
 
     .event_list_footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
       .pagination {
         margin-top: 50px;
         margin-bottom: 20px;
