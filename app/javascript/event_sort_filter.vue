@@ -1,7 +1,7 @@
 <template lang="pug">
   .example-modal-window
     .event_header_sort_filter(@click="openModal")
-      | 3+ frineds
+      | {{ getCurrentConditionLabel }}
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -124,6 +124,16 @@ export default {
   computed: {
     isFrinedsNumberSortCondition: function() {
       return this.selected_sort_condition == 0
+    },
+    getCurrentConditionLabel: function() {
+      const sortConditionLabel = this.event_sort_condition_items[this.selected_sort_condition].name
+      if (this.selected_sort_condition == 0) {
+        const timeFilterConditionLabel = this.time_filter_type_items[this.selected_time_filter_condition].name
+        return `${sortConditionLabel} × ${timeFilterConditionLabel}`
+      } else {
+        const friendsFilterConditionLabel = this.friends_filter_type_items[this.selected_friends_filter_condition].name
+        return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
+      }
     }
   },
   methods: {
