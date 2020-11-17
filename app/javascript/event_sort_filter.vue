@@ -13,37 +13,18 @@
             | Filter
         .event-modal-content
           .event-modal-left.event-modal-sort
-            select
-              option(value="Friend数")
-                | Friend数
-              option(value="新着順")
-                | 新着順
-              option(value="投稿順")
-                | 投稿順
-              option(value="開催が近い順")
-                | 開催が近い順
+            select(v-model="selected_sort_condition")
+              option(v-for="item in event_sort_condition_items" :value="item.value" :key="item.value")
+                | {{ item.name }}
           .event-modal-center
             | ×
           .event-modal-right.event-modal-sort
-            select
-              option(value="過去8時間")
-                | 過去8時間
-              option(value="過去24時間")
-                | 過去24時間
-              option(value="過去2日")
-                | 過去2日
-              option(value="過去3日")
-                | 過去3日
-              option(value="過去4日")
-                | 過去4日
-              option(value="過去5日")
-                | 過去5日
-              option(value="過去6日")
-                | 過去6日
-              option(value="過去1週間")
-                | 過去1週間
-              option(value="All")
-                | All
+            select(v-model="selected_time_filter_condition" v-if="isFrinedsNumberSortCondition")
+              option(v-for="item in time_filter_type_items" :value="item.value" :key="item.value")
+                | {{ item.name }}
+            select(v-model="selected_friends_filter_condition" v-if="!isFrinedsNumberSortCondition")
+              option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
+                | {{ item.name }}
  
         .event-modal-footer
   </div>
@@ -56,7 +37,93 @@ export default {
   data() {
     return {
       modal: false,
-      message: ""
+      message: "",
+      selected_sort_condition: 0,
+      selected_time_filter_condition: 0,
+      selected_friends_filter_condition: 0,
+      event_sort_condition_items: [
+        {
+          name: "Friend数",
+          value: 0
+        },
+        {
+          name: "新着順",
+          value: 1
+        },
+        {
+          name: "投稿順",
+          value: 2
+        },
+        {
+          name: "開催が近い順",
+          value: 3
+        }
+      ],
+      time_filter_type_items: [
+        {
+          name: "過去8時間",
+          value: 0
+        },
+        {
+          name: "過去24時間",
+          value: 1
+        },
+        {
+          name: "過去2日",
+          value: 2
+        },
+        {
+          name: "過去3日",
+          value: 3
+        },
+        {
+          name: "過去4日",
+          value: 4
+        },
+        {
+          name: "過去5日",
+          value: 5
+        },
+        {
+          name: "過去6日",
+          value: 6
+        },
+        {
+          name: "過去1週間",
+          value: 7
+        },
+        {
+          name: "All",
+          value: 8
+        }
+      ],
+      friends_filter_type_items: [
+        {
+          name: "Friends 1+",
+          value: 0
+        },
+        {
+          name: "Friends 2+",
+          value: 1
+        },
+        {
+          name: "Friends 3+",
+          value: 2
+        },
+        {
+          name: "Friends 4+",
+          value: 3
+        },
+        {
+          name: "Friends 5+",
+          value: 4
+        }
+      ]
+    }
+  },
+  computed: {
+    isFrinedsNumberSortCondition: function() {
+      return this.selected_sort_condition == 0
     }
   },
   methods: {
