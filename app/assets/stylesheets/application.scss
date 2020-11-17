@@ -102,6 +102,7 @@ body {
           font-weight: bold;
           position: relative;
           padding-right: 24px;
+          cursor: pointer;
 
           &::after {
             content: "";
