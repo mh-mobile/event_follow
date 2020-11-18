@@ -3,27 +3,38 @@
     .friend_number(@click="openModal")
       | 11
     .friend_icon
-      img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/84bd00/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/84bd00/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/1cc7d0/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/1cc7d0/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/d20963/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/d20963/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/ffc30e/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/ffc30e/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/0c3866/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/0c3866/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/b4a996/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/101x100/b4a996/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/ff4d00/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/ff4d00/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/aea500/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/aea500/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/6539b7/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/6539b7/fff.png")
     .friend_icon
-      img(src="https://dummyimage.com/100x100/70b29c/fff.png")
+      a(href="https://twitter.com/mh_mobiler" target="_blank")
+        img(src="https://dummyimage.com/100x100/70b29c/fff.png")
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -31,7 +42,8 @@
           li.tweet_item(v-for="tweet in tweets")
             .friend_column
               .profile_icon
-                img(src="https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_400x400.jpg")
+                a(href="https://twitter.com/mh_mobiler" target="_blank")
+                  img(src="https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_400x400.jpg")
             .tweet_column
               .tweet_user
                 .twitter_user_name
