@@ -1,0 +1,12 @@
+import Vue from 'vue'
+import FrindsList from './friends_list.vue'
+document.addEventListener('DOMContentLoaded', () => {
+  const friendsListElms = document.querySelectorAll(`[id^="js-friends-list-"]`)
+  if (friendsListElms && friendsListElms.length > 0) {
+      for (let friendsListElm of friendsListElms) {
+        new Vue({
+          render: h => h(FrindsList)
+        }).$mount(`#${friendsListElm.id}`)
+      }
+    }
+})
