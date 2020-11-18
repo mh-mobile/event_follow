@@ -11,31 +11,9 @@ li.event_item
       .event_content_bottom
         .event_content_description
           = event.description
-  .friends_list
-    .friend_number
-      | 11
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/8db9ca/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/84bd00/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/1cc7d0/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/d20963/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/ffc30e/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/0c3866/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/b4a996/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/ff4d00/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/aea500/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/6539b7/fff.png"
-    .friend_icon
-      = image_tag "https://dummyimage.com/100x100/70b29c/fff.png"
+  div id="js-friends-list-#{event.id}"
+    / #js-frineds-list-#{event_id}
+
 
 
 

@@ -156,7 +156,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .event-modal-container {
     max-width: 30em;
     min-width: 30em;
