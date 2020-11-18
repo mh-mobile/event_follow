@@ -34,7 +34,10 @@
                 img(src="https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_400x400.jpg")
             .tweet_column
               .tweet_user
-                | {{ tweet.name }}
+                .twitter_user_name
+                  | {{ tweet.name }} 
+                .twitter_user_screen_name
+                  | {{ tweet.screen_name }} 
               .tweet_content
                 | {{ tweet.content }}
 
@@ -51,46 +54,57 @@ export default {
       tweets: [
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "VS Code Conferenceに参加するぞ!"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: 1Dayイベント、VS Code Conference Japan の開催は来週土曜日です。私は、初心者向けハンズオンと、Dev Containerの話をします。"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: 今週末は2つ大型イベントがあるので絶賛準備中Personal computer 11/21(土) 10:00 VS Code Conference Japan 11/22(日) 10:00 サイエンスアゴラ2020"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japan(2020/11/21 10:00～) ハイパー便利な Visual Studio Code の勉強会です。Webなのでご気軽に参加しよう！俺もLT枠で登壇すっぞー(そのためこの時間まで資料作成中)"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japanに参加を申し込みました！ https://vscode.connpass.com/event/184441/?utm_campaign=event_participate_to_follower&utm_source=notifications&utm_medium=twitter #vscodejp"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: このイベントでLTするんだけれど、参加者600人超えなのか…Webとはいえ緊張するじゃないか。今までせいぜい10人ぐらいの前でしかLTやったことないんだぞ。 https://vscode.connpass.com/event/184441/"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japan https://vscode.connpass.com/event/184441/ #vscodejp VScodeの5周年のイベント（？）があるんだ どんな感じなのか気になる！Flushed faceSparkles でも私はこの日は見れないですが。。Crying cat face"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japanに参加を申し込みました！ https://vscode.connpass.com/event/184441/?utm_campaign=event_participate_to_follower&utm_source=notifications&utm_medium=twitter #vscodejp"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japan に参加を申し込みました！ https://vscode.connpass.com/event/184441/?utm_campaign=event_participate_to_follower&utm_source=notifications&utm_medium=twitter #vscodejp"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japanハンズオントラック に参加を申し込みました！ https://vscode.connpass.com/event/192720/?utm_campaign=event_participate_to_follower&utm_source=notifications&utm_medium=twitter #vscodejp"
         },
         {
           name: "mh",
+          screen_name: "@mh_mobiler",
           content: "RT: VS Code Conference Japanハンズオントラック に参加を申し込みました！ https://vscode.connpass.com/event/192720/?utm_campaign=event_participate_to_follower&utm_source=notifications&utm_medium=twitter #vscodejp"
         },
       ]
@@ -155,9 +169,21 @@ export default {
 
           .tweet_user {
             height: 20px;
-            font-weight: bold;
             color: #0085ad;
             margin: 5px;
+            display: flex;
+            flex-direction: row;
+
+            .twitter_user_name {
+              color: #0085ad;
+              font-weight: bold;
+            }
+
+            .twitter_user_screen_name {
+              color: #a5a9ab;
+              margin-left: 5px;
+            }
+
           }
 
           .tweet_content {
