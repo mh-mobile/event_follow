@@ -38,7 +38,7 @@
                   | {{ tweet.name }} 
                 .twitter_user_screen_name
                   | {{ tweet.screen_name }} 
-              .tweet_content
+              .tweet_content(v-auto-link)
                 | {{ tweet.content }}
 
   </div>
@@ -117,6 +117,21 @@ export default {
     },
     closeModal() {
       this.modal = false
+    }
+  },
+  directives: {
+    "auto-link": {
+      inserted(el) {
+        el.innerHTML = el.innerHTML.replace(
+          /(https?:\/\/[a-zA-Z0-9\-_.:@!~*'(¥);/?&=+$,%#]+)/g,
+          '<a href="$1" target="_blank">$1</a>'
+        )
+        el.innerHTML = el.innerHTML.replace(/([@#])([\w]+)/gi, (_, prefix, word) => {
+          const text = prefix + word
+          const route = prefix === "@" ? word : `hashtag/${word}`
+          return `<a href="https://twitter.com/${route}" target="_blank">${text}</a>`
+        })
+      }
     }
   }
 }
