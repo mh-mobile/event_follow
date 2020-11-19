@@ -5,26 +5,27 @@
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
-        .event-modal-header
-          .event-modal-left
-            | Sort
-          .event-modal-center
-          .event-modal-right
-            | Filter
-        .event-modal-content
-          .event-modal-left.event-modal-sort
-            select(v-model="selected_sort_condition")
-              option(v-for="item in event_sort_condition_items" :value="item.value" :key="item.value")
-                | {{ item.name }}
-          .event-modal-center
-            | ×
-          .event-modal-right.event-modal-sort
-            select(v-model="selected_time_filter_condition" v-if="isFrinedsNumberSortCondition")
-              option(v-for="item in time_filter_type_items" :value="item.value" :key="item.value")
-                | {{ item.name }}
-            select(v-model="selected_friends_filter_condition" v-if="!isFrinedsNumberSortCondition")
-              option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
-                | {{ item.name }}
+        form(action="/" method="GET" id="js-sort-filter-form")
+          .event-modal-header
+            .event-modal-left
+              | Sort
+            .event-modal-center
+            .event-modal-right
+              | Filter
+          .event-modal-content
+              .event-modal-left.event-modal-sort
+                select(v-model="selected_sort_condition" @change="selectedSortConditionChanged($event)" name="sort")
+                  option(v-for="item in event_sort_condition_items" :value="item.value" :key="item.value")
+                    | {{ item.name }}
+              .event-modal-center
+                | ×
+              .event-modal-right.event-modal-sort
+                select(v-model="selected_time_filter_condition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
+                  option(v-for="item in time_filter_type_items" :value="item.value" :key="item.value")
+                    | {{ item.name }}
+                select(v-model="selected_friends_filter_condition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
+                  option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
+                    | {{ item.name }}
   </div>
 </template>
 
@@ -140,6 +141,15 @@ export default {
     },
     closeModal() {
       this.modal = false
+    },
+    selectedSortConditionChanged(event) {
+      document.getElementById("js-sort-filter-form").submit()
+    },
+    selectedTimeFilterConditionChanged(event) {
+      document.getElementById("js-sort-filter-form").submit()
+    },
+    selectedFriendsFilterConditionChanged(event) {
+      document.getElementById("js-sort-filter-form").submit()
     }
   }
 }
