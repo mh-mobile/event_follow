@@ -37,100 +37,106 @@ export default {
     return {
       modal: false,
       message: "",
-      selected_sort_condition: 0,
-      selected_time_filter_condition: 0,
-      selected_friends_filter_condition: 0,
+      selected_sort_condition: "friends_number_order",
+      selected_time_filter_condition: "past_8_hours",
+      selected_friends_filter_condition: "one_or_more_friends",
       event_sort_condition_items: [
         {
           name: "Friend数",
-          value: 0
+          value: "friends_number_order"
         },
         {
           name: "新着順",
-          value: 1
+          value: "recent_order" 
         },
         {
           name: "投稿順",
-          value: 2
+          value: "created_order"
         },
         {
           name: "開催が近い順",
-          value: 3
+          value: "closeness_order"
         }
       ],
       time_filter_type_items: [
         {
           name: "過去8時間",
-          value: 0
+          value: "past_8_hours"
         },
         {
           name: "過去24時間",
-          value: 1
+          value: "past_24_hours"
         },
         {
           name: "過去2日",
-          value: 2
+          value: "past_2_days"
         },
         {
           name: "過去3日",
-          value: 3
+          value: "past_3_days"
         },
         {
           name: "過去4日",
-          value: 4
+          value: "past_4_days"
         },
         {
           name: "過去5日",
-          value: 5
+          value: "past_5_days"
         },
         {
           name: "過去6日",
-          value: 6
+          value: "past_6_days"
         },
         {
           name: "過去1週間",
-          value: 7
+          value: "past_1_weeks"
         },
         {
           name: "All",
-          value: 8
+          value: "past_all"
         }
       ],
       friends_filter_type_items: [
         {
           name: "Friends 1+",
-          value: 0
+          value: "one_or_more_friends"
         },
         {
           name: "Friends 2+",
-          value: 1
+          value: "two_or_more_friends"
         },
         {
           name: "Friends 3+",
-          value: 2
+          value: "three_or_more_friends"
         },
         {
           name: "Friends 4+",
-          value: 3
+          value: "four_or_more_friends"
         },
         {
           name: "Friends 5+",
-          value: 4
+          value: "five_or_more_friends"
         }
       ]
     }
   },
   computed: {
     isFrinedsNumberSortCondition: function() {
-      return this.selected_sort_condition == 0
+      return this.selected_sort_condition == "friends_number_order"
     },
     getCurrentConditionLabel: function() {
-      const sortConditionLabel = this.event_sort_condition_items[this.selected_sort_condition].name
-      if (this.selected_sort_condition == 0) {
-        const timeFilterConditionLabel = this.time_filter_type_items[this.selected_time_filter_condition].name
+      const sortConditionLabel = this.event_sort_condition_items.find((item) => {
+        return item.value == this.selected_sort_condition
+      }).name
+      if (this.isFrinedsNumberSortCondition) {
+        const timeFilterConditionLabel = this.time_filter_type_items.find((item) => {
+          return item.value == this.selected_time_filter_condition
+        }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
-        const friendsFilterConditionLabel = this.friends_filter_type_items[this.selected_friends_filter_condition].name
+        const friendsFilterConditionLabel = this.friends_filter_type_items.find((item) => {
+          return item.value == this.selected_friends_filter_condition
+        }).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
     }
