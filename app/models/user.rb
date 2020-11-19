@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_one :user_token
+  has_one :user_event_setting
 
   def self.find_or_create_from_auth(auth)
     uid = auth.uid
@@ -13,6 +14,7 @@ class User < ApplicationRecord
     user_token.access_token = auth.credentials.token
     user_token.access_token_secret = auth.credentials.secret
     user.user_token = user_token
+    user.user_event_setting = UserEventSetting.find_or_create_by(user_id: user.id) unless user.user_event_setting.present?
     user.screen_name = screen_name
     user.name = name
     user.profile_image = profile_image

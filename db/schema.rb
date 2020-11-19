@@ -12,9 +12,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_094417) do
+ActiveRecord::Schema.define(version: 2020_11_15_040309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "site_id", null: false
+    t.integer "site_event_id", null: false
+    t.string "title", null: false
+    t.datetime "started_at", null: false
+    t.datetime "ended_at", null: false
+    t.string "banner", null: false
+    t.string "url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.index ["site_id", "site_event_id"], name: "index_events_on_site_and_site_event_id", unique: true
+    t.index ["site_id"], name: "index_events_on_site_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tweets", id: :bigint, default: nil, force: :cascade do |t|
+    t.text "text", null: false
+    t.datetime "tweeted_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "quoted_tweet_id"
+    t.bigint "retweeted_tweet_id"
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_tweets_on_event_id"
+    t.index ["quoted_tweet_id"], name: "index_tweets_on_quoted_tweet_id"
+    t.index ["retweeted_tweet_id"], name: "index_tweets_on_retweeted_tweet_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
+  create_table "user_event_settings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "event_sort_type", default: 0
+    t.integer "time_filter_time", default: 1
+    t.integer "friends_filter_type", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_event_settings_on_user_id"
+  end
 
   create_table "user_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -31,5 +87,13 @@ ActiveRecord::Schema.define(version: 2020_11_13_094417) do
     t.string "profile_image", null: false
   end
 
+  add_foreign_key "events", "sites"
+  add_foreign_key "friendships", "users", column: "followed_id"
+  add_foreign_key "friendships", "users", column: "follower_id"
+  add_foreign_key "tweets", "events"
+  add_foreign_key "tweets", "tweets", column: "quoted_tweet_id"
+  add_foreign_key "tweets", "tweets", column: "retweeted_tweet_id"
+  add_foreign_key "tweets", "users"
+  add_foreign_key "user_event_settings", "users"
   add_foreign_key "user_tokens", "users"
 end
