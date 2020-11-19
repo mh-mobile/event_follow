@@ -25,8 +25,6 @@
             select(v-model="selected_friends_filter_condition" v-if="!isFrinedsNumberSortCondition")
               option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
                 | {{ item.name }}
- 
-        .event-modal-footer
   </div>
 </template>
 
@@ -142,15 +140,6 @@ export default {
     },
     closeModal() {
       this.modal = false
-    },
-    doSend() {
-      if (this.message.length > 0) {
-        alert(this.message)
-        this.message = ""
-        this.closeModal()
-      } else {
-        alert('メッセージを入力してください')
-      }
     }
   }
 }
@@ -177,13 +166,6 @@ export default {
       align-items: center;
       justify-content: center;
       height: 70px;
-    }
-
-    .event-modal-footer {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
     }
 
     .event-modal-left {
