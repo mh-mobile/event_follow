@@ -1,0 +1,13 @@
+.header
+  .container
+    .logo
+      = link_to image_tag("logo_transparent.png"), authenticated_root_path
+
+    .profile
+      #js-profile.profile_icon
+        = image_tag current_user.profile_image
+      = render partial: "profile_setting"
+.event_container
+  = render partial: "event_list_header", locals: { events: @events }
+  = render partial: "event_list_content", locals: { events: @events }
+  = render partial: "event_list_footer", locals: { events: @events }
