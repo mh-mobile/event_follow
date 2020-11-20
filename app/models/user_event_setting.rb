@@ -32,4 +32,8 @@ class UserEventSetting < ActiveRecord::Base
     four_or_more_friends: 3,
     five_or_more_friends: 4
   }
+
+  validates :event_sort_type, presence: true
+  validates :time_filter_type, presence: true
+  validates :friends_filter_type, presence: true
 end
