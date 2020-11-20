@@ -14,16 +14,16 @@
               | Filter
           .event-modal-content
               .event-modal-left.event-modal-sort
-                select(v-model="selected_sort_condition" @change="selectedSortConditionChanged($event)" name="sort")
-                  option(v-for="item in event_sort_condition_items" :value="item.value" :key="item.value")
+                select(v-model="selectedSortCondition" @change="selectedSortConditionChanged($event)" name="sort")
+                  option(v-for="item in eventSortConditionItems" :value="item.value" :key="item.value")
                     | {{ item.name }}
               .event-modal-center
                 | ×
               .event-modal-right.event-modal-sort
-                select(v-model="selected_time_filter_condition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
+                select(v-model="selectedTimeFilterCondition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
                   option(v-for="item in time_filter_type_items" :value="item.value" :key="item.value")
                     | {{ item.name }}
-                select(v-model="selected_friends_filter_condition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
+                select(v-model="selectedFriendsFilterCondition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
                   option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
                     | {{ item.name }}
   </div>
@@ -42,10 +42,10 @@ export default {
     return {
       modal: false,
       message: "",
-      selected_sort_condition: "friends_number_order",
-      selected_time_filter_condition: "past_8_hours",
-      selected_friends_filter_condition: "one_or_more_friends",
-      event_sort_condition_items: [
+      selectedSortCondition: "friends_number_order",
+      selectedTimeFilterCondition: "past_8_hours",
+      selectedFriendsFilterCondition: "one_or_more_friends",
+      eventSortConditionItems: [
         {
           name: "Friend数",
           value: "friends_number_order"
@@ -126,26 +126,26 @@ export default {
     }
   },
   created() {
-    this.selected_sort_condition = this.eventSortType
+    this.selectedSortCondition = this.eventSortType
     this.selected_time_filter_conditio = this.timeFilterType
-    this.selected_friends_filter_condition = this.friendsFilterType
+    this.selectedFriendsFilterCondition = this.friendsFilterType
   },
   computed: {
     isFrinedsNumberSortCondition: function() {
-      return this.selected_sort_condition == "friends_number_order"
+      return this.selectedSortCondition == "friends_number_order"
     },
     getCurrentConditionLabel: function() {
-      const sortConditionLabel = this.event_sort_condition_items.find((item) => {
-        return item.value == this.selected_sort_condition
+      const sortConditionLabel = this.eventSortConditionItems.find((item) => {
+        return item.value == this.selectedSortCondition
       }).name
       if (this.isFrinedsNumberSortCondition) {
         const timeFilterConditionLabel = this.time_filter_type_items.find((item) => {
-          return item.value == this.selected_time_filter_condition
+          return item.value == this.selectedTimeFilterCondition
         }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
         const friendsFilterConditionLabel = this.friends_filter_type_items.find((item) => {
-          return item.value == this.selected_friends_filter_condition
+          return item.value == this.selectedFriendsFilterCondition
         }).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
