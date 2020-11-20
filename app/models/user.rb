@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_one :user_token
   has_one :user_event_setting
+  has_many :friendships, foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :friendships, source: :followed
 
   def self.find_or_create_from_auth(auth)
     uid = auth.uid

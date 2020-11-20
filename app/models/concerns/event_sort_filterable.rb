@@ -53,7 +53,7 @@ module EventSortFilterable
       friends_number =  3
     when "four_or_more_friends"
       friends_number =  4
-      kwhen "five_or_more_friends"
+    when "five_or_more_friends"
       friends_number =  5
     end
 

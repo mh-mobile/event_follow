@@ -33,6 +33,11 @@
 import Modal from './modal.vue'
 export default {
   components: { Modal },
+  props: {
+    eventSortType: String,
+    timeFilterType: String,
+    friendsFilterType: String
+  },
   data() {
     return {
       modal: false,
@@ -119,6 +124,11 @@ export default {
         }
       ]
     }
+  },
+  created() {
+    this.selected_sort_condition = this.eventSortType
+    this.selected_time_filter_conditio = this.timeFilterType
+    this.selected_friends_filter_condition = this.friendsFilterType
   },
   computed: {
     isFrinedsNumberSortCondition: function() {

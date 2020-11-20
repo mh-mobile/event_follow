@@ -2,6 +2,6 @@
   .event_header_top
     .event_header_info
       | 友達からのイベント情報
-    #js-event-sort-filter
+    #js-event-sort-filter(event-sort-type="#{event_sort_type}" time-filter-type="#{time_filter_type}" friends-filter-type="#{friends_filter_type}")
   .event_header_bottom
     = paginate @events, window: 2
