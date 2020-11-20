@@ -3,6 +3,27 @@
 class User < ApplicationRecord
   has_one :user_token
   has_one :user_event_setting
+  has_many :friendships, foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :friendships, source: :followed
+
+  def follow!(user)
+    following << user
+  end
+
+  def unfollow!(user)
+    friendships.find_by!(followed_id: user.id).destroy!
+  end
+
+  def following?(user)
+    following.include?(user)
+  end
+
+  def following_tweets(event)
+    user_ids = following_user_ids
+    event.tweets.select do |tweet|
+      user_ids.include?(tweet.user_id)
+    end
+  end
 
   def self.find_or_create_from_auth(auth)
     uid = auth.uid
@@ -21,4 +42,9 @@ class User < ApplicationRecord
     user.save
     user
   end
+
+  private
+    def following_user_ids
+      following.ids
+    end
 end
