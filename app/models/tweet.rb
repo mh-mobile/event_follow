@@ -6,6 +6,7 @@ class Tweet < ApplicationRecord
   belongs_to :retweeted_tweet, class_name: "Tweet", optional: true
   belongs_to :event
 
+  scope :tweets_for_event, -> (event_id) { where(event_id: event_id) }
   scope :following_tweets, -> (user) { where(user_id: user.following.ids) }
 
   validates :user_id, presence: true
