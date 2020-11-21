@@ -85,7 +85,6 @@ export default {
       return response.json()  
     }).then(json => {
       this.friends = json
-      console.log(JSON.stringify(this.friends))
     }).catch(error => {
       console.log("Failed to parsing", error)
     })
