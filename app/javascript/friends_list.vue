@@ -53,6 +53,8 @@
                   | @{{ tweet.user.screen_name }} 
               .tweet_content(v-auto-link)
                 | {{ tweet.text }}
+              .tweet_datetime
+                | {{ tweet.tweeted_at | dateFormat }}
 
   </div>
 </template>
@@ -97,6 +99,17 @@ export default {
     },
     closeModal() {
       this.modal = false
+    },
+  },
+  filters: {
+    dateFormat: function(value) {
+      const date = new Date(value)
+      const year = String(date.getFullYear());
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hour = String(date.getHours()).padStart(2, "0")
+      const minute = String(date.getMinutes()).padStart(2, "0") 
+      return `${year}/${month}/${day} ${hour}:${minute}`  
     }
   },
   directives: {
@@ -183,6 +196,11 @@ export default {
 
           .tweet_content {
             margin: 5px;
+          }
+
+          .tweet_datetime {
+            margin: 5px;
+            color: #a5a9ab;
           }
         }
       }
