@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     root to: "events#index", as: :authenticated_root
   end
 
+  namespace "api" do
+    resources :following_tweets, only: %i(index)
+  end
+
   root to: "homes#show", as: :unauthenticated_root
 end
