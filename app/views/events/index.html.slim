@@ -8,6 +8,6 @@
         = image_tag current_user.profile_image
       = render partial: "profile_setting"
 .event_container
-  = render partial: "event_list_header", locals: { events: @events, event_sort_type: @event_sort_type, time_filter_type: @time_filter_type, friends_filter_type: @friends_filter_type }
-  = render partial: "event_list_content", locals: { events: @events }
-  = render partial: "event_list_footer", locals: { events: @events }
+  = render partial: "event_list_header", locals: { event_sort_type: @event_sort_type, time_filter_type: @time_filter_type, friends_filter_type: @friends_filter_type }
+  = render partial: "event_list_content"
+  = render partial: "event_list_footer"
