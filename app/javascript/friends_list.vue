@@ -2,9 +2,13 @@
   .friends_list
     .friend_number(@click="openModal")
       | {{ friendsNumber }}
-    .friend_icon(v-for="userId in userIds")
+    
+    .friend_icon(v-for="userId in userIds" v-show="friends.length == 0")
       a(href="https://twitter.com/mh_mobiler" target="_blank")
         img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
+    .friend_icon(v-for="friend in friends" v-show="friends.length > 0")
+      a(:href="friend | friend_screen_name" target="_blank")
+        img(:src="friend.profile_image")
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -25,8 +29,6 @@
                 | {{ tweet.text }}
               .tweet_datetime
                 | {{ tweet.tweeted_at | dateFormat }}
-
-  </div>
 </template>
 
 <script>
@@ -73,20 +75,21 @@ export default {
     },
   },
   mounted() {
-    // fetch(`/api/friendships.json?user_ids=${this.userIds}`, {
-    //   method: "GET",
-    //   headers: {
-    //     "X-Requested-With": "XMLHttpRequest",
-    //   },
-    //   credentials: "same-origin",
-    //   redirect: "manual"
-    // }).then(response => {
-    //   return response.json()  
-    // }).then(json => {
-    //   this.friends = json
-    // }).catch(error => {
-    //   console.log("Failed to parsing", error)
-    // })
+    fetch(`/api/friendships.json?user_ids=${this.userIds}`, {
+      method: "GET",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+      credentials: "same-origin",
+      redirect: "manual"
+    }).then(response => {
+      return response.json()  
+    }).then(json => {
+      this.friends = json
+      console.log(JSON.stringify(this.friends))
+    }).catch(error => {
+      console.log("Failed to parsing", error)
+    })
   },
   filters: {
     dateFormat: function(value) {
@@ -97,6 +100,9 @@ export default {
       const hour = String(date.getHours()).padStart(2, "0")
       const minute = String(date.getMinutes()).padStart(2, "0") 
       return `${year}/${month}/${day} ${hour}:${minute}`  
+    },
+    friend_screen_name: function(value) {
+      return `https://twitter.com/${value.screen_name}`
     }
   },
   directives: {
