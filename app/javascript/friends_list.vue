@@ -16,7 +16,7 @@
           li.tweet_item(v-for="tweet in tweets")
             .friend_column
               .profile_icon
-                a(href="https://twitter.com/mh_mobiler" target="_blank")
+                a(:href="tweet.user | friend_screen_name" target="_blank")
                   img(:src="tweet.user.profile_image")
             .tweet_column
               .tweet_user
