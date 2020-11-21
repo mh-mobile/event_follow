@@ -38,18 +38,19 @@
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
-        ul.tweet_list
+        Loading(v-show="isLoading")
+        ul.tweet_list(v-show="!isLoading")
           li.tweet_item(v-for="tweet in tweets")
             .friend_column
               .profile_icon
-                a(href="https://twitter.com/mh_mobiler" target="_blank")
+                as(href="https://twitter.com/mh_mobiler" target="_blank")
                   img(:src="tweet.user.profile_image")
             .tweet_column
               .tweet_user
                 .twitter_user_name
                   | {{ tweet.user.name }} 
                 .twitter_user_screen_name
-                  | {{ tweet.user.screen_name }} 
+                  | @{{ tweet.user.screen_name }} 
               .tweet_content(v-auto-link)
                 | {{ tweet.text }}
 
@@ -58,15 +59,20 @@
 
 <script>
 import Modal from './modal.vue'
+import Loading from './loading.vue'
 export default {
-  components: { Modal },
+  components: { Modal, Loading },
   data() {
     return {
       modal: false,
       tweets: []  
     }
   },
-
+  computed: {
+    isLoading() {
+      return this.tweets.length == 0
+    }
+  },
   methods: {
     openModal() {
       this.modal = true
