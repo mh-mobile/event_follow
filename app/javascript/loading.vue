@@ -22,10 +22,6 @@
    position: relative;
   }
 
-  &.is-active {
-    opacity: 1;
-    z-index: 1;
-  }
 }
 
 </style>
