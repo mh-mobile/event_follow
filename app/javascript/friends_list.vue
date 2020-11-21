@@ -4,8 +4,7 @@
       | {{ friendsNumber }}
     
     .friend_icon(v-for="userId in userIds" v-show="friends.length == 0")
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
+      img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
     .friend_icon(v-for="friend in friends" v-show="friends.length > 0")
       a(:href="friend | friend_screen_name" target="_blank")
         img(:src="friend.profile_image")
