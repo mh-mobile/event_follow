@@ -1,40 +1,10 @@
 <template lang="pug">
   .friends_list
     .friend_number(@click="openModal")
-      | 11
-    .friend_icon
+      | {{ friendsNumber }}
+    .friend_icon(v-for="userId in userIds")
       a(href="https://twitter.com/mh_mobiler" target="_blank")
         img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/84bd00/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/1cc7d0/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/d20963/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/ffc30e/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/0c3866/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/101x100/b4a996/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/ff4d00/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/aea500/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/6539b7/fff.png")
-    .friend_icon
-      a(href="https://twitter.com/mh_mobiler" target="_blank")
-        img(src="https://dummyimage.com/100x100/70b29c/fff.png")
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -64,11 +34,12 @@ import Modal from './modal.vue'
 import Loading from './loading.vue'
 export default {
   components: { Modal, Loading },
-  props: ["event_id"],
+  props: ["eventId", "userIds", "friendsNumber"],
   data() {
     return {
       modal: false,
-      tweets: []  
+      tweets: [],
+      friends: [] 
     }
   },
   computed: {
@@ -81,7 +52,7 @@ export default {
       this.modal = true
 
       if (this.isLoading) {
-        fetch(`/api/following_tweets.json?event_id=${this.event_id}`, {
+        fetch(`/api/following_tweets.json?event_id=${this.eventId}`, {
           method: "GET",
           headers: {
             "X-Requested-With": "XMLHttpRequest",
@@ -100,6 +71,22 @@ export default {
     closeModal() {
       this.modal = false
     },
+  },
+  mounted() {
+    // fetch(`/api/friendships.json?user_ids=${this.userIds}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "X-Requested-With": "XMLHttpRequest",
+    //   },
+    //   credentials: "same-origin",
+    //   redirect: "manual"
+    // }).then(response => {
+    //   return response.json()  
+    // }).then(json => {
+    //   this.friends = json
+    // }).catch(error => {
+    //   console.log("Failed to parsing", error)
+    // })
   },
   filters: {
     dateFormat: function(value) {
