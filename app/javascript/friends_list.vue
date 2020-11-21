@@ -43,7 +43,7 @@
           li.tweet_item(v-for="tweet in tweets")
             .friend_column
               .profile_icon
-                as(href="https://twitter.com/mh_mobiler" target="_blank")
+                a(href="https://twitter.com/mh_mobiler" target="_blank")
                   img(:src="tweet.user.profile_image")
             .tweet_column
               .tweet_user
@@ -62,6 +62,7 @@ import Modal from './modal.vue'
 import Loading from './loading.vue'
 export default {
   components: { Modal, Loading },
+  props: ["event_id"],
   data() {
     return {
       modal: false,
@@ -77,20 +78,22 @@ export default {
     openModal() {
       this.modal = true
 
-      fetch(`/api/following_tweets.json`, {
-        method: "GET",
-        headers: {
-          "X-Requested-With": "XMLHttpRequest",
-        },
-        credentials: "same-origin",
-        redirect: "manual"
-      }).then(response => {
-        return response.json()  
-      }).then(json => {
-        this.tweets = json
-      }).catch(error => {
-        console.log("Failed to parsing", error)
-      })
+      if (this.isLoading) {
+        fetch(`/api/following_tweets.json?event_id=${this.event_id}`, {
+          method: "GET",
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          credentials: "same-origin",
+          redirect: "manual"
+        }).then(response => {
+          return response.json()  
+        }).then(json => {
+          this.tweets = json
+        }).catch(error => {
+          console.log("Failed to parsing", error)
+        })
+      }
     },
     closeModal() {
       this.modal = false
