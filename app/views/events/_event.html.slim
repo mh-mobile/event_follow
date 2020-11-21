@@ -1,16 +1,17 @@
 li.event_item
   .event_detail
     .event_detail_left
-      = render partial: "event_held", locals: { event: event }
+      = render partial: "event_held", locals: { event: event[:detail] }
     .event_detail_content
       .event_content_top
         .event_content_title
           a(href="https://vscode.connpass.com/event/184441" target="_blank")
-            = event.title
+            = event[:detail].title
         .event_content_thumbnail
           = image_tag "https://placeimg.com/320/240/tech"
       .event_content_bottom
         .event_content_description
-          = event.description
-  div id="js-friends-list-#{event.id}" event-id="#{event.id}"
+          = event[:detail].description
+  div id="js-friends-list-#{event[:detail].id}" event-id="#{event[:detail].id}" user-ids="#{event[:extra][:user_ids]}" friends-number="#{event[:extra][:friends_number]}"
+  
 
