@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::FollowingTweetsController < Api::BaseController
   def index
     @tweets = Tweet.tweets_for_event(params[:event_id])
