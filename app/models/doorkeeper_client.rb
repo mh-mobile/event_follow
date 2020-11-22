@@ -9,7 +9,7 @@ class DoorkeeperClient
 
   def search(event_id)
     with_error_handling do
-      connection.get("events/#{event_id}")
+      connection.get("events/#{event_id}").body
     end
   end
 

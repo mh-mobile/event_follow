@@ -7,7 +7,7 @@ module EventRequestable
     end
 
     if event_url.include?("doorkeeper.jp/events/")
-      auth_token = ""
+      auth_token = ENV["DOORKEEPER_AUTH_TOKEN"]
       return DoorkeeperRequest.new(DoorkeeperClient.new(auth_token), OgpClient.new, event_url)
     end
 
