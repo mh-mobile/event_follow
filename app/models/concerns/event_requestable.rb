@@ -1,11 +1,21 @@
 # frozen_string_literal: true
 
 module EventRequestable
-  extend ActiveSupport::Concern
-
-  class_methods do
-    def create(event_url)
+  def self.create(event_url)
+    if event_url.include?("connpass.com/event/") 
+      return ConnpassRequest.new(ConnpassClient.new, OgpClient.new, event_url)
     end
+
+    if event_url.include?("doorkeeper.jp/events/")
+      auth_token = ""
+      return DoorkeeperRequest.new(DoorkeeperClient.new(auth_token), OgpClient.new, event_url)
+    end
+
+    if event_url.include?("techplay.jp/event/")
+      return OgpClient.new
+    end
+
+    nil
   end
 
   def request
