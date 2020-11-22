@@ -19,6 +19,9 @@ gem "kaminari"
 gem "bulma-rails"
 gem "slim-rails"
 gem "html2slim"
+gem "hashie"
+gem "faraday"
+gem "faraday_middleware"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
