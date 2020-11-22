@@ -6,6 +6,6 @@ class ConnpassRequest
   def initialize(api_client, ogp_client)
   end
 
-  def request 
+  def request
   end
 end
