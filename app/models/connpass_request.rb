@@ -7,7 +7,6 @@ class ConnpassRequest
     @api_client = api_client
     @ogp_client = ogp_client
     @event_url = event_url
-    byebug
     if match = event_url.match(/https:\/\/.*connpass.com\/event\/(?<event_id>.*)\//)
       @event_id = match[:event_id]
     end
