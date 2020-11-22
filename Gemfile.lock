@@ -58,6 +58,8 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ansi (1.5.0)
+    ast (2.4.1)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -128,6 +130,11 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
+    oga (2.15)
+      ast
+      ruby-ll (~> 2.1)
+    ogp (0.4.0)
+      oga (~> 2.15)
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -177,6 +184,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.1)
+    ruby-ll (2.1.2)
+      ansi
+      ast
     ruby2_keywords (0.0.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -253,6 +263,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
+  ogp (= 0.4.0)
   omniauth
   omniauth-twitter
   pg
