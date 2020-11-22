@@ -8,7 +8,7 @@ class ConnpassClient
 
   def search(event_id)
     with_error_handling do
-      connection.get("event/?event_id=#{event_id}")
+      connection.get("event/?event_id=#{event_id}").body
     end
   end
 

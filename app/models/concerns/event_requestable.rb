@@ -2,7 +2,7 @@
 
 module EventRequestable
   def self.create(event_url)
-    if event_url.include?("connpass.com/event/") 
+    if event_url.include?("connpass.com/event/")
       return ConnpassRequest.new(ConnpassClient.new, OgpClient.new, event_url)
     end
 
