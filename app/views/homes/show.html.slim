@@ -1,2 +1,7 @@
-| ホームだよ 
-=  link_to "Twitterアカウントでログイン", "/auth/twitter"
+.header
+  .container
+    .logo
+      = link_to image_tag("logo_transparent.png"), authenticated_root_path
+
+.event_container
+  =  link_to "Twitterアカウントでログイン", "/auth/twitter"
