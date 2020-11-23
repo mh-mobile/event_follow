@@ -83,6 +83,7 @@ body {
     min-width: 50rem;
     margin: 0 auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -196,7 +197,7 @@ body {
 
             .event_content_title {
               width: 80%;
-              font-size: 2em;
+              font-size: 1.6em;
             }
 
             .event_content_thumbnail {
@@ -208,6 +209,7 @@ body {
             display: flex;
             flex-direction: column;
             height: 60%;
+            overflow: scroll;
 
             .event_content_description {
               width: 100%;

@@ -11,7 +11,5 @@ li.event_item
           = image_tag "#{event[:detail].banner}"
       .event_content_bottom
         .event_content_description
-          = event[:detail].description
+          = event[:detail].formatted_description
   div id="js-friends-list-#{event[:detail].id}" event-id="#{event[:detail].id}" user-ids="#{event[:extra][:user_ids]}" friends-number="#{event[:extra][:friends_number]}"
-  
-
