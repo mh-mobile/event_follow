@@ -23,6 +23,7 @@ class TwitterRequest
   def quoted_tweets
   end
 
-  def following(user_id:, since_id:)
+  def following(cursor: -1)
+    @twitter_client.following(cursor: cursor)
   end
 end
