@@ -12,7 +12,7 @@ module EventRequestable
     end
 
     if event_url.include?("techplay.jp/event/")
-      return OgpClient.new
+      return TechPlayRequest.new(OgpClient.new, event_url)
     end
 
     nil
