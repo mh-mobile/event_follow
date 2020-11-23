@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OgpClient
+  attr_reader :body
+
   def initialize
   end
 
@@ -8,6 +10,7 @@ class OgpClient
     @endpoint = event_url
     with_error_handling do
       response = connection.get("")
+      @body = response.body
       open_graph = OGP::OpenGraph.new(response.body)
     end
   end
