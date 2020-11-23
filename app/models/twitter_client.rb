@@ -16,7 +16,7 @@ class TwitterClient
       connection(auth_headers: app_auth_token_header).get("search/tweets.json") do |req|
         req.params["q"] = q
         req.params["count"] = count
-        req.params["since_id"] = 0
+        req.params["since_id"] = since_id
       end.body
     end
   end
