@@ -13,7 +13,7 @@ class DoorkeeperRequest
   def request
     event = @api_client.search(@event_id).event
     ogp_res = @ogp_client.search(@event_url)
-    Event.new(site_id: 2,
+    Event.new(site_id: Site::DOORKEEPER_EVENT_SITE_ID,
         site_event_id: event.id,
         title: event.title,
         description: event.description,

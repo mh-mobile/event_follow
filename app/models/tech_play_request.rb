@@ -16,7 +16,7 @@ class TechPlayRequest
   def request
     ogp_res = @ogp_client.search(@event_url)
     event_datetime = extract_event_datetime
-    Event.new(site_id: 3,
+    Event.new(site_id: Site::TECHPLAY_EVENT_SITE_ID,
         site_event_id: @event_id,
         title: ogp_res.title,
         description: ogp_res.description,
