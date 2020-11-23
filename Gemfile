@@ -23,6 +23,7 @@ gem "hashie"
 gem "faraday"
 gem "faraday_middleware"
 gem "ogp", "0.4.0"
+gem "active_decorator"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
