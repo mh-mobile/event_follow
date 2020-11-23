@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class TwitterClient
   API_ENDOPOINT = "https://api.twitter.com/1.1/"
 
-  def initialize(personal_token, app_token, oauth_consumer_key, oauth_token, oauth_consume_secret, oauth_token_secret)
-    @personal_token = personal_token
+  def initialize(app_token:, oauth_consumer_key:, oauth_token:, oauth_consumer_secret:, oauth_token_secret:)
     @app_token = app_token
     @oauth_consumer_key = oauth_consumer_key
     @oauth_token = oauth_token
@@ -10,13 +11,14 @@ class TwitterClient
     @oauth_token_secret = oauth_token_secret
   end
 
-  def search(q, count, since_id)
+  def search(q:, count: 100, since_id: 0)
     with_error_handling do
-      connection.get("search/tweets.json", app_auth_token_header) do |req|
+      connection(auth_headers: app_auth_token_header).get("search/tweets.json") do |req|
         req.params["q"] = q
         req.params["count"] = count
+        req.params["since_id"] = 0
       end.body
-    en
+    end
   end
 
   def following(user_id)
@@ -25,10 +27,10 @@ class TwitterClient
       query_params = {
         user_id: user_id
       }
-      connection.get(api_path, user_auth_token_header(api_path, query_params)) do |req|
+      connection(auth_headers: user_auth_token_header(api_path, query_params)).get(api_path) do |req|
         req.params = query_params
       end.body
-    en
+    end
   end
 
   private
@@ -39,7 +41,10 @@ class TwitterClient
         connection.response :mashify, mash_class: EventResponse
         connection.response :json
         connection.response :raise_error
-
+        if Rails.env.development?
+          connection.request :curl, Logger.new(STDOUT), :debug
+          connection.response :logger, Logger.new(STDOUT)
+        end
         connection.adapter Faraday.default_adapter
       end
     end
@@ -64,7 +69,7 @@ class TwitterClient
     def user_auth_token_header(api_path, query_params)
       oauth_params = {
         oauth_consumer_key: @oauth_consumer_key,
-        oauth_nonce: oauth_nonce
+        oauth_nonce: oauth_nonce,
         oauth_signature_method: "HMAC-SHA1",
         oauth_timestamp: oauth_timestamp,
         oauth_token: @oauth_token,
@@ -76,12 +81,12 @@ class TwitterClient
       sorted_params = params.sort { |k1, k2| k1 <=> k2 }.to_h
 
       # keyとvalueをそれぞれURLエンコーディングし、key=valueで結合した文字列を生成
-      params_str = sorted_params.keys.inject("") do |result, key| 
+      params_str = sorted_params.keys.inject("") do |result, key|
         encoded_key = ERB::Util.url_encode(key.to_s)
         encoded_value = ERB::Util.url_encode(sorted_params[key])
         result += "&" if result.present?
         result += "#{encoded_key}=#{encoded_value}"
-      end 
+      end
 
       # シグネチャのベースとなる文字列を生成
       base_str = "POST&#{ERB::Util.url_encode("#{API_ENDOPOINT}#{api_path}")}&#{ERB::Util.url_encode(params_str)}"
@@ -102,7 +107,7 @@ class TwitterClient
         if result.equal?("OAuth")
           result += " "
         else
-          result += ", " 
+          result += ", "
         end
         result += "#{encoded_key}=\"#{encoded_value}\""
       end
@@ -117,6 +122,6 @@ class TwitterClient
     end
 
     def oauth_nonce
-      Base64.encode64(OpenSSL::Random.random_bytes(32)).gsub(/\W/,'')
+      Base64.encode64(OpenSSL::Random.random_bytes(32)).gsub(/\W/, "")
     end
 end
