@@ -106,7 +106,7 @@ class TwitterClient
       authorization_str = sorted_params.keys.inject("OAuth") do |result, key|
         encoded_key = ERB::Util.url_encode(key.to_s)
         encoded_value = ERB::Util.url_encode(authorization_params[key])
-        if result.equal?("OAuth")
+        if result == "OAuth"
           result += " "
         else
           result += ", "
