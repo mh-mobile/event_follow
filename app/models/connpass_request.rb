@@ -13,7 +13,7 @@ class ConnpassRequest
   def request
     event = @api_client.search(@event_id).events[0]
     ogp_res = @ogp_client.search(@event_url)
-    Event.new(site_id: 1,
+    Event.new(site_id: Site::CONNPASS_EVENT_SITE_ID,
         site_event_id: event.event_id,
         title: event.title,
         description: event.description,
