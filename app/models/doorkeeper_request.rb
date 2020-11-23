@@ -3,13 +3,11 @@
 class DoorkeeperRequest
   include EventRequestable
 
-  def initialize(api_client, ogp_client, event_url)
+  def initialize(api_client, ogp_client, event_url, event_id)
     @api_client = api_client
     @ogp_client = ogp_client
     @event_url = event_url
-    if match = event_url.match(/https:\/\/.*doorkeeper.jp\/events\/(?<event_id>\d+)/)
-      @event_id = match[:event_id]
-    end
+    @event_id = event_id
   end
 
   def request

@@ -7,12 +7,10 @@ class TechPlayRequest
   EVENT_START_XPATH = "//time[@class='eventAside-day']"
   EVENT_END_XPATH = "//time[@class='eventAside-day']"
 
-  def initialize(ogp_client, event_url)
+  def initialize(ogp_client, event_url, event_id)
     @ogp_client = ogp_client
     @event_url = event_url
-    if match = event_url.match(/https:\/\/.*techplay.jp\/event\/(?<event_id>\d+)/)
-      @event_id = match[:event_id]
-    end
+    @event_id = event_id
   end
 
   def request
