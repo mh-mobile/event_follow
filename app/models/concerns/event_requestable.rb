@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module EventRequestable
-
   CONNPASS_EVENT_URL_REGEX = /(?<event_url>https:\/\/.*connpass.com\/event\/(?<event_id>\d+)\/)/
   DOORKEEPER_EVENT_URL_REGEX = /(?<event_url>https:\/\/.*doorkeeper.jp\/events\/(?<event_id>\d+))/
   TECHPLAY_EVENT_URL_REGEX = /(?<event_url>https:\/\/.*techplay.jp\/event\/(?<event_id>\d+))/
