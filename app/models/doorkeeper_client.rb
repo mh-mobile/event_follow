@@ -16,6 +16,7 @@ class DoorkeeperClient
   private
     def connection(endpoint: API_ENDOPOINT)
       Faraday.new(url: endpoint, headers: auth_token_headers) do |connection|
+        connection.use FaradayMiddleware::FollowRedirects
         connection.request :url_encoded
         connection.response :mashify, mash_class: EventResponse
         connection.response :json
