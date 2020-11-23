@@ -21,7 +21,7 @@ class TechPlayRequest
         title: ogp_res.title,
         description: ogp_res.description,
         started_at: event_datetime[:started_at],
-        ended_at: event_datetime[:eneded_at],
+        ended_at: event_datetime[:ended_at],
         url: ogp_res.url,
         banner: ogp_res.image.url)
   end
