@@ -18,6 +18,7 @@ class OgpClient
   private
     def connection(endpoint: @endpoint)
       Faraday.new(url: endpoint, headers: nil) do |connection|
+        connection.use FaradayMiddleware::FollowRedirects
         connection.response :raise_error
         connection.adapter Faraday.default_adapter
       end
