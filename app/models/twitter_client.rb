@@ -21,11 +21,12 @@ class TwitterClient
     end
   end
 
-  def following(user_id)
+  def following(count: 100, cursor: -1)
     with_error_handling do
       api_path = "friends/list.json"
       query_params = {
-        user_id: user_id
+        count: count,
+        cursor: cursor
       }
       connection(auth_headers: user_auth_token_header(api_path, query_params)).get(api_path) do |req|
         req.params = query_params
@@ -89,7 +90,7 @@ class TwitterClient
       end
 
       # シグネチャのベースとなる文字列を生成
-      base_str = "POST&#{ERB::Util.url_encode("#{API_ENDOPOINT}#{api_path}")}&#{ERB::Util.url_encode(params_str)}"
+      base_str = "GET&#{ERB::Util.url_encode("#{API_ENDOPOINT}#{api_path}")}&#{ERB::Util.url_encode(params_str)}"
       signing_key = "#{ERB::Util.url_encode("#{@oauth_consumer_secret}")}&#{ERB::Util.url_encode("#{@oauth_token_secret}")}"
 
       # HMAC-SHA1シグネチャを生成
@@ -101,7 +102,8 @@ class TwitterClient
       })
 
       # Authorizationヘッダーの値を生成
-      authorization_str = authorization_params.keys.inject("OAuth") do |result, key|
+      sorted_params = authorization_params.sort { |k1, k2| k1 <=> k2 }.to_h
+      authorization_str = sorted_params.keys.inject("OAuth") do |result, key|
         encoded_key = ERB::Util.url_encode(key.to_s)
         encoded_value = ERB::Util.url_encode(authorization_params[key])
         if result.equal?("OAuth")
