@@ -3,9 +3,6 @@
 class ConnpassClient
   API_ENDOPOINT = "https://connpass.com/api/v1"
 
-  def initialize
-  end
-
   def search(event_id)
     with_error_handling do
       connection.get("event/?event_id=#{event_id}").body

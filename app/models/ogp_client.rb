@@ -3,9 +3,6 @@
 class OgpClient
   attr_reader :body
 
-  def initialize
-  end
-
   def search(event_url)
     @endpoint = event_url
     with_error_handling do
