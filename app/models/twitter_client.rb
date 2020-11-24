@@ -11,12 +11,13 @@ class TwitterClient
     @oauth_token_secret = oauth_token_secret
   end
 
-  def search(q:, count: 100, since_id: 0)
+  def search(q:, count: 100, max_id: nil, since_id: nil)
     with_error_handling do
       connection(auth_headers: app_auth_token_header).get("search/tweets.json") do |req|
         req.params["q"] = q
         req.params["count"] = count
-        req.params["since_id"] = since_id
+        req.params["max_id"] = max_id if max_id
+        req.params["since_id"] = since_id if since_id
       end.body
     end
   end
