@@ -2,6 +2,9 @@
 
 class TwitterClient
   API_ENDOPOINT = "https://api.twitter.com/1.1/"
+  SEARCH_COUNT = 100
+  FRIENDS_LIST_COUNT = 200
+  RETWEETS_COUNT = 100
 
   def initialize(app_token:, oauth_consumer_key:, oauth_token:, oauth_consumer_secret:, oauth_token_secret:)
     @app_token = app_token
@@ -11,7 +14,7 @@ class TwitterClient
     @oauth_token_secret = oauth_token_secret
   end
 
-  def search(q:, count: 100, max_id: nil, since_id: nil)
+  def search(q:, count: SEARCH_COUNT, max_id: nil, since_id: nil)
     with_error_handling do
       connection(auth_headers: app_auth_token_header).get("search/tweets.json") do |req|
         req.params["q"] = q
@@ -22,7 +25,7 @@ class TwitterClient
     end
   end
 
-  def retweets(tweet_id:, count: 100)
+  def retweets(tweet_id:, count: RETWEETS_COUNT)
     with_error_handling do
      connection(auth_headers: app_auth_token_header).get("statuses/retweets/#{tweet_id}.json") do |req|
        req.params["count"] = count
@@ -30,7 +33,7 @@ class TwitterClient
    end
   end
 
-  def following(count: 100, cursor: -1)
+  def following(count: FRIENDS_LIST_COUNT, cursor: -1)
     with_error_handling do
       api_path = "friends/list.json"
       query_params = {
