@@ -16,7 +16,7 @@ class TwitterRequest
     @twitter_client = twitter_client
   end
 
-  def tweets(since_id: 0)
+  def tweets(max_id: nil, since_id: nil)
     @twitter_client.search(q: "(url:doorkeeper.jp/events OR url:connpass.com/event/) filter:links", since_id: since_id)
   end
 
