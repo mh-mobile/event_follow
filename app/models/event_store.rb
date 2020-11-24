@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventStore
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -14,7 +16,7 @@ class EventStore
     unless @event
       request = EventRequestable.create(request_info)
       @event = request.request
-      return @event.save
+      @event.save
     else
       true
     end
