@@ -20,6 +20,10 @@ class DoorkeeperClient
         connection.request :url_encoded
         connection.response :mashify, mash_class: EventResponse
         connection.response :json
+        if Rails.env.development?
+          connection.request :curl, Logger.new(STDOUT), :debug
+          connection.response :logger, Logger.new(STDOUT)
+        end
         connection.response :raise_error
 
         connection.adapter Faraday.default_adapter
