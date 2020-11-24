@@ -20,7 +20,12 @@ class TwitterRequest
     @twitter_client.search(q: "(url:doorkeeper.jp/events OR url:connpass.com/event/) filter:links", since_id: since_id)
   end
 
-  def quoted_tweets
+  def quoted_tweets(tweet_url)
+    @twitter_client.search(q: tweet_url)
+  end
+
+  def retweets(tweet_id)
+    @twtter_client.retweets(tweet_id)
   end
 
   def following(cursor: -1)

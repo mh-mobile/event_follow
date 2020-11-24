@@ -21,6 +21,14 @@ class TwitterClient
     end
   end
 
+  def retweets(tweet_id:, count: 100)
+    with_error_handling do
+     connection(auth_headers: app_auth_token_header).get("statuses/retweets/#{tweet_id}.json") do |req|
+       req.params["count"] = count
+     end.body
+   end
+  end
+
   def following(count: 100, cursor: -1)
     with_error_handling do
       api_path = "friends/list.json"
