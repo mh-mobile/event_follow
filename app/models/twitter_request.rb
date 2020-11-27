@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TwitterRequest
-  def self.create(oauth_token:, oauth_token_secret:)
+  def self.create(oauth_token: nil, oauth_token_secret: nil)
     twitter_client = TwitterClient.new(
       app_token: ENV["OAUTH_APP_TOKEN"],
       oauth_consumer_key: ENV["OAUTH_CONSUMER_KEY"],
