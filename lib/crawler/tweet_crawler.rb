@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-module Crawler
-  class Tweets < DaemonSpawn::Base
+  class TweetCrawler < DaemonSpawn::Base
     def start(args)
       @max_id = 0
       @since_id = 0
@@ -55,9 +54,8 @@ module Crawler
       puts "stop  : #{Time.now}"
     end
   end
-end
 
-Crawler::Tweets.spawn!({
+TweetCrawler.spawn!({
   working_dir: Rails.root,
   pid_file: "#{Rails.root}/tmp/tweet_crawler.pid",
   log_file: "#{Rails.root}/tmp/tweet_crawler.log",
