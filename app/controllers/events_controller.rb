@@ -5,11 +5,14 @@ class EventsController < ApplicationController
   before_action :set_sort_filter_condition
 
   def index
+    #@event_list = Event.all.page(params[:page]).preload(tweets: :user) 
     @event_list = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
     following = current_user.following.ids
 
     @events = @event_list.map.with_index do |event, index|
-      friend_user_ids = event.tweets.pluck(:user_id).uniq
+      friend_user_ids = event.tweets.pluck(:user_id).uniq.select do
+         |user_id| following.include?(user_id)
+      end
       {
         detail: event,
         extra: {
