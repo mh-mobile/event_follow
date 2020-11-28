@@ -17,6 +17,10 @@ class OgpClient
       Faraday.new(url: endpoint, headers: nil) do |connection|
         connection.use FaradayMiddleware::FollowRedirects
         connection.response :raise_error
+        if Rails.env.development?
+          connection.request :curl, Logger.new(STDOUT), :debug
+          connection.response :logger, Logger.new(STDOUT)
+        end
         connection.adapter Faraday.default_adapter
       end
     end
