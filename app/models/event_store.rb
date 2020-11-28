@@ -17,7 +17,8 @@ class EventStore
     unless @event
       request = EventRequestable.create(request_info)
       @event = request.request
-      @event.save
+      return false if @event&.ended_at < DateTime.current
+      @event&.save
     else
       true
     end
