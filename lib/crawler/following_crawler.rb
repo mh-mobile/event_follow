@@ -2,15 +2,19 @@
 
 class FollowingCrawler < DaemonSpawn::Base
   def start(args)
-    cursor = -1
 
-    while true
-      sleep 60
+    loop do
+      scope = User.joins(:user_token)
+      target_user = scope.where(following_last_updated_at: nil)
+                          .or(scope.where.not(following_last_updated_at: Time.current.ago(1.minute)..))
+                          .order(Arel.sql('following_last_updated_at asc NULLS FIRST')).limit(1).first
+      next unless target_user
 
-      target_user = User.find_by(screen_name: "mh_mobiler")
       oauth_token = target_user.user_token.access_token
       oauth_token_secret = target_user.user_token.access_token_secret
       twitter_request = TwitterRequest.create(oauth_token: oauth_token, oauth_token_secret: oauth_token_secret)
+    
+      cursor = target_user.following_next_cursor
       response = twitter_request.following(cursor: cursor)
       users = response.users
       next_cursor = response.next_cursor
@@ -19,6 +23,8 @@ class FollowingCrawler < DaemonSpawn::Base
       puts "users count: #{users.count}"
       next_cursor = response.next_cursor
       cursor = next_cursor == 0 ? -1 : next_cursor
+      target_user.update(following_last_updated_at: Time.current, following_next_cursor: cursor)
+
       next if users.count == 0
 
       time = Time.current
@@ -44,6 +50,8 @@ class FollowingCrawler < DaemonSpawn::Base
       end
       Friendship.insert_all(inserted_friendships)
     end
+  ensure
+    sleep 5
   end
 
   def stop
