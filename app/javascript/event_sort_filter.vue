@@ -127,7 +127,7 @@ export default {
   },
   created() {
     this.selectedSortCondition = this.eventSortType
-    this.selected_time_filter_conditio = this.timeFilterType
+    this.selectedTimeFilterCondition = this.timeFilterType
     this.selectedFriendsFilterCondition = this.friendsFilterType
   },
   computed: {

@@ -9,7 +9,9 @@ class EventsController < ApplicationController
     following = current_user.following.ids
 
     @events = @event_list.map.with_index do |event, index|
-      friend_user_ids = event.tweets.pluck(:user_id).uniq
+      friend_user_ids = event.tweets.pluck(:user_id).uniq.select do |user_id|
+        following.include?(user_id)
+      end
       {
         detail: event,
         extra: {

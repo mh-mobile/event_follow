@@ -3,9 +3,10 @@
     .friend_number(@click="openModal")
       | {{ friendsNumber }}
     
-    .friend_icon(v-for="userId in userIds" v-show="friends.length == 0")
+    .friend_icon(v-for="(userId, index) in userIdsArray" :key="`placeholder-${index}`" v-show="friends.length == 0")
       img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
-    .friend_icon(v-for="friend in friends" v-show="friends.length > 0")
+      | {{ userIds }}
+    .friend_icon(v-for="(friend, index) in friends" :key="`frineds-${index}`" v-show="friends.length > 0")
       a(:href="friend | friend_screen_name" target="_blank")
         img(:src="friend.profile_image")
 
@@ -46,6 +47,9 @@ export default {
   computed: {
     isLoading() {
       return this.tweets.length == 0
+    },
+    userIdsArray() {
+      return this.userIds.split(",")
     }
   },
   methods: {
