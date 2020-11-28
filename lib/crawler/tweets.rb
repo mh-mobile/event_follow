@@ -41,6 +41,7 @@ module Crawler
             text: tweet.text,
             tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
             user_id: tweet.user.id,
+            event_url: tweet.entities.urls.first&.expanded_url || "",
             created_at: time,
             updated_at: time
           }
