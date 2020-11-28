@@ -2,11 +2,10 @@
 
 class EventCrawler < DaemonSpawn::Base
   def start(args)
-
     while true
       sleep 5
       crawl_tweets = CrawlTweet.order(tweeted_at: :asc).limit(1)
-      next if crawl_tweets.length == 0      
+      next if crawl_tweets.length == 0
 
       tweet = crawl_tweets.first
       tweet_id = tweet.id
@@ -18,14 +17,14 @@ class EventCrawler < DaemonSpawn::Base
       puts "url: #{event_url}"
 
       params = { event_url: event_url }
-      event_store = EventStore.new(params) 
+      event_store = EventStore.new(params)
       if event_store.save
         event_id = event_store.event.id
         tweet = Tweet.new(
           id: tweet_id,
           text: tweet_text,
           tweeted_at: tweeted_at,
-          event_id: event_id, 
+          event_id: event_id,
           user_id: user_id,
           quoted_tweet_id: nil,
           retweeted_tweet_id: nil
