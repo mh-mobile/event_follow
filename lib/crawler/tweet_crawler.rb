@@ -14,7 +14,7 @@
         next if tweets.statuses.count == 0
 
         if tweets.statuses.count == TwitterClient::SEARCH_COUNT
-          @max_id = tweets.statuses[-1].id - 1
+          @max_id = tweets.statuses.last.id - 1
         else
           @max_id = 0
           @since_id = tweets.search_metadata.max_id
