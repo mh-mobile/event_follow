@@ -13,8 +13,6 @@ class EventCrawler < DaemonSpawn::Base
       tweeted_at = tweet.tweeted_at
       event_url = tweet.event_url
       user_id = tweet.user_id
-      puts "crawl_tweets: #{tweet_text}"
-      puts "url: #{event_url}"
 
       params = { event_url: event_url }
       event_store = EventStore.new(params)
