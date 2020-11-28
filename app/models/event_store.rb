@@ -5,6 +5,7 @@ class EventStore
   include ActiveModel::Attributes
 
   attr_accessor :event_url
+  attr_reader :event
   validates :event_url, presence: true
 
   def save
