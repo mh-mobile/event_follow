@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+  # frozen_string_literal: true
 
   class TweetCrawler < DaemonSpawn::Base
     def start(args)
@@ -55,10 +55,10 @@
     end
   end
 
-TweetCrawler.spawn!({
-  working_dir: Rails.root,
-  pid_file: "#{Rails.root}/tmp/tweet_crawler.pid",
-  log_file: "#{Rails.root}/tmp/tweet_crawler.log",
-  sync_log: true,
-  singleton: true
-})
+  TweetCrawler.spawn!({
+    working_dir: Rails.root,
+    pid_file: "#{Rails.root}/tmp/tweet_crawler.pid",
+    log_file: "#{Rails.root}/tmp/tweet_crawler.log",
+    sync_log: true,
+    singleton: true
+  })
