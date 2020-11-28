@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   before_action :set_sort_filter_condition
 
   def index
-    #@event_list = Event.all.page(params[:page]).preload(tweets: :user) 
     @event_list = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
     following = current_user.following.ids
 
