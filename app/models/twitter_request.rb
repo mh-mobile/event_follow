@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TwitterRequest
-  def self.create(oauth_token:, oauth_token_secret:)
+  def self.create(oauth_token: nil, oauth_token_secret: nil)
     twitter_client = TwitterClient.new(
       app_token: ENV["OAUTH_APP_TOKEN"],
       oauth_consumer_key: ENV["OAUTH_CONSUMER_KEY"],
@@ -17,7 +17,7 @@ class TwitterRequest
   end
 
   def tweets(max_id: nil, since_id: nil)
-    @twitter_client.search(q: "(url:doorkeeper.jp/events OR url:connpass.com/event/) filter:links", since_id: since_id)
+    @twitter_client.search(q: "(url:doorkeeper.jp/events OR url:connpass.com/event/) -filter:retweets -filter:replies filter:links", max_id: max_id, since_id: since_id)
   end
 
   def quoted_tweets(tweet_url)

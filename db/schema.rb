@@ -12,9 +12,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_012322) do
+ActiveRecord::Schema.define(version: 2020_11_28_022345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crawl_tweets", id: :bigint, default: nil, force: :cascade do |t|
+    t.text "text", null: false
+    t.datetime "tweeted_at", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "event_url", null: false
+    t.index ["user_id"], name: "index_crawl_tweets_on_user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.bigint "site_id", null: false
@@ -85,8 +95,11 @@ ActiveRecord::Schema.define(version: 2020_11_20_012322) do
     t.string "screen_name", null: false
     t.string "name", null: false
     t.string "profile_image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "crawl_tweets", "users"
   add_foreign_key "events", "sites"
   add_foreign_key "friendships", "users", column: "followed_id"
   add_foreign_key "friendships", "users", column: "follower_id"
