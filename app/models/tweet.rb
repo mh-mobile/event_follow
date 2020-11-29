@@ -8,6 +8,7 @@ class Tweet < ApplicationRecord
 
   scope :tweets_for_event, -> (event_id) { where(event_id: event_id) }
   scope :following_tweets, -> (user) { where(user_id: user.following.ids) }
+  scope :normal_tweets, -> { where(quoted_tweet_id: nil, retweeted_tweet_id: nil) }
 
   validates :user_id, presence: true
   validates :event_id, presence: true
