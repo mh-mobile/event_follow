@@ -7,7 +7,7 @@
 
 .loader-wrapper {
   width: 100%;
-  height: 100%;
+  height: 15em;
   display: flex;
   justify-content: center;
   align-items: center;

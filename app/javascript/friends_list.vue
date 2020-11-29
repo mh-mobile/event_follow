@@ -129,7 +129,7 @@ export default {
   .event-modal-container {
     max-width: 30em;
     min-width: 30em;
-    height: 30em;
+    height: auto;
 
     .tweet_list {
       width: 100%;
