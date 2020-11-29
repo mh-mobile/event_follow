@@ -8,10 +8,10 @@
         form(action="/" method="GET" id="js-sort-filter-form")
           .event-modal-header
             .event-modal-left
-              | Sort
+              | Sort by
             .event-modal-center
             .event-modal-right
-              | Filter
+              | Filter by
           .event-modal-content
               .event-modal-left.event-modal-sort
                 select(v-model="selectedSortCondition" @change="selectedSortConditionChanged($event)" name="sort")
