@@ -6,7 +6,7 @@
     .friend_icon(v-for="(userId, index) in userIdsArray" :key="`placeholder-${index}`" v-show="friends.length == 0")
       img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
       | {{ userIds }}
-    .friend_icon(v-for="(friend, index) in friends" :key="`frineds-${index}`" v-show="friends.length > 0")
+    .friend_icon(v-for="(friend, index) in displayable_friends" :key="`frineds-${index}`" v-show="friends.length > 0")
       a(:href="friend | friend_screen_name" target="_blank")
         img(:src="friend.profile_image")
 
@@ -41,7 +41,8 @@ export default {
     return {
       modal: false,
       tweets: [],
-      friends: [] 
+      friends: [],
+      maxFriendsLength: 12
     }
   },
   computed: {
@@ -50,6 +51,13 @@ export default {
     },
     userIdsArray() {
       return this.userIds.split(",")
+    },
+    displayable_friends() {
+      if (this.friends.length > this.maxFriendsLength) {
+        return this.friends.slice(0, this.maxFriendsLength)
+      }
+
+      return this.friends
     }
   },
   methods: {
