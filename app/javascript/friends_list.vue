@@ -209,13 +209,51 @@ export default {
     }
   }
 
-  .friend_number {
-    cursor: pointer;
-  }
+  .friends_list {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 5px;
+    box-sizing: border-box;
 
-  .friend_icon {
-    cursor: pointer;
-  }
+    .friend_number {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f3f4f7;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-left: 10px;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
 
+    .friend_icon {
+      overflow: hidden;
+      padding-right: 5px;
+      cursor: pointer;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .noimage {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #efe9e5;
+      }
+    }
+  }
 
 </style>
