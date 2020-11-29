@@ -2,8 +2,7 @@
 
 class EventCrawler < DaemonSpawn::Base
   def start(args)
-    while true
-      sleep 5
+    loop do
       crawl_tweets = CrawlTweet.order(tweeted_at: :asc).limit(1)
       next if crawl_tweets.length == 0
 
@@ -30,6 +29,8 @@ class EventCrawler < DaemonSpawn::Base
         tweet.save
       end
       CrawlTweet.find(tweet_id).destroy
+    ensure
+      sleep 5
     end
   end
 

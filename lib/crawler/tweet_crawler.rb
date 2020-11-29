@@ -5,9 +5,7 @@
       @max_id = 0
       @since_id = 0
 
-      while true
-        sleep 5
-
+      do loop
         twitter_request = TwitterRequest.create
         tweets = twitter_request.tweets(max_id: @max_id, since_id: @since_id)
 
@@ -47,6 +45,8 @@
         end
 
         CrawlTweet.insert_all(crawl_tweets)
+      ensure
+        sleep 5
       end
     end
 
