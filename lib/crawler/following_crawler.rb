@@ -49,9 +49,9 @@ class FollowingCrawler < DaemonSpawn::Base
         }
       end
       Friendship.insert_all(inserted_friendships)
+    ensure
+      sleep 5 
     end
-  ensure
-    sleep 5
   end
 
   def stop
