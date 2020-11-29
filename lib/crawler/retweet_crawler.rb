@@ -5,7 +5,6 @@ class RetweetCrawler < DaemonSpawn::Base
     loop do
       target_tweet = Tweet.normal_tweets
                             .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours))
-                            .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours))
                           .or(Tweet.normal_tweets
                             .where(retweet_last_updated_at: nil)
                             .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours)))
