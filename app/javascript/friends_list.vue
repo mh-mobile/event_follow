@@ -5,7 +5,6 @@
     
     .friend_icon(v-for="(userId, index) in userIdsArray" :key="`placeholder-${index}`" v-show="friends.length == 0")
       img(src="https://dummyimage.com/100x100/8db9ca/fff.png")
-      | {{ userIds }}
     .friend_icon(v-for="(friend, index) in displayable_friends" :key="`frineds-${index}`" v-show="friends.length > 0")
       a(:href="friend | friend_screen_name" target="_blank")
         img(:src="friend.profile_image")
