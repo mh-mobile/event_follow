@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::EventsController < Api::BaseController
-#  before_action :require_login
+  #  before_action :require_login
   before_action :set_sort_filter_condition
 
   def index
@@ -23,7 +23,6 @@ class Api::EventsController < Api::BaseController
         }
       }
     end
-
   end
 
   private
