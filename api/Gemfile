@@ -12,15 +12,17 @@ gem "hashie"
 gem "faraday"
 gem "faraday_middleware"
 gem "ogp", "0.4.0"
+gem "jbuilder", "~> 2.7"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "faraday_curl"
+  gem "factory_bot"
 end
 
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem "faraday_curl"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
