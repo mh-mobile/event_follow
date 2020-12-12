@@ -1,7 +1,18 @@
 <template lang="pug">
 .event_list_footer
-   | ページングコンポーネント
+  Pagination
 </template>
+
+<script lang="ts">
+import Pagination from '@/components/Pagination.vue'
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  components: {
+    Pagination
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .event_list_footer {

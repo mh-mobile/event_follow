@@ -6,16 +6,18 @@
     #js-event-sort-filter
       EventSortFilter
   .event_header_bottom
-    | ページングコンポーネント
+    Pagination
 </template>
 
 <script lang="ts">
 import EventSortFilter from '@/components/EventSortFilter.vue'
+import Pagination from '@/components/Pagination.vue'
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
   components: {
-    EventSortFilter
+    EventSortFilter,
+    Pagination
   }
 })
 </script>
