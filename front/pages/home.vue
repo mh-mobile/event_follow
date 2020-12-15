@@ -22,7 +22,7 @@ div
 import HomeConcept from '@/components/HomeConcept.vue'
 import HomeTwitterLogin from '@/components/HomeTwitterLogin.vue'
 import HomeHowItWorks from '@/components/HomeHowItWorks.vue'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   components: {
     HomeConcept,

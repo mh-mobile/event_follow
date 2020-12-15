@@ -1,7 +1,53 @@
 <template lang="pug">
 .home_twitter_login
-  a(href="/auth/twitter" class="twitter_login_button") Twitterで始める
+  .twitter_login_button(@click="loginByTwitter")
+    | Twitterで始める
 </template>
+
+<script lang="ts">
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+const Cookie = process.client ? require('js-cookie') : undefined
+
+export default defineComponent({
+
+  setup (props, { root }) {
+    if (process.server) {
+      return
+    }
+    const { store } = useContext()
+
+    const loginByTwitter = () => {
+      const provider = new firebase.auth.TwitterAuthProvider()
+      firebase.auth().signInWithPopup(provider).then(async (result) => {
+        const token = result.credential.accessToken
+        const secret = result.credential.secret
+        const user = result.user
+        const idToken = await user.getIdToken()
+
+        const auth = {
+          idToken
+        }
+
+        store.commit('setAuth', auth)
+        Cookie.set('auth', auth)
+
+        root.$router.replace('/events')
+      }).catch(function (error) {
+        const errorCode = error.code
+        const errorMessage = error.message
+        const email = error.email
+        const credential = error.credential
+      })
+    }
+
+    return {
+      loginByTwitter
+    }
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .home_twitter_login {
