@@ -20,7 +20,7 @@ div
 import EventsHeader from '@/components/EventsHeader.vue'
 import EventsContent from '@/components/EventsContent.vue'
 import EventsFooter from '@/components/EventsFooter.vue'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   components: {
     EventsHeader,

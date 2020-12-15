@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Event from '@/components/Event.vue'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   components: {
     Event

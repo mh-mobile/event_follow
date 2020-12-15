@@ -12,7 +12,7 @@
 <script lang="ts">
 import EventSortFilter from '@/components/EventSortFilter.vue'
 import Pagination from '@/components/Pagination.vue'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   components: {

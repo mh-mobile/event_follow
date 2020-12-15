@@ -23,7 +23,7 @@ li.event_item
 <script lang="ts">
 import EventHeld from '@/components/EventHeld.vue'
 import FriendsList from '@/components/FriendsList.vue'
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   components: {
