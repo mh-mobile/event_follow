@@ -37,7 +37,6 @@ export default defineComponent({
       }).catch(function (error) {
         const errorCode = error.code
         const errorMessage = error.message
-        const email = error.email
         const credential = error.credential
       })
     }

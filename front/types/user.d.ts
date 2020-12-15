@@ -1,4 +1,3 @@
 type User = {
-    displayName: string
-    email: string
+  displayName: string
 }

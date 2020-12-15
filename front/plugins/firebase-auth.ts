@@ -20,8 +20,7 @@ export default defineNuxtPlugin(async (context, inject) => {
         currentUser.value = null
       } else {
         currentUser.value = {
-          displayName: user.displayName!,
-          email: user.email!
+          displayName: user.displayName!
         }
       }
       resolve(unsubscribe)
