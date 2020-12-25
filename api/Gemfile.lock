@@ -82,13 +82,26 @@ GEM
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     ffi (1.13.1)
+    firebase-auth-rails (0.1.2)
+      firebase_id_token (~> 2.3, >= 2.3.0)
+      jwt (~> 2.1, >= 2.1.0)
+      rails
+    firebase_id_token (2.4.0)
+      httparty (~> 0.16, >= 0.16.2)
+      jwt (~> 2.1, >= 2.1.0)
+      redis (~> 4.0, >= 4.0.1)
+      redis-namespace (~> 1.6, >= 1.6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jwt (2.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -112,11 +125,15 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2020.1104)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -164,6 +181,9 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
+    redis-namespace (1.8.0)
+      redis (>= 3.0.4)
     ruby-ll (2.1.2)
       ansi
       ast
@@ -195,6 +215,7 @@ DEPENDENCIES
   faraday
   faraday_curl
   faraday_middleware
+  firebase-auth-rails
   hashie
   jbuilder (~> 2.7)
   kaminari
