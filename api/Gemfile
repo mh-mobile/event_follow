@@ -18,6 +18,7 @@ gem "jbuilder", "~> 2.7"
 gem "kaminari"
 gem "clockwork"
 gem 'rack-cors'
+gem "firebase-auth-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
