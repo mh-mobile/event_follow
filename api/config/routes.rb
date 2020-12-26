@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :following_tweets, only: %i(index)
     resources :friendships, only: %i(index)
     resources :events, only: %i(index)
+    post "sessions", to: "sessions#create"
   end
 end
