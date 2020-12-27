@@ -57,14 +57,12 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      console.log("onMounted")
       root.$nextTick(() => {
         showProfileSettings()
       })
     })
 
     onUnmounted(() => {
-      console.log("onUnmounted")
       hideProfileSettings()
     })
 
