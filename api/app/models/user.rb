@@ -25,17 +25,23 @@ class User < ApplicationRecord
     end
   end
 
-  def self.find_or_create_from_auth(auth)
-    uid = auth.uid
-    screen_name = auth.extra.raw_info.screen_name
-    name = auth.extra.raw_info.name
-    profile_image = auth.extra.raw_info.profile_image_url_https
-    user = self.find_or_initialize_by(id: uid)
-    user_token = UserToken.find_or_initialize_by(id: user.id)
-    user_token.access_token = auth.credentials.token
-    user_token.access_token_secret = auth.credentials.secret
+  def self.find_or_create_from_auth(payload:, access_token:, access_token_secret:)
+    request = TwitterRequest.create(
+      oauth_token: access_token,
+      oauth_token_secret: access_token_secret)
+
+    auth = request.verify_credentials
+    screen_name = auth.screen_name
+    name = auth.name
+    profile_image = auth.profile_image_url_https
+    twitter_id = auth.id
+    user = self.find_or_initialize_by(uid: payload["sub"])
+    user_token = UserToken.find_or_initialize_by(user_id: user.id)
+    user_token.access_token = access_token
+    user_token.access_token_secret = access_token_secret
     user.user_token = user_token
     user.user_event_setting = UserEventSetting.find_or_create_by(user_id: user.id) unless user.user_event_setting.present?
+    user.id = twitter_id
     user.screen_name = screen_name
     user.name = name
     user.profile_image = profile_image

@@ -35,5 +35,4 @@ class TwitterRequest
   def verify_credentials
     @twitter_client.verify_credentials
   end
-
 end
