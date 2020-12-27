@@ -27,7 +27,6 @@ class Api::EventsController < Api::BaseController
 
   private
     def set_sort_filter_condition
-      current_user = User.find(1)
       user_event_setting = current_user.user_event_setting
 
       begin
