@@ -5,8 +5,8 @@
 
     .friend_icon(v-for="(userId, index) in userIdsArray" :key="`placeholder-${index}`" v-show="friends.length == 0")
       .noimage
-    .friend_icon(v-for="(friend, index) in displayable_friends" :key="`frineds-${index}`" v-show="friends.length > 0")
-      a(:href="friend | friend_screen_name" target="_blank")
+    .friend_icon(v-for="(friend, index) in displayableFriends" :key="`frineds-${index}`" v-show="friends.length > 0")
+      a(:href="friendScreenName(friend)" target="_blank")
         img(:src="friend.profile_image")
 
     Modal(@close="closeModal" v-if="modal")
@@ -16,7 +16,7 @@
           li.tweet_item(v-for="tweet in tweets")
             .friend_column
               .profile_icon
-                a(:href="tweet.user | friend_screen_name" target="_blank")
+                a(:href="friendScreenName(tweet.user)" target="_blank")
                   img(:src="tweet.user.profile_image")
             .tweet_column
               .tweet_user
@@ -27,27 +27,19 @@
               .tweet_content(v-auto-link)
                 | {{ tweet.text }}
               .tweet_datetime
-                | {{ tweet.tweeted_at | dateFormat }}
+                | {{ dateFormat(tweet.tweeted_at) }}
 </template>
 
 <script>
 import Modal from '@/components/Modal.vue'
 import Loading from '@/components/Loading.vue'
-export default {
+import { defineComponent, computed, reactive, toRefs } from '@nuxtjs/composition-api'
+export default defineComponent({
   components: { Modal, Loading },
-  filters: {
-    dateFormat (value) {
-      const date = new Date(value)
-      const year = String(date.getFullYear())
-      const month = String(date.getMonth() + 1).padStart(2, '0')
-      const day = String(date.getDate()).padStart(2, '0')
-      const hour = String(date.getHours()).padStart(2, '0')
-      const minute = String(date.getMinutes()).padStart(2, '0')
-      return `${year}/${month}/${day} ${hour}:${minute}`
-    },
-    friend_screen_name (value) {
-      return `https://twitter.com/${value.screen_name}`
-    }
+  props: {
+    eventId: String,
+    userIds: String,
+    friendsNumber: String
   },
   directives: {
     'auto-link': {
@@ -64,54 +56,33 @@ export default {
       }
     }
   },
-  props: {
-    eventId: String,
-    userIds: String,
-    friendsNumber: String
-  },
-  data () {
-    return {
+  setup (props, { root }) {
+    const state = reactive({
       modal: false,
       tweets: [],
-      friends: [],
-      maxFriendsLength: 12
-    }
-  },
-  computed: {
-    isLoading () {
-      return this.tweets.length === 0
-    },
-    userIdsArray () {
-      return this.userIds.split(',')
-    },
-    displayable_friends () {
-      if (this.friends.length > this.maxFriendsLength) {
-        return this.friends.slice(0, this.maxFriendsLength)
-      }
-      return this.friends
-    }
-  },
-  mounted () {
-    fetch(`/api/friendships.json?user_ids=${this.userIds}`, {
-      method: 'GET',
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      credentials: 'same-origin',
-      redirect: 'manual'
-    }).then((response) => {
-      return response.json()
-    }).then((json) => {
-      this.friends = json
-    }).catch((error) => {
-      console.log('Failed to parsing', error)
+      friends: []
     })
-  },
-  methods: {
-    openModal () {
-      this.modal = true
-      if (this.isLoading) {
-        fetch(`/api/following_tweets.json?event_id=${this.eventId}`, {
+    const maxFriendsLength = 12
+
+    const isLoading = computed(() => {
+      return state.tweets.length === 0
+    })
+
+    const userIdsArray = computed(() => {
+      return props.userIds.split(',')
+    })
+
+    const displayableFriends = computed(() => {
+      if (state.friends.length > maxFriendsLength) {
+        return state.friends.slice(0, maxFriendsLength)
+      }
+      return state.friends
+    }) 
+
+    const openModal = () => {
+      state.modal = true
+      if (isLoading) {
+        fetch(`/api/following_tweets?event_id=${props.eventId}`, {
           method: 'GET',
           headers: {
             'X-Requested-With': 'XMLHttpRequest'
@@ -121,17 +92,44 @@ export default {
         }).then((response) => {
           return response.json()
         }).then((json) => {
-          this.tweets = json
+          state.tweets = json
         }).catch((error) => {
           console.log('Failed to parsing', error)
         })
       }
-    },
-    closeModal () {
-      this.modal = false
+    }
+
+    const closeModal = () => {
+      state.modal = false
+    }
+
+    const dateFormat = (value) => {
+      const date = new Date(value)
+      const year = String(date.getFullYear())
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const day = String(date.getDate()).padStart(2, '0')
+      const hour = String(date.getHours()).padStart(2, '0')
+      const minute = String(date.getMinutes()).padStart(2, '0')
+      return `${year}/${month}/${day} ${hour}:${minute}`
+    }
+
+    const friendScreenName = (value) => {
+      return `https://twitter.com/${value.screen_name}`
+    }
+
+    return {
+      ...toRefs(state),
+      maxFriendsLength,
+      isLoading,
+      userIdsArray,
+      displayableFriends,
+      openModal,
+      closeModal,
+      dateFormat,
+      friendScreenName
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
