@@ -47,9 +47,16 @@ export default {
     '@nuxtjs/bulma',
     '@nuxtjs/axios'
   ],
-
+  proxy: {
+    '/api/': {
+      target: 'http://127.0.0.1:3000',
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    }
+  },
   axios: {
-    // proxy: true
+    proxy: true
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
