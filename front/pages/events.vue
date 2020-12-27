@@ -68,8 +68,6 @@ export default defineComponent({
       hideProfileSettings()
     })
 
-
-
     return {
       currentUser,
       logout
@@ -149,4 +147,3 @@ export default defineComponent({
 }
 
 </style>
-
