@@ -31,4 +31,9 @@ class TwitterRequest
   def following(cursor: -1)
     @twitter_client.following(cursor: cursor)
   end
+
+  def verify_credentials
+    @twitter_client.verify_credentials
+  end
+
 end

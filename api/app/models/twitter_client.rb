@@ -46,6 +46,16 @@ class TwitterClient
     end
   end
 
+  def verify_credentials
+    with_error_handling do
+      api_path = "account/verify_credentials.json"
+      query_params = {}
+      connection(auth_headers: user_auth_token_header(api_path, query_params)).get(api_path) do |req|
+        req.params = query_params
+      end.body
+    end
+  end
+
   private
     def connection(endpoint: API_ENDOPOINT, auth_headers:)
       Faraday.new(url: endpoint, headers: auth_headers) do |connection|
