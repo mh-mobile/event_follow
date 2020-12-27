@@ -17,7 +17,7 @@ gem "ogp", "0.4.0"
 gem "jbuilder", "~> 2.7"
 gem "kaminari"
 gem "clockwork"
-gem 'rack-cors'
+gem "rack-cors"
 gem "firebase-auth-rails"
 
 group :development, :test do

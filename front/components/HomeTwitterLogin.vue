@@ -24,20 +24,24 @@ export default defineComponent({
         const token = result.credential.accessToken
         const secret = result.credential.secret
         const user = result.user
-        const idToken = await user.getIdToken()
+        const id_token = await user.getIdToken()
+        root.$axios.post("http://localhost:3000/api/sessions", {
+          access_token: token,
+          access_token_secret: secret,
+          token: id_token
+        }).then((response) => {
+          const auth = {
+            id_token
+          }
 
-        const auth = {
-          idToken
-        }
-
-        store.commit('setAuth', auth)
-        Cookie.set('auth', auth)
-
-        root.$router.replace('/events')
+          store.commit('setAuth', auth)
+          Cookie.set('auth', auth)
+          root.$router.replace('/events')
+        }).catch((error) => {
+          console.log(`error: ${error}`)
+        })
       }).catch(function (error) {
-        const errorCode = error.code
-        const errorMessage = error.message
-        const credential = error.credential
+        console.log(`error: ${error}`)
       })
     }
 
