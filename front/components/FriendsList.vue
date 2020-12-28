@@ -33,7 +33,10 @@
 <script>
 import Modal from '@/components/Modal.vue'
 import Loading from '@/components/Loading.vue'
-import { defineComponent, computed, reactive, toRefs } from '@nuxtjs/composition-api'
+import { defineComponent, computed, reactive, toRefs, onMounted } from '@nuxtjs/composition-api'
+import { useCurrentUser } from '@/compositions/user'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 export default defineComponent({
   components: { Modal, Loading },
   props: {
@@ -57,6 +60,11 @@ export default defineComponent({
     }
   },
   setup (props, { root }) {
+    if (process.server) {
+      return
+    }
+
+    const { currentUser } = useCurrentUser()
     const state = reactive({
       modal: false,
       tweets: [],
@@ -79,22 +87,18 @@ export default defineComponent({
       return state.friends
     }) 
 
-    const openModal = () => {
+    const openModal = async () => {
       state.modal = true
       if (isLoading) {
-        fetch(`/api/following_tweets?event_id=${props.eventId}`, {
-          method: 'GET',
+        const idToken = await firebase.auth().currentUser.getIdToken()
+        root.$axios.get(`/api/following_tweets?event_id=${props.eventId}`, {
           headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          credentials: 'same-origin',
-          redirect: 'manual'
+            "Authorization": `Bearer ${idToken}`
+          }
         }).then((response) => {
-          return response.json()
-        }).then((json) => {
-          state.tweets = json
+          state.tweets = response.data
         }).catch((error) => {
-          console.log('Failed to parsing', error)
+          console.log(`error: ${error}`)
         })
       }
     }
@@ -116,6 +120,20 @@ export default defineComponent({
     const friendScreenName = (value) => {
       return `https://twitter.com/${value.screen_name}`
     }
+
+    onMounted(async () => {
+      console.log("friendsLIst on mounted")
+      const idToken = await firebase.auth().currentUser.getIdToken()
+      root.$axios.get(`/api/friendships.json?user_ids=${props.userIds}`, {
+        headers: {
+          "Authorization": `Bearer ${idToken}`
+        }
+      }).then((response) => {
+        state.friends = response.data
+      }).catch((error) => {
+        console.log(`error: ${error}`)
+      }) 
+    })
 
     return {
       ...toRefs(state),
