@@ -40,9 +40,9 @@ import 'firebase/auth'
 export default defineComponent({
   components: { Modal, Loading },
   props: {
-    eventId: String,
+    eventId: Number,
     userIds: String,
-    friendsNumber: String
+    friendsNumber: Number
   },
   directives: {
     'auto-link': {
@@ -77,7 +77,8 @@ export default defineComponent({
     })
 
     const userIdsArray = computed(() => {
-      return props.userIds.split(',')
+      if (props.userIds === "") return []
+      return props.userIds.split(",")
     })
 
     const displayableFriends = computed(() => {
@@ -122,7 +123,6 @@ export default defineComponent({
     }
 
     onMounted(async () => {
-      console.log("friendsLIst on mounted")
       const idToken = await firebase.auth().currentUser.getIdToken()
       root.$axios.get(`/api/friendships.json?user_ids=${props.userIds}`, {
         headers: {

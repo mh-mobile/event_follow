@@ -1,11 +1,32 @@
 <template lang="pug">
 .event_held
   .event_date
-    | 12/24
+    | {{ eventDate }}
   .event_start
     | 開催
 </template>
+<script lang="ts">
+import { defineComponent, computed } from '@nuxtjs/composition-api'
 
+export default defineComponent({
+  props: {
+    startedAt: String
+  },
+  setup (props) {
+    const eventDate = computed(() => {
+      if (!props.startedAt || props.startedAt === "") return ""
+
+      const eventDate = new Date(props.startedAt)
+      const month = eventDate.getMonth() + 1
+      const day = eventDate.getDate()
+      return `${month}/${day}`
+    })
+    return {
+      eventDate: eventDate 
+    }
+  }
+})
+</script>
 <style lang="scss" scoped>
 .event_held {
   width: 100px;

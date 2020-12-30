@@ -1,7 +1,7 @@
 <template lang="pug">
   .example-modal-window
     .event_header_sort_filter(@click="openModal")
-      | {{ getCurrentConditionLabel() }}
+      | {{ getCurrentConditionLabel }}
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -31,7 +31,7 @@
 
 <script>
 import Modal from '@/components/Modal.vue'
-import { defineComponent, computed, reactive, toRefs } from '@nuxtjs/composition-api'
+import { defineComponent, computed, reactive, toRefs, onMounted } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   components: { Modal },
@@ -41,6 +41,7 @@ export default defineComponent({
     friendsFilterType: String
   },
   setup (props, { root }) {
+
     const eventSortConditionItems = [
       {
         name: 'Friend数',
@@ -130,10 +131,10 @@ export default defineComponent({
       selectedFriendsFilterCondition: 'one_or_more_friends'
     })
 
-    const isFrinedsNumberSortCondition = () => {
+    const isFrinedsNumberSortCondition = computed(() => {
       return state.selectedSortCondition === 'friends_number_order'
-    }
-    const getCurrentConditionLabel = () => {
+    })
+    const getCurrentConditionLabel = computed(() => {
       const sortConditionLabel = eventSortConditionItems.find((item) => {
         return item.value === state.selectedSortCondition
       }).name
@@ -148,7 +149,7 @@ export default defineComponent({
         }).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
-    }
+    })
 
     const openModal = () => {
       state.modal = true
@@ -159,16 +160,26 @@ export default defineComponent({
     }
 
     const selectedSortConditionChanged = () => {
-      document.getElementById('js-sort-filter-form').submit()
+      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      state.modal = false
     }
 
     const selectedTimeFilterConditionChanged = () => {
-      document.getElementById('js-sort-filter-form').submit()
+      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      state.modal = false
     }
 
     const selectedFriendsFilterConditionChanged = () => {
-      document.getElementById('js-sort-filter-form').submit()
+      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      state.modal = false
     }
+
+    onMounted(() => {
+      state.selectedSortCondition = props.eventSortType
+      state.selectedTimeFilterCondition = props.timeFilterType
+      state.selectedFriendsFilterCondition = props.friendsFilterType
+    })
+
 
     return {
       ...toRefs(state),

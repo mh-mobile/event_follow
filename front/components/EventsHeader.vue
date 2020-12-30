@@ -4,7 +4,7 @@
     .event_header_info
       | 友達からのイベント情報
     #js-event-sort-filter
-      EventSortFilter
+      EventSortFilter(eventSortType="created_order" timeFilterType="past_24_hours" friendsFilterType="five_or_more_friends")
   .event_header_bottom
     Pagination
 </template>
