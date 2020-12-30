@@ -5,8 +5,8 @@ json.meta do
   json.prev_page @events.prev_page
   json.next_page @events.next_page
   json.limit_value @events.limit_value
-  json.pages @events.total_pages
-  json.count @events.total_count
+  json.total_pages @events.total_pages
+  json.total_count @events.total_count
 end
 
 json.data do
