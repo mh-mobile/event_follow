@@ -29,7 +29,7 @@ export default defineComponent({
         const user = result.user
         if (token == null || secret == null || user == null) return
         const id_token = await user.getIdToken()
-        root.$axios.post("http://localhost:3000/api/sessions", {
+        root.$axios.post("/api/sessions", {
           access_token: token,
           access_token_secret: secret,
           token: id_token
