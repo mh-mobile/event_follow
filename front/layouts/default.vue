@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nuxt />
+    <Nuxt :nuxt-child-key="$route.fullPath" />
   </div>
 </template>
 
