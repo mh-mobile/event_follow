@@ -3,7 +3,7 @@ div
   .header
     .container
       .logo
-        a(href="/events")
+        nuxt-link(to="/events")
           img(src="@/assets/logo_transparent.png")
       client-only
         .profile
