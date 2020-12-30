@@ -21,9 +21,13 @@ export default defineComponent({
     const loginByTwitter = () => {
       const provider = new firebase.auth.TwitterAuthProvider()
       firebase.auth().signInWithPopup(provider).then(async (result) => {
-        const token = result.credential.accessToken
-        const secret = result.credential.secret
+        if (result == null) return
+        const credential = result.credential as firebase.auth.OAuthCredential
+        if (credential == null) return
+        const token = credential.accessToken
+        const secret = credential.secret
         const user = result.user
+        if (token == null || secret == null || user == null) return
         const id_token = await user.getIdToken()
         root.$axios.post("http://localhost:3000/api/sessions", {
           access_token: token,
