@@ -6,7 +6,7 @@
     #js-event-sort-filter
       EventSortFilter(eventSortType="created_order" timeFilterType="past_24_hours" friendsFilterType="five_or_more_friends")
   .event_header_bottom
-    Pagination
+    Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
 </template>
 
 <script lang="ts">
@@ -15,6 +15,11 @@ import Pagination from '@/components/Pagination.vue'
 import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  props: {
+    totalPages: Number,
+    currentPage: Number,
+    pageWindow: Number
+  },
   components: {
     EventSortFilter,
     Pagination

@@ -16,9 +16,9 @@ div
               a(href="#" @click="logout")
                 | ログアウト
   .event_container
-    EventsHeader
+    EventsHeader(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
     EventsContent(:events="events")
-    EventsFooter
+    EventsFooter(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
 
 </template>
 
@@ -26,7 +26,7 @@ div
 import EventsHeader from '@/components/EventsHeader.vue'
 import EventsContent from '@/components/EventsContent.vue'
 import EventsFooter from '@/components/EventsFooter.vue'
-import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, ref } from '@nuxtjs/composition-api'
+import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, toRefs, reactive } from '@nuxtjs/composition-api'
 import { useCurrentUser } from '@/compositions/user'
 import { useProfileSettings } from '@/compositions/profile_settings'
 
@@ -41,32 +41,46 @@ export default defineComponent({
     EventsFooter
   },
   setup (props, { root }) {
-    const events = ref([])
+    const state = reactive({
+      events: [],
+      totalPages: 0,
+      currentPage: 1,
+      pageWindow: 2
+    })
     if (process.server) {
       return {
         currentUser: null,
         logout: null,
-        events: events
+        ...toRefs(state)
       }
     }
+
+    const { store, query } = useContext()
 
     const fetch = useFetch(async () => {
       const currentUser = firebase.auth().currentUser
       if (currentUser == null) return
       const idToken = await currentUser.getIdToken()
+      state.currentPage = Number(query.value.page) ? Number(query.value.page)  : 1
+      const params = {
+        page: state.currentPage
+      }
+
       root.$axios.get(`/api/events`, {
         headers: {
           "Authorization": `Bearer ${idToken}`
-        }
+        },
+        params: params
       }).then((response) => {
-        events.value = response.data.data
+        state.events = response.data.data
+        state.totalPages = response.data.meta.total_pages
+        state.currentPage = response.data.meta.current_page
       }).catch((error) => {
         console.log(`error: ${error}`)
       })  
     })
 
     const { currentUser } = useCurrentUser()
-    const { store, params, query } = useContext()
     const { showProfileSettings, hideProfileSettings } = useProfileSettings()
 
     const logout = () => {
@@ -90,7 +104,7 @@ export default defineComponent({
     return {
       currentUser,
       logout,
-      events
+      ...toRefs(state)
     }
   }
 })
