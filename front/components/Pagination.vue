@@ -23,20 +23,23 @@ export default defineComponent({
     }
 
     const pages = computed(() => {
+      const currentPage = props.currentPage ? props.currentPage : 1
+      const totalPages = props.totalPages ? props.totalPages : 0
+      const pageWindow = props.pageWindow ? props.pageWindow : 2
       let _pages = []
       _pages.push({
         label: "最初",
         value: "1",
-        class: props.currentPage === 1 ? "click_disable" : ""
+        class: currentPage === 1 ? "click_disable" : ""
       })
 
       _pages.push({
         label: "前へ",
-        value: props.currentPage - 1,
-        class: props.currentPage === 1 ? "click_disable" : ""
+        value: currentPage - 1,
+        class: currentPage === 1 ? "click_disable" : ""
       })
 
-      if (props.currentPage > 1 + props.pageWindow) {
+      if (currentPage > 1 + pageWindow) {
         _pages.push({
           label: "...",
           value: "",
@@ -44,7 +47,7 @@ export default defineComponent({
         })
       }
 
-      for (let page = props.currentPage - props.pageWindow; page < props.currentPage; page++) {
+      for (let page = currentPage - pageWindow; page < currentPage; page++) {
         if (page <= 1) continue
 
         _pages.push({
@@ -54,13 +57,13 @@ export default defineComponent({
       }
 
       _pages.push({
-        label: props.currentPage,
-        value: props.currentPage,
+        label: currentPage,
+        value: currentPage,
         class: "current_page click_disable"
       })
 
-      for (let page = props.currentPage + 1; page <= props.currentPage + props.pageWindow; page++) {
-        if (page >= props.totalPages) continue
+      for (let page = currentPage + 1; page <= currentPage + pageWindow; page++) {
+        if (page >= totalPages) continue
 
         _pages.push({
           label: page,
@@ -68,7 +71,7 @@ export default defineComponent({
         })
       }
 
-      if (props.currentPage < props.totalPages - props.pageWindow) {
+      if (currentPage < totalPages - pageWindow) {
         _pages.push({
           label: "...",
           value: "",
@@ -78,14 +81,14 @@ export default defineComponent({
 
       _pages.push({
         label: "次へ",
-        value: props.currentPage + 1,
-        class: props.currentPage === props.totalPages ? "click_disable" : ""
+        value: currentPage + 1,
+        class: currentPage === totalPages ? "click_disable" : ""
       })
 
       _pages.push({
         label: "最後",
-        value: props.totalPages,
-        class: props.currentPage === props.totalPages ? "click_disable" : ""
+        value: totalPages,
+        class: currentPage === totalPages ? "click_disable" : ""
       })
 
       return _pages
