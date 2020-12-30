@@ -1,15 +1,21 @@
 <template lang="pug">
  ul
-  li(v-for="i in 10")
-    Event
+  li(v-for="event in events")
+    Event(:eventInfo="event")
 </template>
 
 <script lang="ts">
 import Event from '@/components/Event.vue'
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useFetch, computed, onMounted } from '@nuxtjs/composition-api'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default defineComponent({
   components: {
     Event
+  },
+  props: {
+    events: Array
   }
 })
 </script>

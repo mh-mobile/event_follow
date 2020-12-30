@@ -17,7 +17,7 @@ div
                 | ログアウト
   .event_container
     EventsHeader
-    EventsContent
+    EventsContent(:events="events")
     EventsFooter
 
 </template>
@@ -26,7 +26,7 @@ div
 import EventsHeader from '@/components/EventsHeader.vue'
 import EventsContent from '@/components/EventsContent.vue'
 import EventsFooter from '@/components/EventsFooter.vue'
-import { defineComponent, onUnmounted, onMounted, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, ref } from '@nuxtjs/composition-api'
 import { useCurrentUser } from '@/compositions/user'
 import { useProfileSettings } from '@/compositions/profile_settings'
 
@@ -41,18 +41,39 @@ export default defineComponent({
     EventsFooter
   },
   setup (props, { root }) {
+    const events = ref([])
     if (process.server) {
-      return
+      return {
+        currentUser: null,
+        logout: null,
+        events: events
+      }
     }
+
+    const fetch = useFetch(async () => {
+      const currentUser = firebase.auth().currentUser
+      if (currentUser == null) return
+      const idToken = await currentUser.getIdToken()
+      root.$axios.get(`/api/events`, {
+        headers: {
+          "Authorization": `Bearer ${idToken}`
+        }
+      }).then((response) => {
+        events.value = response.data.data
+      }).catch((error) => {
+        console.log(`error: ${error}`)
+      })  
+    })
+
     const { currentUser } = useCurrentUser()
-    const { store } = useContext()
+    const { store, params, query } = useContext()
     const { showProfileSettings, hideProfileSettings } = useProfileSettings()
 
     const logout = () => {
       firebase.auth().signOut().then(() => {
         store.commit("setAuth", null)
         Cookie.remove("auth")
-        window.location.href = "/"
+        window.location.href = "/home"
       })
     }
 
@@ -68,7 +89,8 @@ export default defineComponent({
 
     return {
       currentUser,
-      logout
+      logout,
+      events
     }
   }
 })

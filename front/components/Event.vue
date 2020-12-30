@@ -2,20 +2,20 @@
 li.event_item
   .event_detail
     .event_detail_left
-      EventHeld
+      EventHeld(:startedAt="startedAt")
       .event_logo
         img(src="@/assets/connpass_logo.png")
     .event_detail_content
       .event_content_top
         .event_content_title
           a(href="/" target="_blank")
-            | イベントタイトル
+            | {{ eventInfo.event.title }}
         .event_content_thumbnail
-          img(src="@/assets/logo_transparent.png")
+          img(:src="eventInfo.event.banner")
 
       .event_content_bottom
         .event_content_description
-          | イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要イベント概要
+          | {{ eventInfo.event.description }}
   #js-friends-list
     FriendsList(:eventId="eventId" :userIds="userIds" :friendsNumber="friendsNumber")
 </template>
@@ -23,18 +23,34 @@ li.event_item
 <script lang="ts">
 import EventHeld from '@/components/EventHeld.vue'
 import FriendsList from '@/components/FriendsList.vue'
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, reactive, toRefs } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   components: {
     EventHeld,
     FriendsList
   },
-  setup () {
+  props: {
+    eventInfo: Object
+  },
+  setup (props) {
+    const state = reactive({
+      eventId: 0,
+      userIds: "",
+      friendsNumber: 0,
+      startedAt: ""
+    })
+
+   onMounted(() => {
+     if (!props.eventInfo) return
+     state.eventId = props.eventInfo.event.id
+     state.userIds = props.eventInfo.extra.user_ids
+     state.friendsNumber = props.eventInfo.extra.friends_number
+     state.startedAt = props.eventInfo.event.started_at
+   }) 
+
     return {
-      eventId: '1',
-      userIds: '1,2',
-      friendsNumber: '5'
+      ...toRefs(state)
     }
   }
 })
