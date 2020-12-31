@@ -126,26 +126,30 @@ export default defineComponent({
     const state = reactive({
       modal: false,
       message: '',
-      selectedSortCondition: 'friends_number_order',
-      selectedTimeFilterCondition: 'past_8_hours',
-      selectedFriendsFilterCondition: 'one_or_more_friends'
+      selectedSortCondition: "friends_number_order",
+      selectedTimeFilterCondition: "past_8_hours",
+      selectedFriendsFilterCondition: "one_or_more_friends"
     })
 
     const isFrinedsNumberSortCondition = computed(() => {
-      return state.selectedSortCondition === 'friends_number_order'
+      return props.eventSortType === 'friends_number_order'
     })
     const getCurrentConditionLabel = computed(() => {
+      if (props.eventSortType === "" || props.timeFilterType === "" || props.friendsFilterType === "") {
+        return ""
+      }
+
       const sortConditionLabel = eventSortConditionItems.find((item) => {
-        return item.value === state.selectedSortCondition
+        return item.value === props.eventSortType
       }).name
-      if (isFrinedsNumberSortCondition) {
+      if (props.eventSortType === 'friends_number_order') {
         const timeFilterConditionLabel = time_filter_type_items.find((item) => {
-          return item.value === state.selectedTimeFilterCondition
+          return item.value === props.timeFilterType
         }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
         const friendsFilterConditionLabel = friends_filter_type_items.find((item) => {
-          return item.value === state.selectedFriendsFilterCondition
+          return item.value === props.friendsFilterType
         }).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
@@ -173,13 +177,6 @@ export default defineComponent({
       root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
       state.modal = false
     }
-
-    onMounted(() => {
-      state.selectedSortCondition = props.eventSortType
-      state.selectedTimeFilterCondition = props.timeFilterType
-      state.selectedFriendsFilterCondition = props.friendsFilterType
-    })
-
 
     return {
       ...toRefs(state),
