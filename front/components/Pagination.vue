@@ -95,7 +95,6 @@ export default defineComponent({
     })
 
     const showPage = (page: Number) => {
-//      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
       root.$router.replace(`/events?page=${page}`)  
     }
 
