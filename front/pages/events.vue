@@ -16,7 +16,8 @@ div
               a(href="#" @click="logout")
                 | ログアウト
   .event_container
-    EventsHeader(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
+    EventsHeader(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow"
+                 :eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
     EventsContent(:events="events")
     EventsFooter(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
 
@@ -26,7 +27,7 @@ div
 import EventsHeader from '@/components/EventsHeader.vue'
 import EventsContent from '@/components/EventsContent.vue'
 import EventsFooter from '@/components/EventsFooter.vue'
-import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, toRefs, reactive } from '@nuxtjs/composition-api'
+import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, toRefs, reactive, watch } from '@nuxtjs/composition-api'
 import { useCurrentUser } from '@/compositions/user'
 import { useProfileSettings } from '@/compositions/profile_settings'
 
@@ -45,7 +46,10 @@ export default defineComponent({
       events: [],
       totalPages: 0,
       currentPage: 1,
-      pageWindow: 2
+      pageWindow: 2,
+      eventSortType: "",
+      timeFilterType: "",
+      friendsFilterType: ""
     })
     if (process.server) {
       return {
@@ -75,6 +79,9 @@ export default defineComponent({
         state.events = response.data.data
         state.totalPages = response.data.meta.total_pages
         state.currentPage = response.data.meta.current_page
+        state.eventSortType = response.data.meta.event_sort_type 
+        state.timeFilterType = response.data.meta.time_filter_type 
+        state.friendsFilterType = response.data.meta.friends_filter_type 
       }).catch((error) => {
         console.log(`error: ${error}`)
       })  
@@ -82,6 +89,29 @@ export default defineComponent({
 
     const { currentUser } = useCurrentUser()
     const { showProfileSettings, hideProfileSettings } = useProfileSettings()
+
+    watch(() => root.$route, async (to, from) => {
+      if (to.path === "/events") {
+        const currentUser = firebase.auth().currentUser
+        if (currentUser == null) return
+        const idToken = await currentUser.getIdToken()
+        root.$axios.get("/api/events", {
+        headers: {
+          "Authorization": `Bearer ${idToken}`
+        },
+        params: to.query
+      }).then((response) => {
+        state.events = response.data.data
+        state.totalPages = response.data.meta.total_pages
+        state.currentPage = response.data.meta.current_page
+        state.eventSortType = response.data.meta.event_sort_type 
+        state.timeFilterType = response.data.meta.time_filter_type 
+        state.friendsFilterType = response.data.meta.friends_filter_type 
+      }).catch((error) => {
+        console.log(`error: ${error}`)
+      })   
+      }
+    })
 
     const logout = () => {
       firebase.auth().signOut().then(() => {
