@@ -31,7 +31,7 @@
 
 <script>
 import Modal from '@/components/Modal.vue'
-import { defineComponent, computed, reactive, toRefs, onMounted } from '@nuxtjs/composition-api'
+import { defineComponent, computed, reactive, toRefs, onMounted, watch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   components: { Modal },
@@ -132,24 +132,24 @@ export default defineComponent({
     })
 
     const isFrinedsNumberSortCondition = computed(() => {
-      return props.eventSortType === 'friends_number_order'
+      return state.selectedSortCondition === "friends_number_order"
     })
     const getCurrentConditionLabel = computed(() => {
-      if (props.eventSortType === "" || props.timeFilterType === "" || props.friendsFilterType === "") {
+      if (state.selectedSortCondition === "" || state.selectedTimeFilterCondition === "" || state.selectedFriendsFilterCondition === "") {
         return ""
       }
 
       const sortConditionLabel = eventSortConditionItems.find((item) => {
-        return item.value === props.eventSortType
+        return item.value === state.selectedSortCondition
       }).name
-      if (props.eventSortType === 'friends_number_order') {
+      if (state.selectedSortCondition === "friends_number_order") {
         const timeFilterConditionLabel = time_filter_type_items.find((item) => {
-          return item.value === props.timeFilterType
+          return item.value === state.selectedTimeFilterCondition
         }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
         const friendsFilterConditionLabel = friends_filter_type_items.find((item) => {
-          return item.value === props.friendsFilterType
+          return item.value === state.selectedFriendsFilterCondition
         }).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
@@ -177,6 +177,18 @@ export default defineComponent({
       root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
       state.modal = false
     }
+
+    watch(() => props.eventSortType, async (newValue, oldValue) => {
+      state.selectedSortCondition = newValue  
+    })
+
+    watch(() => props.timeFilterType, async (newValue, oldValue) => {
+      state.selectedTimeFilterCondition = newValue
+    })
+
+    watch(() => props.friendsFilterType, async (newValue, oldValue) => {
+      state.selectedFriendsFilterCondition = newValue
+    })
 
     return {
       ...toRefs(state),
