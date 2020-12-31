@@ -7,6 +7,9 @@ json.meta do
   json.limit_value @events.limit_value
   json.total_pages @events.total_pages
   json.total_count @events.total_count
+  json.event_sort_type @event_sort_type
+  json.time_filter_type @time_filter_type
+  json.friends_filter_type @friends_filter_type
 end
 
 json.data do
