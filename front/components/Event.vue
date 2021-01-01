@@ -15,7 +15,7 @@ li.event_item
 
       .event_content_bottom
         .event_content_description
-          | {{ eventInfo.event.description }}
+          | {{ sanitizedDescription }}
   #js-friends-list
     FriendsList(:eventId="eventId" :userIds="userIds" :friendsNumber="friendsNumber")
 </template>
@@ -23,7 +23,8 @@ li.event_item
 <script lang="ts">
 import EventHeld from '@/components/EventHeld.vue'
 import FriendsList from '@/components/FriendsList.vue'
-import { defineComponent, onMounted, reactive, toRefs } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, reactive, toRefs, computed } from '@nuxtjs/composition-api'
+import sanitizeHtml from 'sanitize-html'
 
 export default defineComponent({
   components: {
@@ -41,6 +42,12 @@ export default defineComponent({
       startedAt: ""
     })
 
+    const sanitizedDescription = computed(() => {
+      return sanitizeHtml(props.eventInfo.event.description, {
+        allowedTags: []
+      })
+    })
+
    onMounted(() => {
      if (!props.eventInfo) return
      state.eventId = props.eventInfo.event.id
@@ -50,7 +57,8 @@ export default defineComponent({
    }) 
 
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      sanitizedDescription
     }
   }
 })
