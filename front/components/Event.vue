@@ -8,7 +8,7 @@ li.event_item
     .event_detail_content
       .event_content_top
         .event_content_title
-          a(href="/" target="_blank")
+          a(:href="eventInfo.event.url" target="_blank")
             | {{ eventInfo.event.title }}
         .event_content_thumbnail
           img(:src="eventInfo.event.banner")
