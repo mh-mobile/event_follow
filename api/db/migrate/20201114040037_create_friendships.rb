@@ -3,8 +3,8 @@
 class CreateFriendships < ActiveRecord::Migration[6.0]
   def change
     create_table :friendships do |t|
-      t.references :follower, null: false
-      t.references :followed, null: false
+      t.string :follower_id, null: false
+      t.string :followed_id, null: false
 
       t.timestamps
       t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true

@@ -3,10 +3,10 @@
 class CreateCrawlTweets < ActiveRecord::Migration[6.0]
   def change
     create_table :crawl_tweets, id: false do |t|
-      t.bigint :id, null: false
+      t.string :id, null: false
       t.text :text, null: false
       t.datetime :tweeted_at, null: false
-      t.references :user, null: false, foreign_key: true
+      t.string :user_id, null: false
 
       t.timestamps
     end
@@ -14,5 +14,8 @@ class CreateCrawlTweets < ActiveRecord::Migration[6.0]
     reversible do |direction|
       direction.up { execute "ALTER TABLE crawl_tweets ADD PRIMARY KEY (id);" }
     end
+
+    add_foreign_key :crawl_tweets, :users
+    add_index :crawl_tweets, :user_id
   end
 end
