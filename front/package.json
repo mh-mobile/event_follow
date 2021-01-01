@@ -17,6 +17,7 @@
     "@nuxtjs/composition-api": "^0.16.4",
     "@nuxtjs/firebase": "^7.1.2",
     "@nuxtjs/proxy": "^2.0.1",
+    "@types/sanitize-html": "^1.27.0",
     "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
     "firebase": "^8.2.0",
@@ -25,6 +26,7 @@
     "nuxt": "^2.14.6",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.1.0",
+    "sanitize-html": "^2.3.0",
     "sass-loader": "^10.1.0"
   },
   "devDependencies": {
