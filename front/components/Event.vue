@@ -26,6 +26,8 @@ import FriendsList from '@/components/FriendsList.vue'
 import { defineComponent, onMounted, reactive, toRefs, computed } from '@nuxtjs/composition-api'
 import sanitizeHtml from 'sanitize-html'
 
+const EVENT_DESCRIPTION_MAX_LENGTH = 250
+
 export default defineComponent({
   components: {
     EventHeld,
@@ -43,9 +45,14 @@ export default defineComponent({
     })
 
     const sanitizedDescription = computed(() => {
-      return sanitizeHtml(props.eventInfo.event.description, {
+      let description = props.eventInfo ? props.eventInfo.event.description : ""
+      description = sanitizeHtml(description, {
         allowedTags: []
       })
+      if (description.length > EVENT_DESCRIPTION_MAX_LENGTH) {
+        description = description.slice(0, EVENT_DESCRIPTION_MAX_LENGTH) + "..."
+      }
+      return description
     })
 
    onMounted(() => {
