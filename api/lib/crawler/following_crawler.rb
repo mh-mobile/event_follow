@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class FollowingCrawler < DaemonSpawn::Base
-  def start(args)
+class FollowingCrawler
+  def start
 
     loop do
       scope = User.joins(:user_token)
@@ -58,11 +58,3 @@ class FollowingCrawler < DaemonSpawn::Base
     puts "stop  : #{Time.now}"
   end
 end
-
-FollowingCrawler.spawn!({
-  working_dir: Rails.root,
-  pid_file: "#{Rails.root}/tmp/following_crawler.pid",
-  log_file: "#{Rails.root}/tmp/following_crawler.log",
-  sync_log: true,
-  singleton: true
-})

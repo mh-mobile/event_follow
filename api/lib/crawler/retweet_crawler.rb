@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class RetweetCrawler < DaemonSpawn::Base
-    def start(args)
+class RetweetCrawler 
+    def start
       loop do
         target_tweet = Tweet.normal_tweets
                               .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours))
@@ -88,11 +88,3 @@ class RetweetCrawler < DaemonSpawn::Base
       puts "stop  : #{Time.now}"
     end
   end
-  
-  RetweetCrawler.spawn!({
-    working_dir: Rails.root,
-    pid_file: "#{Rails.root}/tmp/retweet_crawler.pid",
-    log_file: "#{Rails.root}/tmp/retweet_crawler.log",
-    sync_log: true,
-    singleton: true
-  })
