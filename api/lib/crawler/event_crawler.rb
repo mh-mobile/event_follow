@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class EventCrawler < DaemonSpawn::Base
-  def start(args)
+class EventCrawler
+  def start
     loop do
       crawl_tweets = CrawlTweet.order(tweeted_at: :asc).limit(1)
       next if crawl_tweets.length == 0
@@ -38,11 +38,3 @@ class EventCrawler < DaemonSpawn::Base
     puts "stop  : #{Time.now}"
   end
 end
-
-EventCrawler.spawn!({
-  working_dir: Rails.root,
-  pid_file: "#{Rails.root}/tmp/event_crawler.pid",
-  log_file: "#{Rails.root}/tmp/event_crawler.log",
-  sync_log: true,
-  singleton: true
-})
