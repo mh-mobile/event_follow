@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,13 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_11_29_045301) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "crawl_tweets", id: :bigint, default: nil, force: :cascade do |t|
+  create_table "crawl_tweets", id: :string, force: :cascade do |t|
     t.text "text", null: false
     t.datetime "tweeted_at", null: false
-    t.bigint "user_id", null: false
+    t.string "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "event_url", null: false
@@ -42,13 +41,11 @@ ActiveRecord::Schema.define(version: 2020_11_29_045301) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.bigint "follower_id", null: false
-    t.bigint "followed_id", null: false
+    t.string "follower_id", null: false
+    t.string "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_id"], name: "index_friendships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -57,12 +54,12 @@ ActiveRecord::Schema.define(version: 2020_11_29_045301) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tweets", id: :bigint, default: nil, force: :cascade do |t|
+  create_table "tweets", id: :string, force: :cascade do |t|
     t.text "text", null: false
     t.datetime "tweeted_at", null: false
-    t.bigint "user_id", null: false
-    t.bigint "quoted_tweet_id"
-    t.bigint "retweeted_tweet_id"
+    t.string "user_id", null: false
+    t.string "quoted_tweet_id"
+    t.string "retweeted_tweet_id"
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -74,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_045301) do
   end
 
   create_table "user_event_settings", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.string "user_id", null: false
     t.integer "event_sort_type", default: 0, null: false
     t.integer "time_filter_type", default: 1, null: false
     t.integer "friends_filter_type", default: 0, null: false
@@ -84,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_045301) do
   end
 
   create_table "user_tokens", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.string "user_id", null: false
     t.string "access_token", null: false
     t.string "access_token_secret", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -92,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_045301) do
     t.index ["user_id"], name: "index_user_tokens_on_user_id"
   end
 
-  create_table "users", id: :bigint, default: nil, force: :cascade do |t|
+  create_table "users", id: :string, force: :cascade do |t|
     t.string "screen_name", null: false
     t.string "name", null: false
     t.string "profile_image", null: false

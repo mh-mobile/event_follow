@@ -3,7 +3,7 @@
 class CreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users, force: :cascade, id: false do |t|
-      t.bigint :id, null: false
+      t.string :id, null: false
       t.string :screen_name, null: false
       t.string :name, null: false
       t.string :profile_image, null: false
