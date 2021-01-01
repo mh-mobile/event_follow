@@ -4,7 +4,7 @@ li.event_item
     .event_detail_left
       EventHeld(:startedAt="startedAt")
       .event_logo
-        img(src="@/assets/connpass_logo.png")
+        img(:src="eventLogoImage")
     .event_detail_content
       .event_content_top
         .event_content_title
@@ -27,6 +27,9 @@ import { defineComponent, onMounted, reactive, toRefs, computed } from '@nuxtjs/
 import sanitizeHtml from 'sanitize-html'
 
 const EVENT_DESCRIPTION_MAX_LENGTH = 250
+const CONNPASS_EVENT_SITE_ID = 1
+const DOORKEEPER_EVENT_SITE_ID = 2
+const TECHPLAY_EVENT_SITE_ID = 3
 
 export default defineComponent({
   components: {
@@ -41,7 +44,11 @@ export default defineComponent({
       eventId: 0,
       userIds: "",
       friendsNumber: 0,
-      startedAt: ""
+      startedAt: "",
+      connpassLogoImage: require("@/assets/connpass_logo.png"),
+      doorKeeperLogoImage: require("@/assets/doorkeeper_logo.png"),
+      techplayLogoImage: require("@/assets/logo_transparent.png"),
+      noLogoImage: require("@/assets/logo_transparent.png"),
     })
 
     const sanitizedDescription = computed(() => {
@@ -55,6 +62,26 @@ export default defineComponent({
       return description
     })
 
+    const eventLogoImage = () => {
+      const siteId = props.eventInfo ? props.eventInfo.event.site_id : -1
+      let logo = state.connpassLogoImage
+      switch (siteId) {
+        case CONNPASS_EVENT_SITE_ID:
+          logo = state.connpassLogoImage
+          break
+        case DOORKEEPER_EVENT_SITE_ID:
+          logo = state.doorKeeperLogoImage
+          break
+        case TECHPLAY_EVENT_SITE_ID:
+          logo = state.techplayLogoImage
+          break
+        default:
+          logo = state.noLogoImage
+          break
+      }
+      return logo
+    }
+
    onMounted(() => {
      if (!props.eventInfo) return
      state.eventId = props.eventInfo.event.id
@@ -65,7 +92,8 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      sanitizedDescription
+      sanitizedDescription,
+      eventLogoImage: eventLogoImage(),
     }
   }
 })
