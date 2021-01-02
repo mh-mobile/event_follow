@@ -2,7 +2,7 @@
 
  class TweetCrawler
    def self.start
-    crawl_setting = TweetCrawlSetting.first
+     crawl_setting = TweetCrawlSetting.first
      @max_id = crawl_setting.max_id
      @since_id = crawl_setting.since_id
      @search_base_max_id = crawl_setting.search_base_max_id
