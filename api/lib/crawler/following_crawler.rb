@@ -16,10 +16,6 @@ class FollowingCrawler
       response = twitter_request.following(cursor: cursor)
       users = response.users
       next_cursor = response.next_cursor
-      puts "users: #{response}"
-      puts "next_cursor: #{next_cursor}"
-      puts "users count: #{users.count}"
-      next_cursor = response.next_cursor
       cursor = next_cursor == 0 ? -1 : next_cursor
       target_user.update(following_last_updated_at: Time.current, following_next_cursor: cursor)
 
