@@ -9,6 +9,7 @@ module Clockwork
     case job
     when "frequent.job"
       puts "5秒ごとの処理"
+      TweetCrawler.start
     when "less.frequent.job"
       puts "1分ごとの処理"
     end
