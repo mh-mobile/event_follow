@@ -59,6 +59,11 @@ export default defineComponent({
   }
 }
 
+.home_container {
+  max-width: 50rem;
+  margin: 0 auto;
+} 
+
 .footer {
   padding: 5px;
   background-color: #efe9e5;
