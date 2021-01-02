@@ -16,8 +16,9 @@ class EventCrawler
     event_store = EventStore.new(params)
     if event_store.save
       event_id = event_store.event.id
-      tweet = Tweet.new(
-        id: tweet_id,
+
+      tweet = Tweet.find_or_initialize_by(id: tweet_id)
+      tweet.update(
         text: tweet_text,
         tweeted_at: tweeted_at,
         event_id: event_id,
