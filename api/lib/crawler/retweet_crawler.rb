@@ -8,7 +8,7 @@ class RetweetCrawler
                           .where(retweet_last_updated_at: nil)
                           .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours)))
                         .order(Arel.sql("retweet_last_updated_at asc NULLS FIRST")).limit(1).first
-    next unless target_tweet
+    return unless target_tweet
 
     twitter_request = TwitterRequest.create
     retweets = twitter_request.retweets(target_tweet.id)
@@ -49,7 +49,7 @@ class RetweetCrawler
     quoted_retweets = twitter_request.quoted_tweets(tweet_url)
     puts "quoted_retweets: #{quoted_retweets}"
 
-    next if quoted_retweets.statuses.count == 0
+    return if quoted_retweets.statuses.count == 0
 
     time = Time.current
     users = quoted_retweets.statuses.map do |tweet|

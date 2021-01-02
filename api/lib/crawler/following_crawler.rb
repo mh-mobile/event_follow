@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class FollowingCrawler
-  def start
-
-    loop do
+  def self.start
       scope = User.joins(:user_token)
       target_user = scope.where(following_last_updated_at: nil)
                           .or(scope.where.not(following_last_updated_at: Time.current.ago(1.minute)..))
                           .order(Arel.sql('following_last_updated_at asc NULLS FIRST')).limit(1).first
-      next unless target_user
+      return unless target_user
 
       oauth_token = target_user.user_token.access_token
       oauth_token_secret = target_user.user_token.access_token_secret
@@ -25,7 +23,7 @@ class FollowingCrawler
       cursor = next_cursor == 0 ? -1 : next_cursor
       target_user.update(following_last_updated_at: Time.current, following_next_cursor: cursor)
 
-      next if users.count == 0
+      return if users.count == 0
 
       time = Time.current
       inserted_users = users.map do |user|
@@ -49,12 +47,6 @@ class FollowingCrawler
         }
       end
       Friendship.insert_all(inserted_friendships)
-    ensure
-      sleep 5 
-    end
   end
 
-  def stop
-    puts "stop  : #{Time.now}"
-  end
 end
