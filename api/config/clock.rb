@@ -10,11 +10,20 @@ module Clockwork
     when "frequent.job"
       puts "5秒ごとの処理"
       TweetCrawler.start
-    when "less.frequent.job"
-      puts "1分ごとの処理"
+    when "event_crawler.job"
+      puts "イベントとの処理"
+      EventCrawler.start
+    when "retweet_crawler.job"
+      puts "リツイートとの処理"
+      RetweetCrawler.start
+    when "following_crawler.job"
+      puts "フォローの処理"
+      FollowingCrawler.start
     end
   end
 
   every(5.seconds, "frequent.job", thread: true)
-  every(1.minutes, "less.frequent.job", thread: true)
+  every(10.seconds, "event_crawler.job", thread: true)
+  every(5.seconds, "retweet_crawler.job", thread: true)
+  every(1.minutes, "following_crawler.job", thread: true)
 end
