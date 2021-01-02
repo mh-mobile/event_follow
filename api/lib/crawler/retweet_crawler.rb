@@ -12,7 +12,6 @@ class RetweetCrawler
 
     twitter_request = TwitterRequest.create
     retweets = twitter_request.retweets(target_tweet.id)
-    puts "retweets: #{retweets}"
 
     time = Time.current
     target_tweet.update(retweet_last_updated_at: time)
@@ -45,9 +44,7 @@ class RetweetCrawler
     Tweet.insert_all(inserted_retweets)
 
     tweet_url = "https://twitter.com/#{target_tweet.user.screen_name}/status/#{target_tweet.id}"
-    puts "target_url: #{tweet_url}"
     quoted_retweets = twitter_request.quoted_tweets(tweet_url)
-    puts "quoted_retweets: #{quoted_retweets}"
 
     return if quoted_retweets.statuses.count == 0
 
