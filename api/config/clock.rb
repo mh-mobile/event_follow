@@ -7,7 +7,7 @@ require "clockwork"
 module Clockwork
   handler do |job|
     case job
-    when "frequent.job"
+    when "tweet_crawler.job"
       TweetCrawler.start
     when "event_crawler.job"
       EventCrawler.start
@@ -18,7 +18,7 @@ module Clockwork
     end
   end
 
-  every(5.seconds, "frequent.job", thread: true)
+  every(5.seconds, "tweet_crawler.job", thread: true)
   every(10.seconds, "event_crawler.job", thread: true)
   every(5.seconds, "retweet_crawler.job", thread: true)
   every(1.minutes, "following_crawler.job", thread: true)
