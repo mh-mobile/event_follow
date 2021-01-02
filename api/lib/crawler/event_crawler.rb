@@ -26,8 +26,7 @@ class EventCrawler
         quoted_tweet_id: nil,
         retweeted_tweet_id: nil
       )
-      tweet.save
     end
-    CrawlTweet.find(tweet_id).destroy
+    CrawlTweet.find_by(id: tweet_id)&.destroy
   end
 end
