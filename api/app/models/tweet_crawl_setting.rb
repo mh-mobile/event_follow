@@ -1,0 +1,2 @@
+class TweetCrawlSetting < ApplicationRecord
+end
