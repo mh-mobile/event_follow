@@ -1,6 +1,8 @@
  # frozen_string_literal: true
 
  class TweetCrawler
+  include BaseCrawlable
+
    def self.start
      crawl_setting = TweetCrawlSetting.first
      @max_id = crawl_setting.max_id
@@ -22,20 +24,9 @@
 
      crawl_setting.update(max_id: @max_id, since_id: @since_id, search_base_max_id: @search_base_max_id)
 
+     User.insert_all(tweet_users(tweets.statuses.map(&:user)))
+
      time = Time.current
-     users = tweets.statuses.map do |tweet|
-       {
-         id: tweet.user.id_str,
-         name: tweet.user.name,
-         screen_name: tweet.user.screen_name,
-         profile_image: tweet.user.profile_image_url_https,
-         created_at: time,
-         updated_at: time
-       }
-     end
-
-     User.insert_all(users)
-
      crawl_tweets = tweets.statuses.map do |tweet|
        {
          id: tweet.id_str,
