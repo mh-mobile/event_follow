@@ -8,13 +8,13 @@ module Clockwork
   handler do |job|
     case job
     when "tweet_crawler.job"
-      TweetCrawler.new.start
+      TweetCrawler.new.execute
     when "event_crawler.job"
-      EventCrawler.new.start
+      EventCrawler.new.execute
     when "retweet_crawler.job"
-      RetweetCrawler.new.start
+      RetweetCrawler.new.execute
     when "following_crawler.job"
-      FollowingCrawler.new.start
+      FollowingCrawler.new.execute
     end
   end
 

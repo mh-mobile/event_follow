@@ -3,7 +3,7 @@
 class EventCrawler
   include EventCrawlable
 
-  def start
+  def execute
     return unless crawl_tweet
 
     event_store = EventStore.new({ event_url: crawl_tweet.event_url })

@@ -4,7 +4,7 @@
    include BaseCrawlable
    include TweetCrawlable
 
-   def start
+   def execute
      tweets = search_tweets
      return if tweets.empty?
      update_crawl_setting(tweets)

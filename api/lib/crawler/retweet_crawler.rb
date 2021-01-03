@@ -4,7 +4,7 @@ class RetweetCrawler
   include BaseCrawlable
   include RetweetCrawlable
 
-  def start
+  def execute
     return unless target_tweet
     update_target_tweet(target_tweet)
     process_retweets(target_tweet)
