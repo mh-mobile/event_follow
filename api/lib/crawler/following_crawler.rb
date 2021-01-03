@@ -4,7 +4,7 @@ class FollowingCrawler
   include BaseCrawlable
   include FollowingCrawlable
 
-  def start
+  def execute
     target_user = find_target_user
     return unless target_user
 
