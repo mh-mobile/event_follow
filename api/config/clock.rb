@@ -10,9 +10,9 @@ module Clockwork
     when "tweet_crawler.job"
       TweetCrawler.new.start
     when "event_crawler.job"
-      EventCrawler.start
+      EventCrawler.new.start
     when "retweet_crawler.job"
-      RetweetCrawler.start
+      RetweetCrawler.new.start
     when "following_crawler.job"
       FollowingCrawler.new.start
     end
