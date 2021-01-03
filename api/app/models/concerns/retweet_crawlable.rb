@@ -30,7 +30,7 @@ module RetweetCrawlable
   end
 
   def update_tweets_users(retweets)
-    User.insert_all(tweet_users(retweets.map(&:user)))
+    User.insert_all(inserted_tweet_users(retweets.map(&:user)))
   end
 
   def update_retweets(retweets)

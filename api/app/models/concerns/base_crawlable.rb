@@ -3,7 +3,7 @@
 module BaseCrawlable
   extend ActiveSupport::Concern
 
-  def tweet_users(users)
+  def inserted_tweet_users(users)
     time = Time.current
     users.map do |user|
       {
