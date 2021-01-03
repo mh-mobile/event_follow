@@ -16,5 +16,25 @@ module TweetCrawlable
         }
       end
     end
+
+    def crawl_setting_value
+      @crawl_setting_value ||= tweet_crawl_setting
+    end
+
+    def tweet_crawl_setting
+      setting = TweetCrawlSetting.first
+      {
+        max_id: setting.max_id,
+        since_id: setting.since_id,
+        search_base_max_id: setting.search_base_max_id
+      }
+    end
+
+    def update_crawl_setting
+      TweetCrawlSetting.first.update(max_id: crawl_setting_value[:max_id],
+                                     since_id: crawl_setting_value[:since_id],
+                                     search_base_max_id: crawl_setting_value[:search_base_max_id])
+    end
+
   end
 end
