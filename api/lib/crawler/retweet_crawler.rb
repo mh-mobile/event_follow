@@ -18,7 +18,7 @@ class RetweetCrawler
 
     users = retweets.map do |tweet|
       {
-        id: tweet.user.id,
+        id: tweet.user.id_str,
         name: tweet.user.name,
         screen_name: tweet.user.screen_name,
         profile_image: tweet.user.profile_image_url_https,
@@ -30,10 +30,10 @@ class RetweetCrawler
 
     inserted_retweets = retweets.map do |tweet|
       {
-        id: tweet.id,
+        id: tweet.id_str,
         text: tweet.text,
         tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
-        user_id: tweet.user.id,
+        user_id: tweet.user.id_str,
         retweeted_tweet_id: target_tweet.id,
         event_id: target_tweet.event_id,
         created_at: time,
@@ -51,7 +51,7 @@ class RetweetCrawler
     time = Time.current
     users = quoted_retweets.statuses.map do |tweet|
       {
-        id: tweet.user.id,
+        id: tweet.user.id_str,
         name: tweet.user.name,
         screen_name: tweet.user.screen_name,
         profile_image: tweet.user.profile_image_url_https,
@@ -63,10 +63,10 @@ class RetweetCrawler
 
     inserted_quoted_retweets = tweets.statuses.map do |tweet|
       {
-        id: tweet.id,
+        id: tweet.id_str,
         text: tweet.text,
         tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
-        user_id: tweet.user.id,
+        user_id: tweet.user.id_str,
         quoted_tweet_id: target_tweet.id,
         event_id: target_tweet.event_id,
         created_at: time,
