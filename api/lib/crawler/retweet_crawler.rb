@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RetweetCrawler
+  include BaseCrawlable
+
   def self.start
     target_tweet = Tweet.normal_tweets
                           .where(tweeted_at: Time.current.ago(24.hours)..Time.current.ago(4.hours))
@@ -16,17 +18,7 @@ class RetweetCrawler
     time = Time.current
     target_tweet.update(retweet_last_updated_at: time)
 
-    users = retweets.map do |tweet|
-      {
-        id: tweet.user.id_str,
-        name: tweet.user.name,
-        screen_name: tweet.user.screen_name,
-        profile_image: tweet.user.profile_image_url_https,
-        created_at: time,
-        updated_at: time
-      }
-    end
-    User.insert_all(users)
+    User.insert_all(tweet_users(retweets.map(&:user)))
 
     inserted_retweets = retweets.map do |tweet|
       {
@@ -49,17 +41,7 @@ class RetweetCrawler
     return if quoted_retweets.statuses.count == 0
 
     time = Time.current
-    users = quoted_retweets.statuses.map do |tweet|
-      {
-        id: tweet.user.id_str,
-        name: tweet.user.name,
-        screen_name: tweet.user.screen_name,
-        profile_image: tweet.user.profile_image_url_https,
-        created_at: time,
-        updated_at: time
-      }
-    end
-    User.insert_all(users)
+    User.insert_all(tweet_users(quoted_retweets.statuses.map(&:user)))
 
     inserted_quoted_retweets = tweets.statuses.map do |tweet|
       {

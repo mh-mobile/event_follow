@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FollowingCrawler
+  include BaseCrawlable
+
   def self.start
       scope = User.joins(:user_token)
       target_user = scope.where(following_last_updated_at: nil)
@@ -22,17 +24,7 @@ class FollowingCrawler
       return if users.count == 0
 
       time = Time.current
-      inserted_users = users.map do |user|
-        {
-          id: user.id,
-          name: user.name,
-          screen_name: user.screen_name,
-          profile_image: user.profile_image_url_https,
-          created_at: time,
-          updated_at: time
-        }
-      end
-      User.insert_all(inserted_users)
+      User.insert_all(tweet_users(users))
 
       inserted_friendships = users.map do |user|
         {
