@@ -14,7 +14,7 @@ module Clockwork
     when "retweet_crawler.job"
       RetweetCrawler.start
     when "following_crawler.job"
-      FollowingCrawler.start
+      FollowingCrawler.new.start
     end
   end
 
