@@ -66,7 +66,7 @@ module TweetCrawlable
   end
 
   def update_tweet_users(tweets)
-    User.insert_all(tweet_users(tweets.map(&:user)))
+    User.insert_all(inserted_tweet_users(tweets.map(&:user)))
   end
 
   def update_crawl_tweets(tweets)
