@@ -5,7 +5,7 @@ class EventCrawler
 
   def start
     return unless crawl_tweet
-    
+
     event_store = EventStore.new({ event_url: crawl_tweet.event_url })
     if event_store.save
       update_tweet(event_store.event.id, crawl_tweet)
