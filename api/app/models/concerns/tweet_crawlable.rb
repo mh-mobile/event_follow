@@ -45,16 +45,24 @@ module TweetCrawlable
 
   def update_crawl_setting(tweets)
     if tweets_max_fetched?(tweets)
-      crawl_setting_value[:search_base_max_id] = (tweets.first.id_str) if crawl_setting_value[:max_id] == "0"
-      crawl_setting_value[:max_id] = (tweets.last.id_str.to_i - 1).to_s
+      update_to_additional_loading(tweets)
     else
-      crawl_setting_value[:max_id] = "0"
-      crawl_setting_value[:since_id] = crawl_setting_value[:search_base_max_id]
+      update_to_recent_loading(tweets)
     end
 
     TweetCrawlSetting.first.update(max_id: crawl_setting_value[:max_id],
                                    since_id: crawl_setting_value[:since_id],
                                    search_base_max_id: crawl_setting_value[:search_base_max_id])
+  end
+
+  def update_to_additional_loading(tweets)
+    crawl_setting_value[:search_base_max_id] = (tweets.first.id_str) if crawl_setting_value[:max_id] == "0"
+    crawl_setting_value[:max_id] = (tweets.last.id_str.to_i - 1).to_s
+  end
+
+  def update_to_recent_loading(tweets)
+    crawl_setting_value[:max_id] = "0"
+    crawl_setting_value[:since_id] = crawl_setting_value[:search_base_max_id]
   end
 
   def update_tweet_users(tweets)
