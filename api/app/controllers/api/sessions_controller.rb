@@ -14,11 +14,6 @@ class Api::SessionsController < Api::BaseController
     end
   end
 
-  def destory
-    #   log_out
-    #   redirect_to unauthenticated_root_path
-  end
-
   private
     def token_from_reqauest_headers
       request.headers["Authroization"]&.split&.last
