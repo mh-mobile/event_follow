@@ -2,6 +2,7 @@
 
  class TweetCrawler
   include BaseCrawlable
+  include TweetCrawlable
 
    def self.start
      crawl_setting = TweetCrawlSetting.first
@@ -25,20 +26,6 @@
      crawl_setting.update(max_id: @max_id, since_id: @since_id, search_base_max_id: @search_base_max_id)
 
      User.insert_all(tweet_users(tweets.statuses.map(&:user)))
-
-     time = Time.current
-     crawl_tweets = tweets.statuses.map do |tweet|
-       {
-         id: tweet.id_str,
-         text: tweet.text,
-         tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
-         user_id: tweet.user.id_str,
-         event_url: tweet.entities.urls.first&.expanded_url || "",
-         created_at: time,
-         updated_at: time
-       }
-     end
-
-     CrawlTweet.insert_all(crawl_tweets)
+     CrawlTweet.insert_all(inserted_crawl_tweets(tweets.statuses))
    end
  end

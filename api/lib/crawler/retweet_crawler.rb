@@ -19,42 +19,14 @@ class RetweetCrawler
     target_tweet.update(retweet_last_updated_at: time)
 
     User.insert_all(tweet_users(retweets.map(&:user)))
-
-    inserted_retweets = retweets.map do |tweet|
-      {
-        id: tweet.id_str,
-        text: tweet.text,
-        tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
-        user_id: tweet.user.id_str,
-        retweeted_tweet_id: target_tweet.id,
-        event_id: target_tweet.event_id,
-        created_at: time,
-        updated_at: time
-      }
-    end
-
-    Tweet.insert_all(inserted_retweets)
+    Tweet.insert_all(inserted_retweets(retweets, event_id: target_tweet.event_id, retweeted_tweet_id: target_tweet.id))
 
     tweet_url = "https://twitter.com/#{target_tweet.user.screen_name}/status/#{target_tweet.id}"
     quoted_retweets = twitter_request.quoted_tweets(tweet_url)
 
     return if quoted_retweets.statuses.count == 0
 
-    time = Time.current
     User.insert_all(tweet_users(quoted_retweets.statuses.map(&:user)))
-
-    inserted_quoted_retweets = tweets.statuses.map do |tweet|
-      {
-        id: tweet.id_str,
-        text: tweet.text,
-        tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
-        user_id: tweet.user.id_str,
-        quoted_tweet_id: target_tweet.id,
-        event_id: target_tweet.event_id,
-        created_at: time,
-        updated_at: time
-      }
-    end
-    Tweet.insert_all(inserted_quoted_retweets)
+    Tweet.insert_all(inserted_quoted_retweets(quoted_retweets, event_id: target_tweet.event_id, quoted_tweet_id: target_tweet.id))
   end
 end
