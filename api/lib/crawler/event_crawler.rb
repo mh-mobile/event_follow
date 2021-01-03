@@ -1,32 +1,15 @@
 # frozen_string_literal: true
 
 class EventCrawler
-  def self.start
-    crawl_tweets = CrawlTweet.order(tweeted_at: :asc).limit(1)
-    return if crawl_tweets.length == 0
+  include EventCrawlable
 
-    tweet = crawl_tweets.first
-    tweet_id = tweet.id
-    tweet_text = tweet.text
-    tweeted_at = tweet.tweeted_at
-    event_url = tweet.event_url
-    user_id = tweet.user_id
-
-    params = { event_url: event_url }
-    event_store = EventStore.new(params)
+  def start
+    return unless crawl_tweet
+    
+    event_store = EventStore.new({ event_url: crawl_tweet.event_url })
     if event_store.save
-      event_id = event_store.event.id
-
-      tweet = Tweet.find_or_initialize_by(id: tweet_id)
-      tweet.update(
-        text: tweet_text,
-        tweeted_at: tweeted_at,
-        event_id: event_id,
-        user_id: user_id,
-        quoted_tweet_id: nil,
-        retweeted_tweet_id: nil
-      )
+      update_tweet(event_store.event.id, crawl_tweet)
     end
-    CrawlTweet.find_by(id: tweet_id)&.destroy
+    delete_crawl_tweet(crawl_tweet)
   end
 end
