@@ -206,21 +206,21 @@ export default defineComponent({
 
     watch(
       () => props.eventSortType,
-      async (newValue, ) => {
+      async (newValue) => {
         state.selectedSortCondition = newValue
       }
     )
 
     watch(
       () => props.timeFilterType,
-      async (newValue, ) => {
+      async (newValue) => {
         state.selectedTimeFilterCondition = newValue
       }
     )
 
     watch(
       () => props.friendsFilterType,
-      async (newValue, ) => {
+      async (newValue) => {
         state.selectedFriendsFilterCondition = newValue
       }
     )

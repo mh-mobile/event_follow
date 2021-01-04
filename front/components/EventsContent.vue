@@ -6,9 +6,7 @@
 
 <script lang="ts">
 import Event from "@/components/Event.vue"
-import {
-  defineComponent,
-} from "@nuxtjs/composition-api"
+import { defineComponent } from "@nuxtjs/composition-api"
 import "firebase/auth"
 
 export default defineComponent({
@@ -18,7 +16,7 @@ export default defineComponent({
   props: {
     events: {
       type: Array,
-      default: () => ([])
+      default: () => []
     }
   }
 })

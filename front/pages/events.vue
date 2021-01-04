@@ -106,7 +106,7 @@ export default defineComponent({
 
     watch(
       () => root.$route,
-      async (to, ) => {
+      async (to) => {
         if (to.path === "/events") {
           const currentUser = firebase.auth().currentUser
           if (currentUser == null) return

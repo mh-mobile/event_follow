@@ -23,7 +23,7 @@ export default defineComponent({
     pageWindow: {
       type: Number,
       default: 2
-    },
+    }
   }
 })
 </script>
