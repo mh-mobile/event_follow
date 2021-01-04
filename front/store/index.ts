@@ -17,7 +17,9 @@ export const actions = {
       const parsed = cookieParser.parse(req.headers.cookie)
       try {
         auth = JSON.parse(parsed.auth)
-      } catch (err) {}
+      } catch (error) {
+        console.log(`error: ${error}`)
+      }
     }
     commit("setAuth", auth)
   }
