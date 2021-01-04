@@ -8,7 +8,9 @@
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "test": "jest",
-    "lint": "eslint --ext .ts,.js,.vue . --fix"
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint-fix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "prettier": "prettier --write **/*.{js,ts,vue}"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
