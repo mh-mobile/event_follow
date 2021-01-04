@@ -20,12 +20,30 @@ export default defineComponent({
     Pagination
   },
   props: {
-    totalPages: Number,
-    currentPage: Number,
-    pageWindow: Number,
-    eventSortType: String,
-    timeFilterType: String,
-    friendsFilterType: String
+    totalPages: {
+      type: Number,
+      default: 0
+    },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    pageWindow: {
+      type: Number,
+      default: 2
+    },
+    eventSortType: {
+      type: String,
+      default: ""
+    },
+    timeFilterType: {
+      type: String,
+      default: ""
+    },
+    friendsFilterType: {
+      type: String,
+      default: ""
+    }
   }
 })
 </script>

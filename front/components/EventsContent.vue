@@ -20,7 +20,10 @@ export default defineComponent({
     Event
   },
   props: {
-    events: Array
+    events: {
+      type: Array,
+      default: () => ([])
+    }
   }
 })
 </script>

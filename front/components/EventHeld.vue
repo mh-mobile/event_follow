@@ -10,7 +10,10 @@ import { defineComponent, computed } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {
-    startedAt: String
+    startedAt: {
+      type: String,
+      default: ""
+    }
   },
   setup(props) {
     const eventDate = computed(() => {
