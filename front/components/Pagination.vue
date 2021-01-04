@@ -10,9 +10,18 @@ import { defineComponent, computed } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {
-    totalPages: Number,
-    currentPage: Number,
-    pageWindow: Number
+    totalPages: {
+      type: Number,
+      default: 0
+    },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    pageWindow: {
+      type: Number,
+      default: 2
+    }
   },
   setup(props, { root }) {
     if (process.server) {

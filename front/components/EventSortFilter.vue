@@ -43,9 +43,18 @@ import {
 export default defineComponent({
   components: { Modal },
   props: {
-    eventSortType: String,
-    timeFilterType: String,
-    friendsFilterType: String
+    eventSortType: {
+      type: String,
+      default: ""
+    },
+    timeFilterType: {
+      type: String,
+      default: ""
+    },
+    friendsFilterType: {
+      type: String,
+      default: ""
+    }
   },
   setup(props, { root }) {
     const eventSortConditionItems = [

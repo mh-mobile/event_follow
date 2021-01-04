@@ -12,9 +12,18 @@ export default defineComponent({
     Pagination
   },
   props: {
-    totalPages: Number,
-    currentPage: Number,
-    pageWindow: Number
+    totalPages: {
+      type: Number,
+      default: 0
+    },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    pageWindow: {
+      type: Number,
+      default: 2
+    },
   }
 })
 </script>

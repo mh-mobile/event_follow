@@ -43,7 +43,10 @@ export default defineComponent({
     FriendsList
   },
   props: {
-    eventInfo: Object
+    eventInfo: {
+      type: Object,
+      default: null
+    }
   },
   setup(props) {
     const state = reactive({

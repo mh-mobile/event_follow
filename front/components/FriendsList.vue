@@ -64,9 +64,18 @@ export default defineComponent({
     }
   },
   props: {
-    eventId: Number,
-    userIds: String,
-    friendsNumber: Number
+    eventId: {
+      type: Number,
+      default: 0
+    },
+    userIds: {
+      type: String,
+      default: ""
+    },
+    friendsNumber: {
+      type: Number,
+      default: 0
+    }
   },
   setup(props, { root }) {
     if (process.server) {
