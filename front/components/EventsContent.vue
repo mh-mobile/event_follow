@@ -5,10 +5,15 @@
 </template>
 
 <script lang="ts">
-import Event from '@/components/Event.vue'
-import { defineComponent, useFetch, computed, onMounted } from '@nuxtjs/composition-api'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import Event from "@/components/Event.vue"
+import {
+  defineComponent,
+  useFetch,
+  computed,
+  onMounted
+} from "@nuxtjs/composition-api"
+import firebase from "firebase/app"
+import "firebase/auth"
 
 export default defineComponent({
   components: {

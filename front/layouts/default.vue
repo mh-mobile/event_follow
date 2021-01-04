@@ -5,7 +5,6 @@
 </template>
 
 <style>
-
 html {
   background-color: #d7d7d8;
   box-sizing: border-box;

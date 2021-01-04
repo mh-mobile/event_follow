@@ -16,7 +16,7 @@
     width: 50px;
   }
   .is-loading {
-   position: relative;
+    position: relative;
   }
 }
 </style>

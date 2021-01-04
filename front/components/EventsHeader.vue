@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts">
-import EventSortFilter from '@/components/EventSortFilter.vue'
-import Pagination from '@/components/Pagination.vue'
-import { defineComponent } from '@nuxtjs/composition-api'
+import EventSortFilter from "@/components/EventSortFilter.vue"
+import Pagination from "@/components/Pagination.vue"
+import { defineComponent } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {
@@ -56,7 +56,7 @@ export default defineComponent({
 
       &::after {
         content: "";
-        position:absolute;
+        position: absolute;
         width: 12px;
         height: 12px;
         border: 2px solid;

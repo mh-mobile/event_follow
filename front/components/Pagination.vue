@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {
@@ -14,7 +14,7 @@ export default defineComponent({
     currentPage: Number,
     pageWindow: Number
   },
-  setup (props, { root }) {
+  setup(props, { root }) {
     if (process.server) {
       return {
         pages: [],
@@ -52,7 +52,7 @@ export default defineComponent({
 
         _pages.push({
           label: page,
-          value: page 
+          value: page
         })
       }
 
@@ -62,12 +62,16 @@ export default defineComponent({
         class: "current_page click_disable"
       })
 
-      for (let page = currentPage + 1; page <= currentPage + pageWindow; page++) {
+      for (
+        let page = currentPage + 1;
+        page <= currentPage + pageWindow;
+        page++
+      ) {
         if (page >= totalPages) continue
 
         _pages.push({
           label: page,
-          value: page 
+          value: page
         })
       }
 
@@ -95,7 +99,7 @@ export default defineComponent({
     })
 
     const showPage = (page: Number) => {
-      root.$router.replace(`/events?page=${page}`)  
+      root.$router.replace(`/events?page=${page}`)
     }
 
     return {
@@ -140,7 +144,7 @@ export default defineComponent({
     border-top: 1px solid #4d4f53 !important;
     border-bottom: 1px solid #4d4f53 !important;
   }
-  
+
   .intermediate_page {
     border-top: 1px solid #ccc !important;
     border-bottom: 1px solid #ccc !important;
@@ -153,5 +157,4 @@ export default defineComponent({
     color: #ccc;
   }
 }
-
 </style>

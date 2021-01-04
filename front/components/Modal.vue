@@ -10,7 +10,7 @@
 .modal-overlay {
   display: flex;
   align-items: center;
-  justify-content: center;;
+  justify-content: center;
   position: fixed;
   z-index: 30;
   top: 0;
@@ -27,7 +27,8 @@
 .modal-window-content {
   padding: 10px 20px;
 }
-.modal-enter-active, .modal-leave-active {
+.modal-enter-active,
+.modal-leave-active {
   transition: opacity 0.4s;
   .modal-window {
     transition: opacity 0.4s, transform 0.4s;
@@ -36,7 +37,8 @@
 .modal-leave-active {
   transition: opacity 0.6s ease 0.4s;
 }
-.modal-enter, .modal-leave-to {
+.modal-enter,
+.modal-leave-to {
   opacity: 0;
   .modal-window {
     opacity: 0;

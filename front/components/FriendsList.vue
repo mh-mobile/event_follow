@@ -31,12 +31,18 @@
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
-import Loading from '@/components/Loading.vue'
-import { defineComponent, computed, reactive, toRefs, onMounted } from '@nuxtjs/composition-api'
-import { useCurrentUser } from '@/compositions/user'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import Modal from "@/components/Modal.vue"
+import Loading from "@/components/Loading.vue"
+import {
+  defineComponent,
+  computed,
+  reactive,
+  toRefs,
+  onMounted
+} from "@nuxtjs/composition-api"
+import { useCurrentUser } from "@/compositions/user"
+import firebase from "firebase/app"
+import "firebase/auth"
 export default defineComponent({
   components: { Modal, Loading },
   props: {
@@ -45,21 +51,24 @@ export default defineComponent({
     friendsNumber: Number
   },
   directives: {
-    'auto-link': {
-      inserted (el) {
+    "auto-link": {
+      inserted(el) {
         el.innerHTML = el.innerHTML.replace(
           /(https?:\/\/[a-zA-Z0-9\-_.:@!~*'(¥);/?&=+$,%#]+)/g,
           '<a href="$1" target="_blank">$1</a>'
         )
-        el.innerHTML = el.innerHTML.replace(/([@#])([\w]+)/gi, (_, prefix, word) => {
-          const text = prefix + word
-          const route = prefix === '@' ? word : `hashtag/${word}`
-          return `<a href="https://twitter.com/${route}" target="_blank">${text}</a>`
-        })
+        el.innerHTML = el.innerHTML.replace(
+          /([@#])([\w]+)/gi,
+          (_, prefix, word) => {
+            const text = prefix + word
+            const route = prefix === "@" ? word : `hashtag/${word}`
+            return `<a href="https://twitter.com/${route}" target="_blank">${text}</a>`
+          }
+        )
       }
     }
   },
-  setup (props, { root }) {
+  setup(props, { root }) {
     if (process.server) {
       return
     }
@@ -86,21 +95,24 @@ export default defineComponent({
         return state.friends.slice(0, maxFriendsLength)
       }
       return state.friends
-    }) 
+    })
 
     const openModal = async () => {
       state.modal = true
       if (isLoading) {
         const idToken = await firebase.auth().currentUser.getIdToken()
-        root.$axios.get(`/api/following_tweets?event_id=${props.eventId}`, {
-          headers: {
-            "Authorization": `Bearer ${idToken}`
-          }
-        }).then((response) => {
-          state.tweets = response.data
-        }).catch((error) => {
-          console.log(`error: ${error}`)
-        })
+        root.$axios
+          .get(`/api/following_tweets?event_id=${props.eventId}`, {
+            headers: {
+              Authorization: `Bearer ${idToken}`
+            }
+          })
+          .then((response) => {
+            state.tweets = response.data
+          })
+          .catch((error) => {
+            console.log(`error: ${error}`)
+          })
       }
     }
 
@@ -111,10 +123,10 @@ export default defineComponent({
     const dateFormat = (value) => {
       const date = new Date(value)
       const year = String(date.getFullYear())
-      const month = String(date.getMonth() + 1).padStart(2, '0')
-      const day = String(date.getDate()).padStart(2, '0')
-      const hour = String(date.getHours()).padStart(2, '0')
-      const minute = String(date.getMinutes()).padStart(2, '0')
+      const month = String(date.getMonth() + 1).padStart(2, "0")
+      const day = String(date.getDate()).padStart(2, "0")
+      const hour = String(date.getHours()).padStart(2, "0")
+      const minute = String(date.getMinutes()).padStart(2, "0")
       return `${year}/${month}/${day} ${hour}:${minute}`
     }
 
@@ -124,15 +136,18 @@ export default defineComponent({
 
     onMounted(async () => {
       const idToken = await firebase.auth().currentUser.getIdToken()
-      root.$axios.get(`/api/friendships.json?user_ids=${props.userIds}`, {
-        headers: {
-          "Authorization": `Bearer ${idToken}`
-        }
-      }).then((response) => {
-        state.friends = response.data
-      }).catch((error) => {
-        console.log(`error: ${error}`)
-      }) 
+      root.$axios
+        .get(`/api/friendships.json?user_ids=${props.userIds}`, {
+          headers: {
+            Authorization: `Bearer ${idToken}`
+          }
+        })
+        .then((response) => {
+          state.friends = response.data
+        })
+        .catch((error) => {
+          console.log(`error: ${error}`)
+        })
     })
 
     return {
@@ -151,111 +166,111 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  .event-modal-container {
-    max-width: 30em;
-    min-width: 30em;
-    height: auto;
-    .tweet_list {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      overflow-y: scroll;
-      .tweet_item {
-        display: flex;
-        flex-direction: row;
-        box-sizing: border-box;
-        &:not(:last-child) {
-          border-bottom: 1px solid #ccc;
-        }
-        .friend_column {
-          width: 10%;
-          display: flex;
-          flex-direction: column;
-          box-sizing: border-box;
-          margin: 5px;
-          .profile_icon {
-            overflow: hidden;
-            img {
-              border-radius: 50%;
-              width: 50px;
-              height: auto;
-            }
-          }
-        }
-        .tweet_column {
-          width: 90%;
-          display: flex;
-          flex-direction: column;
-          margin: 5px;
-          box-sizing: border-box;
-          .tweet_user {
-            height: 20px;
-            color: #0085ad;
-            margin: 5px;
-            display: flex;
-            flex-direction: row;
-            .twitter_user_name {
-              color: #0085ad;
-              font-weight: bold;
-            }
-            .twitter_user_screen_name {
-              color: #a5a9ab;
-              margin-left: 5px;
-            }
-          }
-          .tweet_content {
-            margin: 5px;
-          }
-          .tweet_datetime {
-            margin: 5px;
-            color: #a5a9ab;
-          }
-        }
-      }
-    }
-  }
-  .friends_list {
+.event-modal-container {
+  max-width: 30em;
+  min-width: 30em;
+  height: auto;
+  .tweet_list {
     width: 100%;
-    height: 80px;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px 5px;
+    flex-direction: column;
     box-sizing: border-box;
-    .friend_number {
-      width: 50px;
-      height: 50px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f3f4f7;
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-left: 10px;
-      margin-right: 10px;
+    overflow-y: scroll;
+    .tweet_item {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-    .friend_icon {
-      overflow: hidden;
-      padding-right: 5px;
-      cursor: pointer;
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+      box-sizing: border-box;
+      &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
       }
-      .noimage {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #efe9e5;
+      .friend_column {
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin: 5px;
+        .profile_icon {
+          overflow: hidden;
+          img {
+            border-radius: 50%;
+            width: 50px;
+            height: auto;
+          }
+        }
+      }
+      .tweet_column {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        box-sizing: border-box;
+        .tweet_user {
+          height: 20px;
+          color: #0085ad;
+          margin: 5px;
+          display: flex;
+          flex-direction: row;
+          .twitter_user_name {
+            color: #0085ad;
+            font-weight: bold;
+          }
+          .twitter_user_screen_name {
+            color: #a5a9ab;
+            margin-left: 5px;
+          }
+        }
+        .tweet_content {
+          margin: 5px;
+        }
+        .tweet_datetime {
+          margin: 5px;
+          color: #a5a9ab;
+        }
       }
     }
   }
+}
+.friends_list {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 5px;
+  box-sizing: border-box;
+  .friend_number {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f3f4f7;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .friend_icon {
+    overflow: hidden;
+    padding-right: 5px;
+    cursor: pointer;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .noimage {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #efe9e5;
+    }
+  }
+}
 </style>

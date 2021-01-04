@@ -4,8 +4,8 @@
 </template>
 
 <script lang="ts">
-import Pagination from '@/components/Pagination.vue'
-import { defineComponent } from '@nuxtjs/composition-api'
+import Pagination from "@/components/Pagination.vue"
+import { defineComponent } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {

@@ -1,5 +1,5 @@
-import { defineNuxtPlugin } from '@nuxtjs/composition-api'
-import firebase from 'firebase/app'
+import { defineNuxtPlugin } from "@nuxtjs/composition-api"
+import firebase from "firebase/app"
 
 export default defineNuxtPlugin(() => {
   if (firebase.apps.length !== 0) {

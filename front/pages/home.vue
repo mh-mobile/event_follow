@@ -19,10 +19,10 @@ div
 </template>
 
 <script lang="ts">
-import HomeConcept from '@/components/HomeConcept.vue'
-import HomeTwitterLogin from '@/components/HomeTwitterLogin.vue'
-import HomeHowItWorks from '@/components/HomeHowItWorks.vue'
-import { defineComponent } from '@nuxtjs/composition-api'
+import HomeConcept from "@/components/HomeConcept.vue"
+import HomeTwitterLogin from "@/components/HomeTwitterLogin.vue"
+import HomeHowItWorks from "@/components/HomeHowItWorks.vue"
+import { defineComponent } from "@nuxtjs/composition-api"
 export default defineComponent({
   components: {
     HomeConcept,
@@ -62,7 +62,7 @@ export default defineComponent({
 .home_container {
   max-width: 50rem;
   margin: 0 auto;
-} 
+}
 
 .footer {
   padding: 5px;
