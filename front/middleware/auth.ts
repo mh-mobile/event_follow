@@ -1,5 +1,4 @@
 import { defineNuxtMiddleware } from "@nuxtjs/composition-api"
-import firebase from "firebase/app"
 import "firebase/auth"
 
 export default defineNuxtMiddleware(({ store, route, redirect }) => {

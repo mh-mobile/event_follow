@@ -37,7 +37,7 @@ export default defineComponent({
               access_token_secret: secret,
               token: id_token
             })
-            .then((response) => {
+            .then(() => {
               const auth = {
                 id_token
               }

@@ -36,7 +36,6 @@ import {
   computed,
   reactive,
   toRefs,
-  onMounted,
   watch
 } from "@nuxtjs/composition-api"
 
@@ -207,21 +206,21 @@ export default defineComponent({
 
     watch(
       () => props.eventSortType,
-      async (newValue, oldValue) => {
+      async (newValue, ) => {
         state.selectedSortCondition = newValue
       }
     )
 
     watch(
       () => props.timeFilterType,
-      async (newValue, oldValue) => {
+      async (newValue, ) => {
         state.selectedTimeFilterCondition = newValue
       }
     )
 
     watch(
       () => props.friendsFilterType,
-      async (newValue, oldValue) => {
+      async (newValue, ) => {
         state.selectedFriendsFilterCondition = newValue
       }
     )
