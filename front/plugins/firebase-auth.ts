@@ -4,15 +4,15 @@ import {
   onUnmounted,
   ref,
   provide
-} from '@nuxtjs/composition-api'
+} from "@nuxtjs/composition-api"
 
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import { CurrentUser } from '~/compositions/user'
+import firebase from "firebase/app"
+import "firebase/auth"
+import { CurrentUser } from "~/compositions/user"
 
 export default defineNuxtPlugin(async (context, inject) => {
   const currentUser = ref<User | null>(null)
-  inject('currentUser', currentUser)
+  inject("currentUser", currentUser)
 
   const unsubscribe: any = await new Promise((resolve) => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {

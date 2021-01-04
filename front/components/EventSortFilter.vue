@@ -30,8 +30,15 @@
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
-import { defineComponent, computed, reactive, toRefs, onMounted, watch } from '@nuxtjs/composition-api'
+import Modal from "@/components/Modal.vue"
+import {
+  defineComponent,
+  computed,
+  reactive,
+  toRefs,
+  onMounted,
+  watch
+} from "@nuxtjs/composition-api"
 
 export default defineComponent({
   components: { Modal },
@@ -40,92 +47,91 @@ export default defineComponent({
     timeFilterType: String,
     friendsFilterType: String
   },
-  setup (props, { root }) {
-
+  setup(props, { root }) {
     const eventSortConditionItems = [
       {
-        name: 'Friend数',
-        value: 'friends_number_order'
+        name: "Friend数",
+        value: "friends_number_order"
       },
       {
-        name: '新着順',
-        value: 'recent_order'
+        name: "新着順",
+        value: "recent_order"
       },
       {
-        name: '投稿順',
-        value: 'created_order'
+        name: "投稿順",
+        value: "created_order"
       },
       {
-        name: '開催が近い順',
-        value: 'closeness_order'
+        name: "開催が近い順",
+        value: "closeness_order"
       }
     ]
 
     const time_filter_type_items = [
       {
-        name: '過去8時間',
-        value: 'past_8_hours'
+        name: "過去8時間",
+        value: "past_8_hours"
       },
       {
-        name: '過去24時間',
-        value: 'past_24_hours'
+        name: "過去24時間",
+        value: "past_24_hours"
       },
       {
-        name: '過去2日',
-        value: 'past_2_days'
+        name: "過去2日",
+        value: "past_2_days"
       },
       {
-        name: '過去3日',
-        value: 'past_3_days'
+        name: "過去3日",
+        value: "past_3_days"
       },
       {
-        name: '過去4日',
-        value: 'past_4_days'
+        name: "過去4日",
+        value: "past_4_days"
       },
       {
-        name: '過去5日',
-        value: 'past_5_days'
+        name: "過去5日",
+        value: "past_5_days"
       },
       {
-        name: '過去6日',
-        value: 'past_6_days'
+        name: "過去6日",
+        value: "past_6_days"
       },
       {
-        name: '過去1週間',
-        value: 'past_1_weeks'
+        name: "過去1週間",
+        value: "past_1_weeks"
       },
       {
-        name: 'All',
-        value: 'past_all'
+        name: "All",
+        value: "past_all"
       }
     ]
 
     const friends_filter_type_items = [
       {
-        name: 'Friends 1+',
-        value: 'one_or_more_friends'
+        name: "Friends 1+",
+        value: "one_or_more_friends"
       },
       {
-        name: 'Friends 2+',
-        value: 'two_or_more_friends'
+        name: "Friends 2+",
+        value: "two_or_more_friends"
       },
       {
-        name: 'Friends 3+',
-        value: 'three_or_more_friends'
+        name: "Friends 3+",
+        value: "three_or_more_friends"
       },
       {
-        name: 'Friends 4+',
-        value: 'four_or_more_friends'
+        name: "Friends 4+",
+        value: "four_or_more_friends"
       },
       {
-        name: 'Friends 5+',
-        value: 'five_or_more_friends'
+        name: "Friends 5+",
+        value: "five_or_more_friends"
       }
     ]
 
     const state = reactive({
       modal: false,
-      message: '',
+      message: "",
       selectedSortCondition: "friends_number_order",
       selectedTimeFilterCondition: "past_8_hours",
       selectedFriendsFilterCondition: "one_or_more_friends"
@@ -135,7 +141,11 @@ export default defineComponent({
       return state.selectedSortCondition === "friends_number_order"
     })
     const getCurrentConditionLabel = computed(() => {
-      if (state.selectedSortCondition === "" || state.selectedTimeFilterCondition === "" || state.selectedFriendsFilterCondition === "") {
+      if (
+        state.selectedSortCondition === "" ||
+        state.selectedTimeFilterCondition === "" ||
+        state.selectedFriendsFilterCondition === ""
+      ) {
         return ""
       }
 
@@ -148,9 +158,11 @@ export default defineComponent({
         }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
-        const friendsFilterConditionLabel = friends_filter_type_items.find((item) => {
-          return item.value === state.selectedFriendsFilterCondition
-        }).name
+        const friendsFilterConditionLabel = friends_filter_type_items.find(
+          (item) => {
+            return item.value === state.selectedFriendsFilterCondition
+          }
+        ).name
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
     })
@@ -164,31 +176,46 @@ export default defineComponent({
     }
 
     const selectedSortConditionChanged = () => {
-      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      root.$router.replace(
+        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
+      )
       state.modal = false
     }
 
     const selectedTimeFilterConditionChanged = () => {
-      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      root.$router.replace(
+        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
+      )
       state.modal = false
     }
 
     const selectedFriendsFilterConditionChanged = () => {
-      root.$router.replace(`/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`)  
+      root.$router.replace(
+        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
+      )
       state.modal = false
     }
 
-    watch(() => props.eventSortType, async (newValue, oldValue) => {
-      state.selectedSortCondition = newValue  
-    })
+    watch(
+      () => props.eventSortType,
+      async (newValue, oldValue) => {
+        state.selectedSortCondition = newValue
+      }
+    )
 
-    watch(() => props.timeFilterType, async (newValue, oldValue) => {
-      state.selectedTimeFilterCondition = newValue
-    })
+    watch(
+      () => props.timeFilterType,
+      async (newValue, oldValue) => {
+        state.selectedTimeFilterCondition = newValue
+      }
+    )
 
-    watch(() => props.friendsFilterType, async (newValue, oldValue) => {
-      state.selectedFriendsFilterCondition = newValue
-    })
+    watch(
+      () => props.friendsFilterType,
+      async (newValue, oldValue) => {
+        state.selectedFriendsFilterCondition = newValue
+      }
+    )
 
     return {
       ...toRefs(state),
@@ -217,13 +244,13 @@ export default defineComponent({
 
   &::after {
     content: "";
-    position:absolute;
+    position: absolute;
     width: 12px;
     height: 12px;
     border: 2px solid;
     top: calc(50% - 4px);
     right: 0;
-    border-color:  transparent transparent #565656 #565656;
+    border-color: transparent transparent #565656 #565656;
     transform: rotate(-45deg) translateY(-50%);
   }
 }
@@ -263,7 +290,8 @@ export default defineComponent({
     display: flex;
     justify-content: center;
   }
-  .event-modal-sort, .event-modal-filter {
+  .event-modal-sort,
+  .event-modal-filter {
     position: relative;
     &::after {
       content: "";
@@ -273,7 +301,7 @@ export default defineComponent({
       border: 2px solid;
       top: calc(50% - 4px);
       right: 5px;
-      border-color:  transparent transparent #565656 #565656;
+      border-color: transparent transparent #565656 #565656;
       transform: rotate(-45deg) translateY(-50%);
     }
     select {
@@ -286,7 +314,7 @@ export default defineComponent({
       -moz-appearance: none;
       appearance: none;
       font-size: 1em;
-      border-radius: 5px
+      border-radius: 5px;
     }
   }
 }

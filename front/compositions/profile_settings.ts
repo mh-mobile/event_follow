@@ -1,5 +1,4 @@
 export const useProfileSettings = () => {
-
   const eventListener = function (event: any) {
     const profile_setting = document.getElementById("js-profile-setting")
     const target = event.target
@@ -8,17 +7,13 @@ export const useProfileSettings = () => {
         profile_setting.style.display = "none"
       } else {
         profile_setting.style.display = "block"
-      } 
+      }
     } else if (profile_setting && !target.closest(".profile_setting")) {
-        profile_setting.style.display = "none"
+      profile_setting.style.display = "none"
     }
   }
   const showProfileSettings = () => {
-    document.addEventListener(
-      "click",
-      eventListener, 
-      false
-    );  
+    document.addEventListener("click", eventListener, false)
   }
 
   const hideProfileSettings = () => {

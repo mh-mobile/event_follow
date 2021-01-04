@@ -21,10 +21,16 @@ li.event_item
 </template>
 
 <script lang="ts">
-import EventHeld from '@/components/EventHeld.vue'
-import FriendsList from '@/components/FriendsList.vue'
-import { defineComponent, onMounted, reactive, toRefs, computed } from '@nuxtjs/composition-api'
-import sanitizeHtml from 'sanitize-html'
+import EventHeld from "@/components/EventHeld.vue"
+import FriendsList from "@/components/FriendsList.vue"
+import {
+  defineComponent,
+  onMounted,
+  reactive,
+  toRefs,
+  computed
+} from "@nuxtjs/composition-api"
+import sanitizeHtml from "sanitize-html"
 
 const EVENT_DESCRIPTION_MAX_LENGTH = 250
 const CONNPASS_EVENT_SITE_ID = 1
@@ -39,7 +45,7 @@ export default defineComponent({
   props: {
     eventInfo: Object
   },
-  setup (props) {
+  setup(props) {
     const state = reactive({
       eventId: 0,
       userIds: "",
@@ -48,7 +54,7 @@ export default defineComponent({
       connpassLogoImage: require("@/assets/connpass_logo.png"),
       doorKeeperLogoImage: require("@/assets/doorkeeper_logo.png"),
       techplayLogoImage: require("@/assets/logo_transparent.png"),
-      noLogoImage: require("@/assets/logo_transparent.png"),
+      noLogoImage: require("@/assets/logo_transparent.png")
     })
 
     const sanitizedDescription = computed(() => {
@@ -82,18 +88,18 @@ export default defineComponent({
       return logo
     }
 
-   onMounted(() => {
-     if (!props.eventInfo) return
-     state.eventId = props.eventInfo.event.id
-     state.userIds = props.eventInfo.extra.user_ids
-     state.friendsNumber = props.eventInfo.extra.friends_number
-     state.startedAt = props.eventInfo.event.started_at
-   }) 
+    onMounted(() => {
+      if (!props.eventInfo) return
+      state.eventId = props.eventInfo.event.id
+      state.userIds = props.eventInfo.extra.user_ids
+      state.friendsNumber = props.eventInfo.extra.friends_number
+      state.startedAt = props.eventInfo.event.started_at
+    })
 
     return {
       ...toRefs(state),
       sanitizedDescription,
-      eventLogoImage: eventLogoImage(),
+      eventLogoImage: eventLogoImage()
     }
   }
 })

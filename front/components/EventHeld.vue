@@ -6,13 +6,13 @@
     | 開催
 </template>
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed } from "@nuxtjs/composition-api"
 
 export default defineComponent({
   props: {
     startedAt: String
   },
-  setup (props) {
+  setup(props) {
     const eventDate = computed(() => {
       if (!props.startedAt || props.startedAt === "") return ""
 
@@ -22,7 +22,7 @@ export default defineComponent({
       return `${month}/${day}`
     })
     return {
-      eventDate: eventDate 
+      eventDate: eventDate
     }
   }
 })

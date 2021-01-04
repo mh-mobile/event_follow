@@ -24,16 +24,26 @@ div
 </template>
 
 <script lang="ts">
-import EventsHeader from '@/components/EventsHeader.vue'
-import EventsContent from '@/components/EventsContent.vue'
-import EventsFooter from '@/components/EventsFooter.vue'
-import { defineComponent, onUnmounted, onMounted, useContext, useAsync, useFetch, toRefs, reactive, watch } from '@nuxtjs/composition-api'
-import { useCurrentUser } from '@/compositions/user'
-import { useProfileSettings } from '@/compositions/profile_settings'
+import EventsHeader from "@/components/EventsHeader.vue"
+import EventsContent from "@/components/EventsContent.vue"
+import EventsFooter from "@/components/EventsFooter.vue"
+import {
+  defineComponent,
+  onUnmounted,
+  onMounted,
+  useContext,
+  useAsync,
+  useFetch,
+  toRefs,
+  reactive,
+  watch
+} from "@nuxtjs/composition-api"
+import { useCurrentUser } from "@/compositions/user"
+import { useProfileSettings } from "@/compositions/profile_settings"
 
-import firebase from 'firebase/app'
-import 'firebase/auth'
-const Cookie = process.client ? require('js-cookie') : undefined
+import firebase from "firebase/app"
+import "firebase/auth"
+const Cookie = process.client ? require("js-cookie") : undefined
 
 export default defineComponent({
   components: {
@@ -41,7 +51,7 @@ export default defineComponent({
     EventsContent,
     EventsFooter
   },
-  setup (props, { root }) {
+  setup(props, { root }) {
     const state = reactive({
       events: [],
       totalPages: 0,
@@ -65,60 +75,74 @@ export default defineComponent({
       const currentUser = firebase.auth().currentUser
       if (currentUser == null) return
       const idToken = await currentUser.getIdToken()
-      state.currentPage = Number(query.value.page) ? Number(query.value.page)  : 1
+      state.currentPage = Number(query.value.page)
+        ? Number(query.value.page)
+        : 1
       const params = {
         page: state.currentPage
       }
 
-      root.$axios.get(`/api/events`, {
-        headers: {
-          "Authorization": `Bearer ${idToken}`
-        },
-        params: params
-      }).then((response) => {
-        state.events = response.data.data
-        state.totalPages = response.data.meta.total_pages
-        state.currentPage = response.data.meta.current_page
-        state.eventSortType = response.data.meta.event_sort_type 
-        state.timeFilterType = response.data.meta.time_filter_type 
-        state.friendsFilterType = response.data.meta.friends_filter_type 
-      }).catch((error) => {
-        console.log(`error: ${error}`)
-      })  
+      root.$axios
+        .get(`/api/events`, {
+          headers: {
+            Authorization: `Bearer ${idToken}`
+          },
+          params: params
+        })
+        .then((response) => {
+          state.events = response.data.data
+          state.totalPages = response.data.meta.total_pages
+          state.currentPage = response.data.meta.current_page
+          state.eventSortType = response.data.meta.event_sort_type
+          state.timeFilterType = response.data.meta.time_filter_type
+          state.friendsFilterType = response.data.meta.friends_filter_type
+        })
+        .catch((error) => {
+          console.log(`error: ${error}`)
+        })
     })
 
     const { currentUser } = useCurrentUser()
     const { showProfileSettings, hideProfileSettings } = useProfileSettings()
 
-    watch(() => root.$route, async (to, from) => {
-      if (to.path === "/events") {
-        const currentUser = firebase.auth().currentUser
-        if (currentUser == null) return
-        const idToken = await currentUser.getIdToken()
-        root.$axios.get("/api/events", {
-        headers: {
-          "Authorization": `Bearer ${idToken}`
-        },
-        params: to.query
-      }).then((response) => {
-        state.events = response.data.data
-        state.totalPages = response.data.meta.total_pages
-        state.currentPage = response.data.meta.current_page
-        state.eventSortType = response.data.meta.event_sort_type 
-        state.timeFilterType = response.data.meta.time_filter_type 
-        state.friendsFilterType = response.data.meta.friends_filter_type 
-      }).catch((error) => {
-        console.log(`error: ${error}`)
-      })   
+    watch(
+      () => root.$route,
+      async (to, from) => {
+        if (to.path === "/events") {
+          const currentUser = firebase.auth().currentUser
+          if (currentUser == null) return
+          const idToken = await currentUser.getIdToken()
+          root.$axios
+            .get("/api/events", {
+              headers: {
+                Authorization: `Bearer ${idToken}`
+              },
+              params: to.query
+            })
+            .then((response) => {
+              state.events = response.data.data
+              state.totalPages = response.data.meta.total_pages
+              state.currentPage = response.data.meta.current_page
+              state.eventSortType = response.data.meta.event_sort_type
+              state.timeFilterType = response.data.meta.time_filter_type
+              state.friendsFilterType = response.data.meta.friends_filter_type
+            })
+            .catch((error) => {
+              console.log(`error: ${error}`)
+            })
+        }
       }
-    })
+    )
 
     const logout = () => {
-      firebase.auth().signOut().then(() => {
-        store.commit("setAuth", null)
-        Cookie.remove("auth")
-        window.location.href = "/home"
-      })
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          store.commit("setAuth", null)
+          Cookie.remove("auth")
+          window.location.href = "/home"
+        })
     }
 
     onMounted(() => {
@@ -141,7 +165,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
 .header {
   padding: 5px;
   background-color: #efe9e5;
@@ -187,7 +210,7 @@ export default defineComponent({
         border-radius: 0 0 5px 5px;
 
         .profile_setting_item {
-          &:not(:last-child) {  
+          &:not(:last-child) {
             padding-bottom: 5px;
           }
         }
@@ -209,5 +232,4 @@ export default defineComponent({
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-
 </style>
