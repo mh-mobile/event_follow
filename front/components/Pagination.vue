@@ -98,7 +98,7 @@ export default defineComponent({
       return _pages
     })
 
-    const showPage = (page: Number) => {
+    const showPage = (page: number) => {
       root.$router.replace(`/events?page=${page}`)
     }
 

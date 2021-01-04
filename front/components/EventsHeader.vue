@@ -15,6 +15,10 @@ import Pagination from "@/components/Pagination.vue"
 import { defineComponent } from "@nuxtjs/composition-api"
 
 export default defineComponent({
+  components: {
+    EventSortFilter,
+    Pagination
+  },
   props: {
     totalPages: Number,
     currentPage: Number,
@@ -22,10 +26,6 @@ export default defineComponent({
     eventSortType: String,
     timeFilterType: String,
     friendsFilterType: String
-  },
-  components: {
-    EventSortFilter,
-    Pagination
   }
 })
 </script>
