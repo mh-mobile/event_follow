@@ -1,5 +1,3 @@
-import Vuex from "vuex"
-
 const cookieParser = process.server ? require("cookieparser") : undefined
 
 export const state = () => ({

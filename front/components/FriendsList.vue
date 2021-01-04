@@ -40,7 +40,6 @@ import {
   toRefs,
   onMounted
 } from "@nuxtjs/composition-api"
-import { useCurrentUser } from "@/compositions/user"
 import firebase from "firebase/app"
 import "firebase/auth"
 export default defineComponent({
@@ -82,7 +81,6 @@ export default defineComponent({
       return
     }
 
-    const { currentUser } = useCurrentUser()
     const state = reactive({
       modal: false,
       tweets: [],

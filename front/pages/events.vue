@@ -32,7 +32,6 @@ import {
   onUnmounted,
   onMounted,
   useContext,
-  useAsync,
   useFetch,
   toRefs,
   reactive,
@@ -71,7 +70,7 @@ export default defineComponent({
 
     const { store, query } = useContext()
 
-    const fetch = useFetch(async () => {
+    useFetch(async () => {
       const currentUser = firebase.auth().currentUser
       if (currentUser == null) return
       const idToken = await currentUser.getIdToken()
@@ -107,7 +106,7 @@ export default defineComponent({
 
     watch(
       () => root.$route,
-      async (to, from) => {
+      async (to, ) => {
         if (to.path === "/events") {
           const currentUser = firebase.auth().currentUser
           if (currentUser == null) return
