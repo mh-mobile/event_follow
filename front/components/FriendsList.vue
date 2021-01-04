@@ -45,11 +45,6 @@ import firebase from "firebase/app"
 import "firebase/auth"
 export default defineComponent({
   components: { Modal, Loading },
-  props: {
-    eventId: Number,
-    userIds: String,
-    friendsNumber: Number
-  },
   directives: {
     "auto-link": {
       inserted(el) {
@@ -67,6 +62,11 @@ export default defineComponent({
         )
       }
     }
+  },
+  props: {
+    eventId: Number,
+    userIds: String,
+    friendsNumber: Number
   },
   setup(props, { root }) {
     if (process.server) {

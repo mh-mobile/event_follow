@@ -8,13 +8,13 @@ import Pagination from "@/components/Pagination.vue"
 import { defineComponent } from "@nuxtjs/composition-api"
 
 export default defineComponent({
+  components: {
+    Pagination
+  },
   props: {
     totalPages: Number,
     currentPage: Number,
     pageWindow: Number
-  },
-  components: {
-    Pagination
   }
 })
 </script>
