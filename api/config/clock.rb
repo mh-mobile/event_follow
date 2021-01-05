@@ -15,6 +15,8 @@ module Clockwork
       RetweetCrawler.new.execute
     when "following_crawler.job"
       FollowingCrawler.new.execute
+    when "event_cleaner.job"
+      EventCleaner.new.execute
     end
   end
 
@@ -22,4 +24,5 @@ module Clockwork
   every(10.seconds, "event_crawler.job", thread: true)
   every(5.seconds, "retweet_crawler.job", thread: true)
   every(1.minutes, "following_crawler.job", thread: true)
+  every(1.day, "event_cleaner.job", thread: true, at: "00:00")
 end
