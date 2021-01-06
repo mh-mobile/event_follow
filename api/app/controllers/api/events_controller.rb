@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 class Api::EventsController < Api::BaseController
-  #  before_action :require_login
   before_action :set_sort_filter_condition
 
   def index
-    current_user = User.find(1)
-    # @events = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
-    @events = Event.all.page(params[:page]).preload(tweets: :user)
-    # following = current_user.following.ids
+    @events = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
+    following = current_user.following.ids
 
     @data = @events.map.with_index do |event, index|
       friend_user_ids = event.tweets.pluck(:user_id).uniq.select do |user_id|
-        # following.include?(user_id)
+        following.include?(user_id)
         true
       end
       {
