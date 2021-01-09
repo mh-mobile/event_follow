@@ -10,7 +10,7 @@ module EventSortFilterable
     when "created_order"
       "MIN(tweets.tweeted_at) ASC"
     when "closeness_order"
-      "started_at DESC"
+      "started_at ASC"
     else
       "count(distinct tweets.user_id) DESC"
     end
