@@ -10,7 +10,6 @@ class Api::EventsController < Api::BaseController
     @data = @events.map.with_index do |event, index|
       friend_user_ids = event.tweets.pluck(:user_id).uniq.select do |user_id|
         following.include?(user_id)
-        true
       end
       {
         event: event,
