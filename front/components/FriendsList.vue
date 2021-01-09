@@ -38,7 +38,8 @@ import {
   computed,
   reactive,
   toRefs,
-  onMounted
+  onMounted,
+  watch
 } from "@nuxtjs/composition-api"
 import firebase from "firebase/app"
 import "firebase/auth"
@@ -141,10 +142,10 @@ export default defineComponent({
       return `https://twitter.com/${value.screen_name}`
     }
 
-    onMounted(async () => {
+    const updateFriends = async (userIds) => {
       const idToken = await firebase.auth().currentUser.getIdToken()
       root.$axios
-        .get(`/api/friendships.json?user_ids=${props.userIds}`, {
+        .get(`/api/friendships.json?user_ids=${userIds}`, {
           headers: {
             Authorization: `Bearer ${idToken}`
           }
@@ -155,7 +156,23 @@ export default defineComponent({
         .catch((error) => {
           console.log(`error: ${error}`)
         })
-    })
+    }
+
+    watch(
+      () => props.friendsNumber,
+      (newValue) => {
+        state.friendsNumber = newValue
+      }
+    )
+
+    watch(
+      () => props.userIds,
+      (newValue, oldValue) => {
+        if (newValue !== oldValue && newValue !== "") {
+          updateFriends(newValue)
+        }
+      }
+    )
 
     return {
       ...toRefs(state),

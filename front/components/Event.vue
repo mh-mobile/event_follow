@@ -28,7 +28,8 @@ import {
   onMounted,
   reactive,
   toRefs,
-  computed
+  computed,
+  watch
 } from "@nuxtjs/composition-api"
 import sanitizeHtml from "sanitize-html"
 
@@ -91,12 +92,23 @@ export default defineComponent({
       return logo
     }
 
+    const updateState = (eventInfo: Record<string, any>) => {
+      if (!eventInfo) return
+      state.eventId = eventInfo.event.id
+      state.userIds = eventInfo.extra.user_ids
+      state.friendsNumber = eventInfo.extra.friends_number
+      state.startedAt = eventInfo.event.started_at
+    }
+
+    watch(
+      () => props.eventInfo,
+      async (newValue) => {
+        updateState(newValue)
+      }
+    )
+
     onMounted(() => {
-      if (!props.eventInfo) return
-      state.eventId = props.eventInfo.event.id
-      state.userIds = props.eventInfo.extra.user_ids
-      state.friendsNumber = props.eventInfo.extra.friends_number
-      state.startedAt = props.eventInfo.event.started_at
+      updateState(props.eventInfo)
     })
 
     return {
