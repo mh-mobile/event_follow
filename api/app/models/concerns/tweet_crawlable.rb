@@ -55,14 +55,27 @@ module TweetCrawlable
                                    search_base_max_id: crawl_setting_value[:search_base_max_id])
   end
 
+  # 追加のツイート読み込み設定に更新
   def update_to_additional_loading(tweets)
-    crawl_setting_value[:search_base_max_id] = (tweets.first.id_str) if crawl_setting_value[:max_id] == "0"
+    # search_base_max_idの設定値更新```
+    crawl_setting_value[:search_base_max_id] = tweets.first.id_str if crawl_setting_value[:max_id] == "0"
+
+    # max_idの設定値更新
     crawl_setting_value[:max_id] = (tweets.last.id_str.to_i - 1).to_s
   end
 
+  # 最新のツイート読み込み設定に更新
   def update_to_recent_loading(tweets)
+    # max_idの設定値更新
     crawl_setting_value[:max_id] = "0"
-    crawl_setting_value[:since_id] = crawl_setting_value[:search_base_max_id]
+    return if tweets.count == 0
+
+    # since_idの設定値更新
+    if crawl_setting_value[:max_id] == "0"
+      crawl_setting_value[:since_id] = tweets.first.id_str
+    else
+      crawl_setting_value[:since_id] = crawl_setting_value[:search_base_max_id]
+    end
   end
 
   def update_tweet_users(tweets)
