@@ -5,4 +5,4 @@ require "factory_bot"
 
 ActiveRecord::FixtureSet.create_fixtures \
   "db/fixtures",
-  %i[sites]
+  %i[sites tweet_crawl_settings]
