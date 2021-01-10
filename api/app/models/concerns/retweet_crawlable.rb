@@ -52,17 +52,17 @@ module RetweetCrawlable
         updated_at: time
       }
     end
+  end
 
-    def inserted_retweets(tweets, event_id:, retweeted_tweet_id:)
-      inserted_retweet_objects(tweets, event_id: event_id,
-                                retweeted_tweet_id: retweeted_tweet_id,
-                                quoted_tweet_id: nil)
-    end
+  def inserted_retweets(tweets, event_id:, retweeted_tweet_id:)
+    inserted_retweet_objects(tweets, event_id: event_id,
+                              retweeted_tweet_id: retweeted_tweet_id,
+                              quoted_tweet_id: nil)
+  end
 
-    def inserted_quoted_retweets(tweets, event_id:, quoted_tweet_id:)
-      inserted_retweet_objects(tweets, event_id: event_id,
-                                retweeted_tweet_id: nil,
-                                quoted_tweet_id: quoted_tweet_id)
-    end
+  def inserted_quoted_retweets(tweets, event_id:, quoted_tweet_id:)
+    inserted_retweet_objects(tweets, event_id: event_id,
+                              retweeted_tweet_id: nil,
+                              quoted_tweet_id: quoted_tweet_id)
   end
 end
