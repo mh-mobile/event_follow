@@ -6,8 +6,8 @@
 
    def execute
      tweets = search_tweets
-     return if tweets.empty?
      update_crawl_setting(tweets)
+     return if tweets.empty?
      update_tweet_users(tweets)
      update_crawl_tweets(tweets)
    end
