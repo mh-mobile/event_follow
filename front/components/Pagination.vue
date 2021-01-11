@@ -57,7 +57,7 @@ export default defineComponent({
       }
 
       for (let page = currentPage - pageWindow; page < currentPage; page++) {
-        if (page <= 1) continue
+        if (page < 1) continue
 
         _pages.push({
           label: page,
@@ -76,7 +76,7 @@ export default defineComponent({
         page <= currentPage + pageWindow;
         page++
       ) {
-        if (page >= totalPages) continue
+        if (page > totalPages) continue
 
         _pages.push({
           label: page,
