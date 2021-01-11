@@ -17,11 +17,11 @@ module FollowingCrawlable
 
     cursor = target_user.following_next_cursor
     response = twitter_request.following(cursor: cursor)
-    [response.users, response.next_cursor]
+    [response.users, response.next_cursor_str]
   end
 
   def update_target_user_state(target_user, next_cursor)
-    cursor = next_cursor == 0 ? -1 : next_cursor
+    cursor = next_cursor == "0" ? "-1" : next_cursor
     target_user.update(following_last_updated_at: Time.current, following_next_cursor: cursor)
   end
 
