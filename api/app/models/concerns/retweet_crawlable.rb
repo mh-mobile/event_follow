@@ -42,7 +42,7 @@ module RetweetCrawlable
     tweets.map do |tweet|
       {
         id: tweet.id_str,
-        text: tweet.text,
+        text: tweet.full_text,
         tweeted_at:  DateTime.parse(tweet.created_at).utc.iso8601,
         user_id: tweet.user.id_str,
         retweeted_tweet_id: retweeted_tweet_id,
