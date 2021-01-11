@@ -18,6 +18,7 @@ class TwitterClient
         req.params["count"] = count
         req.params["max_id"] = max_id if max_id
         req.params["since_id"] = since_id if since_id
+        req.params["tweet_mode"] = "extended"
       end.body
     end
   end
@@ -26,6 +27,7 @@ class TwitterClient
     with_error_handling do
      connection(auth_headers: app_auth_token_header).get("statuses/retweets/#{tweet_id}.json") do |req|
        req.params["count"] = count
+       req.params["tweet_mode"] = "extended"
      end.body
    end
   end
