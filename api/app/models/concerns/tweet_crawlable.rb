@@ -66,16 +66,15 @@ module TweetCrawlable
 
   # 最新のツイート読み込み設定に更新
   def update_to_recent_loading(tweets)
-    # max_idの設定値更新
-    crawl_setting_value[:max_id] = "0"
-    return if tweets.count == 0
-
     # since_idの設定値更新
     if crawl_setting_value[:max_id] == "0"
-      crawl_setting_value[:since_id] = tweets.first.id_str
+      crawl_setting_value[:since_id] = tweets.first.id_str if tweets.count > 0
     else
       crawl_setting_value[:since_id] = crawl_setting_value[:search_base_max_id]
     end
+
+    # max_idの設定値更新
+    crawl_setting_value[:max_id] = "0"
   end
 
   def update_tweet_users(tweets)
