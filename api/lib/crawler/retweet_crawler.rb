@@ -7,8 +7,12 @@ class RetweetCrawler
   def execute
     return unless target_tweet
     update_target_tweet(target_tweet)
-    process_retweets(target_tweet)
-    process_quoted_retweets(target_tweet)
+    begin
+      process_retweets(target_tweet)
+      process_quoted_retweets(target_tweet)
+    rescue Faraday::ResourceNotFound => error
+      target_tweet&.destroy
+    end
   end
 
   def process_retweets(target_tweet)
