@@ -193,14 +193,14 @@ export default defineComponent({
 .event-modal-container {
   max-width: 30em;
   min-width: 30em;
-  height: auto;
+  max-height: 80vh;
+  overflow-y: scroll;
   .tweet_list {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    overflow-y: scroll;
     .tweet_item {
       display: flex;
       flex-direction: row;
