@@ -28,7 +28,7 @@ class TwitterRequest
     @twitter_client.retweets(tweet_id: tweet_id)
   end
 
-  def following(cursor: -1)
+  def following(cursor: "-1")
     @twitter_client.following(cursor: cursor)
   end
 

@@ -30,7 +30,7 @@ class TwitterClient
    end
   end
 
-  def following(count: FRIENDS_LIST_COUNT, cursor: -1)
+  def following(count: FRIENDS_LIST_COUNT, cursor: "-1")
     with_error_handling do
       api_path = "friends/list.json"
       query_params = {
