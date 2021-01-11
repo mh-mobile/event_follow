@@ -19,6 +19,7 @@ class TwitterClient
         req.params["max_id"] = max_id if max_id
         req.params["since_id"] = since_id if since_id
         req.params["tweet_mode"] = "extended"
+        req.params["result_type"] = "recent"
       end.body
     end
   end
