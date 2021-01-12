@@ -35,7 +35,8 @@ class User < ApplicationRecord
     name = auth.name
     profile_image = auth.profile_image_url_https
     twitter_id = auth.id_str
-    user = self.find_or_initialize_by(uid: payload["sub"])
+    user = self.find_or_initialize_by(id: twitter_id)
+    user.uid = payload["sub"]
     user_token = UserToken.find_or_initialize_by(user_id: user.id)
     user_token.access_token = access_token
     user_token.access_token_secret = access_token_secret

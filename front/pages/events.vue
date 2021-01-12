@@ -76,19 +76,23 @@ export default defineComponent({
 
     const { store, query } = useContext()
 
-    useFetch(async () => {
-      const currentUser = firebase.auth().currentUser
-      if (currentUser == null) return
-      const idToken = await currentUser.getIdToken()
-      state.currentPage = Number(query.value.page)
-        ? Number(query.value.page)
-        : 1
-      const params = {
-        page: state.currentPage
-      }
+    const logout = () => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          store.commit("setAuth", null)
+          Cookie.remove("auth")
+          window.location.href = "/home"
+        })
+    }
 
+    const requestEventAPI = async (
+      idToken: string,
+      params: Record<string, any>
+    ) => {
       root.$axios
-        .get(`/api/events`, {
+        .get("/api/events", {
           headers: {
             Authorization: `Bearer ${idToken}`
           },
@@ -104,7 +108,25 @@ export default defineComponent({
         })
         .catch((error) => {
           console.log(`error: ${error}`)
+          if (error.response.status === 401) {
+            logout()
+          }
         })
+    }
+
+    useFetch(async () => {
+      const currentUser = firebase.auth().currentUser
+      if (currentUser == null) return
+      const idToken = await currentUser.getIdToken()
+
+      state.currentPage = Number(query.value.page)
+        ? Number(query.value.page)
+        : 1
+      const params = {
+        page: state.currentPage
+      }
+
+      requestEventAPI(idToken, params)
     })
 
     const { currentUser } = useCurrentUser()
@@ -117,38 +139,10 @@ export default defineComponent({
           const currentUser = firebase.auth().currentUser
           if (currentUser == null) return
           const idToken = await currentUser.getIdToken()
-          root.$axios
-            .get("/api/events", {
-              headers: {
-                Authorization: `Bearer ${idToken}`
-              },
-              params: to.query
-            })
-            .then((response) => {
-              state.events = response.data.data
-              state.totalPages = response.data.meta.total_pages
-              state.currentPage = response.data.meta.current_page
-              state.eventSortType = response.data.meta.event_sort_type
-              state.timeFilterType = response.data.meta.time_filter_type
-              state.friendsFilterType = response.data.meta.friends_filter_type
-            })
-            .catch((error) => {
-              console.log(`error: ${error}`)
-            })
+          requestEventAPI(idToken, to.query)
         }
       }
     )
-
-    const logout = () => {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          store.commit("setAuth", null)
-          Cookie.remove("auth")
-          window.location.href = "/home"
-        })
-    }
 
     onMounted(() => {
       root.$nextTick(() => {
