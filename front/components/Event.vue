@@ -235,6 +235,12 @@ export default defineComponent({
 
         .event_content_thumbnail {
           width: 20%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
         }
       }
 
