@@ -44,6 +44,12 @@ import firebase from "firebase/app"
 import "firebase/auth"
 const Cookie = process.client ? require("js-cookie") : undefined
 
+declare global {
+  interface Window {
+    twttr: any
+  }
+}
+
 export default defineComponent({
   components: {
     EventsHeader,
