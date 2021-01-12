@@ -1,10 +1,11 @@
 <template lang="pug">
-li.event_item
+li.event_item(ref="root")
   .event_detail
     .event_detail_left
       EventHeld(:startedAt="startedAt")
       .event_logo
         img(:src="eventLogoImage")
+      .twitter_button
     .event_detail_content
       .event_content_top
         .event_content_title
@@ -29,7 +30,8 @@ import {
   reactive,
   toRefs,
   computed,
-  watch
+  watch,
+  ref
 } from "@nuxtjs/composition-api"
 import sanitizeHtml from "sanitize-html"
 
@@ -39,6 +41,18 @@ const DOORKEEPER_EVENT_SITE_ID = 2
 const TECHPLAY_EVENT_SITE_ID = 3
 
 export default defineComponent({
+  head: {
+    script: [
+      {
+        hid: "twitter",
+        type: "text/javascript",
+        src: "//platform.twitter.com/widgets.js",
+        async: true,
+        defer: true,
+        body: true
+      }
+    ]
+  },
   components: {
     EventHeld,
     FriendsList
@@ -92,12 +106,37 @@ export default defineComponent({
       return logo
     }
 
+    const root = ref<HTMLElement | null>(null)
+    const updateTwitterButton = (eventInfo: Record<string, any>) => {
+      const twitterIframe = root.value?.querySelector(".twitter_button iframe")
+      twitterIframe?.remove()
+
+      const twitterButton = root.value?.querySelector(".twitter_button")
+      const twitterAnchor = document.createElement("a")
+      twitterAnchor.classList.add("twitter-share-button")
+      twitterAnchor.setAttribute(
+        "href",
+        "https://twitter.com/share?ref_src=twsrc%5Etfw"
+      )
+      twitterAnchor.setAttribute("data-url", eventInfo.event.url)
+      twitterAnchor.setAttribute("data-text", eventInfo.event.title)
+      twitterAnchor.setAttribute("data-size", "large")
+      twitterAnchor.setAttribute("data-lang", "ja")
+      twitterAnchor.setAttribute("data-show-count", "false")
+      twitterAnchor.setAttribute("target", "_blank")
+      twitterButton?.appendChild(twitterAnchor)
+
+      window?.twttr?.widgets?.load()
+    }
+
     const updateState = (eventInfo: Record<string, any>) => {
       if (!eventInfo) return
       state.eventId = eventInfo.event.id
       state.userIds = eventInfo.extra.user_ids
       state.friendsNumber = eventInfo.extra.friends_number
       state.startedAt = eventInfo.event.started_at
+
+      updateTwitterButton(eventInfo)
     }
 
     watch(
@@ -114,7 +153,8 @@ export default defineComponent({
     return {
       ...toRefs(state),
       sanitizedDescription,
-      eventLogoImage: eventLogoImage()
+      eventLogoImage: eventLogoImage(),
+      root
     }
   }
 })
@@ -145,12 +185,16 @@ export default defineComponent({
       .event_logo {
         width: 100px;
         height: auto;
-        margin-top: 10px;
+        margin-top: 12px;
+      }
+
+      .twitter_button {
+        margin-top: 5px;
       }
 
       .event_held {
         width: 100px;
-        height: 100px;
+        height: 40%;
         border: 1px solid #cccccc;
         background-color: #f3f4f7;
         border-radius: 5px;
