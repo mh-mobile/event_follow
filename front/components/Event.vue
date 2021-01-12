@@ -5,7 +5,7 @@ li.event_item(ref="root")
       EventHeld(:startedAt="startedAt")
       .event_logo
         img(:src="eventLogoImage")
-      .twitter_button
+      .tweet_button
     .event_detail_content
       .event_content_top
         .event_content_title
@@ -108,10 +108,10 @@ export default defineComponent({
 
     const root = ref<HTMLElement | null>(null)
     const updateTwitterButton = (eventInfo: Record<string, any>) => {
-      const twitterIframe = root.value?.querySelector(".twitter_button iframe")
+      const twitterIframe = root.value?.querySelector(".tweet_button iframe")
       twitterIframe?.remove()
 
-      const twitterButton = root.value?.querySelector(".twitter_button")
+      const twitterButton = root.value?.querySelector(".tweet_button")
       const twitterAnchor = document.createElement("a")
       twitterAnchor.classList.add("twitter-share-button")
       twitterAnchor.setAttribute(
@@ -188,8 +188,11 @@ export default defineComponent({
         margin-top: 12px;
       }
 
-      .twitter_button {
+      .tweet_button {
+        width: 100px;
         margin-top: 5px;
+        display: flex;
+        justify-content: center;
       }
 
       .event_held {
