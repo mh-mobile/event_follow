@@ -176,7 +176,7 @@ export default defineComponent({
     flex-direction: row;
 
     .event_detail_left {
-      width: 20%;
+      width: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -220,10 +220,12 @@ export default defineComponent({
     }
 
     .event_detail_content {
-      width: 80%;
+      width: calc(100% - 100px);
       height: 100%;
       display: flex;
       flex-direction: column;
+      padding-left: 26px;
+      box-sizing: border-box;
 
       .event_content_top {
         display: flex;
