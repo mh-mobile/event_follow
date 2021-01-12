@@ -1,7 +1,7 @@
 <template lang="pug">
 .pagination
   ul
-    li(v-for="page in pages" @click="showPage(page.value)", :class="page.class")
+    li(v-for="(page, index) in pages" :key="index" @click="showPage(page.value)", :class="page.class")
       | {{ page.label }}
 </template>
 

@@ -1,6 +1,6 @@
 <template lang="pug">
  ul
-  li(v-for="event in events")
+  li(v-for="event in events" :key="event.event.id")
     Event(:eventInfo="event")
 </template>
 

@@ -13,7 +13,7 @@
       .event-modal-container
         Loading(v-show="isLoading")
         ul.tweet_list(v-show="!isLoading")
-          li.tweet_item(v-for="tweet in tweets")
+          li.tweet_item(v-for="tweet in tweets" :key="tweet.id")
             .friend_column
               .profile_icon
                 a(:href="friendScreenName(tweet.user)" target="_blank")
