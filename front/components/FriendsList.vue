@@ -262,7 +262,7 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px 5px;
+  padding: 20px 0;
   box-sizing: border-box;
   .friend_number {
     width: 50px;
@@ -272,7 +272,7 @@ export default defineComponent({
     background-color: #f3f4f7;
     font-size: 1.5em;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 26px;
     margin-right: 10px;
     display: flex;
     flex-direction: row;
