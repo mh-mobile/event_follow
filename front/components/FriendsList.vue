@@ -272,7 +272,6 @@ export default defineComponent({
     background-color: #f3f4f7;
     font-size: 1.5em;
     font-weight: bold;
-    margin-left: 26px;
     margin-right: 10px;
     display: flex;
     flex-direction: row;
