@@ -43,6 +43,8 @@ import {
 } from "@nuxtjs/composition-api"
 import firebase from "firebase/app"
 import "firebase/auth"
+import { useModalHelper } from "@/compositions/modal_helper"
+
 export default defineComponent({
   components: { Modal, Loading },
   directives: {
@@ -105,8 +107,12 @@ export default defineComponent({
       return state.friends
     })
 
+    const { setScrollEnabled } = useModalHelper()
+
     const openModal = async () => {
       state.modal = true
+      setScrollEnabled(false)
+
       if (isLoading) {
         const idToken = await firebase.auth().currentUser.getIdToken()
         root.$axios
@@ -126,6 +132,7 @@ export default defineComponent({
 
     const closeModal = () => {
       state.modal = false
+      setScrollEnabled(true)
     }
 
     const dateFormat = (value) => {

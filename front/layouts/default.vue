@@ -22,4 +22,9 @@ body {
     margin-bottom: -70px;
   }
 }
+
+.scroll_disable {
+  overflow: hidden;
+}
+
 </style>

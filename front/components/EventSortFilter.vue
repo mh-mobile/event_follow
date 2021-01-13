@@ -31,6 +31,7 @@
 
 <script>
 import Modal from "@/components/Modal.vue"
+import { useModalHelper } from "@/compositions/modal_helper"
 import {
   defineComponent,
   computed,
@@ -175,12 +176,16 @@ export default defineComponent({
       }
     })
 
+    const { setScrollEnabled } = useModalHelper()
+
     const openModal = () => {
       state.modal = true
+      setScrollEnabled(false)
     }
 
     const closeModal = () => {
       state.modal = false
+      setScrollEnabled(true)
     }
 
     const selectedSortConditionChanged = () => {
