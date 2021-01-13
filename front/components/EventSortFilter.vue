@@ -188,25 +188,24 @@ export default defineComponent({
       setScrollEnabled(true)
     }
 
-    const selectedSortConditionChanged = () => {
+    const changeSortFilterCondition = () => {
       root.$router.replace(
         `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
       )
       state.modal = false
+      setScrollEnabled(true)
+    }
+
+    const selectedSortConditionChanged = () => {
+      changeSortFilterCondition()
     }
 
     const selectedTimeFilterConditionChanged = () => {
-      root.$router.replace(
-        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
-      )
-      state.modal = false
+      changeSortFilterCondition()
     }
 
     const selectedFriendsFilterConditionChanged = () => {
-      root.$router.replace(
-        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
-      )
-      state.modal = false
+      changeSortFilterCondition()
     }
 
     watch(
