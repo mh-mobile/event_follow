@@ -26,5 +26,4 @@ body {
 .scroll_disable {
   overflow: hidden;
 }
-
 </style>
