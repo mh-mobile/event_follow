@@ -23,3 +23,18 @@ services:
       - db
     ports:
       - "3004:3000"
+
+  front:
+    build:
+      context: ./front
+      args:
+        WORKDIR: app
+        CONTAINER_PORT: 3002
+    command: yarn run dev
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    ports:
+      - "9999:3002"
+    depends_on:
+      - api
