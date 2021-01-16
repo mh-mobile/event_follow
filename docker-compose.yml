@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:13.1-alpine
+    environment:
+      TZ: UTC
+      PGTZ: UTC
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./api/tmp/db:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+      args:
+        WORKDIR: app
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./api:/app
+    depends_on:
+      - db
+    ports:
+      - "3004:3000"
