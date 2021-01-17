@@ -21,6 +21,7 @@ services:
       - ./api:/app
     depends_on:
       - db
+      - redis
     ports:
       - "$API_PORT:$CONTAINER_PORT"
 
@@ -46,3 +47,12 @@ services:
       - FIREBASE_MEASUREMENT_ID=$FIREBASE_MEASUREMENT_ID
     depends_on:
       - api
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./api/tmp/redis:/data"
+    expose:
+      - 6379
