@@ -1,11 +1,12 @@
 FROM ruby:3.0.0-alpine
 
 ARG WORKDIR
-ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git yarn" \
-    DEV_PACKAGES="build-base curl-dev" \
-    HOME=/${WORKDIR} \
-    LANG=C.UTF-8 \
-    TZ=Asia/Tokyo
+
+ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git yarn"
+ENV DEV_PACKAGES="build-base curl-dev"
+ENV HOME=/${WORKDIR}
+ENV LANG=C.UTF-8
+ENV TZ=Asia/Tokyo
 
 WORKDIR ${HOME}
 COPY Gemfile* ./
