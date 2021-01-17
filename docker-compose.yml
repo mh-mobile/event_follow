@@ -25,6 +25,7 @@ services:
       OAUTH_CONSUMER_KEY: $OAUTH_CONSUMER_KEY
       OAUTH_CONSUMER_SECRET: $OAUTH_CONSUMER_SECRET
       OAUTH_APP_TOKEN: $OAUTH_APP_TOKEN
+      RAILS_MAX_THREADS: $RAILS_MAX_THREADS
     volumes:
       - ./api:/app
     depends_on:
