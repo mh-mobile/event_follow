@@ -6,7 +6,7 @@ services:
     environment:
       TZ: UTC
       PGTZ: UTC
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     volumes:
       - ./api/tmp/db:/var/lib/postgresql/data
 
@@ -14,27 +14,27 @@ services:
     build:
       context: ./api
       args:
-        WORKDIR: app
+        WORKDIR: $WORKDIR
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     volumes:
       - ./api:/app
     depends_on:
       - db
     ports:
-      - "3004:3000"
+      - "$API_PORT:$CONTAINER_PORT"
 
   front:
     build:
       context: ./front
       args:
-        WORKDIR: app
-        CONTAINER_PORT: 3002
+        WORKDIR: $WORKDIR
+        CONTAINER_PORT: $CONTAINER_PORT
     command: yarn run dev
     volumes:
       - ./front:/app
       - /app/node_modules
     ports:
-      - 3007:3002
+      - "$FRONT_PORT:$CONTAINER_PORT"
     depends_on:
       - api
