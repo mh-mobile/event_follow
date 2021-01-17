@@ -35,6 +35,6 @@ services:
       - ./front:/app
       - /app/node_modules
     ports:
-      - "9999:3002"
+      - 3007:3002
     depends_on:
       - api
