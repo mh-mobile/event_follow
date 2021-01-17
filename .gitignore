@@ -43,3 +43,5 @@ yarn-debug.log*
 /config/certs/*
 !/config/certs/.keep
 vendor/bundle/
+
+.env
