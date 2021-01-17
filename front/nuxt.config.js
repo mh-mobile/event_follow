@@ -42,7 +42,7 @@ export default {
   ],
   proxy: {
     "/api/": {
-      target: "http://127.0.0.1:3000",
+      target: process.env.API_URL,
       pathRewrite: {
         "^/api": "/api"
       }
