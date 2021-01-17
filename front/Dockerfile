@@ -15,4 +15,6 @@ COPY yarn.lock ./
 RUN yarn install
 COPY . .
 
+RUN yarn run build
+
 EXPOSE ${CONTAINER_PORT}
