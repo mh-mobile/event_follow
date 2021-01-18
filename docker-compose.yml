@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   db:
+    container_name: event_db
     image: postgres:13.1-alpine
     environment:
       TZ: UTC
@@ -11,6 +12,7 @@ services:
       - ./api/tmp/db:/var/lib/postgresql/data
 
   api:
+    container_name: event_api
     build:
       context: ./api
       args:
@@ -35,6 +37,7 @@ services:
       - "$API_PORT:$CONTAINER_PORT"
 
   front:
+    container_name: event_front
     build:
       context: ./front
       args:
@@ -59,6 +62,7 @@ services:
       - api
 
   redis:
+    container_name: event_redis
     image: redis:5-alpine
     ports:
       - "6379:6379"
