@@ -2,7 +2,7 @@ FROM ruby:3.0.0-alpine
 
 ARG WORKDIR
 
-ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git yarn"
+ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git yarn bash bash-completion"
 ENV DEV_PACKAGES="build-base curl-dev"
 ENV HOME=/${WORKDIR}
 ENV LANG=C.UTF-8
