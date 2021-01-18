@@ -1,0 +1,23 @@
+{
+  "name": "rails devcontainer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "api",
+  "remoteUser": "postgres",
+  "workspaceFolder": "/app",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "sqltools.connections": [{
+      "name": "Container database",
+      "driver": "PostgreSQL",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "database": "eventfollow_development",
+      "username": "postgres",
+      "password": "postgres"
+    }]
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": ["rebornix.Ruby", "mtxr.sqltools", "mtxr.sqltools-driver-pg"]
+}
