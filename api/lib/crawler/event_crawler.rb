@@ -7,9 +7,14 @@ class EventCrawler
     return unless crawl_tweet
 
     event_store = EventStore.new({ event_url: crawl_tweet.event_url })
-    if event_store.save
-      update_tweet(event_store.event.id, crawl_tweet)
+    begin
+      if event_store.save
+        update_tweet(event_store.event.id, crawl_tweet)
+      end
+    rescue Faraday::ResourceNotFound => error
+      puts "error: #{error}"
+    ensure
+      delete_crawl_tweet(crawl_tweet)
     end
-    delete_crawl_tweet(crawl_tweet)
   end
 end
