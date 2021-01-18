@@ -1,0 +1,9 @@
+{
+  "name": "front devcontainer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "front",
+  "workspaceFolder": "/app",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  }
+}
