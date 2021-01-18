@@ -4,6 +4,7 @@ ARG WORKDIR
 ARG CONTAINER_PORT
 ARG API_URL
 
+ENV RUNTIME_PACKAGES="bash bash-completion"
 ENV HOME=/${WORKDIR} 
 ENV LANG=C.UTF-8 
 ENV TZ=Asia/Tokyo 
@@ -11,6 +12,10 @@ ENV HOST=0.0.0.0
 ENV API_URL=${API_URL}
   
 WORKDIR ${HOME}
+
+RUN apk update && \
+		apk upgrade && \
+		apk add --no-cache ${RUNTIME_PACKAGES}
 
 COPY package.json ./
 COPY yarn.lock ./
