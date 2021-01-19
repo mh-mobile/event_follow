@@ -3,7 +3,7 @@
 FirebaseIdToken.configure do |config|
   config.redis = Proc.new do
     if Rails.env.production?
-      Redis.new(host: ENV["REDIS_URL"])
+      Redis.new(url: ENV["REDIS_URL"])
     else
       Redis.new(host: "redis")
     end
