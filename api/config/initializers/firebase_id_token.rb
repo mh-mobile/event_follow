@@ -8,6 +8,6 @@ FirebaseIdToken.configure do |config|
       Redis.new(host: "redis")
     end
   end.call
-  
+
   config.project_ids = [ENV["FIREBASE_PROJECT_ID"]]
 end
