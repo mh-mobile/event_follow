@@ -27,7 +27,14 @@ ENV RUNTIME_PACKAGES="bash bash-completion" \
     FIREBASE_MEASUREMENT_ID=${FIREBASE_MEASUREMENT_ID} \
 		NODE_ENV=production
 
+RUN echo "begin HOME"
+RUN echo ${HOME}
+RUN echo "end HOME"
+
+
+RUN echo "begin firebase api key"
 RUN echo ${FIREBASE_API_KEY}
+RUN echo "end firebase api key"
 
 WORKDIR ${HOME}
 
