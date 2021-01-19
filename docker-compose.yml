@@ -29,7 +29,6 @@ services:
       OAUTH_APP_TOKEN: $OAUTH_APP_TOKEN
       RAILS_MAX_THREADS: $RAILS_MAX_THREADS
       RAILS_MASTER_KEY: $RAILS_MASTER_KEY
-      RAILS_ENV: $RAILS_ENV
       REDIS_URL: $REDIS_URL
     volumes:
       - ./api:/app
