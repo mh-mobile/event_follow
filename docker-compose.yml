@@ -60,6 +60,8 @@ services:
       - /app/node_modules
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
+    environment:
+      NODE_ENV: production
     depends_on:
       - api
 
