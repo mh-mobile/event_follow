@@ -5,3 +5,7 @@ build:
     WORKDIR: app
 run:
   web: bundle exec puma -C config/puma.rb
+  worker:
+    command:
+      - bundle exec clockwork config/clock.rb
+    image: web
