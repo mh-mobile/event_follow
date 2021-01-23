@@ -17,3 +17,17 @@ jobs:
         run: git remote add heroku-front https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_FRONT_APP_NAME }}.git
       - name: Deploy front to Heroku
         run: git push heroku-front `git subtree split --prefix front ${GITHUB_REF}`:refs/heads/master --force
+      - name: Slack notification on failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: danger
+          SLACK_TITLE: front deployment failure
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Slack notification on success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: good
+          SLACK_TITLE: front deployment success
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
