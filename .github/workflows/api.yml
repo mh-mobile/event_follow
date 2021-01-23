@@ -1,0 +1,19 @@
+name: Deploy to Heroku (api)
+
+on:
+  push:
+    branches:
+      - feature/github_actions_deploy_to_heroku
+    paths:
+      - "api/**"
+      - ".github/workflows/api.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.0.0
+      - name: Add api remote origin
+        run: git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_API_APP_NAME }}.git
+      - name: Deploy api to Heroku
+        run: git push heroku-api `git subtree split --prefix api ${GITHUB_REF}`:refs/heads/master --force
