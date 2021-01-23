@@ -17,3 +17,17 @@ jobs:
         run: git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_API_APP_NAME }}.git
       - name: Deploy api to Heroku
         run: git push heroku-api `git subtree split --prefix api ${GITHUB_REF}`:refs/heads/master --force
+      - name: Slack notification on failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: danger
+          SLACK_TITLE: api deployment failure
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Slack notification on success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: good
+          SLACK_TITLE: api deployment success
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
