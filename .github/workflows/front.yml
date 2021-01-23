@@ -1,0 +1,19 @@
+name: Deploy to Heroku (front)
+
+on:
+  push:
+    branches:
+      - feature/github_actions_deploy_to_heroku
+    paths:
+      - "front/**"
+      - ".github/workflows/front.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.0.0
+      - name: Add front remote origin
+        run: git remote add heroku-front https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_FRONT_APP_NAME }}.git
+      - name: Deploy front to Heroku
+        run: git push heroku-front `git subtree split --prefix front ${GITHUB_REF}`:refs/heads/master --force
