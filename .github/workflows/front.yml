@@ -3,7 +3,7 @@ name: Deploy to Heroku (front)
 on:
   push:
     branches:
-      - feature/github_actions_deploy_to_heroku
+      - main
     paths:
       - "front/**"
       - ".github/workflows/front.yml"
