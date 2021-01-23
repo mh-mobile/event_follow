@@ -3,7 +3,7 @@ name: Deploy to Heroku (api)
 on:
   push:
     branches:
-      - feature/github_actions_deploy_to_heroku
+      - main
     paths:
       - "api/**"
       - ".github/workflows/api.yml"
