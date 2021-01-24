@@ -10,9 +10,9 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   loading: {
-    color: '#0099e5',
+    color: "#0099e5",
     continuous: true,
-    height: '5px',
+    height: "5px"
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
