@@ -5,7 +5,7 @@ on:
     - cron: '0,20,40 * * * *'
   push:
     branches:
-      - master
+      - main
 
 jobs:
   wakeup:
