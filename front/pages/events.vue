@@ -77,12 +77,14 @@ export default defineComponent({
     const { store, query } = useContext()
 
     const logout = () => {
+      root.$nuxt.$loading.start()
       firebase
         .auth()
         .signOut()
         .then(() => {
           store.commit("setAuth", null)
           Cookie.remove("auth")
+          root.$nuxt.$loading.finish()
           window.location.href = "/home"
         })
     }
@@ -91,6 +93,7 @@ export default defineComponent({
       idToken: string,
       params: Record<string, any>
     ) => {
+      root.$nuxt.$loading.start()
       root.$axios
         .get("/api/events", {
           headers: {
@@ -105,8 +108,10 @@ export default defineComponent({
           state.eventSortType = response.data.meta.event_sort_type
           state.timeFilterType = response.data.meta.time_filter_type
           state.friendsFilterType = response.data.meta.friends_filter_type
+          root.$nuxt.$loading.finish()
         })
         .catch((error) => {
+          root.$nuxt.$loading.finish()
           console.log(`error: ${error}`)
           if (error.response.status === 401) {
             logout()
