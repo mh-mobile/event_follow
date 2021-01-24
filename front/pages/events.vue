@@ -15,12 +15,12 @@ div
             li.profile_setting_item
               a(href="#" @click="logout")
                 | ログアウト
-  .event_container(v-show="!isLoading")
+  .event_container(v-show="!isInitialLoading")
     EventsHeader(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow"
                  :eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
     EventsContent(:events="events")
     EventsFooter(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
-  .event_container(v-show="isLoading")
+  .event_container(v-show="isInitialLoading")
     Loading
 </template>
 
@@ -69,7 +69,7 @@ export default defineComponent({
       eventSortType: "",
       timeFilterType: "",
       friendsFilterType: "",
-      isLoading: true
+      isInitialLoading: true,
     })
     if (process.server) {
       return {
@@ -80,10 +80,6 @@ export default defineComponent({
     }
 
     const { store, query } = useContext()
-
-    const isLoading = computed(() => {
-      return state.events.length === 0
-    })
 
     const logout = () => {
       root.$nuxt.$loading.start()
@@ -117,9 +113,11 @@ export default defineComponent({
           state.eventSortType = response.data.meta.event_sort_type
           state.timeFilterType = response.data.meta.time_filter_type
           state.friendsFilterType = response.data.meta.friends_filter_type
+          state.isInitialLoading = false
           root.$nuxt.$loading.finish()
         })
         .catch((error) => {
+          state.isInitialLoading = false
           root.$nuxt.$loading.finish()
           console.log(`error: ${error}`)
           if (error.response.status === 401) {
@@ -171,8 +169,7 @@ export default defineComponent({
     return {
       currentUser,
       logout,
-      ...toRefs(state),
-      isLoading
+      ...toRefs(state)
     }
   }
 })
