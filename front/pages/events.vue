@@ -15,18 +15,20 @@ div
             li.profile_setting_item
               a(href="#" @click="logout")
                 | ログアウト
-  .event_container
+  .event_container(v-show="!isLoading")
     EventsHeader(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow"
                  :eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
     EventsContent(:events="events")
     EventsFooter(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
-
+  .event_container(v-show="isLoading")
+    Loading
 </template>
 
 <script lang="ts">
 import EventsHeader from "@/components/EventsHeader.vue"
 import EventsContent from "@/components/EventsContent.vue"
 import EventsFooter from "@/components/EventsFooter.vue"
+import Loading from "@/components/Loading.vue"
 import {
   defineComponent,
   onUnmounted,
@@ -35,7 +37,8 @@ import {
   useFetch,
   toRefs,
   reactive,
-  watch
+  watch,
+  computed
 } from "@nuxtjs/composition-api"
 import { useCurrentUser } from "@/compositions/user"
 import { useProfileSettings } from "@/compositions/profile_settings"
@@ -54,7 +57,8 @@ export default defineComponent({
   components: {
     EventsHeader,
     EventsContent,
-    EventsFooter
+    EventsFooter,
+    Loading
   },
   setup(props, { root }) {
     const state = reactive({
@@ -64,7 +68,8 @@ export default defineComponent({
       pageWindow: 2,
       eventSortType: "",
       timeFilterType: "",
-      friendsFilterType: ""
+      friendsFilterType: "",
+      isLoading: true
     })
     if (process.server) {
       return {
@@ -75,6 +80,10 @@ export default defineComponent({
     }
 
     const { store, query } = useContext()
+
+    const isLoading = computed(() => {
+      return state.events.length === 0
+    })
 
     const logout = () => {
       root.$nuxt.$loading.start()
@@ -162,7 +171,8 @@ export default defineComponent({
     return {
       currentUser,
       logout,
-      ...toRefs(state)
+      ...toRefs(state),
+      isLoading
     }
   }
 })
