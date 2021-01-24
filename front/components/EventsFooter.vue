@@ -1,6 +1,6 @@
 <template lang="pug">
 .event_list_footer
-  Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
+  Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow" v-show="totalPages > 0")
 </template>
 
 <script lang="ts">

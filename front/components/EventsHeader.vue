@@ -6,7 +6,7 @@
     #js-event-sort-filter
       EventSortFilter(:eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
   .event_header_bottom
-    Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
+    Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow" v-show="totalPages > 0")
 </template>
 
 <script lang="ts">
