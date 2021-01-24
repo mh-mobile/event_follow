@@ -1,15 +1,15 @@
 <template lang="pug">
   div
-    ul(v-show="events.length > 0")
+    ul(v-show="!isEventEmpty")
       li(v-for="event in events" :key="event.event.id")
         Event(:eventInfo="event")
-    .no-event(v-show="events.length === 0")
+    .no-event(v-show="isEventEmpty")
       | イベントが見つかりません。
 </template>
 
 <script lang="ts">
 import Event from "@/components/Event.vue"
-import { defineComponent } from "@nuxtjs/composition-api"
+import { defineComponent, computed } from "@nuxtjs/composition-api"
 import "firebase/auth"
 
 export default defineComponent({
@@ -20,6 +20,14 @@ export default defineComponent({
     events: {
       type: Array,
       default: () => []
+    }
+  },
+  setup(props) {
+    const isEventEmpty = computed(() => {
+      return props.events.length === 0
+    })
+    return {
+      isEventEmpty
     }
   }
 })
