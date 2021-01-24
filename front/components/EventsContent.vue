@@ -1,7 +1,10 @@
 <template lang="pug">
- ul
-  li(v-for="event in events" :key="event.event.id")
-    Event(:eventInfo="event")
+  div
+    ul(v-show="events.length > 0")
+      li(v-for="event in events" :key="event.event.id")
+        Event(:eventInfo="event")
+    .no-event(v-show="events.length === 0")
+      | イベントが見つかりません。
 </template>
 
 <script lang="ts">
@@ -23,6 +26,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.no-event {
+  width: 100%;
+  height: 15em;
+  background-color: #f3f4f7;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #6a737b;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .event_item {
   display: flex;
   flex-direction: column;

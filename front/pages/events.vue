@@ -69,7 +69,7 @@ export default defineComponent({
       eventSortType: "",
       timeFilterType: "",
       friendsFilterType: "",
-      isInitialLoading: true,
+      isInitialLoading: true
     })
     if (process.server) {
       return {
