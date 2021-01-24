@@ -39,6 +39,7 @@ export default defineComponent({
   height: 15em;
   background-color: #f3f4f7;
   border-radius: 5px;
+  border: 1px solid #d7d7d8;
   margin-bottom: 10px;
   color: #6a737b;
   font-weight: bold;
