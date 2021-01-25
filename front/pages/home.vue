@@ -62,6 +62,7 @@ export default defineComponent({
 .home_container {
   max-width: 50rem;
   margin: 0 auto;
+  min-height: calc(100vh - 160px);
 }
 
 .footer {
