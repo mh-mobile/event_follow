@@ -22,6 +22,7 @@ div
     EventsFooter(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow")
   .event_container(v-show="isInitialLoading")
     Loading
+  TopScrollButton
 </template>
 
 <script lang="ts">
@@ -29,6 +30,8 @@ import EventsHeader from "@/components/EventsHeader.vue"
 import EventsContent from "@/components/EventsContent.vue"
 import EventsFooter from "@/components/EventsFooter.vue"
 import Loading from "@/components/Loading.vue"
+import TopScrollButton from "@/components/TopScrollButton.vue"
+
 import {
   defineComponent,
   onUnmounted,
@@ -58,7 +61,8 @@ export default defineComponent({
     EventsHeader,
     EventsContent,
     EventsFooter,
-    Loading
+    Loading,
+    TopScrollButton
   },
   setup(props, { root }) {
     const state = reactive({
