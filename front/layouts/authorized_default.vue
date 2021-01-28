@@ -13,6 +13,9 @@
               li.profile_setting_item(v-if="currentUser")
                 | {{ currentUser.displayName }}
               li.profile_setting_item
+                a(href="#" @click="goToSetting")
+                  | 設定
+              li.profile_setting_item
                 a(href="#" @click="logout")
                   | ログアウト
     Nuxt
@@ -51,17 +54,8 @@ export default defineComponent({
         })
     }
 
-    const deleteAccount = () => {
-      root.$nuxt.$loading.start()
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          store.commit("setAuth", null)
-          Cookie.remove("auth")
-          root.$nuxt.$loading.finish()
-          window.location.href = "/home"
-        })
+    const goToSetting = () => {
+      window.location.href = "/settings"
     }
 
     const { currentUser } = useCurrentUser()
@@ -69,7 +63,7 @@ export default defineComponent({
     return {
       currentUser,
       logout,
-      deleteAccount
+      goToSetting
     }
   }
 })
