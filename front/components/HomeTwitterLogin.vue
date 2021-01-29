@@ -2,6 +2,17 @@
 .home_twitter_login
   .twitter_login_button(@click="loginByTwitter")
     | Twitterで始める
+  .twitter_agreement
+    .agreement_upper
+      | アカウントを作成することで
+      a(href="/terms")
+        | 利用規約
+      |・
+    .agreement_lower
+      a(href="/privacy_policy")
+        | プライバシーポリシー
+      | に同意したものとみなします。
+1
 </template>
 
 <script lang="ts">
@@ -67,6 +78,7 @@ export default defineComponent({
   width: 100%;
   height: 100px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -91,6 +103,24 @@ export default defineComponent({
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+
+  .twitter_agreement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+
+    .agreement_upper {
+      font-size: 0.8em;
+    }
+
+    .agreement_lower {
+      margin-top: 2px;
+      font-size: 0.8em;
     }
   }
 }
