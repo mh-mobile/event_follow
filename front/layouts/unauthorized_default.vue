@@ -15,8 +15,8 @@ div
 </template>
 
 <style lang="scss">
-
-body, html {
+body,
+html {
   background-color: #d7d7d8;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
