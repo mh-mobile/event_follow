@@ -1,19 +1,34 @@
 <template lang="pug">
-  .account-deletion-button(@click="deleteAccount")
-    | 退会
+  div
+    .account-deletion-button(@click="openModal")
+      | 退会
+    Modal(@close="closeModal" v-if="modal")
 </template>
 
 <script lang="ts">
-import { defineComponent, useContext } from "@nuxtjs/composition-api"
-
+import {
+  defineComponent,
+  useContext,
+  reactive,
+  toRefs
+} from "@nuxtjs/composition-api"
+import Modal from "@/components/Modal.vue"
+import { useModalHelper } from "@/compositions/modal_helper"
 import firebase from "firebase/app"
 import "firebase/auth"
 const Cookie = process.client ? require("js-cookie") : undefined
 
 export default defineComponent({
+  components: { Modal },
   setup(props, { root }) {
+    const state = reactive({
+      modal: false,
+      deleteAccount: null
+    })
+
     if (process.server) {
       return {
+        ...toRefs(state),
         deleteAccount: null
       }
     }
@@ -33,8 +48,23 @@ export default defineComponent({
         })
     }
 
+    const { setScrollEnabled } = useModalHelper()
+
+    const openModal = () => {
+      state.modal = true
+      setScrollEnabled(false)
+    }
+
+    const closeModal = () => {
+      state.modal = false
+      setScrollEnabled(true)
+    }
+
     return {
-      deleteAccount
+      ...toRefs(state),
+      deleteAccount,
+      openModal,
+      closeModal
     }
   }
 })
