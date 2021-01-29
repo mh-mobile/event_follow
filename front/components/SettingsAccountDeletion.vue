@@ -44,7 +44,7 @@ export default defineComponent({
 
     const { store } = useContext()
 
-    const deleteAccount = () => {
+    const logout = () => {
       root.$nuxt.$loading.start()
       firebase
         .auth()
@@ -57,6 +57,36 @@ export default defineComponent({
         })
     }
 
+    const requestUsersAPI = async (
+      idToken: string
+    ) => {
+      root.$nuxt.$loading.start()
+      root.$axios
+        .delete("/api/users", {
+          headers: {
+            Authorization: `Bearer ${idToken}`
+          }
+        })
+        .then(() => {
+          root.$nuxt.$loading.finish()
+          logout()
+        })
+        .catch((error) => {
+          root.$nuxt.$loading.finish()
+          console.log(`error: ${error}`)
+          if (error.response.status === 401) {
+            logout()
+          }
+        })
+    }
+
+    const deleteAccount = async () => {
+      const currentUser = firebase.auth().currentUser
+      if (currentUser == null) return
+      const idToken = await currentUser.getIdToken()
+      requestUsersAPI(idToken)
+    }
+    
     const { setScrollEnabled } = useModalHelper()
 
     const openModal = () => {

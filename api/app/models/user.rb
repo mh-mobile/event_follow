@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_one :user_token
-  has_one :user_event_setting
+  has_one :user_token, dependent: :destroy
+  has_one :user_event_setting, dependent: :destroy
   has_many :friendships, foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :friendships, source: :followed
 
