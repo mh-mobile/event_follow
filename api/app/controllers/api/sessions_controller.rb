@@ -38,12 +38,4 @@ class Api::SessionsController < Api::BaseController
     def validate_auth?
       payload.present? && access_token.present? && access_token_secret.present?
     end
-
-    def delete_user_session
-      current_user.user_event_setting = nil
-      current_user.user_token = nil
-      current_user.friendships.delete_all
-      current_user.uid = nil
-      current_user.save!
-    end
 end
