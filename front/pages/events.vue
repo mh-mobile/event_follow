@@ -25,10 +25,8 @@ import {
   useFetch,
   toRefs,
   reactive,
-  watch,
-  computed
+  watch
 } from "@nuxtjs/composition-api"
-import { useCurrentUser } from "@/compositions/user"
 import { useProfileSettings } from "@/compositions/profile_settings"
 
 import firebase from "firebase/app"

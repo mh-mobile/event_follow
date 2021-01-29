@@ -1,52 +1,21 @@
 <template lang="pug">
 div
-  .setting_continue
+  .settings_container
+    SettingsHeader
+    SettingsContent
 </template>
 
 <script lang="ts">
 import {
   defineComponent,
   onUnmounted,
-  onMounted,
-  useContext
+  onMounted
 } from "@nuxtjs/composition-api"
 import { useProfileSettings } from "@/compositions/profile_settings"
-
-import firebase from "firebase/app"
-import "firebase/auth"
-const Cookie = process.client ? require("js-cookie") : undefined
-
-declare global {
-  interface Window {
-    twttr: any
-  }
-}
 
 export default defineComponent({
   layout: "authorized_default",
   setup(props, { root }) {
-    if (process.server) {
-      return {
-        currentUser: null,
-        deleteAccount: null
-      }
-    }
-
-    const { store } = useContext()
-
-    const deleteAccount = () => {
-      root.$nuxt.$loading.start()
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          store.commit("setAuth", null)
-          Cookie.remove("auth")
-          root.$nuxt.$loading.finish()
-          window.location.href = "/home"
-        })
-    }
-
     const { showProfileSettings, hideProfileSettings } = useProfileSettings()
 
     onMounted(() => {
@@ -58,10 +27,6 @@ export default defineComponent({
     onUnmounted(() => {
       hideProfileSettings()
     })
-
-    return {
-      deleteAccount
-    }
   }
 })
 </script>
@@ -74,7 +39,7 @@ export default defineComponent({
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px 30px;
-  background-color: orange;
+  background-color: #ffffff;
   border-radius: 5px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
