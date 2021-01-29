@@ -11,7 +11,7 @@ div
       .copyright
         | &copy; event follow
       a(href="/terms" class="terms") 利用規約
-      a(href="/" class="privacy_policy") プライバシーポリシー
+      a(href="/privacy_policy" class="privacy_policy") プライバシーポリシー
 </template>
 
 <style lang="scss">
