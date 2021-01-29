@@ -3,6 +3,10 @@ import "firebase/auth"
 import { state } from "~/store"
 
 export default defineNuxtMiddleware(({ store, route, redirect }) => {
+  if (route.name === "terms") {
+    return
+  }
+
   if (!store.state.auth && route.name !== "home") {
     return redirect("/home")
   }

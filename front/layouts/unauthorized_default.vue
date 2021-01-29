@@ -10,19 +10,13 @@ div
     .footer-container
       .copyright
         | &copy; event follow
-      a(href="/" class="terms") 利用規約
+      a(href="/terms" class="terms") 利用規約
       a(href="/" class="privacy_policy") プライバシーポリシー
 </template>
 
 <style lang="scss">
-html {
-  background-color: #d7d7d8;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
 
-body {
+body, html {
   background-color: #d7d7d8;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
