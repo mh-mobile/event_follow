@@ -9,9 +9,9 @@
             | 退会してもよろしいですか？
         .button-container
           .cancel-button(@click="closeModal")
-            | Cancel
+            | キャンセル
           .ok-button(@click="deleteAccount")
-            | OK
+            | 退会する
 </template>
 
 <script lang="ts">
@@ -155,7 +155,7 @@ export default defineComponent({
     .ok-button {
       width: 200px;
       height: 44px;
-      background: #218af5;
+      background: #ff5454;
       color: #fff;
       font-size: 1em;
       font-weight: bold;
@@ -174,8 +174,8 @@ export default defineComponent({
     .cancel-button {
       width: 200px;
       height: 44px;
-      background: #e4e4e4;
-      color: #000;
+      background: #878787;
+      color: #fff;
       font-size: 1em;
       font-weight: bold;
       padding: 15px 40px;
