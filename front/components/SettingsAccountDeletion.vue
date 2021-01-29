@@ -3,6 +3,15 @@
     .account-deletion-button(@click="openModal")
       | 退会
     Modal(@close="closeModal" v-if="modal")
+      .modal-container
+        .title-container
+          .title
+            | 退会してもよろしいですか？
+        .button-container
+          .cancel-button(@click="closeModal")
+            | Cancel
+          .ok-button(@click="deleteAccount")
+            | OK
 </template>
 
 <script lang="ts">
@@ -86,6 +95,73 @@ export default defineComponent({
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 30em;
+  padding: 20px;
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      color: #000000;
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+    .ok-button {
+      width: 200px;
+      height: 44px;
+      background: #218af5;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .cancel-button {
+      width: 200px;
+      height: 44px;
+      background: #e4e4e4;
+      color: #000;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 }
 </style>
