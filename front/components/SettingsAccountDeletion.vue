@@ -57,9 +57,7 @@ export default defineComponent({
         })
     }
 
-    const requestUsersAPI = async (
-      idToken: string
-    ) => {
+    const requestUsersAPI = async (idToken: string) => {
       root.$nuxt.$loading.start()
       root.$axios
         .delete("/api/users", {
@@ -86,7 +84,7 @@ export default defineComponent({
       const idToken = await currentUser.getIdToken()
       requestUsersAPI(idToken)
     }
-    
+
     const { setScrollEnabled } = useModalHelper()
 
     const openModal = () => {
