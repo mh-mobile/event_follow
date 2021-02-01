@@ -13,6 +13,8 @@ services:
 
   api:
     container_name: event_api
+    tty: true
+    stdin_open: true
     build:
       context: ./api
       args:
