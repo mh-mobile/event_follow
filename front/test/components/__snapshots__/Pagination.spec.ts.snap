@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination.vue currentPage=2 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li>1</li>
+    <li class=\\"current_page click_disable\\">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=3 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li>1</li>
+    <li>2</li>
+    <li class=\\"current_page click_disable\\">3</li>
+    <li>4</li>
+    <li>5</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=4 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>2</li>
+    <li>3</li>
+    <li class=\\"current_page click_disable\\">4</li>
+    <li>5</li>
+    <li>6</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=10 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>8</li>
+    <li>9</li>
+    <li class=\\"current_page click_disable\\">10</li>
+    <li>11</li>
+    <li>12</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=97 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>95</li>
+    <li>96</li>
+    <li class=\\"current_page click_disable\\">97</li>
+    <li>98</li>
+    <li>99</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=98 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>96</li>
+    <li>97</li>
+    <li class=\\"current_page click_disable\\">98</li>
+    <li>99</li>
+    <li>100</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=99 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>97</li>
+    <li>98</li>
+    <li class=\\"current_page click_disable\\">99</li>
+    <li>100</li>
+    <li class=\\"\\">次へ</li>
+    <li class=\\"\\">最後</li>
+  </ul>
+</div>"
+`;
+
+exports[`Pagination.vue currentPage=100 1`] = `
+"<div class=\\"pagination\\">
+  <ul>
+    <li class=\\"\\">最初</li>
+    <li class=\\"\\">前へ</li>
+    <li class=\\"intermediate_page click_disable\\">...</li>
+    <li>98</li>
+    <li>99</li>
+    <li class=\\"current_page click_disable\\">100</li>
+    <li class=\\"click_disable\\">次へ</li>
+    <li class=\\"click_disable\\">最後</li>
+  </ul>
+</div>"
+`;
