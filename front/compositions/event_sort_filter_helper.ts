@@ -1,19 +1,15 @@
-import {
-  computed,
-  reactive
-} from "@nuxtjs/composition-api"
+import { computed, reactive } from "@nuxtjs/composition-api"
 import { useModalHelper } from "@/compositions/modal_helper"
 
 type ConditionItem = {
-  name: String,
+  name: String
   value: String
 }
 
 export const useEventSortFilter = () => {
-
   const { setScrollEnabled } = useModalHelper()
-  
-  const eventSortConditionItems: ConditionItem[]= [
+
+  const eventSortConditionItems: ConditionItem[] = [
     {
       name: "Friend数",
       value: "friends_number_order"
@@ -32,7 +28,7 @@ export const useEventSortFilter = () => {
     }
   ]
 
-  const timeFilterTypeItems: ConditionItem[]  = [
+  const timeFilterTypeItems: ConditionItem[] = [
     {
       name: "過去8時間",
       value: "past_8_hours"
@@ -71,7 +67,7 @@ export const useEventSortFilter = () => {
     }
   ]
 
-  const friendsFilterTypeItems: ConditionItem[]  = [
+  const friendsFilterTypeItems: ConditionItem[] = [
     {
       name: "Friends 1+",
       value: "one_or_more_friends"
@@ -106,12 +102,19 @@ export const useEventSortFilter = () => {
     return state.selectedSortCondition === "friends_number_order"
   })
 
-  const validateCondition = (sortCondition: string, timeFilterCondition: string, friendsFilterCondition: string) => {
+  const validateCondition = (
+    sortCondition: string,
+    timeFilterCondition: string,
+    friendsFilterCondition: string
+  ) => {
     if (sortCondition === "") {
       return false
     }
-    
-    if (sortCondition === "friends_number_order" && timeFilterCondition === "") {
+
+    if (
+      sortCondition === "friends_number_order" &&
+      timeFilterCondition === ""
+    ) {
       return false
     }
 
@@ -125,13 +128,19 @@ export const useEventSortFilter = () => {
 
     if (sortCondition === "closeness_order" && friendsFilterCondition === "") {
       return false
-    } 
+    }
 
     return true
   }
 
   const getCurrentConditionLabel = computed(() => {
-    if (!validateCondition(state.selectedSortCondition, state.selectedTimeFilterCondition, state.selectedFriendsFilterCondition)) {
+    if (
+      !validateCondition(
+        state.selectedSortCondition,
+        state.selectedTimeFilterCondition,
+        state.selectedFriendsFilterCondition
+      )
+    ) {
       return ""
     }
 

@@ -57,8 +57,7 @@ export default defineComponent({
     }
   },
   setup(props, { root }) {
-
-    const { 
+    const {
       eventSortConditionItems,
       timeFilterTypeItems,
       friendsFilterTypeItems,
@@ -70,7 +69,7 @@ export default defineComponent({
       updateSortCondition,
       updateTimeFilterCondition,
       updateFriendsFilterCondition,
-      state,
+      state
     } = useEventSortFilter()
 
     const selectedSortConditionChanged = () => {
