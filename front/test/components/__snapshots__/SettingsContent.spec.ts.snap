@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsContent.vue renders html correctly 1`] = `
+"<div>
+  <div>
+    <div class=\\"account-deletion-button\\">退会</div>
+    <!---->
+  </div>
+</div>"
+`;
