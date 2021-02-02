@@ -7,7 +7,7 @@
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
-    "test": "jest --config jest.conifg.js test/**/*.ts",
+    "test": "jest --config jest.config.js --env=jsdom test/**/*.ts",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint-fix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore .",
     "prettier": "prettier --write **/*.{js,ts,vue}"
@@ -19,6 +19,7 @@
     "@nuxtjs/composition-api": "^0.16.4",
     "@nuxtjs/firebase": "^7.1.2",
     "@nuxtjs/proxy": "^2.0.1",
+    "@types/jest": "^26.0.20",
     "@types/sanitize-html": "^1.27.0",
     "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
@@ -32,6 +33,8 @@
     "sass-loader": "^10.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@nuxt/test-utils": "^0.1.2",
     "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
