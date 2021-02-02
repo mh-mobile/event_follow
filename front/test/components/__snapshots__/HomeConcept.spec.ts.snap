@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeConcept.vue renders html correctly 1`] = `
+"<div class=\\"home_concept\\">自分の興味の近い技術系の<br>
+  イベントを発見するためのソーシャルサービス</div>"
+`;
