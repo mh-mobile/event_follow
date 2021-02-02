@@ -21,10 +21,10 @@
                 | ×
               .event-modal-right.event-modal-sort
                 select(v-model="selectedTimeFilterCondition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
-                  option(v-for="item in time_filter_type_items" :value="item.value" :key="item.value")
+                  option(v-for="item in timeFilterTypeItems" :value="item.value" :key="item.value")
                     | {{ item.name }}
                 select(v-model="selectedFriendsFilterCondition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
-                  option(v-for="item in friends_filter_type_items" :value="item.value" :key="item.value")
+                  option(v-for="item in friendsFilterTypeItems" :value="item.value" :key="item.value")
                     | {{ item.name }}
   </div>
 </template>
@@ -32,6 +32,7 @@
 <script>
 import Modal from "@/components/Modal.vue"
 import { useModalHelper } from "@/compositions/modal_helper"
+import { useEventSortFilter } from "@/compositions/event_sort_filter_helper"
 import {
   defineComponent,
   computed,
@@ -58,86 +59,12 @@ export default defineComponent({
     }
   },
   setup(props, { root }) {
-    const eventSortConditionItems = [
-      {
-        name: "Friend数",
-        value: "friends_number_order"
-      },
-      {
-        name: "新着順",
-        value: "recent_order"
-      },
-      {
-        name: "投稿順",
-        value: "created_order"
-      },
-      {
-        name: "開催が近い順",
-        value: "closeness_order"
-      }
-    ]
-
-    const time_filter_type_items = [
-      {
-        name: "過去8時間",
-        value: "past_8_hours"
-      },
-      {
-        name: "過去24時間",
-        value: "past_24_hours"
-      },
-      {
-        name: "過去2日",
-        value: "past_2_days"
-      },
-      {
-        name: "過去3日",
-        value: "past_3_days"
-      },
-      {
-        name: "過去4日",
-        value: "past_4_days"
-      },
-      {
-        name: "過去5日",
-        value: "past_5_days"
-      },
-      {
-        name: "過去6日",
-        value: "past_6_days"
-      },
-      {
-        name: "過去1週間",
-        value: "past_1_weeks"
-      },
-      {
-        name: "All",
-        value: "past_all"
-      }
-    ]
-
-    const friends_filter_type_items = [
-      {
-        name: "Friends 1+",
-        value: "one_or_more_friends"
-      },
-      {
-        name: "Friends 2+",
-        value: "two_or_more_friends"
-      },
-      {
-        name: "Friends 3+",
-        value: "three_or_more_friends"
-      },
-      {
-        name: "Friends 4+",
-        value: "four_or_more_friends"
-      },
-      {
-        name: "Friends 5+",
-        value: "five_or_more_friends"
-      }
-    ]
+    const { setScrollEnabled } = useModalHelper()
+    const { 
+      eventSortConditionItems,
+      timeFilterTypeItems,
+      friendsFilterTypeItems
+    } = useEventSortFilter()
 
     const state = reactive({
       modal: false,
@@ -175,12 +102,12 @@ export default defineComponent({
         return item.value === state.selectedSortCondition
       }).name
       if (state.selectedSortCondition === "friends_number_order") {
-        const timeFilterConditionLabel = time_filter_type_items.find((item) => {
+        const timeFilterConditionLabel = timeFilterTypeItems.find((item) => {
           return item.value === state.selectedTimeFilterCondition
         }).name
         return `${sortConditionLabel} × ${timeFilterConditionLabel}`
       } else {
-        const friendsFilterConditionLabel = friends_filter_type_items.find(
+        const friendsFilterConditionLabel = friendsFilterTypeItems.find(
           (item) => {
             return item.value === state.selectedFriendsFilterCondition
           }
@@ -188,8 +115,6 @@ export default defineComponent({
         return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
       }
     })
-
-    const { setScrollEnabled } = useModalHelper()
 
     const openModal = () => {
       state.modal = true
@@ -251,8 +176,8 @@ export default defineComponent({
     return {
       ...toRefs(state),
       eventSortConditionItems,
-      time_filter_type_items,
-      friends_filter_type_items,
+      timeFilterTypeItems,
+      friendsFilterTypeItems,
       isFrinedsNumberSortCondition,
       getCurrentConditionLabel,
       openModal,
