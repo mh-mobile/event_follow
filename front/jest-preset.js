@@ -1,15 +1,15 @@
 module.exports = {
   collectCoverage: true,
-  testEnvironment: 'node',
+  testEnvironment: "node",
   transform: {
-    '\\.(js|ts)$': [
-      'babel-jest',
+    "\\.(js|ts)$": [
+      "babel-jest",
       {
         presets: [
-          ['@babel/preset-env', { targets: { node: 'current' } }],
-          '@babel/preset-typescript'
+          ["@babel/preset-env", { targets: { node: "current" } }],
+          "@babel/preset-typescript"
         ],
-        plugins: ['@babel/plugin-transform-runtime']
+        plugins: ["@babel/plugin-transform-runtime"]
       }
     ]
   }

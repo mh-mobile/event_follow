@@ -22,5 +22,4 @@ describe("modal_helper.spec.ts", () => {
     const htmlElement = document.querySelector("html")
     expect(htmlElement?.classList.contains("scroll_disable")).toEqual(false)
   })
-
 })
