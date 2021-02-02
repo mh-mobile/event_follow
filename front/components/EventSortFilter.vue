@@ -31,12 +31,10 @@
 
 <script>
 import Modal from "@/components/Modal.vue"
-import { useModalHelper } from "@/compositions/modal_helper"
+
 import { useEventSortFilter } from "@/compositions/event_sort_filter_helper"
 import {
   defineComponent,
-  computed,
-  reactive,
   toRefs,
   watch,
   onMounted
@@ -59,118 +57,59 @@ export default defineComponent({
     }
   },
   setup(props, { root }) {
-    const { setScrollEnabled } = useModalHelper()
+
     const { 
       eventSortConditionItems,
       timeFilterTypeItems,
-      friendsFilterTypeItems
+      friendsFilterTypeItems,
+      isFrinedsNumberSortCondition,
+      getCurrentConditionLabel,
+      changeSortFilterCondition,
+      openModal,
+      closeModal,
+      updateSortCondition,
+      updateTimeFilterCondition,
+      updateFriendsFilterCondition,
+      state,
     } = useEventSortFilter()
 
-    const state = reactive({
-      modal: false,
-      message: "",
-      selectedSortCondition: "friends_number_order",
-      selectedTimeFilterCondition: "past_8_hours",
-      selectedFriendsFilterCondition: "one_or_more_friends"
-    })
-
-    const isFrinedsNumberSortCondition = computed(() => {
-      return state.selectedSortCondition === "friends_number_order"
-    })
-    const getCurrentConditionLabel = computed(() => {
-      if (state.selectedSortCondition === "") {
-        return ""
-      }
-      
-      if (state.selectedSortCondition === "friends_number_order" && state.selectedTimeFilterCondition === "") {
-        return ""
-      }
-
-      if (state.selectedSortCondition === "recent_order" && state.selectedFriendsFilterCondition === "") {
-        return ""
-      }
-
-      if (state.selectedSortCondition === "created_order" && state.selectedFriendsFilterCondition === "") {
-        return ""
-      }
-
-      if (state.selectedSortCondition === "closeness_order" && state.selectedFriendsFilterCondition === "") {
-        return ""
-      }
-
-      const sortConditionLabel = eventSortConditionItems.find((item) => {
-        return item.value === state.selectedSortCondition
-      }).name
-      if (state.selectedSortCondition === "friends_number_order") {
-        const timeFilterConditionLabel = timeFilterTypeItems.find((item) => {
-          return item.value === state.selectedTimeFilterCondition
-        }).name
-        return `${sortConditionLabel} × ${timeFilterConditionLabel}`
-      } else {
-        const friendsFilterConditionLabel = friendsFilterTypeItems.find(
-          (item) => {
-            return item.value === state.selectedFriendsFilterCondition
-          }
-        ).name
-        return `${sortConditionLabel} × ${friendsFilterConditionLabel}`
-      }
-    })
-
-    const openModal = () => {
-      state.modal = true
-      setScrollEnabled(false)
-    }
-
-    const closeModal = () => {
-      state.modal = false
-      setScrollEnabled(true)
-    }
-
-    const changeSortFilterCondition = () => {
-      root.$router.replace(
-        `/events?sort=${state.selectedSortCondition}&time=${state.selectedTimeFilterCondition}&friends=${state.selectedFriendsFilterCondition}`
-      )
-      state.modal = false
-      setScrollEnabled(true)
-    }
-
     const selectedSortConditionChanged = () => {
-      changeSortFilterCondition()
+      changeSortFilterCondition(root.$router)
     }
 
     const selectedTimeFilterConditionChanged = () => {
-      changeSortFilterCondition()
+      changeSortFilterCondition(root.$router)
     }
 
     const selectedFriendsFilterConditionChanged = () => {
-      changeSortFilterCondition()
+      changeSortFilterCondition(root.$router)
     }
 
     watch(
       () => props.eventSortType,
       async (newValue) => {
-        state.selectedSortCondition = newValue
+        updateSortCondition(newValue)
       }
     )
 
     watch(
       () => props.timeFilterType,
       async (newValue) => {
-        state.selectedTimeFilterCondition = newValue
+        updateTimeFilterCondition(newValue)
       }
     )
 
     watch(
       () => props.friendsFilterType,
       async (newValue) => {
-        state.selectedFriendsFilterCondition = newValue
+        updateFriendsFilterCondition(newValue)
       }
     )
 
     onMounted(() => {
-      state.selectedSortCondition = props.eventSortType
-      state.selectedFriendsFilterCondition = props.friendsFilterType
-      state.selectedTimeFilterCondition = props.timeFilterType
+      updateSortCondition(props.eventSortType)
+      updateTimeFilterCondition(props.timeFilterType)
+      updateFriendsFilterCondition(props.friendsFilterType)
     })
 
     return {
