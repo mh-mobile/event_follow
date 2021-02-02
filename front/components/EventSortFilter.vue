@@ -37,7 +37,8 @@ import {
   computed,
   reactive,
   toRefs,
-  watch
+  watch,
+  onMounted
 } from "@nuxtjs/composition-api"
 
 export default defineComponent({
@@ -150,11 +151,23 @@ export default defineComponent({
       return state.selectedSortCondition === "friends_number_order"
     })
     const getCurrentConditionLabel = computed(() => {
-      if (
-        state.selectedSortCondition === "" ||
-        state.selectedTimeFilterCondition === "" ||
-        state.selectedFriendsFilterCondition === ""
-      ) {
+      if (state.selectedSortCondition === "") {
+        return ""
+      }
+      
+      if (state.selectedSortCondition === "friends_number_order" && state.selectedTimeFilterCondition === "") {
+        return ""
+      }
+
+      if (state.selectedSortCondition === "recent_order" && state.selectedFriendsFilterCondition === "") {
+        return ""
+      }
+
+      if (state.selectedSortCondition === "created_order" && state.selectedFriendsFilterCondition === "") {
+        return ""
+      }
+
+      if (state.selectedSortCondition === "closeness_order" && state.selectedFriendsFilterCondition === "") {
         return ""
       }
 
@@ -228,6 +241,12 @@ export default defineComponent({
         state.selectedFriendsFilterCondition = newValue
       }
     )
+
+    onMounted(() => {
+      state.selectedSortCondition = props.eventSortType
+      state.selectedFriendsFilterCondition = props.friendsFilterType
+      state.selectedTimeFilterCondition = props.timeFilterType
+    })
 
     return {
       ...toRefs(state),
