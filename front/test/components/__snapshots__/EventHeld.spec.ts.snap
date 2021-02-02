@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventHeld.vue renders html correctly 1`] = `
+"<div class=\\"event_held\\" started_at=\\"2021-02-06T13:40:00.000Z\\">
+  <div class=\\"event_date\\"></div>
+  <div class=\\"event_start\\">開催</div>
+</div>"
+`;
