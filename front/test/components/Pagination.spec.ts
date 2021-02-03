@@ -12,7 +12,7 @@ describe("Pagination.vue", () => {
   beforeEach(() => {
     totalPages = 100
     pageWindow = 2
-  });
+  })
 
   it("currentPage=2", () => {
     const wrapper = shallowMount(Pagination, {
@@ -56,7 +56,7 @@ describe("Pagination.vue", () => {
       propsData: {
         totalPages,
         pageWindow,
-        currentPage: 10 
+        currentPage: 10
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
@@ -73,7 +73,7 @@ describe("Pagination.vue", () => {
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
-  
+
   it("currentPage=98", () => {
     const wrapper = shallowMount(Pagination, {
       localVue,
