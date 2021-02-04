@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Api::UsersController < Api::BaseController
-
   def destroy
     delete_user_session
     head :no_content
