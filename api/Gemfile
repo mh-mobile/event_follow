@@ -23,8 +23,7 @@ gem "firebase-auth-rails"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "factory_bot"
-  gem 'rspec-rails', '~> 4.0.2'
-
+  gem "rspec-rails", "~> 4.0.2"
 end
 
 group :development do
