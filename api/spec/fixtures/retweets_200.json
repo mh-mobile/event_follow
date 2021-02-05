@@ -1,0 +1,58 @@
+[
+  {
+    "created_at": "Mon Feb 17 14:08:37 +0000 2020",
+    "id": 11111,
+    "id_str": "1111",
+    "full_text": "RT 11111",
+    "truncated": false,
+    "user": {
+      "id": 222222,
+      "id_str": "222222",
+      "name": "name_1",
+      "screen_name": "screen_name_1",
+      "location": "",
+      "description": "user_1",
+      "url": "https://example.com",
+      "profile_image_url_https": "https://example.com/normal.jpg"
+    },
+    "contributors": null,
+    "retweeted_status": {
+      "created_at": "Fri Feb 14 03:57:57 +0000 2020",
+      "id": 33333,
+      "id_str": "3333"
+    },
+    "is_quote_status": false,
+    "retweet_count": 55,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false
+  },
+  {
+    "created_at": "Mon Feb 17 13:55:48 +0000 2020",
+    "id": 44444,
+    "id_str": "4444",
+    "full_text": "RT 44444",
+    "truncated": false,
+    "user": {
+      "id": 55555,
+      "id_str": "55555",
+      "name": "name_1",
+      "screen_name": "screen_name_1",
+      "location": "",
+      "description": "user_2",
+      "url": "https://example.com",
+      "profile_image_url_https": "https://example.com/normal.jpg"
+    },
+    "contributors": null,
+    "retweeted_status": {
+      "created_at": "Fri Feb 14 03:57:57 +0000 2020",
+      "id": 666666,
+      "id_str": "666666"
+    },
+    "is_quote_status": false,
+    "retweet_count": 30,
+    "favorite_count": 0,
+    "favorited": false,
+    "retweeted": false
+  }
+]

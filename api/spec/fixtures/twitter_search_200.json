@@ -1,0 +1,68 @@
+{
+  "statuses": [
+    {
+      "created_at": "Fri Feb 05 03:38:08 +0000 2021",
+      "id": 1357533943214873000,
+      "id_str": "1357533943214873217",
+      "full_text": "sample_1",
+      "truncated": false,
+      "display_text_range": [0, 125],
+      "entities": {
+        "urls": [
+          {
+            "url": "https://tsj.connpass.com/event/200415/",
+            "expanded_url": "https://tsj.connpass.com/event/200415/",
+            "display_url": "tsj.connpass.com/event/200415/",
+            "indices": [102, 125]
+          }
+        ]
+      },
+      "user": {
+        "id": 1111111,
+        "id_str": "1111111",
+        "name": "name_1",
+        "screen_name": "sceen_name_1",
+        "location": "japan",
+        "description": "description_1",
+        "profile_image_url_https": "https://example.com/normal.jpg"
+      }
+    },
+    {
+      "created_at": "Fri Feb 05 02:32:54 +0000 2021",
+      "id": 1357533943214893300,
+      "id_str": "1357533943214893217",
+      "full_text": "sample_2",
+      "truncated": false,
+      "display_text_range": [0, 125],
+      "entities": {
+        "urls": [
+          {
+            "url": "https://readyfor.connpass.com/event/198730/",
+            "expanded_url": "https://readyfor.connpass.com/event/198730/",
+            "display_url": "https://readyfor.connpass.com/event/198730/",
+            "indices": [102, 125]
+          }
+        ]
+      },
+      "user": {
+        "id": 222222,
+        "id_str": "222222",
+        "name": "name_2",
+        "screen_name": "sceen_name_2",
+        "location": "japan",
+        "description": "description_2",
+        "profile_image_url_https": "https://example.com/normal.jpg"
+      }
+    }
+  ],
+  "search_metadata": {
+    "completed_in": 0.098,
+    "max_id": 0,
+    "max_id_str": "0",
+    "next_results": "?max_id=1357484252439343104&q=%28url%3Adoorkeeper.jp%2Fevents%20OR%20url%3Aconnpass.com%2Fevent%2F%29%20-filter%3Aretweets%20filter%3Alinks&count=100&include_entities=1&result_type=recent",
+    "query": "%28url%3Adoorkeeper.jp%2Fevents+OR+url%3Aconnpass.com%2Fevent%2F%29+-filter%3Aretweets+filter%3Alinks",
+    "count": 100,
+    "since_id": 0,
+    "since_id_str": "0"
+  }
+}
