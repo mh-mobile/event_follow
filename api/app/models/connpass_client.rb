@@ -30,8 +30,9 @@ class ConnpassClient
       yield
     rescue Faraday::ClientError, Faraday::ServerError => error
       begin
+        raise error if error.response[:status] == 404
         body = JSON.parse(error.response[:body])
-        raise EventResponse, body["message"]
+        raise error, body["message"]
       rescue JSON::ParserError
         raise error
       end
