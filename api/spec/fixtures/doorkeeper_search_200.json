@@ -1,0 +1,20 @@
+{
+  "event": {
+    "title": "もくもく会Vol.1",
+    "id": 200,
+    "starts_at": "2021-02-05T13:00:00.000Z",
+    "ends_at": "2021-02-05T14:00:00.000Z",
+    "venue_name": null,
+    "address": null,
+    "published_at": "2021-01-24T07:57:46.618Z",
+    "updated_at": "2021-02-05T05:53:33.764Z",
+    "group": 11535,
+    "description": "もくもく会です",
+    "public_url": "https://example.com/events/200",
+    "participants": 7,
+    "waitlisted": 0,
+    "ticket_limit": null,
+    "lat": null,
+    "long": null
+  }
+}

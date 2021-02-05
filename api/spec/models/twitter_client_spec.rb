@@ -133,9 +133,9 @@ RSpec.describe TwitterClient, type: :model do
       user_1 = users[0]
       user_2 = users[1]
       expect(user_1.id_str).to eq "111111"
-      expect(user_1.created_at).to eq "Mon Aug 31 18:35:53 +0000 2009" 
+      expect(user_1.created_at).to eq "Mon Aug 31 18:35:53 +0000 2009"
       expect(user_2.id_str).to eq "222222"
-      expect(user_2.created_at).to eq "Mon Aug 31 16:34:30 +0000 2010" 
+      expect(user_2.created_at).to eq "Mon Aug 31 16:34:30 +0000 2010"
       expect(body.next_cursor_str).to eq "1522334438265527337"
     end
 
@@ -161,6 +161,6 @@ RSpec.describe TwitterClient, type: :model do
   end
 
   def read_fixture_json(filename)
-    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, 'rb').read
+    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
   end
 end
