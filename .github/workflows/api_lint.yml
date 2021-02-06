@@ -18,5 +18,5 @@ jobs:
           rubocop_version: 0.93.0
           github_token: ${{ secrets.github_token }}
           rubocop_flags: --config api/.rubocop.yml api/
-          level: warning
+          level: error
           reporter: github-pr-check
