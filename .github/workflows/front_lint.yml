@@ -1,0 +1,20 @@
+name: front lint
+
+on:
+  pull_request:
+    paths:
+      - "front/**"
+      - ".github/workflows/front_lint.yml"
+      - "docker-compose.yml"
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          eslint_flags: '--ext .ts,.js,.vue --ignore-path .gitignore front'
