@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: yarn setup
+        run: cd front && yarn install
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
