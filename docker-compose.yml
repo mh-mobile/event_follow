@@ -17,8 +17,11 @@ services:
     stdin_open: true
     build:
       context: ./api
+      cache_from:
+        - event-api-development-cache
       args:
         WORKDIR: $WORKDIR
+    image: event-api-development:1.0.0
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       API_ORIGIN: front:$FRONT_PORT
