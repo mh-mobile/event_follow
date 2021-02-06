@@ -12,7 +12,7 @@
       a(href="/privacy_policy")
         | プライバシーポリシー
       | に同意したものとみなします。
-1
+
 </template>
 
 <script lang="ts">

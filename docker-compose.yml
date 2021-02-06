@@ -44,6 +44,8 @@ services:
     container_name: event_front
     build:
       context: ./front
+      cache_from:
+        - event-front-development-cache
       args:
         WORKDIR: $WORKDIR
         CONTAINER_PORT: $CONTAINER_PORT
@@ -55,15 +57,13 @@ services:
         FIREBASE_MESSAGING_SENDER_ID: $FIREBASE_MESSAGING_SENDER_ID
         FIREBASE_APP_ID: $FIREBASE_APP_ID
         FIREBASE_MEASUREMENT_ID: $FIREBASE_MEASUREMENT_ID
-
+    image: event-front-development:1.0.0
     command: yarn run dev
     volumes:
       - ./front:/app
       - /app/node_modules
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
-    depends_on:
-      - api
 
   redis:
     container_name: event_redis

@@ -2,40 +2,80 @@ name: front test
 
 on:
   pull_request:
+    paths:
+      - "front/**"
+      - ".github/workflows/front.yml"
+      - "docker-compose.yml"
 
 env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
+  APP_IMAGE_TAG: event-front-development:1.0.0
+  APP_IMAGE_CACHE_TAG: event-front-development-cache
+  IMAGE_CACHE_DIR: /tmp/cache/docker-front-image
+  IMAGE_CACHE_KEY: cache-front-image
+  WORKDIR: ${{ secrets.WORKDIR }}
+  FRONT_PORT: ${{ secrets.FRONT_PORT }}
+  API_PORT: ${{ secrets.API_PORT }}
+  CONTAINER_PORT: ${{ secrets.CONTAINER_PORT }}
+  FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+  FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+  FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+  FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+  FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+  FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+  FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
 
 jobs:
-  front-test:
+  image-cache-or-build:
     runs-on: ubuntu-latest
-    env:
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      WORKDIR: ${{ secrets.WORKDIR }}
-      FRONT_PORT: ${{ secrets.FRONT_PORT }}
-      TWITTER_KEY: ${{ secrets.TWITTER_KEY }}
-      TWITTER_SECRET: ${{ secrets.TWITTER_SECRET }}
-      DOORKEEPER_AUTH_TOKEN: ${{ secrets.DOORKEEPER_AUTH_TOKEN }}
-      OAUTH_CONSUMER_KEY: ${{ secrets.OAUTH_CONSUMER_KEY }}
-      OAUTH_CONSUMER_SECRET: ${{ secrets.OAUTH_CONSUMER_SECRET }}
-      OAUTH_APP_TOKEN: ${{ secrets.OAUTH_APP_TOKEN }}
-      RAILS_MAX_THREADS: ${{ secrets.RAILS_MAX_THREADS }}
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      REDIS_URL: ${{ secrets.REDIS_URL }}
-      API_PORT: ${{ secrets.API_PORT }}
-      CONTAINER_PORT: ${{ secrets.CONTAINER_PORT }}
-      FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-      FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-      FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-      FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-      FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-      FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
     steps:
-      - uses: actions/checkout@v2.0.0
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: cache docker image
+        id: cache-docker-image
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.IMAGE_CACHE_DIR }}
+          key: ${{ runner.os }}-${{ env.IMAGE_CACHE_KEY }}-${{ hashFiles('front/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.IMAGE_CACHE_KEY }}-
+      - name: docker load
+        id: docker-load
+        if: steps.cache-docker-image.outputs.cache-hit == 'true'
+        run: docker image load -i ${IMAGE_CACHE_DIR}/image.tar
+      - name: Docker build
+        id: docker-build
+        run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 front
+      - name: Docker tag and save
+        id: docker-tag-save
+        if: steps.cache-docker-image.outputs.cache-hit != 'true'
+        run: mkdir -p ${IMAGE_CACHE_DIR}
+          && docker image tag ${APP_IMAGE_TAG} ${APP_IMAGE_CACHE_TAG}
+          && docker image save -o ${IMAGE_CACHE_DIR}/image.tar ${APP_IMAGE_CACHE_TAG}
+
+  test:
+    needs: image-cache-or-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: cache docker image
+        id: cache-docker-image
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.IMAGE_CACHE_DIR }}
+          key: ${{ runner.os }}-${{ env.IMAGE_CACHE_KEY }}-${{ hashFiles('front/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.IMAGE_CACHE_KEY }}-
+      - name: docker load
+        id: docker-load
+        if: steps.cache-docker-image.outputs.cache-hit == 'true'
+        run: docker image load -i ${IMAGE_CACHE_DIR}/image.tar
+      - name: Docker build
+        id: docker-build
+        run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 front
       - name: docker-compose up
-        run: docker-compose up -d
+        run: docker-compose up -d front
       - name: test
         run: docker-compose exec -T front yarn run test
-
