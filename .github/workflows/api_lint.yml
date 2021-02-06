@@ -18,4 +18,5 @@ jobs:
         with:
           rubocop_version: 1.8.1
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          rubocop_flags: --config api/.rubocop.yml api/
           reporter: github-pr-review 
