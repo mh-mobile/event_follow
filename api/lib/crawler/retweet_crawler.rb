@@ -10,7 +10,7 @@ class RetweetCrawler
     begin
       process_retweets(target_tweet)
       process_quoted_retweets(target_tweet)
-    rescue Faraday::ResourceNotFound => error
+    rescue Faraday::ResourceNotFound
       target_tweet&.destroy
     end
   end

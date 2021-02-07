@@ -9,6 +9,7 @@ class OgpClient
       response = connection.get("")
       @body = response.body
       open_graph = OGP::OpenGraph.new(response.body)
+      open_graph
     end
   end
 

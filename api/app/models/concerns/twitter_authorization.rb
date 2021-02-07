@@ -63,6 +63,7 @@ module TwitterAuthorization
       encoded_value = ERB::Util.url_encode(params[key])
       result += "&" if result.present?
       result += "#{encoded_key}=#{encoded_value}"
+      result
     end
   end
 
@@ -85,6 +86,7 @@ module TwitterAuthorization
         result += ", "
       end
       result += "#{encoded_key}=\"#{encoded_value}\""
+      result
     end
 
     {
