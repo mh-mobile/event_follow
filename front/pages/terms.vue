@@ -7,10 +7,10 @@
 import { defineComponent } from "@nuxtjs/composition-api"
 import TermsContent from "@/components/TermsContent.vue"
 export default defineComponent({
-  layout: "unauthorized_default",
   components: {
     TermsContent
-  }
+  },
+  layout: "unauthorized_default"
 })
 </script>
 

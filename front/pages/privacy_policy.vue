@@ -7,10 +7,10 @@
 import { defineComponent } from "@nuxtjs/composition-api"
 import PrivacyPolicyContent from "@/components/PrivacyPolicyContent.vue"
 export default defineComponent({
-  layout: "unauthorized_default",
   components: {
     PrivacyPolicyContent
-  }
+  },
+  layout: "unauthorized_default"
 })
 </script>
 
