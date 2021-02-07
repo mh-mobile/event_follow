@@ -38,7 +38,6 @@ import {
   computed,
   reactive,
   toRefs,
-  onMounted,
   watch
 } from "@nuxtjs/composition-api"
 import firebase from "firebase/app"

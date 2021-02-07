@@ -12,12 +12,12 @@ import HomeTwitterLogin from "@/components/HomeTwitterLogin.vue"
 import HomeHowItWorks from "@/components/HomeHowItWorks.vue"
 import { defineComponent } from "@nuxtjs/composition-api"
 export default defineComponent({
-  layout: "unauthorized_default",
   components: {
     HomeConcept,
     HomeTwitterLogin,
     HomeHowItWorks
-  }
+  },
+  layout: "unauthorized_default",
 })
 </script>
 

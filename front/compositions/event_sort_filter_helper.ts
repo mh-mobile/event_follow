@@ -2,8 +2,8 @@ import { computed, reactive } from "@nuxtjs/composition-api"
 import { useModalHelper } from "@/compositions/modal_helper"
 
 type ConditionItem = {
-  name: String
-  value: String
+  name: string
+  value: string
 }
 
 export const useEventSortFilter = () => {

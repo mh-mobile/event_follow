@@ -1,6 +1,5 @@
 import { defineNuxtMiddleware } from "@nuxtjs/composition-api"
 import "firebase/auth"
-import { state } from "~/store"
 
 export default defineNuxtMiddleware(({ store, route, redirect }) => {
   if (route.name === "terms" || route.name === "privacy_policy") {

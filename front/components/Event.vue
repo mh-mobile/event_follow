@@ -34,18 +34,6 @@ import {
 import { useEvent } from "@/compositions/event_helper"
 
 export default defineComponent({
-  head: {
-    script: [
-      {
-        hid: "twitter",
-        type: "text/javascript",
-        src: "//platform.twitter.com/widgets.js",
-        async: true,
-        defer: true,
-        body: true
-      }
-    ]
-  },
   components: {
     EventHeld,
     FriendsList
@@ -82,6 +70,18 @@ export default defineComponent({
       eventLogoImage: eventLogoImage(),
       root
     }
+  },
+  head: {
+    script: [
+      {
+        hid: "twitter",
+        type: "text/javascript",
+        src: "//platform.twitter.com/widgets.js",
+        async: true,
+        defer: true,
+        body: true
+      }
+    ]
   }
 })
 </script>

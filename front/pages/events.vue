@@ -40,7 +40,6 @@ declare global {
 }
 
 export default defineComponent({
-  layout: "authorized_default",
   components: {
     EventsHeader,
     EventsContent,
@@ -48,6 +47,7 @@ export default defineComponent({
     Loading,
     TopScrollButton
   },
+  layout: "authorized_default",
   setup(props, { root }) {
     const state = reactive({
       events: [],
