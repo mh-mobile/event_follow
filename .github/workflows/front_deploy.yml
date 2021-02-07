@@ -1,33 +1,33 @@
-name: Deploy to Heroku (api)
+name: Deploy to Heroku (front)
 
 on:
   push:
     branches:
       - main
     paths:
-      - "api/**"
-      - ".github/workflows/api.yml"
+      - "front/**"
+      - ".github/workflows/front_deploy.yml"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.0.0
-      - name: Add api remote origin
-        run: git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_API_APP_NAME }}.git
-      - name: Deploy api to Heroku
-        run: git push heroku-api `git subtree split --prefix api ${GITHUB_REF}`:refs/heads/master --force
+      - name: Add front remote origin
+        run: git remote add heroku-front https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_FRONT_APP_NAME }}.git
+      - name: Deploy front to Heroku
+        run: git push heroku-front `git subtree split --prefix front ${GITHUB_REF}`:refs/heads/master --force
       - name: Slack notification on failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: danger
-          SLACK_TITLE: api deployment failure
+          SLACK_TITLE: front deployment failure
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: Slack notification on success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: good
-          SLACK_TITLE: api deployment success
+          SLACK_TITLE: front deployment success
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
