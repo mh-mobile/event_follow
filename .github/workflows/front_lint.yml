@@ -21,6 +21,6 @@ jobs:
       - name: yarn setup
         run: cd front && yarn install
       - name: eslint
-        run: cd front && yarn run lint | reviewdog -f=eslint -reporter=github-pr-review -fail-on-error=true
+        run: cd front && yarn run lint | reviewdog -f=eslint -reporter=github-pr-check -fail-on-error=true
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
