@@ -15,11 +15,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
       - name: yarn setup
         run: cd front && yarn install
       - name: eslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          eslint_flags: '--ext .ts,.js,.vue --ignore-path .gitignore front'
+        run: yarn run lint | reviewdog -f=eslint -reporter=github-pr-review -fail-on-error=true
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
