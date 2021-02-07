@@ -2,7 +2,6 @@
 
 class Api::FriendshipsController < Api::BaseController
   def index
-    user_ids = find_user_ids
     @users = User.where(id: find_user_ids)
   end
 
