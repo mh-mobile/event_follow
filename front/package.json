@@ -19,6 +19,7 @@
     "@nuxtjs/composition-api": "^0.16.4",
     "@nuxtjs/firebase": "^7.1.2",
     "@nuxtjs/proxy": "^2.0.1",
+    "@nuxtjs/sentry": "^5.0.1",
     "@types/jest": "^26.0.20",
     "@types/sanitize-html": "^1.27.0",
     "cookieparser": "^0.1.0",
