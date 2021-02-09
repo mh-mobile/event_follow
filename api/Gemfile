@@ -20,6 +20,8 @@ gem "clockwork"
 gem "rack-cors"
 gem "firebase-auth-rails"
 gem "skylight"
+gem "sentry-ruby"
+gem "sentry-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -35,6 +35,7 @@ services:
       RAILS_MAX_THREADS: $RAILS_MAX_THREADS
       RAILS_MASTER_KEY: $RAILS_MASTER_KEY
       REDIS_URL: $REDIS_URL
+      API_SENTRY_DSN: $API_SENTRY_DSN
     volumes:
       - ./api:/app
     depends_on:
