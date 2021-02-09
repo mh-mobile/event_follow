@@ -35,5 +35,24 @@ module Api
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.autoload_paths += Dir["#{config.root}/lib/crawler"]
+
+    Sentry.init do |config|
+      config.dsn = ENV["API_SENTRY_DSN"]
+      config.breadcrumbs_logger = [:active_support_logger]
+    
+      # To activate performance monitoring, set one of these options.
+      # We recommend adjusting the value in production:
+      config.traces_sample_rate = 0.5
+      # or
+      config.traces_sampler = lambda do |context|
+        true
+      end
+
+      filter = ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+      config.before_send = lambda do |event, hint|
+        event.request.data = filter.filter(event.request.data)
+        event
+      end
+    end
   end
 end

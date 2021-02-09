@@ -208,6 +208,16 @@ GEM
       ansi
       ast
     ruby2_keywords (0.0.2)
+    sentry-rails (4.2.0)
+      rails (>= 5.0)
+      sentry-ruby-core (~> 4.2.0)
+    sentry-ruby (4.2.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      faraday (>= 1.0)
+      sentry-ruby-core (= 4.2.1)
+    sentry-ruby-core (4.2.1)
+      concurrent-ruby
+      faraday
     skylight (4.3.2)
       skylight-core (= 4.3.2)
     skylight-core (4.3.2)
@@ -250,6 +260,8 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.1.0)
   rspec-rails (~> 4.0.2)
+  sentry-rails
+  sentry-ruby
   skylight
   spring
   tzinfo-data
