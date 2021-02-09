@@ -21,7 +21,7 @@
     "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/sentry": "^5.0.1",
     "@types/jest": "^26.0.20",
-    "@types/sanitize-html": "^1.27.0",
+    "@types/sanitize-html": "^1.27.1",
     "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
     "firebase": "^8.2.0",
