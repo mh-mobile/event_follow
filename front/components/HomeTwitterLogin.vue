@@ -58,11 +58,11 @@ export default defineComponent({
               root.$router.replace("/events")
             })
             .catch((error) => {
-              console.log(`error: ${error}`)
+              root.$sentry.captureException(error)
             })
         })
         .catch(function (error) {
-          console.log(`error: ${error}`)
+          root.$sentry.captureException(error)
         })
     }
 

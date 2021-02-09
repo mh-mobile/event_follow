@@ -71,7 +71,7 @@ export default defineComponent({
         })
         .catch((error) => {
           root.$nuxt.$loading.finish()
-          console.log(`error: ${error}`)
+          root.$sentry.captureException(error)
           if (error.response.status === 401) {
             logout()
           }
