@@ -34,7 +34,7 @@
     "sass-loader": "^10.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.12.13",
     "@babel/preset-env": "^7.12.11",
     "@nuxt/test-utils": "^0.1.2",
     "@nuxt/types": "^2.14.11",
