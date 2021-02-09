@@ -61,6 +61,8 @@ services:
         FIREBASE_APP_ID: $FIREBASE_APP_ID
         FIREBASE_MEASUREMENT_ID: $FIREBASE_MEASUREMENT_ID
     image: event-front-development:1.0.0
+    environment:
+      SENTRY_DSN: $SENTRY_DSN
     command: yarn run dev
     volumes:
       - ./front:/app
