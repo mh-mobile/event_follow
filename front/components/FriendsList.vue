@@ -124,7 +124,7 @@ export default defineComponent({
             state.tweets = response.data
           })
           .catch((error) => {
-            console.log(`error: ${error}`)
+            root.$sentry.captureException(error)
           })
       }
     }
@@ -160,7 +160,7 @@ export default defineComponent({
           state.friends = response.data
         })
         .catch((error) => {
-          console.log(`error: ${error}`)
+          root.$sentry.captureException(error)
         })
     }
 

@@ -11,14 +11,14 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ commit }: { commit: any }, { req }: { req: any }) {
+  nuxtServerInit({ commit }: { commit: any }, { req, $sentry }: { req: any, $sentry: any }) {
     let auth = null
     if (req.headers.cookie) {
       const parsed = cookieParser.parse(req.headers.cookie)
       try {
         auth = JSON.parse(parsed.auth)
       } catch (error) {
-        console.log(`error: ${error}`)
+        $sentry.captureException(error)
       }
     }
     commit("setAuth", auth)

@@ -106,7 +106,7 @@ export default defineComponent({
         .catch((error) => {
           state.isInitialLoading = false
           root.$nuxt.$loading.finish()
-          console.log(`error: ${error}`)
+          root.$sentry.captureException(error)
           if (error.response.status === 401) {
             logout()
           }
