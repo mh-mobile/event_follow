@@ -2,12 +2,12 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/front"
-    target_branch: "develop"
+    target-branch: "develop"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "bundler"
     directory: "/api"
-    target_branch: "develop"
+    target-branch: "develop"
     schedule:
       interval: "daily"
