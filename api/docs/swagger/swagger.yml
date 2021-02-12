@@ -123,8 +123,46 @@ paths:
       responses:
         '204':
           description: 退会処理成功
+          
+  "/api/sessions":
+    post: 
+      description: Twitter認証でログイン（新規登録）処理を行ます。
+      security:
+        - Bearer: []
+      requestBody:
+        "$ref": "#/components/requestBodies/sessionBody"
+      responses:
+        '200':
+          description: status 200
+          content:
+            'application/json':
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
 components:
   schemas:
+    session:
+      type: object
+      required:
+        - token
+        - access_token
+        - access_token_secret
+      properties:
+        token:
+          type: string
+          description: Twitter認証のJWTトークン
+          example: 11111111
+        access_token:
+          type: string
+          description: Twitter認証のアクセストークン
+          example: 22222222
+        access_token_secret:
+          type: string
+          description: Twitter認証のアクセストークンシークレット
+          example: 33333333
     user:
       type: object
       required:
@@ -264,4 +302,10 @@ components:
       type: http
       scheme: bearer
       description: jwt authentication
+  requestBodies:
+    sessionBody:
+      content:
+        'application/json':
+          schema:
+            "$ref": "#/components/schemas/session"
       
