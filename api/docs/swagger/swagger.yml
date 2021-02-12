@@ -77,7 +77,45 @@ paths:
                       example: null
                     user:
                       "$ref": "#/components/schemas/user"
-                    
+  "/api/events":
+    get:
+      description: フォローユーザーが投稿したイベント一覧を取得します。
+      parameters:
+        - name: page
+          description: ページID
+          in: query
+          schema:
+            type: string
+            example: 1
+        - name: sort
+          description: ソート順
+          in: query
+          schema:
+            type: string
+            example: recent_order
+        - name: time
+          description: 時間順
+          in: query
+          schema:
+            type: string
+            example: past_8_hours
+        - name: friends
+          description: 友達順
+          in: query
+          schema:
+            type: string
+            example: one_or_more_friends
+      responses:
+        '200':
+          description: status 200
+          content:
+            'application/json':
+              schema:
+                "$ref": "#/components/schemas/event_info"
+                  
+              
+      security:
+        - Bearer: []
 components:
   schemas:
     user:
@@ -100,6 +138,120 @@ components:
         profile_image:
           type: string
           example: https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_normal.jpg
+    event_info:
+      type: object
+      required:
+        - meta
+        - data
+      properties:
+        meta:
+          "$ref": "#/components/schemas/event_meta"
+        data:
+          "$ref": "#/components/schemas/event_data"
+    event_meta:
+      type: object
+      required: 
+        - current_page
+        - prev_page
+        - next_page
+        - limit_value
+        - total_pages
+        - total_count
+        - event_sort_type
+        - time_filter_type
+        - friends_filter_type
+      properties:
+        current_page:
+          type: integer
+          example: 1
+        prev_page:
+          type: integer
+          nullable: true
+          example: null
+        next_page:
+          type: integer
+          nullable: true
+          example: null
+        limit_value:
+          type: integer
+          example: 10
+        total_pages:
+          type: integer
+          example: 1
+        total_count:
+          type: integer
+          example: 5
+        event_sort_type:
+          type: string
+          example: friends_number_order
+        time_filter_type:
+          type: string
+          example: past_6_days  
+        friends_filter_type:
+          type: string
+          example: five_or_more_friends
+    event_data:
+      type: object
+      required:
+        - event
+        - extra
+      properties:
+        event:
+          "$ref": "#/components/schemas/event_item"
+        extra:
+          "$ref": "#/components/schemas/event_extra"
+    event_item:
+      type: object
+      required:
+        - id
+        - site_id
+        - site_event_id
+        - title
+        - started_at
+        - ended_at
+        - banner
+        - url
+        - description
+      properties:
+        id:
+          type: integer
+          example: 1520
+        site_id:
+          type: integer
+          example: 1
+        site_event_id:
+          type: integer
+          example: 204081
+        title:
+          type: string
+          example: mokumoku.rb
+        started_at: 
+          type: string
+          example: "2021-02-12T23:30:00.000Z"
+        ended_at:
+          type: string 
+          example: "2021-02-13T01:00:00.000Z"
+        banner:
+          type: string
+          example: https://example.com/mokumoku.png
+        url:
+          type: string
+          example: https://example.com/event/204081/
+        description:
+          type: string
+          example: もくもく会を開催します
+    event_extra:
+      type: object
+      required:
+        - user_ids
+        - friends_number
+      properties:
+        user_ids:
+          type: string
+          example: 1111,2222,3333
+        friends_number:
+          type: integer
+          example: 3
   securitySchemes:
     Bearer:
       type: http
