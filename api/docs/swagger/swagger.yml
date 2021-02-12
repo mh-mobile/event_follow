@@ -105,6 +105,8 @@ paths:
           schema:
             type: string
             example: one_or_more_friends
+      security:
+        - Bearer: []
       responses:
         '200':
           description: status 200
@@ -113,9 +115,14 @@ paths:
               schema:
                 "$ref": "#/components/schemas/event_info"
                   
-              
+  "/api/users":
+    delete:
+      description: ログインユーザーの退会処理を行ます。
       security:
         - Bearer: []
+      responses:
+        '204':
+          description: 退会処理成功
 components:
   schemas:
     user:
