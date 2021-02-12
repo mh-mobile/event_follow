@@ -26,6 +26,8 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/user"
+        '401':
+          description: 認証エラー
 
 
   "/api/following_tweets":
@@ -77,6 +79,8 @@ paths:
                       example: null
                     user:
                       "$ref": "#/components/schemas/user"
+        '401':
+          description: 認証エラー
   "/api/events":
     get:
       description: フォローユーザーが投稿したイベント一覧を取得します。
@@ -114,6 +118,8 @@ paths:
             'application/json':
               schema:
                 "$ref": "#/components/schemas/event_info"
+        '401':
+          description: 認証エラー
                   
   "/api/users":
     delete:
@@ -123,12 +129,12 @@ paths:
       responses:
         '204':
           description: 退会処理成功
+        '401':
+          description: 認証エラー
           
   "/api/sessions":
     post: 
       description: Twitter認証でログイン（新規登録）処理を行ます。
-      security:
-        - Bearer: []
       requestBody:
         "$ref": "#/components/requestBodies/sessionBody"
       responses:
