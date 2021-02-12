@@ -6,6 +6,7 @@ info:
 paths:
   "/api/friendships":
     get:
+      description: 指定のユーザーIDのユーザー情報を取得します。
       parameters:
         - name: user_ids
           description: ユーザーIDの配列
@@ -24,29 +25,84 @@ paths:
               schema:
                 type: array
                 items:
+                  "$ref": "#/components/schemas/user"
+
+
+  "/api/following_tweets":
+    get: 
+      description: 指定のイベントIDに対するフォローユーザーのツイート情報を取得する
+      parameters:
+        - name: event_id
+          description: イベントID
+          in: query
+          required: true
+          schema:
+            type: string
+            example: 2
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: status 200
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
                   type: object
                   required:
                     - id
-                    - screen_name
-                    - name
-                    - profile_iamge
+                    - text
+                    - tweeted_at
+                    - quoted_tweet_id
+                    - retweeted_tweet_id
+                    - user
                   properties:
-                    id:
+                    id: 
                       type: string
-                      example: 13439343432343
-                    screen_name:
+                      example: 138888888
+                    text:
                       type: string
-                      example: mh_mobiler
-                    name:
+                      example: もくもく会を開催します
+                    tweeted_at:
                       type: string
-                      example: mh_mobile
-                    profile_image:
+                      example: "2021-02-11T02:26:35.000Z"
+                    quoted_tweet_id:
                       type: string
-                      example: https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_normal.jpg
-
+                      nullable: true
+                      example: null
+                    retweeted_tweet_id:
+                      type: string
+                      nullable: true
+                      example: null
+                    user:
+                      "$ref": "#/components/schemas/user"
+                    
 components:
+  schemas:
+    user:
+      type: object
+      required:
+        - id
+        - screen_name
+        - name
+        - profile_image
+      properties:
+        id:
+          type: string
+          example: 13439343432343
+        screen_name:
+          type: string
+          example: mh_mobiler
+        name:
+          type: string
+          example: mh_mobile
+        profile_image:
+          type: string
+          example: https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_normal.jpg
   securitySchemes:
     Bearer:
       type: http
       scheme: bearer
       description: jwt authentication
+      
