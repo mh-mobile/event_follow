@@ -3,6 +3,9 @@ info:
   title: Event Follow API
   description: Event FollowのRailsのAPI定義
   version: 1.0.0
+servers:
+  - url: "http://localhost:8080"
+    description: "local api server"
 paths:
   "/api/friendships":
     get:
