@@ -5,18 +5,18 @@ services:
     image: redocly/redoc:latest
     container_name: redoc
     volumes:
-      - ./swagger:/usr/share/nginx/html/swagger
+      - ./openapi:/usr/share/nginx/html/openapi
     environment:
-      SPEC_URL: swagger/swagger.yml
+      SPEC_URL: openapi/openapi.yml
     ports:
       - "8081:80"
   swagger-ui:
     image: swaggerapi/swagger-ui:latest
     container_name: swagger-ui
     volumes:
-      - ./swagger:/usr/share/nginx/html/swagger
+      - ./openapi:/usr/share/nginx/html/openapi
     environment:
-      API_URL: swagger/swagger.yml
+      API_URL: openapi/openapi.yml
     ports:
       - "8082:8080"
   swagger-editor:
