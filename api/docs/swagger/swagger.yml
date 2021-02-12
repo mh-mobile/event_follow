@@ -1,13 +1,52 @@
 openapi: 3.0.0
 info:
-  title: Sample API
-  description: A short description of API.
-  termsOfService: http://example.com/terms/
-  contact:
-    name: API support
-    url: http://www.example.com/support
-    email: support@example.com
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Event Follow API
+  description: Event FollowのRailsのAPI定義
   version: 1.0.0
+paths:
+  "/api/friendships":
+    get:
+      parameters:
+        - name: user_ids
+          description: ユーザーIDの配列
+          in: query
+          required: true
+          schema:
+            type: string
+            example: 11111,22222,33333
+      security:
+        - Bearer: []
+      responses:
+        '200': 
+          description: status 200
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - screen_name
+                    - name
+                    - profile_iamge
+                  properties:
+                    id:
+                      type: string
+                      example: 13439343432343
+                    screen_name:
+                      type: string
+                      example: mh_mobiler
+                    name:
+                      type: string
+                      example: mh_mobile
+                    profile_image:
+                      type: string
+                      example: https://pbs.twimg.com/profile_images/1212203727597129729/ET2dFF9i_normal.jpg
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: jwt authentication
