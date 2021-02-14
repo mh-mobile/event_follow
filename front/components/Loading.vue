@@ -1,6 +1,6 @@
 <template lang="pug">
 .loader-wrapper
-  .loader.is-loadingg
+  .loader.is-loading
 </template>
 
 <style lang="scss" scoped>
