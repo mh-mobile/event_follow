@@ -1,7 +1,7 @@
 const path = require("path")
 
 module.exports = {
-  stories: ["../components/**/*.stories.js"],
+  stories: ["../components/**/*.stories.ts"],
   addons: [
     {
       name: "@storybook/addon-essentials",
@@ -21,6 +21,16 @@ module.exports = {
       use: ["style-loader", "css-loader", "sass-loader"],
       include: path.resolve(__dirname, "../")
     })
+
+    config.module.rules.push(
+      {
+        test: /\.pug$/,
+        use: [
+          { loader: 'pug-plain-loader' }
+        ]
+      }
+    );
+    
     return config
   }
 }
