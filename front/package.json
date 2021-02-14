@@ -10,7 +10,9 @@
     "test": "jest --config jest.config.js --env=jsdom test/**/*.ts",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint-fix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "prettier": "prettier --write **/*.{js,ts,vue}"
+    "prettier": "prettier --write **/*.{js,ts,vue}",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
@@ -31,7 +33,7 @@
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.1.0",
     "sanitize-html": "^2.3.2",
-    "sass-loader": "^10.1.0"
+    "sass-loader": "^10.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -40,11 +42,16 @@
     "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@storybook/addon-actions": "^6.1.17",
+    "@storybook/addon-essentials": "^6.1.17",
+    "@storybook/addon-links": "^6.1.17",
+    "@storybook/vue": "^6.1.17",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.15.0",
     "@vue/test-utils": "^1.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^26.5.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-loader": "^4.0.2",
@@ -52,6 +59,7 @@
     "eslint-plugin-vue": "^7.5.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "sass": "^1.32.7",
     "ts-jest": "^26.4.1",
     "vue-jest": "^3.0.4"
   }
