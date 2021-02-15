@@ -76,5 +76,15 @@ export default {
     FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
     FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
     FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
+  },
+  storybook: {
+    addons: [
+      "@storybook/addon-actions/register",
+      "@storybook/addon-backgrounds/register",
+      "@storybook/addon-controls/register",
+      "@storybook/addon-docs/register",
+      "@storybook/addon-toolbars/register",
+      "@storybook/addon-viewport/register",
+    ],
   }
 }
