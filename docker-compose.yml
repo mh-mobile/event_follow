@@ -70,6 +70,7 @@ services:
       - /app/node_modules
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
+      - "3003:3003"
 
   redis:
     container_name: event_redis
