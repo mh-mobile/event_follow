@@ -2158,14 +2158,15 @@
   dependencies:
     bulma "^0.9.0"
 
-"@nuxtjs/composition-api@^0.16.4":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/composition-api/-/composition-api-0.16.4.tgz#8f0aa7c9378b262fed71ad9fc46f87f1ef0e2a6f"
-  integrity sha512-L+r6WBYNI9/LokmCXMJQqpvff0aeghpT9Qi1zlUWpUwkVyym/HUV8thfENL0SzrswJrjT0XXrqfiyTH0uPs3gA==
+"@nuxtjs/composition-api@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/composition-api/-/composition-api-0.20.1.tgz#56389fb26e8faa92dd9cffb3927d71dc18a0e590"
+  integrity sha512-3Cde2h7EgfNwnV2HaZt1Kdtd588JEQ9Jtfp2nb6VldFpLTx4zeGzNqLSbGPl8XIruZPcxSb1bqwXFVT0HXkh6g==
   dependencies:
-    "@vue/composition-api" "1.0.0-beta.20"
+    "@vue/composition-api" "1.0.0-rc.1"
     defu "^3.2.2"
-    normalize-path "^3.0.0"
+    ufo "^0.6.6"
+    upath "^2.0.1"
 
 "@nuxtjs/eslint-config-typescript@^5.0.0":
   version "5.0.0"
@@ -3729,12 +3730,12 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/composition-api@1.0.0-beta.20":
-  version "1.0.0-beta.20"
-  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.0.0-beta.20.tgz#9909ed5844b7bf565a220b26d85b9f0158856dd7"
-  integrity sha512-Lpaxt9+3cy97QJoCJ81qNe6TeGg092iHtqilKdbE5NapHqoSwiuYUSHX2ANIaO+C1Q1J7bITv1/saLUMNuwQOg==
+"@vue/composition-api@1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.0.0-rc.1.tgz#d5286bbaffcd1987e56d5e3a9f26bfb6023e7c41"
+  integrity sha512-6I5LkfA+VvVOLZufRugzQ5sWKQH81/Cr9gRLidDSeUmjRPolEEWgG4MAnWtBR5zgP5qbRMwZJ4IEYtKhnadMQQ==
   dependencies:
-    tslib "^2.0.1"
+    tslib "^2.0.3"
 
 "@vue/shared@3.0.5":
   version "3.0.5"
@@ -15675,7 +15676,7 @@ tslib@^1.11.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.1, tslib@^2.0.3:
+tslib@^2.0.3:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
