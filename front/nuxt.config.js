@@ -80,11 +80,19 @@ export default {
   storybook: {
     addons: [
       "@storybook/addon-actions/register",
-      "@storybook/addon-backgrounds/register",
       "@storybook/addon-controls/register",
       "@storybook/addon-docs/register",
       "@storybook/addon-toolbars/register",
-      "@storybook/addon-viewport/register",
+      "@storybook/addon-viewport/register"
     ],
+    parameters: {
+      backgrounds: {
+        default: "white",
+        values: [
+          { name: "white", value: "#ffffff" },
+          { name: "gray", value: "#aaaaaa" }
+        ]
+      }
+    }
   }
 }
