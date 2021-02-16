@@ -5,6 +5,42 @@ export default {
   component: EventSortFilter,
   parameters: {
     layout: "centered"
+  },
+  argTypes: {
+    eventSortType: {
+      control: {
+        type: "inline-radio",
+        options: ["friends_number_order", "recent_order", "created_order", "closeness_order"]
+      }
+    },
+    timeFilterType: {
+      control: {
+        type: "inline-radio",
+        options: [
+          "past_8_hours",
+          "past_24_hours",
+          "past_2_days",
+          "past_3_days",
+          "past_4_days",
+          "past_5_days",
+          "past_6_days",
+          "past_1_weeks",
+          "past_all",
+        ]
+      }
+    },
+    friendsFilterType: {
+      control: {
+        type: "inline-radio",
+        options: [
+          "one_or_more_friends",
+          "two_or_more_friends",
+          "three_or_more_friends",
+          "four_or_more_friends",
+          "five_or_more_friends"
+        ]
+      }
+    }
   }
 }
 
