@@ -11,8 +11,8 @@
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint-fix": "eslint --fix --ext .ts,.js,.vue --ignore-path .gitignore .",
     "prettier": "prettier --write **/*.{js,ts,vue}",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "nuxt storybook",
+    "build-storybook": "nuxt storybook build"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
