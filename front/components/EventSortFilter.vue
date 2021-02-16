@@ -26,7 +26,6 @@
                 select(v-model="selectedFriendsFilterCondition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
                   option(v-for="item in friendsFilterTypeItems" :value="item.value" :key="item.value")
                     | {{ item.name }}
-  </div>
 </template>
 
 <script>
