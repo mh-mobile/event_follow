@@ -35,4 +35,9 @@ group :development do
   gem "faraday_curl"
 end
 
+group :test do
+  gem "committee"
+  gem 'committee-rails'
+end
+
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
