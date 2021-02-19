@@ -63,4 +63,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.add_setting :committee_options  
+  config.committee_options = {
+    schema_path: Rails.root.join("docs", "openapi", "openapi.yml")
+  }
+  include Committee::Rails::Test::Methods
 end

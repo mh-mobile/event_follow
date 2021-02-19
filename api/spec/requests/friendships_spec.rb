@@ -44,5 +44,25 @@ RSpec.describe "Friendships", type: :request do
       get "/api/friendships", headers: @headers
       expect(response).to have_http_status(401)
     end
+
+    it "validate no request parameters" do
+      stub_firebase_id_token
+
+      authenticate
+      get "/api/friendships", headers: @headers
+      expect {
+        assert_request_schema_confirm
+      }.to raise_error(Committee::InvalidRequest)
+      expect(response).to have_http_status(200)
+    end
+
+    it "validate request parameters" do
+      stub_firebase_id_token
+
+      authenticate
+      get "/api/friendships", params: { user_ids: "1111,2222" }, headers: @headers
+      assert_request_schema_confirm
+      expect(response).to have_http_status(200)
+    end
   end
 end
