@@ -2207,10 +2207,10 @@
   dependencies:
     http-proxy-middleware "^1.0.6"
 
-"@nuxtjs/sentry@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/sentry/-/sentry-5.0.1.tgz#ba102123f05840c2f511e91fc0efab581e868ee7"
-  integrity sha512-v5YJHgBKFdHpQnWZLA38YEZO46mR+pXGnhEUHAP1U01rE8w8DKyoxH/XrbGZCQtq475T12GiL5bzEB+LrlkbbQ==
+"@nuxtjs/sentry@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sentry/-/sentry-5.0.2.tgz#d7dbf55d262bff1e8192d586b648fdea96693f73"
+  integrity sha512-cfyrWZFD69aku54Jv5pQhRvUS9OLWkwewSPhtvb/Sm1BM4v33tW5EKLdUQE4/7+q9VSmULbWX0UCv24NYv5+tg==
   dependencies:
     "@sentry/browser" "^6.1.0"
     "@sentry/integrations" "^6.1.0"
