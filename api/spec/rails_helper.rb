@@ -66,7 +66,8 @@ RSpec.configure do |config|
 
   config.add_setting :committee_options  
   config.committee_options = {
-    schema_path: Rails.root.join("docs", "openapi", "openapi.yml")
+    schema_path: Rails.root.join("docs", "openapi", "openapi.yml"),
+    parse_response_by_content_type: false
   }
   include Committee::Rails::Test::Methods
 end
