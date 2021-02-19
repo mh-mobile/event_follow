@@ -4,7 +4,7 @@ RSpec.describe "Friendships", type: :request do
 
   describe "GET /friendships" do
     before do
-      User.create!(id: "123456789", name: "hoge", screen_name: "hoge", uid: "theUserID", profile_image: "https://example.com/my_photo.png")
+      @hoge_user = User.create!(id: "123456789", name: "hoge", screen_name: "hoge", uid: "theUserID", profile_image: "https://example.com/my_photo.png")
       jwt = JSON.parse(File.read(file_fixture('jwt.json')))
       @token = jwt['jwt_token']
       @certificate = JSON.parse(File.read(file_fixture('certificates.json')))
@@ -62,6 +62,26 @@ RSpec.describe "Friendships", type: :request do
       authenticate
       get "/api/friendships", params: { user_ids: "1111,2222" }, headers: @headers
       assert_request_schema_confirm
+      expect(response).to have_http_status(200)
+    end
+
+    it "validate response" do
+      stub_firebase_id_token
+
+      friend_1 = User.create!(id: "1111", name: "foo", screen_name: "foo", uid: "fooID", profile_image: "https://example.com/my_photo.png")
+      friend_2 = User.create!(id: "2222", name: "bar", screen_name: "bar", uid: "barID", profile_image: "https://example.com/my_photo.png")
+      @hoge_user.follow!(friend_1)
+      @hoge_user.follow!(friend_2)
+
+      authenticate
+      get "/api/friendships", params: { user_ids: "1111,2222" }, headers: @headers
+      assert_response_schema_confirm
+
+      body = JSON.parse(response.body)
+      [friend_1, friend_2].each_with_index do |user, index|
+        expect(body[index]["id"]).to eq user.id
+      end
+
       expect(response).to have_http_status(200)
     end
   end
