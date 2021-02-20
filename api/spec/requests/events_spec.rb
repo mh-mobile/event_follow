@@ -1,17 +1,18 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Events", type: :request do
-
   describe "GET /events" do
     before do
       @hoge_user = create(:hoge, user_event_setting: build(:default_setting))
-      jwt = JSON.parse(File.read(file_fixture('jwt.json')))
-      @token = jwt['jwt_token']
-      @certificate = JSON.parse(File.read(file_fixture('certificates.json')))
+      jwt = JSON.parse(File.read(file_fixture("jwt.json")))
+      @token = jwt["jwt_token"]
+      @certificate = JSON.parse(File.read(file_fixture("certificates.json")))
       @project_ids = ["firebase-id-token"]
     end
 
-    def authenticate token: @token
+    def authenticate(token: @token)
       @headers ||= {}
       @headers["Authorization"] = "Bearer #{token}"
       @headers
@@ -71,7 +72,7 @@ RSpec.describe "Events", type: :request do
         hiro_user = create(:hiro)
         create(:default_friendship, follower: @hoge_user, followed: taro_user)
         create(:default_friendship, follower: @hoge_user, followed: hiro_user)
-  
+
         100.times do |i|
           event = create(:event_template, site: site_1)
           if i < 5
@@ -87,7 +88,7 @@ RSpec.describe "Events", type: :request do
 
       it "validate response with no params" do
         stub_firebase_id_token
-  
+
         authenticate
         get "/api/events", headers: @headers
         body = JSON.parse(response.body)
@@ -102,7 +103,7 @@ RSpec.describe "Events", type: :request do
 
       it "validate response with params page: 2, sort: \"recent_order\", friends: \"one_or_more_friends\", time: \"past_24_hours\"" do
         stub_firebase_id_token
-  
+
         authenticate
         get "/api/events", params: { page: 2, sort: "recent_order", friends: "one_or_more_friends", time: "past_24_hours" }, headers: @headers
         body = JSON.parse(response.body)
@@ -117,7 +118,7 @@ RSpec.describe "Events", type: :request do
 
       it "validate response with params page: 1, sort: \"created_order\", friends: \"two_or_more_friends\", time: \"past_24_hours\"" do
         stub_firebase_id_token
-  
+
         authenticate
         get "/api/events", params: { page: 1, sort: "created_order", friends: "two_or_more_friends", time: "past_24_hours" }, headers: @headers
         body = JSON.parse(response.body)
@@ -131,5 +132,4 @@ RSpec.describe "Events", type: :request do
       end
     end
   end
-
 end
