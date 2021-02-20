@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+class DummyUser < Struct.new(:name, :screen_name, :profile_image_url_https, :id_str)
+end
+
+RSpec.describe "Sessions", type: :request do
+  describe "POST /api/sessions" do
+    before do
+      jwt = JSON.parse(File.read(file_fixture("jwt.json")))
+      @token = jwt["jwt_token"]
+      @certificate = JSON.parse(File.read(file_fixture("certificates.json")))
+      @project_ids = ["firebase-id-token"]
+    end
+
+    def verify_credentials
+      DummyUser.new("test_screen_name", "test_name", "https://example.com/my_photo.png", "987654321")
+    end
+
+    def headers
+      @headers ||= {}
+      @headers["Content-Type"] = "application/json"
+      @headers
+    end
+
+    def stub_firebase_id_token
+      allow_any_instance_of(FirebaseIdToken::Certificates).to receive(:local_certs).and_return(@certificate)
+      allow_any_instance_of(FirebaseIdToken::Configuration).to receive(:project_ids).and_return(@project_ids)
+    end
+
+    def stub_twitter_reuest
+      allow_any_instance_of(TwitterRequest).to receive(:verify_credentials).and_return(verify_credentials)
+    end
+
+    it "validate no request params" do
+      stub_firebase_id_token
+
+      post "/api/sessions"
+      body = JSON.parse(response.body)
+      expect {
+        assert_request_schema_confirm
+      }.to raise_error(Committee::InvalidRequest)
+      expect(body["status"]).to eq "NG"
+      expect(body["error_message"]).to eq "認証情報が不正です"
+      expect(response).to have_http_status(200)
+    end
+
+    it "validate authorized request params" do
+      stub_firebase_id_token
+      stub_twitter_reuest
+
+      dummy_access_token = "dummy_access_token"
+      dummy_access_token_secret =  "dummy_access_token_secret"
+
+      post "/api/sessions",
+        params: { token: @token, access_token: dummy_access_token, access_token_secret: dummy_access_token_secret },
+        headers: headers, as: :json
+      body = JSON.parse(response.body)
+      assert_request_schema_confirm
+      assert_response_schema_confirm
+      expect(body["status"]).to eq "OK"
+
+      login_user = User.first
+      dummy_user = verify_credentials
+      expect(login_user.name).to eq dummy_user.name
+      expect(login_user.screen_name).to eq dummy_user.screen_name
+      expect(login_user.profile_image).to eq dummy_user.profile_image_url_https
+      expect(login_user.id).to eq dummy_user.id_str
+      expect(login_user.uid).to eq "theUserID"
+      expect(response).to have_http_status(200)
+    end
+  end
+end
