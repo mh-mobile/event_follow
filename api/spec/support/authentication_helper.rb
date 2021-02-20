@@ -19,7 +19,7 @@ module AuthenticationHelper
     allow_any_instance_of(FirebaseIdToken::Configuration).to receive(:project_ids).and_return(@project_ids)
   end
 
-  def stub_twitter_reuest
+  def stub_twitter_request
     allow_any_instance_of(TwitterRequest).to receive(:verify_credentials).and_return(verify_credentials)
   end
 end

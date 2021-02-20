@@ -36,7 +36,7 @@ RSpec.describe "Sessions", type: :request do
 
     it "validate authorized request params" do
       stub_firebase_id_token
-      stub_twitter_reuest
+      stub_twitter_request
 
       dummy_access_token = "dummy_access_token"
       dummy_access_token_secret =  "dummy_access_token_secret"
