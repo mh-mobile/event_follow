@@ -52,6 +52,18 @@ RSpec.describe "Events", type: :request do
       get "/api/events", headers: @headers
       expect(response).to have_http_status(401)
     end
+
+    it "validate no event response" do
+      stub_firebase_id_token
+
+      authenticate
+      get "/api/events", headers: @headers
+      assert_response_schema_confirm
+      body = JSON.parse(response.body)
+      expect(body["meta"]["total_count"]).to eq 0
+      expect(body["data"].count).to eq 0
+      expect(response).to have_http_status(200)
+    end
   end
 
 end
