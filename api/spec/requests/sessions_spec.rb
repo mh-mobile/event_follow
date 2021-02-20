@@ -21,10 +21,6 @@ RSpec.describe "Sessions", type: :request do
       @headers
     end
 
-    def stub_twitter_reuest
-      allow_any_instance_of(TwitterRequest).to receive(:verify_credentials).and_return(verify_credentials)
-    end
-
     it "validate no request params" do
       stub_firebase_id_token
 
