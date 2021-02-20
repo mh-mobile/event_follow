@@ -7,12 +7,12 @@ FactoryBot.define do
   end
 
   factory :site_2, class: Site do
-    id { 1 }
+    id { 2 }
     name { "Doorkeeper" }
   end
 
   factory :site_3, class: Site do
-    id { 1 }
+    id { 3 }
     name { "TECH PLAY" }
   end
 end
