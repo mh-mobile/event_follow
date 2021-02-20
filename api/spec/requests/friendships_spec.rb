@@ -4,7 +4,7 @@ RSpec.describe "Friendships", type: :request do
 
   describe "GET /friendships" do
     before do
-      @hoge_user = User.create!(id: "123456789", name: "hoge", screen_name: "hoge", uid: "theUserID", profile_image: "https://example.com/my_photo.png")
+      @hoge_user = create(:hoge)
       jwt = JSON.parse(File.read(file_fixture('jwt.json')))
       @token = jwt['jwt_token']
       @certificate = JSON.parse(File.read(file_fixture('certificates.json')))
