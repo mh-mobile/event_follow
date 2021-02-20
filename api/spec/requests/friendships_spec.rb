@@ -12,7 +12,7 @@ RSpec.describe "Friendships", type: :request do
       @project_ids = ["firebase-id-token"]
     end
 
-    def authenticate token: @token
+    def authenticate(token: @token)
       @headers ||= {}
       @headers["Authorization"] = "Bearer #{token}"
       @headers
