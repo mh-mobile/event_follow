@@ -201,7 +201,9 @@ components:
         meta:
           "$ref": "#/components/schemas/event_meta"
         data:
-          "$ref": "#/components/schemas/event_data"
+          type: array
+          items:
+            "$ref": "#/components/schemas/event_data"
     event_meta:
       type: object
       required: 
