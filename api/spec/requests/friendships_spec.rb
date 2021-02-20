@@ -55,13 +55,13 @@ RSpec.describe "Friendships", type: :request do
     it "validate response" do
       stub_firebase_id_token
 
-      friend_1 = User.create!(id: "1111", name: "foo", screen_name: "foo", uid: "fooID", profile_image: "https://example.com/my_photo.png")
-      friend_2 = User.create!(id: "2222", name: "bar", screen_name: "bar", uid: "barID", profile_image: "https://example.com/my_photo.png")
+      friend_1 = create(:hiro)
+      friend_2 = create(:taro)
       @hoge_user.follow!(friend_1)
       @hoge_user.follow!(friend_2)
 
       authenticate
-      get "/api/friendships", params: { user_ids: "1111,2222" }, headers: @headers
+      get "/api/friendships", params: { user_ids: "#{friend_1.id},#{friend_2.id}" }, headers: @headers
       assert_response_schema_confirm
 
       body = JSON.parse(response.body)
