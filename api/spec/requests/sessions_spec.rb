@@ -68,6 +68,8 @@ RSpec.describe "Sessions", type: :request do
       expect(login_user.profile_image).to eq dummy_user.profile_image_url_https
       expect(login_user.id).to eq dummy_user.id_str
       expect(login_user.uid).to eq "theUserID"
+      expect(login_user.user_token.access_token).to eq dummy_access_token
+      expect(login_user.user_token.access_token_secret).to eq dummy_access_token_secret
       expect(response).to have_http_status(200)
     end
   end
