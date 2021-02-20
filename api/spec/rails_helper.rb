@@ -70,4 +70,6 @@ RSpec.configure do |config|
     parse_response_by_content_type: false
   }
   include Committee::Rails::Test::Methods
+
+  config.include FactoryBot::Syntax::Methods
 end

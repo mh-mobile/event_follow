@@ -84,6 +84,9 @@ GEM
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faraday (1.3.0)
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
@@ -264,6 +267,7 @@ DEPENDENCIES
   committee
   committee-rails
   factory_bot
+  factory_bot_rails
   faraday
   faraday_curl
   faraday_middleware
