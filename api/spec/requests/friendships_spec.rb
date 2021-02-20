@@ -1,13 +1,14 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Friendships", type: :request do
-
   describe "GET /friendships" do
     before do
       @hoge_user = create(:hoge)
-      jwt = JSON.parse(File.read(file_fixture('jwt.json')))
-      @token = jwt['jwt_token']
-      @certificate = JSON.parse(File.read(file_fixture('certificates.json')))
+      jwt = JSON.parse(File.read(file_fixture("jwt.json")))
+      @token = jwt["jwt_token"]
+      @certificate = JSON.parse(File.read(file_fixture("certificates.json")))
       @project_ids = ["firebase-id-token"]
     end
 

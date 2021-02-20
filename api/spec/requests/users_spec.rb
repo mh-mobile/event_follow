@@ -1,12 +1,14 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Users", type: :request do
   describe "GET /users" do
     before do
       @hoge_user = create(:hoge)
-      jwt = JSON.parse(File.read(file_fixture('jwt.json')))
-      @token = jwt['jwt_token']
-      @certificate = JSON.parse(File.read(file_fixture('certificates.json')))
+      jwt = JSON.parse(File.read(file_fixture("jwt.json")))
+      @token = jwt["jwt_token"]
+      @certificate = JSON.parse(File.read(file_fixture("certificates.json")))
       @project_ids = ["firebase-id-token"]
     end
 
@@ -62,6 +64,5 @@ RSpec.describe "Users", type: :request do
 
       expect(response).to have_http_status(204)
     end
-
   end
 end
