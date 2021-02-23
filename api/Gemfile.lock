@@ -249,6 +249,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (1.1.0)
+    trace_location (0.11.0)
+      method_source
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     websocket-driver (0.7.3)
@@ -286,6 +288,7 @@ DEPENDENCIES
   sentry-ruby
   skylight
   spring
+  trace_location
   tzinfo-data
 
 RUBY VERSION
