@@ -81,4 +81,4 @@ jobs:
       - name: docker-compose up
         run: docker-compose up -d api
       - name: test
-        run: docker-compose exec -T api bin/setup && docker-compose exec -T api bin/rspec
+        run: docker-compose exec -T api bin/setup && docker-compose exec -T api bundle exec rspec
