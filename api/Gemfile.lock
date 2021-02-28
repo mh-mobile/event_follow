@@ -241,6 +241,8 @@ GEM
     skylight-core (4.3.2)
       activesupport (>= 4.2.0)
     spring (2.1.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -289,6 +291,7 @@ DEPENDENCIES
   skylight
   spring
   trace_location
+  spring-commands-rspec
   tzinfo-data
 
 RUBY VERSION
