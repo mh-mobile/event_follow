@@ -24,4 +24,11 @@ FactoryBot.define do
     uid { "111111" }
     profile_image { "https://example.com/my_photo.png" }
   end
+
+  factory :user_id_100, class: User do
+    id { "100" }
+    name { "name_user_id_100" }
+    screen_name { "screen_name_user_id_100" }
+    profile_image { "https://example.com/screen_name_normal.jpg" }
+  end
 end
