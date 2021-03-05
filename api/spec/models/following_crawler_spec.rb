@@ -182,8 +182,4 @@ RSpec.describe FollowingCrawler, type: :model do
       end
     end
   end
-
-  def read_fixture_json(filename)
-    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
-  end
 end

@@ -59,8 +59,4 @@ RSpec.describe DoorkeeperClient, type: :model do
       }.to raise_error(Faraday::ServerError)
     end
   end
-
-  def read_fixture_json(filename)
-    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
-  end
 end
