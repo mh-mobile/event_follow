@@ -5,6 +5,7 @@ module BaseCrawlable
 
   def inserted_tweet_users(users)
     time = Time.current
+    users = users.uniq { |user| user.id_str }
     users.map do |user|
       {
         id: user.id_str,
