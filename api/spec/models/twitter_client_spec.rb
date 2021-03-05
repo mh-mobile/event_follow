@@ -163,8 +163,4 @@ RSpec.describe TwitterClient, type: :model do
       expect(body.screen_name).to eq "mh_mobiler"
     end
   end
-
-  def read_fixture_json(filename)
-    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
-  end
 end
