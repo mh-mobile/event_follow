@@ -18,5 +18,4 @@ FactoryBot.define do
     access_token { "jiro_access_token" }
     access_token_secret { "jiro_access_token_secret" }
   end
-
 end

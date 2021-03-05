@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe FollowingCrawler, type: :model do
-
   describe "find_target_user" do
     let(:tomo_user_token) do
       FactoryBot.create(:tomo_user_token)
@@ -52,7 +51,6 @@ RSpec.describe FollowingCrawler, type: :model do
   end
 
   describe "フォロー情報の取得" do
-
     let!(:stub_client) do
       stub_connection = Faraday.new do |connection|
         connection.use FaradayMiddleware::FollowRedirects
@@ -98,7 +96,7 @@ RSpec.describe FollowingCrawler, type: :model do
         response = stub_client.following(count: "0")
         [response.users, response.next_cursor_str]
       end
-      
+
       before do
         allow_any_instance_of(FollowingCrawler).to receive(:search_following).and_return(search_following)
       end
@@ -127,7 +125,7 @@ RSpec.describe FollowingCrawler, type: :model do
         response = stub_client.following(count: "1")
         [response.users, response.next_cursor_str]
       end
-      
+
       before do
         allow_any_instance_of(FollowingCrawler).to receive(:search_following).and_return(search_following)
       end
@@ -164,7 +162,7 @@ RSpec.describe FollowingCrawler, type: :model do
         response = stub_client.following(count: "2")
         [response.users, response.next_cursor_str]
       end
-      
+
       before do
         allow_any_instance_of(FollowingCrawler).to receive(:search_following).and_return(search_following)
       end
@@ -183,11 +181,9 @@ RSpec.describe FollowingCrawler, type: :model do
         expect(jiro.screen_name).to eq "screen_name_jiro_update"
       end
     end
-
   end
 
   def read_fixture_json(filename)
     File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
   end
-
 end

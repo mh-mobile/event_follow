@@ -39,7 +39,7 @@ FactoryBot.define do
     screen_name { "satoshi" }
     uid { "888888" }
     profile_image { "https://example.com/my_photo.png" }
-    following_next_cursor { "77777 "}
+    following_next_cursor { "77777" }
   end
 
   factory :jiro, class: User do
