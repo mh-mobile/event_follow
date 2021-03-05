@@ -178,8 +178,4 @@ RSpec.describe TweetCrawler, type: :model do
       expect(user_id_100.profile_image).to eq "https://example.com/normal.jpg"
     end
   end
-
-  def read_fixture_json(filename)
-    File.open(File.dirname(__FILE__) + "/../fixtures/" + filename, "rb").read
-  end
 end
