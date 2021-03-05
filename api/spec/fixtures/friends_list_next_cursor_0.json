@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": 111111,
+      "id_str": "111111",
+      "name": "name_1",
+      "screen_name": "name_1",
+      "location": "Tokyo",
+      "description": "description_1",
+      "protected": false,
+      "followers_count": 2556,
+      "friends_count": 2040,
+      "listed_count": 129,
+      "created_at": "Mon Aug 31 18:35:53 +0000 2009",
+      "favourites_count": 5993,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 16427,
+      "lang": null,
+      "profile_image_url_https": "https://example.com/normal.jpg"
+    },
+    {
+      "id": 222222,
+      "id_str": "222222",
+      "name": "name_2",
+      "screen_name": "name_2",
+      "location": "Tokyo",
+      "description": "description_1",
+      "protected": false,
+      "followers_count": 80,
+      "friends_count": 40,
+      "listed_count": 300,
+      "created_at": "Mon Aug 31 16:34:30 +0000 2010",
+      "favourites_count": 5993,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 16427,
+      "lang": null,
+      "profile_image_url_https": "https://example.com/normal.jpg"
+    }
+  ],
+  "next_cursor": 0,
+  "next_cursor_str": "0",
+  "previous_cursor": 0,
+  "previous_cursor_str": "0",
+  "total_count": null
+}

@@ -101,15 +101,19 @@ RSpec.describe TwitterClient, type: :model do
   context "retweets search" do
     it "200" do
       body = stub_client.retweets(tweet_id: "200")
-      expect(body.count).to eq 2
+      expect(body.count).to eq 3
       retweet_1 = body[0]
       retweet_2 = body[1]
-      expect(retweet_1.id_str).to eq "1111"
-      expect(retweet_1.retweeted_status.id_str).to eq "3333"
-      expect(retweet_1.full_text).to eq "RT 11111"
-      expect(retweet_2.id_str).to eq "4444"
+      retweet_3 = body[2]
+      expect(retweet_1.id_str).to eq "88888"
+      expect(retweet_1.retweeted_status.id_str).to eq "666666"
+      expect(retweet_1.full_text).to eq "RT 88888"
+      expect(retweet_2.id_str).to eq "999999"
       expect(retweet_2.retweeted_status.id_str).to eq "666666"
-      expect(retweet_2.full_text).to eq "RT 44444"
+      expect(retweet_2.full_text).to eq "RT 999999"
+      expect(retweet_3.id_str).to eq "7777777"
+      expect(retweet_3.retweeted_status.id_str).to eq "666666"
+      expect(retweet_3.full_text).to eq "RT 7777777"
     end
 
     it "404" do

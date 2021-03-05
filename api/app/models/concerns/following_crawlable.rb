@@ -38,7 +38,7 @@ module FollowingCrawlable
   end
 
   def update_tweet_users(users)
-    User.insert_all(inserted_tweet_users(users))
+    User.upsert_all(inserted_tweet_users(users))
   end
 
   def update_friendships(target_user, users)

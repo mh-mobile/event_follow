@@ -74,11 +74,12 @@ module TweetCrawlable
     end
 
     # max_idの設定値更新
+    crawl_setting_value[:search_base_max_id] = "0"
     crawl_setting_value[:max_id] = "0"
   end
 
   def update_tweet_users(tweets)
-    User.insert_all(inserted_tweet_users(tweets.map(&:user)))
+    User.upsert_all(inserted_tweet_users(tweets.map(&:user)))
   end
 
   def update_crawl_tweets(tweets)
