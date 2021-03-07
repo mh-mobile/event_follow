@@ -1,7 +1,7 @@
-import HomeTwitterLogin from './HomeTwitterLogin'
+import HomeTwitterLogin from "./HomeTwitterLogin"
 
 export default {
-  title: 'HomeTwitterLogin',
+  title: "HomeTwitterLogin",
   component: HomeTwitterLogin,
   parameters: {
     layout: "centered"

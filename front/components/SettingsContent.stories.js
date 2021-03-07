@@ -1,7 +1,7 @@
-import SettingsContent from './SettingsContent'
+import SettingsContent from "./SettingsContent"
 
 export default {
-  title: 'SettingsContent',
+  title: "SettingsContent",
   component: SettingsContent,
   parameters: {
     layout: "centered"

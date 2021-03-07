@@ -1,7 +1,7 @@
-import PrivacyPolicyContent from './PrivacyPolicyContent'
+import PrivacyPolicyContent from "./PrivacyPolicyContent"
 
 export default {
-  title: 'PrivacyPolicyContent',
+  title: "PrivacyPolicyContent",
   component: PrivacyPolicyContent,
   parameters: {
     layout: "centered"

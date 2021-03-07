@@ -1,7 +1,7 @@
-import HomeConcept from './HomeConcept'
+import HomeConcept from "./HomeConcept"
 
 export default {
-  title: 'HomeConcept',
+  title: "HomeConcept",
   component: HomeConcept,
   parameters: {
     layout: "centered"

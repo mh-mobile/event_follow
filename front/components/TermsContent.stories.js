@@ -1,7 +1,7 @@
-import TermsContent from './TermsContent'
+import TermsContent from "./TermsContent"
 
 export default {
-  title: 'TermsContent',
+  title: "TermsContent",
   component: TermsContent,
   parameters: {
     layout: "centered"
