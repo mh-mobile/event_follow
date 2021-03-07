@@ -9,6 +9,7 @@ class Api::SessionsController < Api::BaseController
       @user = User.find_or_create_from_auth(payload: payload,
                                             access_token: access_token,
                                             access_token_secret: access_token_secret)
+      FollowingCrawler.new(@user).execute
     else
       @error_message = "認証情報が不正です"
     end

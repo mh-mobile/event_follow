@@ -9,6 +9,7 @@ RSpec.describe "Sessions", type: :request do
   describe "POST /api/sessions" do
     before do
       setup_jwt_authentication
+      stub_following_crawler
     end
 
     def verify_credentials
@@ -60,5 +61,9 @@ RSpec.describe "Sessions", type: :request do
       expect(login_user.user_token.access_token_secret).to eq dummy_access_token_secret
       expect(response).to have_http_status(200)
     end
+  end
+
+  def stub_following_crawler
+    allow_any_instance_of(FollowingCrawler).to receive(:execute).and_return(nil)
   end
 end
