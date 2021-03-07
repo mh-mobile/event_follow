@@ -4,8 +4,12 @@ class FollowingCrawler
   include BaseCrawlable
   include FollowingCrawlable
 
+  def initialize(target_user = nil)
+    @target_user = target_user
+  end
+
   def execute
-    target_user = find_target_user
+    target_user = @target_user || find_target_user
     return unless target_user
 
     users, next_cursor = search_following(target_user)
