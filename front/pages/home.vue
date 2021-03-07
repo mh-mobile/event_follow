@@ -17,7 +17,7 @@ export default defineComponent({
     HomeTwitterLogin,
     HomeHowItWorks
   },
-  layout: "unauthorized_default",
+  layout: "unauthorized_default"
 })
 </script>
 

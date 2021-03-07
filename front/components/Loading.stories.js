@@ -1,7 +1,7 @@
-import Loading from './Loading'
+import Loading from "./Loading"
 
 export default {
-  title: 'Loading',
+  title: "Loading",
   component: Loading,
   parameters: {
     layout: "centered"
