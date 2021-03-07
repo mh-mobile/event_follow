@@ -90,3 +90,6 @@ sw.*
 *.swp
 
 .vscode-server/
+
+# Storybook files
+storybook-static/
