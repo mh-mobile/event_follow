@@ -7,6 +7,36 @@ end
 
 RSpec.describe "Sessions", type: :request do
   describe "POST /api/sessions" do
+    let!(:stub_client) do
+      stub_connection = Faraday.new do |connection|
+        connection.use FaradayMiddleware::FollowRedirects
+        connection.request :url_encoded
+        connection.response :mashify, mash_class: EventResponse
+        connection.response :json
+        connection.response :raise_error
+        connection.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
+          stub.get("friends/list.json") do |env|
+            [200, {}, read_fixture_json("friends_list_next_cursor_1522334438265527337.json")]
+          end
+        end
+      end
+
+      twitter_client = TwitterClient.new(
+        app_token: "test_app_token",
+        oauth_consumer_key: "test_oauth_consumer_key",
+        oauth_token: "test_oauth_token",
+        oauth_consumer_secret: "test_oauth_consumer_secret",
+        oauth_token_secret: "test_oauth_token_secret"
+      )
+      allow(twitter_client).to receive(:connection).and_return(stub_connection)
+      twitter_client
+    end
+
+    let(:search_following) do
+      response = stub_client.following(count: "0")
+      [response.users, response.next_cursor_str]
+    end
+
     before do
       setup_jwt_authentication
       stub_following_crawler
@@ -42,16 +72,19 @@ RSpec.describe "Sessions", type: :request do
       dummy_access_token = "dummy_access_token"
       dummy_access_token_secret =  "dummy_access_token_secret"
 
-      post "/api/sessions",
-        params: { token: @token, access_token: dummy_access_token, access_token_secret: dummy_access_token_secret },
-        headers: headers, as: :json
+      expect {
+        post "/api/sessions",
+          params: { token: @token, access_token: dummy_access_token, access_token_secret: dummy_access_token_secret },
+          headers: headers, as: :json
+      }.to change { Friendship.count }.from(0).to(3)
+
       body = JSON.parse(response.body)
       assert_request_schema_confirm
       assert_response_schema_confirm
       expect(body["status"]).to eq "OK"
 
-      login_user = User.first
       dummy_user = verify_credentials
+      login_user = User.find(dummy_user.id_str)
       expect(login_user.name).to eq dummy_user.name
       expect(login_user.screen_name).to eq dummy_user.screen_name
       expect(login_user.profile_image).to eq dummy_user.profile_image_url_https
@@ -64,6 +97,6 @@ RSpec.describe "Sessions", type: :request do
   end
 
   def stub_following_crawler
-    allow_any_instance_of(FollowingCrawler).to receive(:execute).and_return(nil)
+    allow_any_instance_of(FollowingCrawler).to receive(:search_following).and_return(search_following)
   end
 end
