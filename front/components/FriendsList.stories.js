@@ -1,7 +1,7 @@
-import FriendsList from './FriendsList'
+import FriendsList from "./FriendsList"
 
 export default {
-  title: 'FriendsList',
+  title: "FriendsList",
   component: FriendsList,
   parameters: {
     layout: "centered"

@@ -1,7 +1,7 @@
-import HomeHowItWorks from './HomeHowItWorks'
+import HomeHowItWorks from "./HomeHowItWorks"
 
 export default {
-  title: 'HomeHowItWorks',
+  title: "HomeHowItWorks",
   component: HomeHowItWorks,
   parameters: {
     layout: "centered"

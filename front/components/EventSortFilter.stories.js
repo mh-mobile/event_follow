@@ -1,7 +1,7 @@
-import EventSortFilter from './EventSortFilter'
+import EventSortFilter from "./EventSortFilter"
 
 export default {
-  title: 'EventSortFilter',
+  title: "EventSortFilter",
   component: EventSortFilter,
   parameters: {
     layout: "centered"
@@ -10,7 +10,12 @@ export default {
     eventSortType: {
       control: {
         type: "inline-radio",
-        options: ["friends_number_order", "recent_order", "created_order", "closeness_order"]
+        options: [
+          "friends_number_order",
+          "recent_order",
+          "created_order",
+          "closeness_order"
+        ]
       }
     },
     timeFilterType: {
@@ -25,7 +30,7 @@ export default {
           "past_5_days",
           "past_6_days",
           "past_1_weeks",
-          "past_all",
+          "past_all"
         ]
       }
     },
