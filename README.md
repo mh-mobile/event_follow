@@ -211,7 +211,11 @@ Dockerの起動後に、ブラウザで[http://localhost:8080](http://localhost:
 
 
 
-# Railsのテスト
+## 使用方法
+
+
+
+### Railsのテスト
 
 RSpecのテストを実行します。
 
@@ -221,7 +225,7 @@ $ docker exec -it event_api bin/rspec
 
 
 
-# Nuxt.jsのテスト
+### Nuxt.jsのテスト
 
 jestのテストを実行します。
 
@@ -231,7 +235,7 @@ $ docker exec -it event_front yarn run test
 
 
 
-# Nuxt.jsのフォーマット
+### Nuxt.jsのフォーマット
 
 Prettierを実行します。
 
@@ -241,7 +245,7 @@ $ docker exec -it event_front yarn run prettier
 
 
 
-# Nuxt.jsのリント
+### Nuxt.jsのリント
 
 ESLintを実行します。
 
@@ -257,7 +261,7 @@ $ docker exec -it event_front yarn run lint-fix
 
 
 
-# Storybookの起動
+### Storybookの起動
 
 ```bash
 $ docker exec -it event_front yarn run storybook
@@ -269,7 +273,7 @@ $ docker exec -it event_front yarn run storybook
 
 
 
-# OpenAPIの起動
+### OpenAPIの起動
 
 docker-comopseを使用して、以下のコンテナを起動します。
 
