@@ -253,3 +253,12 @@ $ docker-compose up
 # ライセンス
 本ソフトウェアは、MITライセンスの元提供されています。
 
+
+
+# Author
+
+* [Github](https://github.com/mh-mobile)
+
+* [Qiita](https://qiita.com/mh_mobiler)
+* [Twitter](https://twitter.com/mh_mobiler)
+
