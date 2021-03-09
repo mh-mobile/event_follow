@@ -4,6 +4,68 @@
 
 イベントフォローは、自分の興味の方向に近い技術イベントを見逃してしまう問題を解決したい、技術イベント発見サービスです。ユーザーは Twitterの友達がシェアしたDoorkeeper、connpassのイベントを発見することができ、キーワードで検索することとは違い、検索せずに自分の興味の方向に近いイベントを発見できることが特徴です。
 
+
+
+ # 使用技術
+
+- フロントエンド
+
+  - Nuxt.js
+    - Nuxt Compositon API
+  - Firebase Authentication
+
+- バックエンド
+
+  - Ruby 3.0.0
+  - Rails 6.1.3
+    - Rails APIモード
+
+- アプリケーションサーバ
+
+  - Puma 5.2.2
+
+- データベース
+
+  - PostgreSQL
+
+- キャッシュサーバ
+
+  - Redis
+
+- ツール
+
+  - Storybook
+  - Sentry
+  - Skylight
+  - OpenAPI
+    - API仕様のドキュメント
+    - APIのリクエスト・レスポンスのバリデーション
+
+- インフラ
+
+  - docker-compose（開発環境）
+
+  - HerokuのDockerによるデプロイ（本番環境）
+
+    - Nuxt.jsのコンテナ
+      - Webプロセス
+    - Railsのコンテナ
+      - Webプロセス
+      - Workerプロセス
+        - Twitterのツイートやイベント収集用
+
+  - Github Actions
+
+    - デプロイ
+    - ReviewDog
+    - Slack連携
+    - 定期的なヘルスチェック
+    - Lint
+
+  - Dependabot
+
+    
+
 # インフラ構成
 
 
