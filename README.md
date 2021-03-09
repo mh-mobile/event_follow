@@ -8,69 +8,82 @@
 
  # 使用技術
 
-- フロントエンド
 
-  - Nuxt.js
-    - Nuxt Compositon API
-  - Firebase Authentication
 
-- バックエンド
+### フロントエンド
 
-  - Ruby 3.0.0
-  - Rails 6.1.3
-    - Rails APIモード
-
-- アプリケーションサーバ
-
-  - Puma 5.2.2
-
-- データベース
-
-  - PostgreSQL
-
-- キャッシュサーバ
-
-  - Redis
-
-- ツール
-
-  - Storybook
-  - Sentry
-  - Skylight
-  - OpenAPI
-    - API仕様のドキュメント
-    - APIのリクエスト・レスポンスのバリデーション
-
-- インフラ
-
-  - docker-compose（開発環境）
-
-  - HerokuのDockerによるデプロイ（本番環境）
-
-    - Nuxt.jsのコンテナ
-      - Webプロセス
-    - Railsのコンテナ
-      - Webプロセス
-      - Workerプロセス
-        - Twitterのツイートやイベント収集用
-
-  - Github Actions
-
-    - デプロイ
-    - ReviewDog
-    - Slack連携
-    - 定期的なヘルスチェック
-    - Lint
-
-  - Dependabot
-
-    
-
-# インフラ構成
+- Nuxt.js
+  - Nuxt Compositon API
+- Firebase Authentication
 
 
 
-### 開発環境
+### バックエンド
+
+- Ruby 3.0.0
+- Rails 6.1.3
+  - Rails APIモード
+
+
+
+### アプリケーションサーバ
+
+- Puma 5.2.2
+- 
+
+### データベース
+
+- PostgreSQL
+
+
+
+### キャッシュサーバ
+
+- Redis
+
+
+
+### ツール
+
+- Storybook
+- Sentry
+- Skylight
+- OpenAPI
+  - API仕様のドキュメント
+  - APIのリクエスト・レスポンスのバリデーション
+
+
+
+### インフラ
+
+- docker-compose（開発環境）
+
+- HerokuのDockerによるデプロイ（本番環境）
+
+  - Nuxt.jsのコンテナ
+    - Webプロセス
+  - Railsのコンテナ
+    - Webプロセス
+    - Workerプロセス
+      - Twitterのツイートやイベント収集用
+
+- Github Actions
+
+  - デプロイ
+  - ReviewDog
+  - Slack連携
+  - 定期的なヘルスチェック
+  - Lint
+
+- Dependabot
+
+  
+
+### インフラ構成
+
+
+
+#### 開発環境
 
 docker-compseを使ってDockerコンテナを起動し、Dockerコンテナを開発環境として使用します。
 
@@ -85,7 +98,7 @@ docker-compseを使ってDockerコンテナを起動し、Dockerコンテナを�
 
 
 
-### 本番環境
+#### 本番環境
 
 GitHubのmainブランチにコードをマージすると、GitHub Actionsを使って本番環境にデプロイを実施します。
 
@@ -105,13 +118,17 @@ GitHubのmainブランチにコードをマージすると、GitHub Actionsを�
 
 # 開発環境のセットアップ
 
-## リポジトリのclone
+
+
+### リポジトリのClone
 
 ```bash
 $ git clone https://github.com/mh-mobile/event_follow.git
 ```
 
-## 環境変数の設定
+
+
+### 環境変数の設定
 
 Docker起動に必要な環境変数を定義します。
 
@@ -167,7 +184,8 @@ Sentryのログトラッキング用のDSNの環境変数を定義します。
 | API_SENTRY_DSN | Rails API用のSentryのDSN値 |
 
 
-## Dockerの起動
+
+### Dockerの起動
 
 docker-comopseを使用して、以下のコンテナを起動します。
 
@@ -184,9 +202,13 @@ docker-comopseを使用して、以下のコンテナを起動します。
 $ docker-compose up
 ```
 
-## アプリの動作確認
+
+
+### アプリの動作確認
 
 Dockerの起動後に、ブラウザで[http://localhost:8080](http://localhost:8080)にアクセスします。
+
+
 
 # Railsのテスト
 
@@ -196,6 +218,8 @@ RSpecのテストを実行します。
 $ docker exec -it event_api bin/rspec
 ```
 
+
+
 # Nuxt.jsのテスト
 
 jestのテストを実行します。
@@ -204,6 +228,8 @@ jestのテストを実行します。
 $ docker exec -it event_front yarn run test
 ```
 
+
+
 # Nuxt.jsのフォーマット
 
 Prettierを実行します。
@@ -211,6 +237,8 @@ Prettierを実行します。
 ```bash
 $ docker exec -it event_front yarn run prettier
 ```
+
+
 
 # Nuxt.jsのリント
 
@@ -226,6 +254,8 @@ $ docker exec -it event_front yarn run lint
 $ docker exec -it event_front yarn run lint-fix
 ```
 
+
+
 # Storybookの起動
 
 ```bash
@@ -235,6 +265,7 @@ $ docker exec -it event_front yarn run storybook
 | ツール    | URL    |
 | --- | --- |
 |  Storybook  | [http://localhost:3003](http://localhost:3003)  |
+
 
 
 # OpenAPIの起動
@@ -260,7 +291,10 @@ $ docker-compose up
 |  Swagger UI  | [http://localhost:8082](http://localhost:8082)  |
 |  Redoc  | [http://localhost:8081](http://localhost:8081)  |
 
+
+
 # ライセンス
+
 本ソフトウェアは、MITライセンスの元提供されています。
 
 
