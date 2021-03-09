@@ -1,17 +1,17 @@
 # イベントフォロー
 
-イベントフォローは、自分の興味の方向に近い技術イベントを見逃してしまう問題を解決したい、技術イベント発見サービスです。ユーザーは Twitterの友達がシェアしたDoorkeeper、connpassのイベントを発見することができ、キーワードで検索することとは違い、検索せずに自分の興味の方向に近いイベントを発見できることが特徴です。
+イベントフォローは、自分の興味の方向に近い技術イベントを見逃してしまう問題を解決したい、技術イベント発見サービスです。ユーザーは、Twitterの友達がシェアしたDoorkeeper、connpassのイベントを発見することができ、キーワードで検索することとは違い、検索せずに自分の興味の方向に近いイベントを発見できることが特徴です。
 
 # 機能一覧
 
 ### イベント一覧の表示
 
-* Twitterでフォローしたユーザー（以下、友達)が投稿したイベント情報を表示します。
-* １ページに最大10件ずつイベントを表示します。
+* Twitterでフォローしたユーザー（以下、友達）が投稿したイベント情報を表示します。
+* 1ページに最大10件ずつイベントを表示します。
 
 ### イベントのソート機能
 
-* 以下の４つの種別にもとづきソートできます。
+* 以下の4つの種別にもとづきソートできます。
   * Friend数
   * 新着順
   * 投稿順
@@ -19,7 +19,7 @@
 
 ### イベントの絞り込み機能
 
-* Friend数のソートを選択した場合、以下の９つの時間軸の種別にもとづき絞り込みできます。
+* Friend数のソートを選択した場合、以下の9つの時間軸の種別にもとづき絞り込みできます。
   * 過去8時間
   * 過去24時間
   * 過去2日
@@ -87,13 +87,13 @@
 
 - docker-compose（開発環境）
 - HerokuのDockerによるデプロイ（本番環境）
-  - Nuxt.jsのコンテナ
+  - Nuxt.jsのコンテナー
     - Webプロセス
-  - Railsのコンテナ
+  - Railsのコンテナー
     - Webプロセス
     - Workerプロセス
       - Twitterのツイートやイベント収集用
-- Github Actions
+- GitHub Actions
   - デプロイ
   - ReviewDog
   - Slack連携
@@ -105,20 +105,20 @@
 
 #### 開発環境
 
-docker-compseを使ってDockerコンテナを起動し、Dockerコンテナを開発環境として使用します。
-開発環境のDockerコンテナとしては、以下の４つを使用しています。
+docker-compseを使ってDockerコンテナーを起動し、Dockerコンテナーを開発環境として使用します。
+開発環境のDockerコンテナーとしては、以下の4つを使用しています。
 
-* Nuxt.js (フロントエンド)
-* Rails (バックエンド)
-* PostgreSQL (データベース)
-* Redis (キャッシュサーバ)
+* Nuxt.js（フロントエンド）
+* Rails（バックエンド）
+* PostgreSQL（データベース）
+* Redis（キャッシュサーバ）
 
 ![infra](docs/infra_dev.drawio.svg)
 
 #### 本番環境
 
 GitHubのmainブランチにコードをマージすると、GitHub Actionsを使って本番環境にデプロイを実施します。
-本番環境のデプロイでは、開発環境と同じNuxt.jsとRailsのDockerコンテナを使って、HerokuにDockerコンテナのデプロイされます。PostgreSQLとRedisについては、HerokuのAddonを使用します。
+本番環境のデプロイでは、開発環境と同じNuxt.jsとRailsのDockerコンテナーを使って、HerokuにDockerコンテナーのデプロイされます。PostgreSQLとRedisについては、HerokuのAddonを使用します。
 
 ![infra](docs/infra_prod.drawio.svg)
 
@@ -140,7 +140,7 @@ Docker起動に必要な環境変数を定義します。
 
 | 環境変数名    | 値  |  説明 |
 | --- | --- | --- |
-| WORKDIR   | app | コンテナ内部のワーキングディレクト |
+| WORKDIR   | app | コンテナー内部のワーキングディレクト |
 | API_PORT  | 3000 | APIサーバのポート番号 |
 | FRONT_PORT  | 8080 | フロントのNuxt.jsのポート番号 |
 | POSTGRES_PASSWORD  | postgres | PostgreSQLのパスワード |
@@ -191,13 +191,13 @@ Sentryのログトラッキング用のDSNの環境変数を定義します。
 
 ### Dockerの起動
 
-docker-comopseを使用して、以下のコンテナを起動します。
+docker-comopseを使用して、以下のコンテナーを起動します。
 
 
-| コンテナ名    | 説明  |
+| コンテナー名    | 説明  |
 | --- | --- |
-| event_api  | Rails API(サーバ) |
-| event_front  | Nuxt.js(フロント) |
+| event_api  | Rails API（サーバ） |
+| event_front  | Nuxt.js（フロント） |
 | event_redis  | Redis |
 | event_db  | PosgreSQL |
 
@@ -270,15 +270,15 @@ $ docker exec -it event_front yarn run storybook
 
 ### OpenAPIの起動
 
-docker-comopseを使用して、以下のコンテナを起動します。
+docker-comopseを使用して、以下のコンテナーを起動します。
 
-| コンテナ名    | 説明   |
+| コンテナー名    | 説明   |
 | --- | --- |
-|  Swagger Editor  | Swagger Editorのコンテナ  |
-|  Swagger UI  | Swagger UIのコンテナ  |
-|  Redoc  | Redocのコンテナ |
+|  Swagger Editor  | Swagger Editorのコンテナー  |
+|  Swagger UI  | Swagger UIのコンテナー  |
+|  Redoc  | Redocのコンテナー |
 
-コンテナを起動するために、api/docsに移動し、`docker-compose up`を実行します。
+コンテナーを起動するために、api/docsに移動し、`docker-compose up`を実行します。
 
 ```bash
 $ cd api/docs
