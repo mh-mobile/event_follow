@@ -93,6 +93,16 @@ GitHubのmainブランチにコードをマージすると、GitHub Actionsを�
 
 ![infra](docs/infra_prod.drawio.svg)
 
+
+
+
+
+### ER図
+
+![infra](docs/er.drawio.svg)
+
+
+
 # 開発環境のセットアップ
 
 ## リポジトリのclone
