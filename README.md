@@ -220,6 +220,14 @@ RSpecのテストを実行します。
 $ docker exec -it event_api bin/rspec
 ```
 
+### Railsのリント
+
+Rubocopを実行します。
+
+```bash
+$ docker exec -it event_api bin/lint
+```
+
 ### Nuxt.jsのテスト
 
 jestのテストを実行します。
