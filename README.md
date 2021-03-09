@@ -1,21 +1,13 @@
-
-
 # イベントフォロー
 
 イベントフォローは、自分の興味の方向に近い技術イベントを見逃してしまう問題を解決したい、技術イベント発見サービスです。ユーザーは Twitterの友達がシェアしたDoorkeeper、connpassのイベントを発見することができ、キーワードで検索することとは違い、検索せずに自分の興味の方向に近いイベントを発見できることが特徴です。
 
-
-
 # 機能一覧
-
-
 
 ### イベント一覧の表示
 
 * Twitterでフォローしたユーザー（以下、友達)が投稿したイベント情報を表示します。
 * １ページに最大10件ずつイベントを表示します。
-
-
 
 ### イベントのソート機能
 
@@ -44,29 +36,19 @@
   * Friends 4+
   * Friends 5+
 
-
-
 ### イベント情報を投稿した友達の一覧の表示
 
 * イベント情報を投稿した友達のアイコンを一覧を一覧表示します。
-
-
 
 ### イベントを投稿した友達のツイートの表示
 
 * イベント情報を投稿したツイートやリツイート、引用ツイートの内容を時系列順に表示できます。
 
-
-
 ### Twitterログイン機能
 
 * Twitterのアカウントを使ってログインできます。
 
-  
-
- # 使用技術
-
-
+# 使用技術
 
 ### フロントエンド
 
@@ -74,33 +56,23 @@
   - Nuxt Compositon API
 - Firebase Authentication
 
-
-
 ### バックエンド
 
 - Ruby 3.0.0
 - Rails 6.1.3
   - Rails APIモード
 
-
-
 ### アプリケーションサーバ
 
 - Puma 5.2.2
-
-  
 
 ### データベース
 
 - PostgreSQL
 
-
-
 ### キャッシュサーバ
 
 - Redis
-
-
 
 ### ツール
 
@@ -111,41 +83,29 @@
   - API仕様のドキュメント
   - APIのリクエスト・レスポンスのバリデーション
 
-
-
 ### インフラ
 
 - docker-compose（開発環境）
-
 - HerokuのDockerによるデプロイ（本番環境）
-
   - Nuxt.jsのコンテナ
     - Webプロセス
   - Railsのコンテナ
     - Webプロセス
     - Workerプロセス
       - Twitterのツイートやイベント収集用
-
 - Github Actions
-
   - デプロイ
   - ReviewDog
   - Slack連携
   - 定期的なヘルスチェック
   - Lint
-
 - Dependabot
 
-  
-
 ### インフラ構成
-
-
 
 #### 開発環境
 
 docker-compseを使ってDockerコンテナを起動し、Dockerコンテナを開発環境として使用します。
-
 開発環境のDockerコンテナとしては、以下の４つを使用しています。
 
 * Nuxt.js (フロントエンド)
@@ -155,37 +115,24 @@ docker-compseを使ってDockerコンテナを起動し、Dockerコンテナを�
 
 ![infra](docs/infra_dev.drawio.svg)
 
-
-
 #### 本番環境
 
 GitHubのmainブランチにコードをマージすると、GitHub Actionsを使って本番環境にデプロイを実施します。
-
 本番環境のデプロイでは、開発環境と同じNuxt.jsとRailsのDockerコンテナを使って、HerokuにDockerコンテナのデプロイされます。PostgreSQLとRedisについては、HerokuのAddonを使用します。
 
 ![infra](docs/infra_prod.drawio.svg)
-
-
-
-
 
 ### ER図
 
 ![infra](docs/er.drawio.svg)
 
-
-
 # 開発環境のセットアップ
-
-
 
 ### リポジトリのClone
 
 ```bash
 $ git clone https://github.com/mh-mobile/event_follow.git
 ```
-
-
 
 ### 環境変数の設定
 
@@ -242,8 +189,6 @@ Sentryのログトラッキング用のDSNの環境変数を定義します。
 | SENTRY_DSN | フロントのNuxt.js用のSentryのDSN値 |
 | API_SENTRY_DSN | Rails API用のSentryのDSN値 |
 
-
-
 ### Dockerの起動
 
 docker-comopseを使用して、以下のコンテナを起動します。
@@ -261,17 +206,11 @@ docker-comopseを使用して、以下のコンテナを起動します。
 $ docker-compose up
 ```
 
-
-
 ### アプリの動作確認
 
 Dockerの起動後に、ブラウザで[http://localhost:8080](http://localhost:8080)にアクセスします。
 
-
-
 ## 使用方法
-
-
 
 ### Railsのテスト
 
@@ -281,8 +220,6 @@ RSpecのテストを実行します。
 $ docker exec -it event_api bin/rspec
 ```
 
-
-
 ### Nuxt.jsのテスト
 
 jestのテストを実行します。
@@ -291,8 +228,6 @@ jestのテストを実行します。
 $ docker exec -it event_front yarn run test
 ```
 
-
-
 ### Nuxt.jsのフォーマット
 
 Prettierを実行します。
@@ -300,8 +235,6 @@ Prettierを実行します。
 ```bash
 $ docker exec -it event_front yarn run prettier
 ```
-
-
 
 ### Nuxt.jsのリント
 
@@ -317,8 +250,6 @@ $ docker exec -it event_front yarn run lint
 $ docker exec -it event_front yarn run lint-fix
 ```
 
-
-
 ### Storybookの起動
 
 ```bash
@@ -328,8 +259,6 @@ $ docker exec -it event_front yarn run storybook
 | ツール    | URL    |
 | --- | --- |
 |  Storybook  | [http://localhost:3003](http://localhost:3003)  |
-
-
 
 ### OpenAPIの起動
 
@@ -354,17 +283,13 @@ $ docker-compose up
 |  Swagger UI  | [http://localhost:8082](http://localhost:8082)  |
 |  Redoc  | [http://localhost:8081](http://localhost:8081)  |
 
-
-
-# ライセンス
-
-本ソフトウェアは、MITライセンスの元提供されています。
-
-
-
 # Author
 
 * [Github](https://github.com/mh-mobile)
 * [Qiita](https://qiita.com/mh_mobiler)
 * [Twitter](https://twitter.com/mh_mobiler)
+
+# ライセンス
+
+本ソフトウェアは、MITライセンスの元提供されています。
 
