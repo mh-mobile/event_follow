@@ -139,7 +139,7 @@ Docker起動に必要な環境変数を定義します。
 
 | 環境変数名    | 値  |  説明 |
 | --- | --- | --- |
-| WORKDIR   | app | コンテナ内部のワーキングディレクトリ |
+| WORKDIR   | app | コンテナ内部の作業ディレクトリ |
 | API_PORT  | 3000 | APIサーバのポート番号 |
 | FRONT_PORT  | 8080 | フロントのNuxt.jsのポート番号 |
 | POSTGRES_PASSWORD  | postgres | PostgreSQLのパスワード |
