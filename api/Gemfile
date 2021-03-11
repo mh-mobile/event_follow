@@ -19,7 +19,7 @@ gem "kaminari"
 gem "clockwork"
 gem "rack-cors"
 gem "firebase-auth-rails"
-gem "skylight"
+gem "skylight", '~> 5.0'
 gem "sentry-ruby"
 gem "sentry-rails"
 
@@ -27,7 +27,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "factory_bot"
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 4.0.2"
+  gem "rspec-rails", '~> 5.0'
   gem "trace_location"
 end
 
