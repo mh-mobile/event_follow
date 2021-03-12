@@ -10,6 +10,9 @@ div
     .footer-container
       .copyright
         | &copy; event follow
+      .github
+        a(href="https://github.com/mh-mobile/event_follow" target="_blank")
+          img(src="@/assets/github_logo.png")
       a(href="/terms" class="terms") 利用規約
       a(href="/privacy_policy" class="privacy_policy") プライバシーポリシー
 </template>
@@ -68,8 +71,14 @@ html {
     position: relative;
 
     .copyright {
-      margin-right: auto;
+      margin-right: 5px;
       color: #000;
+    }
+
+    .github {
+      margin-right: auto;
+      width: 20px;
+      height: 20px;
     }
 
     .terms {
