@@ -152,10 +152,10 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.7)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    nokogiri (1.11.1-x86_64-linux)
+    nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
     oga (2.15)
       ast
@@ -251,14 +251,14 @@ GEM
       ast
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
-    sentry-rails (4.2.2)
+    sentry-rails (4.3.1)
       rails (>= 5.0)
-      sentry-ruby-core (~> 4.2.0)
-    sentry-ruby (4.2.2)
+      sentry-ruby-core (~> 4.3.0)
+    sentry-ruby (4.3.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       faraday (>= 1.0)
-      sentry-ruby-core (= 4.2.2)
-    sentry-ruby-core (4.2.2)
+      sentry-ruby-core (= 4.3.0)
+    sentry-ruby-core (4.3.0)
       concurrent-ruby
       faraday
     skylight (5.0.0)
