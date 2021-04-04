@@ -36,7 +36,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
-    "@nuxtjs/composition-api"
+    "@nuxtjs/composition-api",
+    "@nuxtjs/device",
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -44,7 +45,7 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     "@nuxtjs/bulma",
     "@nuxtjs/axios",
-    "@nuxtjs/sentry"
+    "@nuxtjs/sentry",
   ],
   proxy: {
     "/api/": {

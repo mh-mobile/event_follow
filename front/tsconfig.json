@@ -28,6 +28,7 @@
       "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/sentry",
+      "@nuxtjs/device",
       "jest"
     ]
   },
