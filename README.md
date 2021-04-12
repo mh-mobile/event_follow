@@ -1,5 +1,7 @@
 # イベントフォロー
 
+[![Deploy to Heroku (front)](https://github.com/mh-mobile/event_follow/actions/workflows/front_deploy.yml/badge.svg?branch=main)](https://github.com/mh-mobile/event_follow/actions/workflows/front_deploy.yml)[![Deploy to Heroku (api)](https://github.com/mh-mobile/event_follow/actions/workflows/api_deploy.yml/badge.svg?branch=main)](https://github.com/mh-mobile/event_follow/actions/workflows/api_deploy.yml)[![front test](https://github.com/mh-mobile/event_follow/actions/workflows/front_test.yml/badge.svg?branch=develop)](https://github.com/mh-mobile/event_follow/actions/workflows/front_test.yml)[![api test](https://github.com/mh-mobile/event_follow/actions/workflows/api_test.yml/badge.svg?branch=develop)](https://github.com/mh-mobile/event_follow/actions/workflows/api_test.yml)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 イベントフォローは、自分の興味の方向に近い技術イベントを見逃してしまう問題を解決したい、技術イベント発見サービスです。ユーザーは Twitterの友達がシェアしたDoorkeeper、connpassのイベントを発見することができ、キーワードで検索することとは違い、検索せずに自分の興味の方向に近いイベントを発見できることが特徴です。
 
 # 機能一覧
