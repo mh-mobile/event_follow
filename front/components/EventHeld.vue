@@ -31,26 +31,53 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-.event_held {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #cccccc;
-  background-color: #f3f4f7;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
+@media all and (min-width: 480px) {
+  .event_held {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #cccccc;
+    background-color: #f3f4f7;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 
-  .event_date {
-    font-size: 2em;
-    height: 50%;
-    text-align: center;
+    .event_date {
+      font-size: 2em;
+      height: 50%;
+      text-align: center;
+    }
+
+    .event_start {
+      font-size: 1.5em;
+      height: 50%;
+      text-align: center;
+    }
   }
+}
 
-  .event_start {
-    font-size: 1.5em;
-    height: 50%;
-    text-align: center;
+@media all and (max-width: 480px) {
+  .event_held {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #cccccc;
+    background-color: #f3f4f7;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+    .event_date {
+      font-size: 1.5em;
+      height: 50%;
+      text-align: center;
+    }
+
+    .event_start {
+      font-size: 1.2em;
+      height: 50%;
+      text-align: center;
+    }
   }
 }
 </style>

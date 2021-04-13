@@ -1,7 +1,7 @@
 <template lang="pug">
 .event_list_header
   .event_header_top
-    .event_header_info
+    .event_header_info(v-if="$device.isDesktop")
       | 友達からのイベント情報
     #js-event-sort-filter
       EventSortFilter(:eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
@@ -49,50 +49,102 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.event_list_header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  .event_header_top {
+@media all and (min-width: 480px) {
+  .event_list_header {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .event_header_top {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
 
-    .event_header_info {
-      margin-right: auto;
-      font-size: 2em;
-      font-weight: bold;
+      .event_header_info {
+        margin-right: auto;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .event_header_sort_filter {
+        font-size: 1.5em;
+        font-weight: bold;
+        position: relative;
+        padding-right: 24px;
+        cursor: pointer;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border: 2px solid;
+          top: calc(50% - 4px);
+          right: 0;
+          border-color: transparent transparent #565656 #565656;
+          transform: rotate(-45deg) translateY(-50%);
+        }
+      }
     }
+    .event_header_bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 10px;
 
-    .event_header_sort_filter {
-      font-size: 1.5em;
-      font-weight: bold;
-      position: relative;
-      padding-right: 24px;
-      cursor: pointer;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border: 2px solid;
-        top: calc(50% - 4px);
-        right: 0;
-        border-color: transparent transparent #565656 #565656;
-        transform: rotate(-45deg) translateY(-50%);
+      .pagination {
+        margin-top: 20px;
       }
     }
   }
-  .event_header_bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+}
 
-    .pagination {
-      margin-top: 20px;
+@media all and (max-width: 480px) {
+  .event_list_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .event_header_top {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      .event_header_info {
+        margin-right: auto;
+        font-size: 1em;
+        font-weight: bold;
+      }
+
+      .event_header_sort_filter {
+        font-size: 1.5em;
+        font-weight: bold;
+        position: relative;
+        padding-right: 24px;
+        cursor: pointer;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border: 2px solid;
+          top: calc(50% - 4px);
+          right: 0;
+          border-color: transparent transparent #565656 #565656;
+          transform: rotate(-45deg) translateY(-50%);
+        }
+      }
+    }
+    .event_header_bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+
+      .pagination {
+        margin-top: 20px;
+      }
     }
   }
 }

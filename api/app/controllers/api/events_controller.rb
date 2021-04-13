@@ -4,7 +4,7 @@ class Api::EventsController < Api::BaseController
   before_action :set_sort_filter_condition
 
   def index
-    @events = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
+    @events = Event.page(params[:page]).preload(tweets: :user)
     following = current_user.following.ids
 
     @data = @events.map.with_index do |event, index|

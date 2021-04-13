@@ -87,104 +87,211 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.event_item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  &:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
-
-  .event_detail {
-    width: 100%;
-    height: 300px;
+@media all and (min-width: 480px) {
+  .event_item {
     display: flex;
-    flex-direction: row;
-
-    .event_detail_left {
-      width: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-
-      .event_logo {
-        width: 100px;
-        height: auto;
-        margin-top: 12px;
-      }
-
-      .tweet_button {
-        width: 100px;
-        margin-top: 5px;
-        display: flex;
-        justify-content: center;
-      }
-
-      .event_held {
-        width: 100px;
-        height: 40%;
-        border: 1px solid #cccccc;
-        background-color: #f3f4f7;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-
-        .event_date {
-          font-size: 2em;
-          height: 50%;
-          text-align: center;
-        }
-
-        .event_start {
-          font-size: 1.5em;
-          height: 50%;
-          text-align: center;
-        }
-      }
+    flex-direction: column;
+    margin-bottom: 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #ccc;
     }
 
-    .event_detail_content {
-      width: calc(100% - 100px);
-      height: 100%;
+    .event_detail {
+      width: 100%;
+      height: 300px;
       display: flex;
-      flex-direction: column;
-      padding-left: 26px;
-      box-sizing: border-box;
+      flex-direction: row;
 
-      .event_content_top {
+      .event_detail_left {
+        width: 100px;
         display: flex;
-        flex-direction: row;
-        height: 40%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
 
-        .event_content_title {
-          width: 80%;
-          font-size: 1.3em;
-          padding-right: 5px;
+        .event_logo {
+          width: 100px;
+          height: auto;
+          margin-top: 12px;
         }
 
-        .event_content_thumbnail {
-          width: 20%;
+        .tweet_button {
+          width: 100px;
+          margin-top: 5px;
+          display: flex;
+          justify-content: center;
+        }
 
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .event_held {
+          width: 100px;
+          height: 40%;
+          border: 1px solid #cccccc;
+          background-color: #f3f4f7;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: column;
+          justify-items: center;
+
+          .event_date {
+            font-size: 2em;
+            height: 50%;
+            text-align: center;
+          }
+
+          .event_start {
+            font-size: 1.5em;
+            height: 50%;
+            text-align: center;
           }
         }
       }
 
-      .event_content_bottom {
+      .event_detail_content {
+        width: calc(100% - 100px);
+        height: 100%;
         display: flex;
         flex-direction: column;
-        height: 60%;
-        overflow: scroll;
+        padding-left: 26px;
+        box-sizing: border-box;
 
-        .event_content_description {
-          width: 100%;
-          height: 100%;
-          margin-top: 10px;
+        .event_content_top {
+          display: flex;
+          flex-direction: row;
+          height: 40%;
+
+          .event_content_title {
+            width: 80%;
+            font-size: 1.3em;
+            padding-right: 5px;
+          }
+
+          .event_content_thumbnail {
+            width: 20%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+
+        .event_content_bottom {
+          display: flex;
+          flex-direction: column;
+          height: 60%;
+          overflow: scroll;
+
+          .event_content_description {
+            width: 100%;
+            height: 100%;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .event_item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .event_detail {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-direction: row;
+
+      .event_detail_left {
+        width: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        .event_logo {
+          width: 70px;
+          height: auto;
+          margin-top: 12px;
+        }
+
+        .tweet_button {
+          width: 100px;
+          margin-top: 5px;
+          display: flex;
+          justify-content: center;
+          display: none;
+        }
+
+        .event_held {
+          width: 70px;
+          border: 1px solid #cccccc;
+          background-color: #f3f4f7;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: column;
+          justify-items: center;
+
+          .event_date {
+            height: 50%;
+            text-align: center;
+          }
+
+          .event_start {
+            height: 50%;
+            text-align: center;
+          }
+        }
+      }
+
+      .event_detail_content {
+        width: calc(100% - 70px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 26px;
+        box-sizing: border-box;
+
+        .event_content_top {
+          display: flex;
+          flex-direction: row;
+          height: 40%;
+
+          .event_content_title {
+            width: 80%;
+            font-size: 1em;
+            padding-right: 5px;
+          }
+
+          .event_content_thumbnail {
+            width: 20%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+
+        .event_content_bottom {
+          display: flex;
+          flex-direction: column;
+          height: 60%;
+          overflow: scroll;
+
+          .event_content_description {
+            width: 100%;
+            height: 100%;
+            margin-top: 10px;
+            font-size: 0.8em;
+          }
         }
       }
     }
