@@ -88,53 +88,110 @@ body {
   overflow: hidden;
 }
 
-.header {
-  padding: 5px;
-  background-color: #efe9e5;
-
-  .header-container {
-    max-width: 50rem;
-    margin: 0 auto;
+@media all and (min-width: 480px) {
+  .header {
     padding: 5px;
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    position: relative;
+    background-color: #efe9e5;
 
-    .logo {
-      margin-right: auto;
-      width: 100px;
-      height: auto;
-    }
+    .header-container {
+      max-width: 50rem;
+      margin: 0 auto;
+      padding: 5px;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      position: relative;
 
-    .profile {
-      .profile_icon {
-        width: 48px;
-        height: 48px;
-        overflow: hidden;
-        border-radius: 50%;
+      .logo {
+        margin-right: auto;
+        width: 100px;
+        height: auto;
       }
 
-      .profile_setting {
-        display: none;
-        background-color: #fff;
-        width: 240px;
-        padding: 10px 30px;
-        border: 1px solid #ccc;
-        position: absolute;
-        top: 75px;
-        right: 0;
-        z-index: 2;
-        border-radius: 0 0 5px 5px;
+      .profile {
+        .profile_icon {
+          width: 48px;
+          height: 48px;
+          overflow: hidden;
+          border-radius: 50%;
+        }
 
-        .profile_setting_item {
-          &:not(:last-child) {
-            padding-bottom: 5px;
+        .profile_setting {
+          display: none;
+          background-color: #fff;
+          width: 240px;
+          padding: 10px 30px;
+          border: 1px solid #ccc;
+          position: absolute;
+          top: 75px;
+          right: 0;
+          z-index: 2;
+          border-radius: 0 0 5px 5px;
+
+          .profile_setting_item {
+            &:not(:last-child) {
+              padding-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .header {
+    padding: 5px;
+    background-color: #efe9e5;
+
+    .header-container {
+      margin: 0 auto;
+      padding: 5px;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      position: relative;
+
+      .logo {
+        margin-right: auto;
+        width: 100px;
+        height: auto;
+      }
+
+      .profile {
+        .profile_icon {
+          width: 48px;
+          height: 48px;
+          overflow: hidden;
+          border-radius: 50%;
+        }
+
+        .profile_setting {
+          display: none;
+          background-color: #fff;
+          width: 240px;
+          padding: 10px 30px;
+          border: 1px solid #ccc;
+          position: absolute;
+          top: 75px;
+          right: 0;
+          z-index: 2;
+          border-radius: 0 0 5px 5px;
+
+          .profile_setting_item {
+            &:not(:last-child) {
+              padding-bottom: 5px;
+            }
           }
         }
       }
