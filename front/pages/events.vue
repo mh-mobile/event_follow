@@ -53,7 +53,7 @@ export default defineComponent({
       events: [],
       totalPages: 0,
       currentPage: 1,
-      pageWindow: 2,
+      pageWindow: (root.$device.isDesktop) ? 2 : 1,
       eventSortType: "",
       timeFilterType: "",
       friendsFilterType: "",
@@ -161,17 +161,33 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.event_container {
-  max-width: 50rem;
-  min-width: 50rem;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px 30px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+@media all and (min-width: 480px) {
+  .event_container {
+    max-width: 50rem;
+    min-width: 50rem;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .event_container {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
 }
 </style>

@@ -120,50 +120,102 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.pagination ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+@media all and (min-width: 480px) {
+  .pagination ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 
-  li {
-    padding: 10px 15px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-    &:not(:last-child) {
-      border-right: 1px solid #ccc;
+    li {
+      padding: 10px 15px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      &:not(:last-child) {
+        border-right: 1px solid #ccc;
+      }
+
+      &:first-child {
+        border-left: 1px solid #ccc;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      &:last-child {
+        border-right: 1px solid #ccc;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
     }
 
-    &:first-child {
-      border-left: 1px solid #ccc;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
+    .current_page {
+      background-color: #4d4f53 !important;
+      color: #fff !important;
+      border-top: 1px solid #4d4f53 !important;
+      border-bottom: 1px solid #4d4f53 !important;
     }
 
-    &:last-child {
-      border-right: 1px solid #ccc;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
+    .intermediate_page {
+      border-top: 1px solid #ccc !important;
+      border-bottom: 1px solid #ccc !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .click_disable {
+      pointer-events: none;
+      color: #ccc;
     }
   }
+}
 
-  .current_page {
-    background-color: #4d4f53 !important;
-    color: #fff !important;
-    border-top: 1px solid #4d4f53 !important;
-    border-bottom: 1px solid #4d4f53 !important;
-  }
+@media all and (max-width: 480px) {
+  .pagination ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 0.8em;
 
-  .intermediate_page {
-    border-top: 1px solid #ccc !important;
-    border-bottom: 1px solid #ccc !important;
-    color: #000 !important;
-    background: #fff !important;
-  }
+    li {
+      padding: 10px 10px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      &:not(:last-child) {
+        border-right: 1px solid #ccc;
+      }
 
-  .click_disable {
-    pointer-events: none;
-    color: #ccc;
+      &:first-child {
+        border-left: 1px solid #ccc;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      &:last-child {
+        border-right: 1px solid #ccc;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+
+    .current_page {
+      background-color: #4d4f53 !important;
+      color: #fff !important;
+      border-top: 1px solid #4d4f53 !important;
+      border-bottom: 1px solid #4d4f53 !important;
+    }
+
+    .intermediate_page {
+      border-top: 1px solid #ccc !important;
+      border-bottom: 1px solid #ccc !important;
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    .click_disable {
+      pointer-events: none;
+      color: #ccc;
+    }
   }
 }
 </style>

@@ -261,44 +261,91 @@ export default defineComponent({
     }
   }
 }
-.friends_list {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px 0;
-  box-sizing: border-box;
-  .friend_number {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f3f4f7;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-right: 10px;
+
+@media all and (min-width: 480px) {
+  .friends_list {
+    width: 100%;
+    height: 80px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
-  }
-  .friend_icon {
-    overflow: hidden;
-    padding-right: 5px;
-    cursor: pointer;
-    img {
+    justify-content: flex-start;
+    padding: 20px 0;
+    box-sizing: border-box;
+    .friend_number {
       width: 50px;
       height: 50px;
-      border-radius: 50%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f3f4f7;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
-    .noimage {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #efe9e5;
+    .friend_icon {
+      overflow: hidden;
+      padding-right: 5px;
+      cursor: pointer;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .noimage {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #efe9e5;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .friends_list {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+    box-sizing: border-box;
+    .friend_number {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f3f4f7;
+      font-size: 1.0em;
+      font-weight: bold;
+      margin-right: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .friend_icon {
+      overflow: hidden;
+      padding-right: 5px;
+      cursor: pointer;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      .noimage {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #efe9e5;
+      }
     }
   }
 }
