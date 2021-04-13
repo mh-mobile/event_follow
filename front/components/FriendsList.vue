@@ -196,73 +196,73 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.event-modal-container {
-  max-width: 30em;
-  min-width: 30em;
-  max-height: 80vh;
-  overflow-y: scroll;
-  .tweet_list {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    .tweet_item {
+@media all and (min-width: 480px) {
+  .event-modal-container {
+    max-width: 30em;
+    min-width: 30em;
+    max-height: 80vh;
+    overflow-y: scroll;
+    .tweet_list {
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       box-sizing: border-box;
-      &:not(:last-child) {
-        border-bottom: 1px solid #ccc;
-      }
-      .friend_column {
-        width: 10%;
+      .tweet_item {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         box-sizing: border-box;
-        margin: 5px;
-        .profile_icon {
-          overflow: hidden;
-          img {
-            border-radius: 50%;
-            width: 50px;
-            height: auto;
-          }
+        &:not(:last-child) {
+          border-bottom: 1px solid #ccc;
         }
-      }
-      .tweet_column {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        margin: 5px;
-        box-sizing: border-box;
-        .tweet_user {
-          height: 20px;
-          color: #0085ad;
-          margin: 5px;
+        .friend_column {
+          width: 10%;
           display: flex;
-          flex-direction: row;
-          .twitter_user_name {
+          flex-direction: column;
+          box-sizing: border-box;
+          margin: 5px;
+          .profile_icon {
+            overflow: hidden;
+            img {
+              border-radius: 50%;
+              width: 50px;
+              height: auto;
+            }
+          }
+        }
+        .tweet_column {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          margin: 5px;
+          box-sizing: border-box;
+          .tweet_user {
+            height: 20px;
             color: #0085ad;
-            font-weight: bold;
+            margin: 5px;
+            display: flex;
+            flex-direction: row;
+            .twitter_user_name {
+              color: #0085ad;
+              font-weight: bold;
+            }
+            .twitter_user_screen_name {
+              color: #a5a9ab;
+              margin-left: 5px;
+            }
           }
-          .twitter_user_screen_name {
+          .tweet_content {
+            margin: 5px;
+          }
+          .tweet_datetime {
+            margin: 5px;
             color: #a5a9ab;
-            margin-left: 5px;
           }
-        }
-        .tweet_content {
-          margin: 5px;
-        }
-        .tweet_datetime {
-          margin: 5px;
-          color: #a5a9ab;
         }
       }
     }
   }
-}
 
-@media all and (min-width: 480px) {
   .friends_list {
     width: 100%;
     height: 80px;
@@ -307,6 +307,72 @@ export default defineComponent({
 }
 
 @media all and (max-width: 480px) {
+  .event-modal-container {
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 80vh;
+    overflow-y: scroll;
+    .tweet_list {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      .tweet_item {
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        &:not(:last-child) {
+          border-bottom: 1px solid #ccc;
+        }
+        .friend_column {
+          width: 10%;
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
+          margin: 5px;
+          .profile_icon {
+            overflow: hidden;
+            img {
+              border-radius: 50%;
+              width: 30px;
+              height: auto;
+            }
+          }
+        }
+        .tweet_column {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          margin: 5px;
+          box-sizing: border-box;
+          .tweet_user {
+            height: 20px;
+            color: #0085ad;
+            margin: 5px;
+            display: flex;
+            flex-direction: row;
+            .twitter_user_name {
+              color: #0085ad;
+              font-weight: bold;
+            }
+            .twitter_user_screen_name {
+              color: #a5a9ab;
+              margin-left: 5px;
+            }
+          }
+          .tweet_content {
+            margin: 5px;
+          }
+          .tweet_datetime {
+            margin: 5px;
+            color: #a5a9ab;
+          }
+        }
+      }
+    }
+  }
+
   .friends_list {
     width: 100%;
     height: 80px;
@@ -322,7 +388,7 @@ export default defineComponent({
       border: 1px solid #ccc;
       border-radius: 5px;
       background-color: #f3f4f7;
-      font-size: 1.0em;
+      font-size: 1em;
       font-weight: bold;
       margin-right: 10px;
       display: flex;
