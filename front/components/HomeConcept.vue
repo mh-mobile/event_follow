@@ -5,16 +5,33 @@
 </template>
 
 <style lang="scss" scoped>
-.home_concept {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
-  font-weight: bold;
-  text-align: left;
-  margin-bottom: 20px;
+@media all and (min-width: 480px) {
+  .home_concept {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .home_concept {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+  }
 }
 </style>

@@ -52,42 +52,86 @@ html {
   }
 }
 
-.footer {
-  padding: 5px;
-  background-color: #efe9e5;
-
-  .footer-container {
-    max-width: 50rem;
-    margin: 0 auto;
+@media all and (min-width: 480px) {
+  .footer {
     padding: 5px;
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    position: relative;
+    background-color: #efe9e5;
 
-    .copyright {
-      margin-right: 5px;
-      color: #000;
+    .footer-container {
+      max-width: 50rem;
+      margin: 0 auto;
+      padding: 5px;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      position: relative;
+
+      .copyright {
+        margin-right: 5px;
+        color: #000;
+      }
+
+      .github {
+        margin-right: auto;
+        width: 20px;
+        height: 20px;
+      }
+
+      .terms {
+        margin-right: 50px;
+        color: #000;
+      }
+
+      .privacy_policy {
+        color: #000;
+      }
     }
+  }
+}
 
-    .github {
-      margin-right: auto;
-      width: 20px;
-      height: 20px;
-    }
+@media all and (max-width: 480px) {
+  .footer {
+    padding: 5px;
+    background-color: #efe9e5;
+    font-size: 0.8em;
 
-    .terms {
-      margin-right: 50px;
-      color: #000;
-    }
+    .footer-container {
+      margin: 0 auto;
+      padding: 5px;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      position: relative;
 
-    .privacy_policy {
-      color: #000;
+      .copyright {
+        margin-right: 5px;
+        color: #000;
+      }
+
+      .github {
+        margin-right: auto;
+        width: 20px;
+        height: 20px;
+      }
+
+      .terms {
+        margin-right: 10px;
+        color: #000;
+      }
+
+      .privacy_policy {
+        color: #000;
+      }
     }
   }
 }

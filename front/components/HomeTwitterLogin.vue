@@ -118,27 +118,55 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 
-  .twitter_login_button {
-    background: #218af5;
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-    padding: 15px 40px;
-    border-radius: 10px;
-    cursor: pointer;
+  @media all and (min-width: 480px) {
+    .twitter_login_button {
+      background: #218af5;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 10px;
+      cursor: pointer;
 
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background-image: url("~@/assets/twitter_logo.png");
-      background-size: contain;
-      vertical-align: middle;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-image: url("~@/assets/twitter_logo.png");
+        background-size: contain;
+        vertical-align: middle;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
+  }
 
-    &:hover {
-      opacity: 0.8;
+  @media all and (max-width: 480px) {
+    .twitter_login_button {
+      background: #218af5;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 10px 30px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image: url("~@/assets/twitter_logo.png");
+        background-size: contain;
+        vertical-align: middle;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 
