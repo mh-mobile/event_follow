@@ -289,8 +289,10 @@ export default defineComponent({
     }
     .friend_icon {
       overflow: hidden;
-      padding-right: 5px;
+      margin-right: 5px;
       cursor: pointer;
+      width: 50px;
+      height: 50px;
       img {
         width: 50px;
         height: 50px;
@@ -399,8 +401,10 @@ export default defineComponent({
     }
     .friend_icon {
       overflow: hidden;
-      padding-right: 5px;
+      margin-right: 5px;
       cursor: pointer;
+      width: 30px;
+      height: 30px;
       img {
         width: 30px;
         height: 30px;
