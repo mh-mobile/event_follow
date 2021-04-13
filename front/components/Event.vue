@@ -204,7 +204,6 @@ export default defineComponent({
 
     .event_detail {
       width: 100%;
-      height: 300px;
       display: flex;
       flex-direction: row;
 
@@ -283,7 +282,6 @@ export default defineComponent({
         .event_content_bottom {
           display: flex;
           flex-direction: column;
-          height: 60%;
           overflow: scroll;
 
           .event_content_description {
