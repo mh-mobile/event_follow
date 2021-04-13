@@ -55,7 +55,6 @@ export default defineComponent({
     margin-bottom: 20px;
     padding: 20px 30px;
     background-color: #ffffff;
-    border-radius: 5px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

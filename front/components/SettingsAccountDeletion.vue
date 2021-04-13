@@ -126,68 +126,139 @@ export default defineComponent({
   }
 }
 
-.modal-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 30em;
-  padding: 20px;
-
-  .title-container {
+@media all and (min-width: 480px) {
+  .modal-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 30em;
+    padding: 20px;
 
-    .title {
-      color: #000000;
-      font-size: 1em;
-      font-weight: normal;
-    }
-  }
-
-  .button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-
-    .ok-button {
-      width: 200px;
-      height: 44px;
-      background: #ff5454;
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      padding: 15px 40px;
-      border-radius: 10px;
-      cursor: pointer;
+    .title-container {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
-      &:hover {
-        opacity: 0.8;
+      .title {
+        color: #000000;
+        font-size: 1em;
+        font-weight: normal;
       }
     }
 
-    .cancel-button {
-      width: 200px;
-      height: 44px;
-      background: #878787;
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      padding: 15px 40px;
-      border-radius: 10px;
-      cursor: pointer;
+    .button-container {
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-right: 20px;
+      justify-content: center;
+      margin-top: 40px;
 
-      &:hover {
-        opacity: 0.8;
+      .ok-button {
+        width: 200px;
+        height: 44px;
+        background: #ff5454;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .cancel-button {
+        width: 200px;
+        height: 44px;
+        background: #878787;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .title {
+        color: #000000;
+        font-size: 1em;
+        font-weight: normal;
+      }
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+
+      .ok-button {
+        width: 250px;
+        height: 44px;
+        background: #ff5454;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .cancel-button {
+        width: 250px;
+        height: 44px;
+        background: #878787;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
