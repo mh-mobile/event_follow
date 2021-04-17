@@ -290,7 +290,22 @@ $ docker-compose up
 | --- | --- |
 |  Swagger Editor  | [http://localhost:8083](http://localhost:8083)  |
 |  Swagger UI  | [http://localhost:8082](http://localhost:8082)  |
-|  Redoc  | [http://localhost:8081](http://localhost:8081)  |
+|  Redoc  | [http://localhost:8081](http://localhost:8081) |
+
+# Screenshot
+
+
+![events_sc](./docs/events_sc.png)
+
+
+
+![sort_filter_sc](./docs/sort_filter_sc.png)
+
+
+
+![tweets_sc](./docs/tweets_sc.png)
+
+
 
 # Author
 
