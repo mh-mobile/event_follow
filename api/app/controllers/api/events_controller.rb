@@ -32,7 +32,9 @@ class Api::EventsController < Api::BaseController
           friends_filter_type: params[:friends])
         user_event_setting.reload
       rescue ArgumentError
-        redirect_to authenticated_root_path
+        # [ArgumentErrorの補足理由]
+        # enumの設定値にない不正な検索条件の値は設定値の更新時にArgumentErrorが発生する。
+        # ArgumentErrorの場合は、デフォルトの検索条件を以降で設定する。
       end
 
       @event_sort_type = user_event_setting.event_sort_type
