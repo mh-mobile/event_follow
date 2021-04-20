@@ -121,8 +121,14 @@ export default defineComponent({
       state.currentPage = Number(query.value.page)
         ? Number(query.value.page)
         : 1
+      const sortFilterCondition = {
+        sort: query.value.sort,
+        time: query.value.time,
+        friends: query.value.friends
+      }
       const params = {
-        page: state.currentPage
+        page: state.currentPage,
+        ...sortFilterCondition
       }
 
       requestEventAPI(idToken, params)
