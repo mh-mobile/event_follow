@@ -199,37 +199,4 @@ body {
   }
 }
 
-.footer {
-  padding: 5px;
-  background-color: #efe9e5;
-
-  .footer-container {
-    max-width: 50rem;
-    margin: 0 auto;
-    padding: 5px;
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    position: relative;
-
-    .copyright {
-      margin-right: auto;
-      color: #000;
-    }
-
-    .terms {
-      margin-right: 50px;
-      color: #000;
-    }
-
-    .privacy_policy {
-      color: #000;
-    }
-  }
-}
 </style>
