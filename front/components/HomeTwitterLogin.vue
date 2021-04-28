@@ -127,6 +127,9 @@ export default defineComponent({
       padding: 15px 40px;
       border-radius: 10px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &::before {
         content: "";
@@ -153,6 +156,9 @@ export default defineComponent({
       padding: 10px 30px;
       border-radius: 10px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &::before {
         content: "";
