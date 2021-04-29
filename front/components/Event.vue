@@ -98,7 +98,6 @@ export default defineComponent({
 
     .event_detail {
       width: 100%;
-      height: 300px;
       display: flex;
       flex-direction: row;
 
@@ -124,7 +123,6 @@ export default defineComponent({
 
         .event_held {
           width: 100px;
-          height: 40%;
           border: 1px solid #cccccc;
           background-color: #f3f4f7;
           border-radius: 5px;
@@ -179,12 +177,9 @@ export default defineComponent({
         .event_content_bottom {
           display: flex;
           flex-direction: column;
-          height: 60%;
-          overflow: scroll;
 
           .event_content_description {
             width: 100%;
-            height: 100%;
             margin-top: 10px;
           }
         }
@@ -282,11 +277,9 @@ export default defineComponent({
         .event_content_bottom {
           display: flex;
           flex-direction: column;
-          overflow: scroll;
 
           .event_content_description {
             width: 100%;
-            height: 100%;
             margin-top: 10px;
             font-size: 0.8em;
           }
