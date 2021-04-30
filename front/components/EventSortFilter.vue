@@ -6,26 +6,27 @@
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
         form(action="/events" method="GET" id="js-sort-filter-form")
-          .event-modal-header
-            .event-modal-left
+          .event-modal-sort
+            .event-modal-label
               | Sort by
-            .event-modal-center
-            .event-modal-right
+            .event-modal-value
+              select(v-model="selectedSortCondition" @change="selectedSortConditionChanged($event)" name="sort")
+                option(v-for="item in eventSortConditionItems" :value="item.value" :key="item.value")
+                  | {{ item.name }}
+          .event-modal-center
+            .event-modal-label
+            .event-modal-value
+              | ×
+          .event-modal-filter
+            .event-modal-label
               | Filter by
-          .event-modal-content
-              .event-modal-left.event-modal-sort
-                select(v-model="selectedSortCondition" @change="selectedSortConditionChanged($event)" name="sort")
-                  option(v-for="item in eventSortConditionItems" :value="item.value" :key="item.value")
-                    | {{ item.name }}
-              .event-modal-center
-                | ×
-              .event-modal-right.event-modal-sort
-                select(v-model="selectedTimeFilterCondition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
-                  option(v-for="item in timeFilterTypeItems" :value="item.value" :key="item.value")
-                    | {{ item.name }}
-                select(v-model="selectedFriendsFilterCondition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
-                  option(v-for="item in friendsFilterTypeItems" :value="item.value" :key="item.value")
-                    | {{ item.name }}
+            .event-modal-value
+              select(v-model="selectedTimeFilterCondition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
+                option(v-for="item in timeFilterTypeItems" :value="item.value" :key="item.value")
+                  | {{ item.name }}
+              select(v-model="selectedFriendsFilterCondition" v-show="!isFrinedsNumberSortCondition" @change="selectedFriendsFilterConditionChanged" name="friends")
+                option(v-for="item in friendsFilterTypeItems" :value="item.value" :key="item.value")
+                  | {{ item.name }}
 </template>
 
 <script>
@@ -149,67 +150,86 @@ export default defineComponent({
     }
   }
 
-
   .event-modal-container {
     max-width: 30em;
     min-width: 30em;
-    .event-modal-header {
+
+    form {
       display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #9f9fa3;
-    }
-    .event-modal-content {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      height: 70px;
-    }
-    .event-modal-left {
-      width: 45%;
-      display: flex;
-      justify-content: center;
-    }
-    .event-modal-center {
-      width: 10%;
-      display: flex;
-      justify-content: center;
-      font-size: 2em;
-    }
-    .event-modal-right {
-      width: 45%;
-      display: flex;
-      justify-content: center;
-    }
-    .event-modal-sort,
-    .event-modal-filter {
-      position: relative;
-      &::after {
-        content: "";
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border: 2px solid;
-        top: calc(50% - 4px);
-        right: 5px;
-        border-color: transparent transparent #565656 #565656;
-        transform: rotate(-45deg) translateY(-50%);
+      flex-direction: row;
+      margin-bottom: 10px;
+
+      .event-modal-center {
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 2em; 
+
+        .event-modal-label {
+          display: flex;
+          flex-direction: row;
+          height: 40%;
+          width: 100%;
+        }
+
+        .event-modal-value {
+          height: 60%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        } 
       }
-      select {
-        width: 100%;
-        height: 50px;
-        padding-left: 10px;
-        padding-right: 10px;
-        outline: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        font-size: 1em;
-        border-radius: 5px;
+
+      .event-modal-sort,
+      .event-modal-filter {
+        width: 45%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .event-modal-label {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2em;
+          font-weight: bold;
+          color: #9f9fa3;
+        }
+
+        .event-modal-value {
+          height: 60%;
+          width: 100%;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 2px solid;
+            top: calc(50% - 5px);
+            right: 5px;
+            border-color: transparent transparent #565656 #565656;
+            transform: rotate(-45deg) translateY(-50%);
+          }
+          select {
+            width: 100%;
+            height: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            font-size: 1em;
+            border-radius: 5px;
+          }
+        }
       }
     }
   }
@@ -238,64 +258,84 @@ export default defineComponent({
 
   .event-modal-container {
     width: 300px;
-    
-    .event-modal-header {
+
+    form {
       display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #9f9fa3;
-    }
-    .event-modal-content {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      height: 70px;
-    }
-    .event-modal-left {
-      width: 45%;
-      display: flex;
-      justify-content: center;
-    }
-    .event-modal-center {
-      width: 10%;
-      display: flex;
-      justify-content: center;
-      font-size: 2em;
-    }
-    .event-modal-right {
-      width: 45%;
-      display: flex;
-      justify-content: center;
-    }
-    .event-modal-sort,
-    .event-modal-filter {
-      position: relative;
-      &::after {
-        content: "";
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border: 2px solid;
-        top: calc(50% - 4px);
-        right: 5px;
-        border-color: transparent transparent #565656 #565656;
-        transform: rotate(-45deg) translateY(-50%);
-      }
-      select {
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      .event-modal-center {
         width: 100%;
-        height: 50px;
-        padding-left: 10px;
-        padding-right: 10px;
-        outline: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        font-size: 1em;
-        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 2em; 
+
+        .event-modal-label {
+          display: flex;
+          flex-direction: row;
+          height: 40%;
+          width: 100%;
+        }
+
+        .event-modal-value {
+          height: 40px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        } 
+      }
+
+      .event-modal-sort,
+      .event-modal-filter {
+        width: 100;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .event-modal-label {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          align-items: center;
+          font-size: 1.2em;
+          font-weight: bold;
+          color: #9f9fa3;
+          padding: 5px 0;
+        }
+
+        .event-modal-value {
+          height: 60%;
+          width: 100%;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 2px solid;
+            top: calc(50% - 5px);
+            right: 5px;
+            border-color: transparent transparent #565656 #565656;
+            transform: rotate(-45deg) translateY(-50%);
+          }
+          select {
+            width: 100%;
+            height: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            font-size: 1em;
+            border-radius: 5px;
+          }
+        }
       }
     }
   }
