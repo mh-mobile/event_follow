@@ -9,20 +9,22 @@ exports[`EventSortFilter.vue sort=closeness_order&friends=two_or_more_friends 1`
         <div class=\\"modal-window-content\\">
           <div class=\\"event-modal-container\\">
             <form action=\\"/events\\" method=\\"GET\\" id=\\"js-sort-filter-form\\">
-              <div class=\\"event-modal-header\\">
-                <div class=\\"event-modal-left\\">Sort by</div>
-                <div class=\\"event-modal-center\\"></div>
-                <div class=\\"event-modal-right\\">Filter by</div>
-              </div>
-              <div class=\\"event-modal-content\\">
-                <div class=\\"event-modal-left event-modal-sort\\"><select name=\\"sort\\">
+              <div class=\\"event-modal-sort\\">
+                <div class=\\"event-modal-label\\">Sort by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"sort\\">
                     <option value=\\"friends_number_order\\">Friend数</option>
                     <option value=\\"recent_order\\">新着順</option>
                     <option value=\\"created_order\\">投稿順</option>
                     <option value=\\"closeness_order\\">開催が近い順</option>
                   </select></div>
-                <div class=\\"event-modal-center\\">×</div>
-                <div class=\\"event-modal-right event-modal-sort\\"><select name=\\"time\\" style=\\"display: none;\\">
+              </div>
+              <div class=\\"event-modal-center\\">
+                <div class=\\"event-modal-label\\"></div>
+                <div class=\\"event-modal-value\\">×</div>
+              </div>
+              <div class=\\"event-modal-filter\\">
+                <div class=\\"event-modal-label\\">Filter by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"time\\" style=\\"display: none;\\">
                     <option value=\\"past_8_hours\\">過去8時間</option>
                     <option value=\\"past_24_hours\\">過去24時間</option>
                     <option value=\\"past_2_days\\">過去2日</option>
@@ -58,20 +60,22 @@ exports[`EventSortFilter.vue sort=created_order&friends=two_or_more_friends 1`] 
         <div class=\\"modal-window-content\\">
           <div class=\\"event-modal-container\\">
             <form action=\\"/events\\" method=\\"GET\\" id=\\"js-sort-filter-form\\">
-              <div class=\\"event-modal-header\\">
-                <div class=\\"event-modal-left\\">Sort by</div>
-                <div class=\\"event-modal-center\\"></div>
-                <div class=\\"event-modal-right\\">Filter by</div>
-              </div>
-              <div class=\\"event-modal-content\\">
-                <div class=\\"event-modal-left event-modal-sort\\"><select name=\\"sort\\">
+              <div class=\\"event-modal-sort\\">
+                <div class=\\"event-modal-label\\">Sort by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"sort\\">
                     <option value=\\"friends_number_order\\">Friend数</option>
                     <option value=\\"recent_order\\">新着順</option>
                     <option value=\\"created_order\\">投稿順</option>
                     <option value=\\"closeness_order\\">開催が近い順</option>
                   </select></div>
-                <div class=\\"event-modal-center\\">×</div>
-                <div class=\\"event-modal-right event-modal-sort\\"><select name=\\"time\\" style=\\"display: none;\\">
+              </div>
+              <div class=\\"event-modal-center\\">
+                <div class=\\"event-modal-label\\"></div>
+                <div class=\\"event-modal-value\\">×</div>
+              </div>
+              <div class=\\"event-modal-filter\\">
+                <div class=\\"event-modal-label\\">Filter by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"time\\" style=\\"display: none;\\">
                     <option value=\\"past_8_hours\\">過去8時間</option>
                     <option value=\\"past_24_hours\\">過去24時間</option>
                     <option value=\\"past_2_days\\">過去2日</option>
@@ -107,20 +111,22 @@ exports[`EventSortFilter.vue sort=friends_number_order&time=past_8_hours 1`] = `
         <div class=\\"modal-window-content\\">
           <div class=\\"event-modal-container\\">
             <form action=\\"/events\\" method=\\"GET\\" id=\\"js-sort-filter-form\\">
-              <div class=\\"event-modal-header\\">
-                <div class=\\"event-modal-left\\">Sort by</div>
-                <div class=\\"event-modal-center\\"></div>
-                <div class=\\"event-modal-right\\">Filter by</div>
-              </div>
-              <div class=\\"event-modal-content\\">
-                <div class=\\"event-modal-left event-modal-sort\\"><select name=\\"sort\\">
+              <div class=\\"event-modal-sort\\">
+                <div class=\\"event-modal-label\\">Sort by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"sort\\">
                     <option value=\\"friends_number_order\\">Friend数</option>
                     <option value=\\"recent_order\\">新着順</option>
                     <option value=\\"created_order\\">投稿順</option>
                     <option value=\\"closeness_order\\">開催が近い順</option>
                   </select></div>
-                <div class=\\"event-modal-center\\">×</div>
-                <div class=\\"event-modal-right event-modal-sort\\"><select name=\\"time\\">
+              </div>
+              <div class=\\"event-modal-center\\">
+                <div class=\\"event-modal-label\\"></div>
+                <div class=\\"event-modal-value\\">×</div>
+              </div>
+              <div class=\\"event-modal-filter\\">
+                <div class=\\"event-modal-label\\">Filter by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"time\\">
                     <option value=\\"past_8_hours\\">過去8時間</option>
                     <option value=\\"past_24_hours\\">過去24時間</option>
                     <option value=\\"past_2_days\\">過去2日</option>
@@ -156,20 +162,22 @@ exports[`EventSortFilter.vue sort=friends_number_order&time=past_24_hours 1`] = 
         <div class=\\"modal-window-content\\">
           <div class=\\"event-modal-container\\">
             <form action=\\"/events\\" method=\\"GET\\" id=\\"js-sort-filter-form\\">
-              <div class=\\"event-modal-header\\">
-                <div class=\\"event-modal-left\\">Sort by</div>
-                <div class=\\"event-modal-center\\"></div>
-                <div class=\\"event-modal-right\\">Filter by</div>
-              </div>
-              <div class=\\"event-modal-content\\">
-                <div class=\\"event-modal-left event-modal-sort\\"><select name=\\"sort\\">
+              <div class=\\"event-modal-sort\\">
+                <div class=\\"event-modal-label\\">Sort by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"sort\\">
                     <option value=\\"friends_number_order\\">Friend数</option>
                     <option value=\\"recent_order\\">新着順</option>
                     <option value=\\"created_order\\">投稿順</option>
                     <option value=\\"closeness_order\\">開催が近い順</option>
                   </select></div>
-                <div class=\\"event-modal-center\\">×</div>
-                <div class=\\"event-modal-right event-modal-sort\\"><select name=\\"time\\">
+              </div>
+              <div class=\\"event-modal-center\\">
+                <div class=\\"event-modal-label\\"></div>
+                <div class=\\"event-modal-value\\">×</div>
+              </div>
+              <div class=\\"event-modal-filter\\">
+                <div class=\\"event-modal-label\\">Filter by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"time\\">
                     <option value=\\"past_8_hours\\">過去8時間</option>
                     <option value=\\"past_24_hours\\">過去24時間</option>
                     <option value=\\"past_2_days\\">過去2日</option>
@@ -205,20 +213,22 @@ exports[`EventSortFilter.vue sort=recent_order&friends=one_or_more_friends 1`] =
         <div class=\\"modal-window-content\\">
           <div class=\\"event-modal-container\\">
             <form action=\\"/events\\" method=\\"GET\\" id=\\"js-sort-filter-form\\">
-              <div class=\\"event-modal-header\\">
-                <div class=\\"event-modal-left\\">Sort by</div>
-                <div class=\\"event-modal-center\\"></div>
-                <div class=\\"event-modal-right\\">Filter by</div>
-              </div>
-              <div class=\\"event-modal-content\\">
-                <div class=\\"event-modal-left event-modal-sort\\"><select name=\\"sort\\">
+              <div class=\\"event-modal-sort\\">
+                <div class=\\"event-modal-label\\">Sort by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"sort\\">
                     <option value=\\"friends_number_order\\">Friend数</option>
                     <option value=\\"recent_order\\">新着順</option>
                     <option value=\\"created_order\\">投稿順</option>
                     <option value=\\"closeness_order\\">開催が近い順</option>
                   </select></div>
-                <div class=\\"event-modal-center\\">×</div>
-                <div class=\\"event-modal-right event-modal-sort\\"><select name=\\"time\\" style=\\"display: none;\\">
+              </div>
+              <div class=\\"event-modal-center\\">
+                <div class=\\"event-modal-label\\"></div>
+                <div class=\\"event-modal-value\\">×</div>
+              </div>
+              <div class=\\"event-modal-filter\\">
+                <div class=\\"event-modal-label\\">Filter by</div>
+                <div class=\\"event-modal-value\\"><select name=\\"time\\" style=\\"display: none;\\">
                     <option value=\\"past_8_hours\\">過去8時間</option>
                     <option value=\\"past_24_hours\\">過去24時間</option>
                     <option value=\\"past_2_days\\">過去2日</option>
