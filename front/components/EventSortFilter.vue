@@ -199,11 +199,16 @@ export default defineComponent({
           font-size: 1.2em;
           font-weight: bold;
           color: #9f9fa3;
+          white-space: nowrap;
+          padding: 5px;
         }
 
         .event-modal-value {
           height: 60%;
           width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           position: relative;
 
           &::after {
@@ -262,54 +267,37 @@ export default defineComponent({
     form {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       margin-bottom: 10px;
+      align-items: flex-start;
 
       .event-modal-center {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         font-size: 2em; 
-
-        .event-modal-label {
-          display: flex;
-          flex-direction: row;
-          height: 40%;
-          width: 100%;
-        }
+        align-self: center;
 
         .event-modal-value {
-          height: 40px;
-          width: 100%;
+          height: 1em;
           display: flex;
-          justify-content: center;
+          flex-direction: row;
           align-items: center;
-        } 
+        }  
       }
 
       .event-modal-sort,
       .event-modal-filter {
-        width: 100;
-        position: relative;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
 
         .event-modal-label {
           height: 40%;
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: start;
-          align-items: center;
           font-size: 1.2em;
           font-weight: bold;
           color: #9f9fa3;
-          padding: 5px 0;
+          padding: 2px 0;
+          display: inline-block;
         }
 
         .event-modal-value {
           height: 60%;
-          width: 100%;
           position: relative;
 
           &::after {
@@ -324,8 +312,8 @@ export default defineComponent({
             transform: rotate(-45deg) translateY(-50%);
           }
           select {
-            width: 100%;
             height: 50px;
+            width: 100%;
             padding-left: 10px;
             padding-right: 10px;
             outline: none;
