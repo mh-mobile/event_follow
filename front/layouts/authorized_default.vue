@@ -90,14 +90,14 @@ body {
 
 @media all and (min-width: 480px) {
   .header {
-    padding: 5px;
+    padding: 0 5px;
     background-color: #efe9e5;
 
     .header-container {
       max-width: 50rem;
       margin: 0 auto;
-      padding: 5px;
-      height: 70px;
+      padding: 0 5px;
+      height: 64px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -109,8 +109,20 @@ body {
 
       .logo {
         margin-right: auto;
-        width: 100px;
-        height: auto;
+        height: 48px;
+
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          img {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 48px;
+          }
+        }
       }
 
       .profile {
@@ -128,7 +140,7 @@ body {
           padding: 10px 30px;
           border: 1px solid #ccc;
           position: absolute;
-          top: 75px;
+          top: 64px;
           right: 0;
           z-index: 2;
           border-radius: 0 0 5px 5px;
@@ -146,13 +158,13 @@ body {
 
 @media all and (max-width: 480px) {
   .header {
-    padding: 5px;
+    padding: 0 5px;
     background-color: #efe9e5;
 
     .header-container {
       margin: 0 auto;
-      padding: 5px;
-      height: 70px;
+      padding: 0 5px;
+      height: 56px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -164,14 +176,26 @@ body {
 
       .logo {
         margin-right: auto;
-        width: 100px;
-        height: auto;
+        height: 40px;
+
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          img {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 40px;
+          }
+        }
       }
 
       .profile {
         .profile_icon {
-          width: 48px;
-          height: 48px;
+          width: 40px;
+          height: 40px;
           overflow: hidden;
           border-radius: 50%;
         }
@@ -183,7 +207,7 @@ body {
           padding: 10px 30px;
           border: 1px solid #ccc;
           position: absolute;
-          top: 75px;
+          top: 56px;
           right: 0;
           z-index: 2;
           border-radius: 0 0 5px 5px;
