@@ -1,8 +1,7 @@
 <template lang="pug">
   div
     ul(v-show="!isEventEmpty")
-      li(v-for="event in events" :key="event.event.id")
-        Event(:eventInfo="event" v-for="event in events" :key="event.event.id")
+      Event(:eventInfo="event" v-for="event in events" :key="event.event.id")
     .no-event(v-show="isEventEmpty")
       | イベントが見つかりません。
 </template>
