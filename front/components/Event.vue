@@ -162,6 +162,7 @@ export default defineComponent({
             width: 80%;
             font-size: 1.3em;
             padding-right: 5px;
+            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
           }
 
           .event_content_thumbnail {
@@ -263,6 +264,7 @@ export default defineComponent({
             width: 80%;
             font-size: 1em;
             padding-right: 5px;
+            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
           }
 
           .event_content_thumbnail {
