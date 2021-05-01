@@ -1,10 +1,5 @@
 <template lang="pug">
 div
-  .header
-    .header-container
-      .logo
-        a(href="/home")
-          img(src="@/assets/logo_transparent.png")
   Nuxt 
   .footer
     .footer-container
@@ -24,44 +19,6 @@ html {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-}
-
-.header {
-  padding: 0px 5px;
-  background-color: #efe9e5;
-
-  .header-container {
-    max-width: 50rem;
-    margin: 0 auto;
-    padding: 0 5px;
-    height: 56px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    position: relative;
-
-    .logo {
-      margin-right: auto;
-      height: 40px;
-
-      a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        img {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          height: 40px;
-        }
-      }
-    }
-  }
 }
 
 @media all and (min-width: 480px) {
