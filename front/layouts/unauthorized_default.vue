@@ -27,14 +27,14 @@ html {
 }
 
 .header {
-  padding: 5px;
+  padding: 0px 5px;
   background-color: #efe9e5;
 
   .header-container {
     max-width: 50rem;
     margin: 0 auto;
-    padding: 5px;
-    height: 70px;
+    padding: 0 5px;
+    height: 56px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -46,8 +46,20 @@ html {
 
     .logo {
       margin-right: auto;
-      width: 100px;
-      height: auto;
+      height: 40px;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: 40px;
+        }
+      }
     }
   }
 }
