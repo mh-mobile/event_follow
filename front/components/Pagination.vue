@@ -61,14 +61,15 @@ export default defineComponent({
 
         _pages.push({
           label: page,
-          value: page
+          value: page,
+          class: "page_item"
         })
       }
 
       _pages.push({
         label: currentPage,
         value: currentPage,
-        class: "current_page click_disable"
+        class: "current_page click_disable page_item"
       })
 
       for (
@@ -80,7 +81,8 @@ export default defineComponent({
 
         _pages.push({
           label: page,
-          value: page
+          value: page,
+          class: "page_item"
         })
       }
 
@@ -160,6 +162,7 @@ export default defineComponent({
       border-bottom: 1px solid #ccc !important;
       color: #000 !important;
       background: #fff !important;
+      width: 50px;
     }
 
     .click_disable {
@@ -170,13 +173,19 @@ export default defineComponent({
 }
 
 @media all and (max-width: 480px) {
+  .pagination {
+    width: 100%;
+  }
+
   .pagination ul {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: stretch;
     font-size: 0.8em;
 
     li {
+      flex-grow: 1;
       padding: 10px 10px;
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
@@ -198,6 +207,10 @@ export default defineComponent({
       }
     }
 
+    .page_item {
+      min-width: 50px;
+    }
+
     .current_page {
       background-color: #4d4f53 !important;
       color: #fff !important;
@@ -210,6 +223,7 @@ export default defineComponent({
       border-bottom: 1px solid #ccc !important;
       color: #000 !important;
       background: #fff !important;
+      min-width: 50px;
     }
 
     .click_disable {
