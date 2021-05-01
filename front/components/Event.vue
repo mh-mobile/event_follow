@@ -151,6 +151,7 @@ export default defineComponent({
         flex-direction: column;
         padding-left: 26px;
         box-sizing: border-box;
+        margin-top: -2px;
 
         .event_content_top {
           display: flex;
@@ -251,6 +252,7 @@ export default defineComponent({
         flex-direction: column;
         padding-left: 26px;
         box-sizing: border-box;
+        margin-top: -2px;
 
         .event_content_top {
           display: flex;
