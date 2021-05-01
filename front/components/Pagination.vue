@@ -1,5 +1,5 @@
 <template lang="pug">
-.pagination
+.event_pagination
   ul
     li(v-for="(page, index) in pages" :key="index" @click="showPage(page.value)", :class="page.class")
       | {{ page.label }}
@@ -123,16 +123,24 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @media all and (min-width: 480px) {
-  .pagination ul {
+  .event_pagination {
+    width: 100%;
+  }
+
+  .event_pagination ul {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
 
     li {
       padding: 10px 15px;
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       &:not(:last-child) {
         border-right: 1px solid #ccc;
       }
@@ -150,6 +158,10 @@ export default defineComponent({
       }
     }
 
+    .page_item {
+      min-width: 50px;
+    }
+
     .current_page {
       background-color: #4d4f53 !important;
       color: #fff !important;
@@ -162,7 +174,7 @@ export default defineComponent({
       border-bottom: 1px solid #ccc !important;
       color: #000 !important;
       background: #fff !important;
-      width: 50px;
+      min-width: 50px;
     }
 
     .click_disable {
@@ -173,11 +185,11 @@ export default defineComponent({
 }
 
 @media all and (max-width: 480px) {
-  .pagination {
+  .event_pagination {
     width: 100%;
   }
 
-  .pagination ul {
+  .event_pagination ul {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -190,6 +202,10 @@ export default defineComponent({
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      
       &:not(:last-child) {
         border-right: 1px solid #ccc;
       }

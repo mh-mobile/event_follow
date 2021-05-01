@@ -91,10 +91,7 @@ export default defineComponent({
       flex-direction: row;
       justify-content: flex-end;
       margin-bottom: 10px;
-
-      .pagination {
-        margin-top: 20px;
-      }
+      margin-top: 10px;
     }
   }
 }
@@ -141,10 +138,7 @@ export default defineComponent({
       flex-direction: row;
       justify-content: flex-end;
       margin-bottom: 10px;
-
-      .pagination {
-        margin-top: 20px;
-      }
+      margin-top: 10px;
     }
   }
 }
