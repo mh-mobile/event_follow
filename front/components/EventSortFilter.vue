@@ -160,7 +160,7 @@ export default defineComponent({
       margin-bottom: 10px;
 
       .event-modal-center {
-        width: 10%;
+        width: 1.5em;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -184,7 +184,7 @@ export default defineComponent({
 
       .event-modal-sort,
       .event-modal-filter {
-        width: 45%;
+        width: calc((100%-1.5em)/2);
         position: relative;
         display: flex;
         flex-direction: column;
