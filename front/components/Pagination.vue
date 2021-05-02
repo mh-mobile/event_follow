@@ -194,17 +194,19 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     justify-content: stretch;
-    font-size: 0.8em;
+    font-size: 0.8em; 
 
     li {
       flex-grow: 1;
-      padding: 10px 10px;
+      height: 40px;
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
       display: flex;
       flex-direction: row;
       justify-content: center;
+      align-items: center;
+      white-space: nowrap;
       
       &:not(:last-child) {
         border-right: 1px solid #ccc;
