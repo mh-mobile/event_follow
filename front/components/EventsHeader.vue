@@ -3,7 +3,7 @@
   .event_header_top
     .event_header_info(v-if="$device.isDesktop")
       | 友達からのイベント情報
-    #js-event-sort-filter
+    .event_sort_filter_button#js-event-sort-filter
       EventSortFilter(:eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
   .event_header_bottom
     Pagination(:totalPages="totalPages" :currentPage="currentPage" :pageWindow="pageWindow" v-show="totalPages > 0")
@@ -111,6 +111,13 @@ export default defineComponent({
         margin-right: auto;
         font-size: 1em;
         font-weight: bold;
+      }
+
+      .event_sort_filter_button {
+        width: 100%;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+        text-align: center;
       }
 
       .event_header_sort_filter {
