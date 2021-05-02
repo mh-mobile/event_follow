@@ -244,21 +244,23 @@ export default defineComponent({
   .event_header_sort_filter {
     font-size: 1em;
     font-weight: bold;
-    position: relative;
-    padding-right: 24px;
+    padding: 10px;
     cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-    &::after {
+    &::before {
       content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border: 2px solid;
-      top: calc(50% - 4px);
-      right: 0;
-      border-color: transparent transparent #565656 #565656;
-      transform: rotate(-45deg) translateY(-50%);
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      background: url("~@/assets/search_icon.svg");
+      background-size: contain;
     }
+
   }
 
   .event-modal-container {
