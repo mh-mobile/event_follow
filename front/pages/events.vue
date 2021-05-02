@@ -194,6 +194,7 @@ export default defineComponent({
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    max-width: calc(100vw - 2rem);
   }
 }
 </style>
