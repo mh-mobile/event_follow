@@ -2,7 +2,10 @@
 
 exports[`EventHeld.vue renders html correctly 1`] = `
 "<div class=\\"event_held\\" started_at=\\"2021-02-06T13:40:00.000Z\\">
-  <div class=\\"event_date\\"></div>
+  <div class=\\"event_date\\">
+    <div class=\\"event_month\\"></div><span>/</span>
+    <div class=\\"event_day\\"></div>
+  </div>
   <div class=\\"event_start\\">開催</div>
 </div>"
 `;
