@@ -194,10 +194,11 @@ export default defineComponent({
   .event_item {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 7px;
     margin-bottom: 20px;
-    &:not(:last-child) {
-      border-bottom: 1px solid #ccc;
-    }
+    background-color: #ffffff;
 
     .event_detail {
       width: 100%;
