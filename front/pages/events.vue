@@ -188,8 +188,7 @@ export default defineComponent({
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px 30px;
-    background-color: #ffffff;
+    padding: 20px 0;
     border-radius: 5px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
