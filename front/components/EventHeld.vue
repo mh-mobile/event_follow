@@ -1,7 +1,12 @@
 <template lang="pug">
 .event_held
   .event_date
-    | {{ eventDate }}
+    .event_month
+      | {{ eventDate.month }}
+    span
+      | /
+    .event_day
+      | {{ eventDate.day }}
   .event_start
     | 開催
 </template>
@@ -22,7 +27,10 @@ export default defineComponent({
       const eventDate = new Date(props.startedAt)
       const month = eventDate.getMonth() + 1
       const day = eventDate.getDate()
-      return `${month}/${day}`
+      return {
+        month,
+        day
+      }
     })
     return {
       eventDate: eventDate
@@ -46,12 +54,24 @@ export default defineComponent({
       font-size: 2em;
       height: 50%;
       text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5px;
+
+      span {
+        margin: 0 2px;
+      }
     }
 
     .event_start {
-      font-size: 1.5em;
+      font-size: 1.2em;
       height: 50%;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -71,12 +91,23 @@ export default defineComponent({
       font-size: 1.5em;
       height: 50%;
       text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5px;
+
+      span {
+        margin: 0 2px;
+      }
     }
 
     .event_start {
-      font-size: 1.2em;
+      font-size: 0.8em;
       height: 50%;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
