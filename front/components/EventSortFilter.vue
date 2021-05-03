@@ -251,6 +251,7 @@ export default defineComponent({
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
 
     &::before {
       content: "";

@@ -201,6 +201,7 @@ export default defineComponent({
       height: 40px;
       border-top: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
+      background-color: #ffffff;
       cursor: pointer;
       display: flex;
       flex-direction: row;
@@ -232,8 +233,8 @@ export default defineComponent({
     .current_page {
       background-color: #4d4f53 !important;
       color: #fff !important;
-      border-top: 1px solid #4d4f53 !important;
-      border-bottom: 1px solid #4d4f53 !important;
+      border-bottom: 1px solid #ccc;
+      background-color: #ffffff;
     }
 
     .intermediate_page {

@@ -118,6 +118,7 @@ export default defineComponent({
         border-radius: 7px;
         border: 1px solid #ccc;
         text-align: center;
+        overflow: hidden;
       }
 
       .event_header_sort_filter {

@@ -8,6 +8,8 @@
   width: 100%;
   height: 15em;
   display: flex;
+  background-color: #ffffff;
+  border-radius: 7px;
   justify-content: center;
   align-items: center;
   position: relative;
