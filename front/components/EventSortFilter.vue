@@ -185,6 +185,7 @@ export default defineComponent({
       .event-modal-sort,
       .event-modal-filter {
         width: calc((100%-1.5em)/2);
+        width: -webkit-calc((100% - 1.5em)/2);
         position: relative;
         display: flex;
         flex-direction: column;
