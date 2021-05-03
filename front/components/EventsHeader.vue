@@ -90,8 +90,8 @@ export default defineComponent({
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      margin-bottom: 10px;
-      margin-top: 10px;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
     }
   }
 }
@@ -145,8 +145,8 @@ export default defineComponent({
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      margin-bottom: 10px;
-      margin-top: 10px;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
     }
   }
 }
