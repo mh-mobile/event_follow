@@ -289,6 +289,9 @@ export default defineComponent({
       .event-modal-sort,
       .event-modal-filter {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
         .event-modal-label {
           height: 40%;
@@ -302,6 +305,7 @@ export default defineComponent({
         .event-modal-value {
           height: 60%;
           position: relative;
+          width: 100%;
 
           &::after {
             content: "";
