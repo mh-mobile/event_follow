@@ -5,7 +5,8 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" }
+      { hid: "description", name: "description", content: "" },
+      { hid: "keywords", name: "keywords", content: "イベント,IT勉強会,技術イベント,EVENT FOLLOW,イベントフォロー,doorkeeper,connpass" },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
