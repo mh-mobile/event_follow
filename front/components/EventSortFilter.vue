@@ -136,6 +136,9 @@ export default defineComponent({
     position: relative;
     padding-right: 24px;
     cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
 
     &::after {
       content: "";

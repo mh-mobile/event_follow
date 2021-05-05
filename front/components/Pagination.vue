@@ -142,6 +142,9 @@ export default defineComponent({
       justify-content: center;
       align-items: center;
       color: #004276;
+      &:hover {
+        color: rgba(0, 66, 118, 0.8);
+      }
       &:not(:last-child) {
         border-right: 1px solid #ccc;
       }
