@@ -228,6 +228,10 @@ export default defineComponent({
               width: 50px;
               height: auto;
             }
+
+            &:hover {
+              opacity: 0.8;
+            }
           }
         }
         .tweet_column {
@@ -286,6 +290,10 @@ export default defineComponent({
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      color: #4a4a4a;
+      &:hover {
+        color: rgba(74, 74, 74, 0.8);
+      }
     }
     .friend_icon {
       overflow: hidden;
@@ -293,6 +301,9 @@ export default defineComponent({
       cursor: pointer;
       width: 50px;
       height: 50px;
+      &:hover {
+        opacity: 0.8;
+      }
       img {
         width: 50px;
         height: 50px;

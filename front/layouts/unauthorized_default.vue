@@ -19,6 +19,13 @@ html {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+
+  a {
+    color: #004276;
+    &:hover {
+      color: rgba(0, 66, 118, 0.8);
+    }
+  }
 }
 
 @media all and (min-width: 480px) {

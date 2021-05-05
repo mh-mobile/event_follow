@@ -142,10 +142,6 @@ export default defineComponent({
             padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
-
-            a {
-              color: #004276;
-            }
           }
 
           .event_content_thumbnail {
@@ -230,10 +226,6 @@ export default defineComponent({
             padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
-
-            a {
-              color: #004276;
-            }
           }
 
           .event_content_thumbnail {
