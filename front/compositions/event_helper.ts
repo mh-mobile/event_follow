@@ -12,6 +12,7 @@ export const useEvent = (props: any) => {
     userIds: "",
     friendsNumber: 0,
     startedAt: "",
+    endedAt: "",
     connpassLogoImage: require("@/assets/connpass_logo.png"),
     doorKeeperLogoImage: require("@/assets/doorkeeper_logo.png"),
     techplayLogoImage: require("@/assets/logo_transparent.png"),
@@ -78,6 +79,7 @@ export const useEvent = (props: any) => {
     state.userIds = eventInfo.extra.user_ids
     state.friendsNumber = eventInfo.extra.friends_number
     state.startedAt = eventInfo.event.started_at
+    state.endedAt = eventInfo.event.ended_at
 
     updateTwitterButton(eventInfo)
   }

@@ -7,8 +7,8 @@
       | /
     .event_day
       | {{ eventDate.day }}
-  .event_start
-    | 開催
+  .event_start(:class="eventStatusInfo.eventStartStatusStyle")
+    | {{ eventStatusInfo.eventStartStatusLabel }}
 </template>
 <script lang="ts">
 import { defineComponent, computed } from "@nuxtjs/composition-api"
@@ -16,6 +16,10 @@ import { defineComponent, computed } from "@nuxtjs/composition-api"
 export default defineComponent({
   props: {
     startedAt: {
+      type: String,
+      default: ""
+    },
+    endedAt: {
       type: String,
       default: ""
     }
@@ -32,8 +36,45 @@ export default defineComponent({
         day
       }
     })
+
+    const eventStatusInfo = computed(() => {
+      if (!props.startedAt || props.startedAt === "") return ""
+      if (!props.endedAt || props.endedAt === "") return ""
+
+      const eventStartDate = new Date(props.startedAt)
+      const eventEndDate = new Date(props.startedAt)
+
+      const now = new Date()
+      let eventStartStatusStyle
+      let eventStartStatusLabel
+      if (now >= eventStartDate && now <= eventEndDate) {
+        eventStartStatusStyle = "event_status_progress"
+        eventStartStatusLabel = "開催中"
+      } else if (
+        now < eventStartDate &&
+        eventStartDate.getFullYear() === now.getFullYear() &&
+        eventStartDate.getMonth() === now.getMonth() &&
+        eventStartDate.getDate() === now.getDate()
+      ) {
+        eventStartStatusStyle = "event_status_today"
+        eventStartStatusLabel = "本日開催"
+      } else if (now < eventStartDate) {
+        eventStartStatusStyle = "event_status_preparation"
+        eventStartStatusLabel = "開催前"
+      } else {
+        eventStartStatusStyle = "event_status_finished"
+        eventStartStatusLabel = "開催終了"
+      }
+
+      return {
+        eventStartStatusStyle,
+        eventStartStatusLabel
+      }
+    })
+
     return {
-      eventDate: eventDate
+      eventDate,
+      eventStatusInfo
     }
   }
 })
@@ -48,10 +89,11 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-items: center;
+    overflow: hidden;
 
     .event_date {
       font-size: 2em;
-      height: 50%;
+      height: 70%;
       text-align: center;
       display: flex;
       flex-direction: row;
@@ -65,12 +107,30 @@ export default defineComponent({
     }
 
     .event_start {
-      font-size: 1.2em;
-      height: 50%;
+      font-size: 1em;
+      font-weight: bold;
+      height: 30%;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #ffffff;
+    }
+
+    .event_status_today {
+      background-color: #f47721;
+    }
+
+    .event_status_progress {
+      background-color: #fd5c63;
+    }
+
+    .event_status_preparation {
+      background-color: #00aeff;
+    }
+
+    .event_status_finished {
+      background-color: #4a4a4a;
     }
   }
 }
@@ -84,10 +144,11 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-items: center;
+    overflow: hidden;
 
     .event_date {
       font-size: 1.5em;
-      height: 50%;
+      height: 70%;
       text-align: center;
       display: flex;
       flex-direction: row;
@@ -102,10 +163,28 @@ export default defineComponent({
 
     .event_start {
       font-size: 0.8em;
-      height: 50%;
+      font-weight: bold;
+      height: 30%;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #ffffff;
+    }
+
+    .event_status_today {
+      background-color: #f47721;
+    }
+
+    .event_status_progress {
+      background-color: #fd5c63;
+    }
+
+    .event_status_preparation {
+      background-color: #00aeff;
+    }
+
+    .event_status_finished {
+      background-color: #4a4a4a;
     }
   }
 }
