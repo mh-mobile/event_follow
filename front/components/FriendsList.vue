@@ -277,7 +277,7 @@ export default defineComponent({
       height: 50px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      background-color: #f3f4f7;
+      background-color: #efe9e5;
       font-size: 1.5em;
       font-weight: bold;
       margin-right: 10px;
@@ -389,7 +389,7 @@ export default defineComponent({
       height: 30px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      background-color: #f3f4f7;
+      background-color: #efe9e5;
       font-size: 1em;
       font-weight: bold;
       margin-right: 10px;

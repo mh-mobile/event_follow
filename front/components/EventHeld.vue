@@ -43,8 +43,7 @@ export default defineComponent({
   .event_held {
     width: 100px;
     height: 100px;
-    border: 1px solid #cccccc;
-    background-color: #f3f4f7;
+    background-color: #efe9e5;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -80,8 +79,7 @@ export default defineComponent({
   .event_held {
     width: 70px;
     height: 70px;
-    border: 1px solid #cccccc;
-    background-color: #f3f4f7;
+    background-color: #efe9e5;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
