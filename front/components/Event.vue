@@ -120,28 +120,6 @@ export default defineComponent({
           display: flex;
           justify-content: center;
         }
-
-        .event_held {
-          width: 100px;
-          border: 1px solid #cccccc;
-          background-color: #f3f4f7;
-          border-radius: 5px;
-          display: flex;
-          flex-direction: column;
-          justify-items: center;
-
-          .event_date {
-            font-size: 2em;
-            height: 50%;
-            text-align: center;
-          }
-
-          .event_start {
-            font-size: 1.5em;
-            height: 50%;
-            text-align: center;
-          }
-        }
       }
 
       .event_detail_content {
@@ -162,7 +140,12 @@ export default defineComponent({
             width: 80%;
             font-size: 1.3em;
             padding-right: 5px;
-            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+              "Noto Sans JP", Meiryo, sans-serif;
+
+            a {
+              color: #004276;
+            }
           }
 
           .event_content_thumbnail {
@@ -225,26 +208,6 @@ export default defineComponent({
           justify-content: center;
           display: none;
         }
-
-        .event_held {
-          width: 70px;
-          border: 1px solid #cccccc;
-          background-color: #f3f4f7;
-          border-radius: 5px;
-          display: flex;
-          flex-direction: column;
-          justify-items: center;
-
-          .event_date {
-            height: 50%;
-            text-align: center;
-          }
-
-          .event_start {
-            height: 50%;
-            text-align: center;
-          }
-        }
       }
 
       .event_detail_content {
@@ -265,7 +228,12 @@ export default defineComponent({
             width: 80%;
             font-size: 1em;
             padding-right: 5px;
-            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+            font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+              "Noto Sans JP", Meiryo, sans-serif;
+
+            a {
+              color: #004276;
+            }
           }
 
           .event_content_thumbnail {

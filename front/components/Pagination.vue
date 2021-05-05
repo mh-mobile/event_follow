@@ -141,6 +141,7 @@ export default defineComponent({
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      color: #004276;
       &:not(:last-child) {
         border-right: 1px solid #ccc;
       }
@@ -160,19 +161,20 @@ export default defineComponent({
 
     .page_item {
       min-width: 50px;
+      color: #004276;
     }
 
     .current_page {
-      background-color: #4d4f53 !important;
-      color: #fff !important;
-      border-top: 1px solid #4d4f53 !important;
-      border-bottom: 1px solid #4d4f53 !important;
+      background-color: #efe9e5 !important;
+      color: #4a4a4a !important;
+      border-top: 1px solid #ccc !important;
+      border-bottom: 1px solid #ccc !important;
     }
 
     .intermediate_page {
       border-top: 1px solid #ccc !important;
       border-bottom: 1px solid #ccc !important;
-      color: #000 !important;
+      color: #ccc !important;
       background: #fff !important;
       min-width: 50px;
     }
@@ -208,6 +210,7 @@ export default defineComponent({
       justify-content: center;
       align-items: center;
       white-space: nowrap;
+      color: #004276;
       
       &:not(:last-child) {
         border-right: 1px solid #ccc;
@@ -228,19 +231,20 @@ export default defineComponent({
 
     .page_item {
       min-width: 50px;
+      color: #004276;
     }
 
     .current_page {
-      background-color: #4d4f53 !important;
-      color: #fff !important;
-      border-bottom: 1px solid #ccc;
-      background-color: #ffffff;
+      background-color: #efe9e5 !important;
+      color: #4a4a4a !important;
+      border-top: 1px solid #ccc !important;
+      border-bottom: 1px solid #ccc !important
     }
 
     .intermediate_page {
       border-top: 1px solid #ccc !important;
       border-bottom: 1px solid #ccc !important;
-      color: #000 !important;
+      color: #ccc !important;
       background: #fff !important;
       min-width: 50px;
     }
