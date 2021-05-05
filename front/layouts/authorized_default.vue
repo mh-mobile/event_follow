@@ -82,6 +82,13 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+
+  a {
+    color: #004276;
+    &:hover {
+      color: rgba(0, 66, 118, 0.8);
+    }
+  }
 }
 
 .scroll_disable {
@@ -131,6 +138,10 @@ body {
           height: 48px;
           overflow: hidden;
           border-radius: 50%;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.8;
+          }
         }
 
         .profile_setting {
@@ -146,10 +157,6 @@ body {
           border-radius: 0 0 5px 5px;
 
           .profile_setting_item {
-            a {
-              color: #004276;
-            }
-
             &:not(:last-child) {
               padding-bottom: 5px;
             }
@@ -215,10 +222,6 @@ body {
           right: 0;
           z-index: 2;
           border-radius: 0 0 5px 5px;
-
-          a {
-            color: #004276;
-          }
 
           .profile_setting_item {
             &:not(:last-child) {
