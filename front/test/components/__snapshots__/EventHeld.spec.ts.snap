@@ -6,6 +6,6 @@ exports[`EventHeld.vue renders html correctly 1`] = `
     <div class=\\"event_month\\"></div><span>/</span>
     <div class=\\"event_day\\"></div>
   </div>
-  <div class=\\"event_start\\">開催</div>
+  <div class=\\"event_start\\"></div>
 </div>"
 `;
