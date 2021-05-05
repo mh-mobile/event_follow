@@ -2,7 +2,7 @@
 li.event_item(ref="root")
   .event_detail
     .event_detail_left
-      EventHeld(:startedAt="startedAt")
+      EventHeld(:startedAt="startedAt" :endedAt="endedAt")
       .event_logo
         img(:src="eventLogoImage")
       .tweet_button
