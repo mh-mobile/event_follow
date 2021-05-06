@@ -112,7 +112,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .home_twitter_login {
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,6 +129,7 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 360px;
 
       &::before {
         content: "";
