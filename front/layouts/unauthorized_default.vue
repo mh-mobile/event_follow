@@ -33,11 +33,13 @@ html {
   .footer {
     padding: 5px;
     background-color: #efe9e5;
-    height: 160px;
+    height: 126px;
+    display: flex;
+    align-items: center;
 
     .footer-container {
       max-width: 50rem;
-      margin: 20px auto;
+      margin: 0 auto;
       padding: 5px;
       display: flex;
       flex-direction: column;
@@ -49,7 +51,6 @@ html {
       position: relative;
 
       .copyright {
-        margin-right: 5px;
         color: #000;
       }
 
@@ -92,38 +93,55 @@ html {
     padding: 5px;
     background-color: #efe9e5;
     font-size: 0.8em;
+    height: 126px;
+    display: flex;
+    align-items: center;
 
     .footer-container {
       margin: 0 auto;
       padding: 5px;
-      height: 70px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       position: relative;
 
       .copyright {
-        margin-right: 5px;
         color: #000;
       }
 
       .github {
-        margin-right: auto;
         width: 20px;
-        height: 20px;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
-      .terms {
-        margin-right: 10px;
-        color: #000;
-      }
+      .agreement_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .terms {
+          color: #000;
+          padding-right: 10px;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
 
-      .privacy_policy {
-        color: #000;
+        .privacy_policy {
+          color: #000;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
       }
     }
   }

@@ -34,17 +34,22 @@
 @media all and (max-width: 480px) {
   .home_concept {
     width: 100%;
-    height: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1em;
+    font-size: 1.8em;
     font-weight: bold;
-    text-align: left;
     margin-bottom: 20px;
+    color: #52648d;
+    line-height: 40px;
 
- 
+    .logo {
+      padding-top: 50px;
+      padding-bottom: 30px;
+      width: 150px;
+      height: auto;
+    } 
   }
 }
 </style>
