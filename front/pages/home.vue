@@ -2,8 +2,8 @@
 div
   .home_container
     HomeConcept
-    HomeTwitterLogin
     HomeHowItWorks(v-if="$device.isDesktop")
+    HomeTwitterLogin
 </template>
 
 <script lang="ts">
@@ -26,7 +26,6 @@ export default defineComponent({
   .home_container {
     max-width: 50rem;
     margin: 0 auto;
-    padding-top: 20px;
     min-height: calc(100vh - 160px);
   }
 }

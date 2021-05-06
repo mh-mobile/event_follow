@@ -1,22 +1,33 @@
 <template lang="pug">
 .home_concept
-  | 自分の興味の近い技術系の<br>
-  | イベントを発見するためのソーシャルサービス
+  .logo
+    img(src="@/assets/logo_transparent.png")
+  div
+    | 興味のある技術
+  div
+    | イベントを見逃さない
 </template>
 
 <style lang="scss" scoped>
 @media all and (min-width: 480px) {
   .home_concept {
     width: 100%;
-    height: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 46px;
     font-weight: bold;
-    text-align: left;
+    line-height: 58px;
     margin-bottom: 20px;
+    color: #52648d;
+
+    .logo {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      width: 250px;
+      height: auto;
+    }
   }
 }
 
@@ -32,6 +43,8 @@
     font-weight: bold;
     text-align: left;
     margin-bottom: 20px;
+
+ 
   }
 }
 </style>

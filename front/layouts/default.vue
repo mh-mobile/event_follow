@@ -17,10 +17,6 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  .content_wrapper {
-    min-height: 100%;
-    margin-bottom: -70px;
-  }
 }
 
 .scroll_disable {
