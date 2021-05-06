@@ -159,6 +159,7 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
 
       &::before {
         content: "";
@@ -183,6 +184,7 @@ export default defineComponent({
     align-items: center;
     text-align: center;
     margin-top: 5px;
+    margin-bottom: 40px;
 
     .agreement_upper {
       font-size: 0.8em;

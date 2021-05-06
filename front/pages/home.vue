@@ -2,7 +2,7 @@
 div
   .home_container
     HomeConcept
-    HomeHowItWorks(v-if="$device.isDesktop")
+    HomeHowItWorks
     HomeTwitterLogin
 </template>
 
@@ -26,15 +26,15 @@ export default defineComponent({
   .home_container {
     max-width: 50rem;
     margin: 0 auto;
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 126px);
   }
 }
 
 @media all and (max-width: 480px) {
   .home_container {
     margin: 0 auto;
-    padding-top: 20px;
-    min-height: calc(100vh - 160px);
+    padding: 0 1em;
+    min-height: calc(100vh - 126px);
   }
 }
 </style>

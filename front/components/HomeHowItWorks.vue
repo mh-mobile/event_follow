@@ -1,13 +1,15 @@
 <template lang="pug">
 .home_how_it_works
   .how_it_works_content
-    .how_it_works_description
+    .how_it_works_description(v-if="$device.isDesktop")
       div
         | Twitterでフォローしている友達がシェアしたツイート
       div
         | に基づいて、イベント情報を発見します
-    //- .how_it_works_picture
-    //-   img(src="@/assets/how_it_works_picture.png")
+    .how_it_works_description(v-else)
+      div
+        | Twitterでフォローしている友達がシェアしたツイートに基づいて、イベント情報を発見します
+ 
 </template>
 
 <style lang="scss" scoped>
@@ -30,7 +32,7 @@
 
     .how_it_works_description {
       width: 100%;
-      font-size: 1em;
+      font-size: 0.9em;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -38,8 +40,6 @@
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
-
-
     }
   }
 }
