@@ -34,6 +34,10 @@ export default defineComponent({
   flex-direction: row;
   justify-content: flex-end;
 
+  @media all and (max-width: 480px) {
+    margin-bottom: 50px;
+  }
+
   .pagination {
     margin-top: 50px;
     margin-bottom: 20px;
