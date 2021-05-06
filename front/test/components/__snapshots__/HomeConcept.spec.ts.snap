@@ -1,6 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeConcept.vue renders html correctly 1`] = `
-"<div class=\\"home_concept\\">自分の興味の近い技術系の<br>
-  イベントを発見するためのソーシャルサービス</div>"
+"<div class=\\"home_concept\\">
+  <div class=\\"logo\\"><img src=\\"@/assets/logo_transparent.png\\"></div>
+  <div>興味のある技術</div>
+  <div>イベントを見逃さない</div>
+</div>"
 `;
