@@ -142,6 +142,7 @@ export default defineComponent({
             padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
+            overflow-wrap: break-word;
           }
 
           .event_content_thumbnail {
@@ -162,6 +163,7 @@ export default defineComponent({
           .event_content_description {
             width: 100%;
             margin-top: 10px;
+            overflow-wrap: break-word;
           }
         }
       }
@@ -226,6 +228,7 @@ export default defineComponent({
             padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
+            overflow-wrap: break-word;
           }
 
           .event_content_thumbnail {
@@ -247,6 +250,7 @@ export default defineComponent({
             width: 100%;
             margin-top: 10px;
             font-size: 0.8em;
+            overflow-wrap: break-word;
           }
         }
       }
