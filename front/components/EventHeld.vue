@@ -154,8 +154,8 @@ export default defineComponent({
 
 @media all and (max-width: 480px) {
   .event_held {
-    width: 70px;
-    height: 70px;
+    width: 54px;
+    height: 54px;
     background-color: #efe9e5;
     border-radius: 5px;
     display: flex;
@@ -164,8 +164,8 @@ export default defineComponent({
     overflow: hidden;
 
     .event_date {
-      font-size: 1.5em;
-      height: 70%;
+      font-size: 1.2em;
+      height: 65%;
       text-align: center;
       display: flex;
       flex-direction: row;
@@ -179,9 +179,9 @@ export default defineComponent({
     }
 
     .event_start {
-      font-size: 0.8em;
+      font-size: 0.6em;
       font-weight: bold;
-      height: 30%;
+      height: 35%;
       display: flex;
       align-items: center;
       justify-content: center;
