@@ -88,7 +88,6 @@ export default defineComponent({
       tweets: [],
       friends: []
     })
-    const maxFriendsLength = 12
 
     const isLoading = computed(() => {
       return state.tweets.length === 0
@@ -100,9 +99,6 @@ export default defineComponent({
     })
 
     const displayableFriends = computed(() => {
-      if (state.friends.length > maxFriendsLength) {
-        return state.friends.slice(0, maxFriendsLength)
-      }
       return state.friends
     })
 
@@ -182,7 +178,6 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      maxFriendsLength,
       isLoading,
       userIdsArray,
       displayableFriends,
