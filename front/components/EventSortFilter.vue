@@ -8,7 +8,7 @@
         form(action="/events" method="GET" id="js-sort-filter-form")
           .event-modal-sort
             .event-modal-label
-              | Sort by
+              | 並び替え
             .event-modal-value
               select(v-model="selectedSortCondition" @change="selectedSortConditionChanged($event)" name="sort")
                 option(v-for="item in eventSortConditionItems" :value="item.value" :key="item.value")
@@ -19,7 +19,7 @@
               | ×
           .event-modal-filter
             .event-modal-label
-              | Filter by
+              | 絞り込み
             .event-modal-value
               select(v-model="selectedTimeFilterCondition" v-show="isFrinedsNumberSortCondition" @change="selectedTimeFilterConditionChanged" name="time")
                 option(v-for="item in timeFilterTypeItems" :value="item.value" :key="item.value")
