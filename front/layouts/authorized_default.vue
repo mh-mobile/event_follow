@@ -169,12 +169,11 @@ body {
 
 @media all and (max-width: 480px) {
   .header {
-    padding: 0 5px;
     background-color: #efe9e5;
 
     .header-container {
       margin: 0 auto;
-      padding: 0 5px;
+      padding: 0 20px;
       height: 56px;
       display: flex;
       flex-direction: row;
