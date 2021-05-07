@@ -9,7 +9,6 @@ exports[`Pagination.vue currentPage=2 1`] = `
     <li class=\\"current_page click_disable page_item\\">2</li>
     <li class=\\"page_item\\">3</li>
     <li class=\\"page_item\\">4</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"\\">次へ</li>
     <li class=\\"\\">最後</li>
   </ul>
@@ -26,7 +25,6 @@ exports[`Pagination.vue currentPage=3 1`] = `
     <li class=\\"current_page click_disable page_item\\">3</li>
     <li class=\\"page_item\\">4</li>
     <li class=\\"page_item\\">5</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"\\">次へ</li>
     <li class=\\"\\">最後</li>
   </ul>
@@ -38,13 +36,11 @@ exports[`Pagination.vue currentPage=4 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">2</li>
     <li class=\\"page_item\\">3</li>
     <li class=\\"current_page click_disable page_item\\">4</li>
     <li class=\\"page_item\\">5</li>
     <li class=\\"page_item\\">6</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"\\">次へ</li>
     <li class=\\"\\">最後</li>
   </ul>
@@ -56,13 +52,11 @@ exports[`Pagination.vue currentPage=10 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">8</li>
     <li class=\\"page_item\\">9</li>
     <li class=\\"current_page click_disable page_item\\">10</li>
     <li class=\\"page_item\\">11</li>
     <li class=\\"page_item\\">12</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"\\">次へ</li>
     <li class=\\"\\">最後</li>
   </ul>
@@ -74,13 +68,11 @@ exports[`Pagination.vue currentPage=97 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">95</li>
     <li class=\\"page_item\\">96</li>
     <li class=\\"current_page click_disable page_item\\">97</li>
     <li class=\\"page_item\\">98</li>
     <li class=\\"page_item\\">99</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"\\">次へ</li>
     <li class=\\"\\">最後</li>
   </ul>
@@ -92,7 +84,6 @@ exports[`Pagination.vue currentPage=98 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">96</li>
     <li class=\\"page_item\\">97</li>
     <li class=\\"current_page click_disable page_item\\">98</li>
@@ -109,7 +100,6 @@ exports[`Pagination.vue currentPage=99 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">97</li>
     <li class=\\"page_item\\">98</li>
     <li class=\\"current_page click_disable page_item\\">99</li>
@@ -125,7 +115,6 @@ exports[`Pagination.vue currentPage=100 1`] = `
   <ul>
     <li class=\\"\\">最初</li>
     <li class=\\"\\">前へ</li>
-    <li class=\\"intermediate_page click_disable\\">...</li>
     <li class=\\"page_item\\">98</li>
     <li class=\\"page_item\\">99</li>
     <li class=\\"current_page click_disable page_item\\">100</li>

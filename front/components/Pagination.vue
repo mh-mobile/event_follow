@@ -48,14 +48,6 @@ export default defineComponent({
         class: currentPage === 1 ? "click_disable" : ""
       })
 
-      if (currentPage > 1 + pageWindow) {
-        _pages.push({
-          label: "...",
-          value: "",
-          class: "intermediate_page click_disable"
-        })
-      }
-
       for (let page = currentPage - pageWindow; page < currentPage; page++) {
         if (page < 1) continue
 
@@ -83,14 +75,6 @@ export default defineComponent({
           label: page,
           value: page,
           class: "page_item"
-        })
-      }
-
-      if (currentPage < totalPages - pageWindow) {
-        _pages.push({
-          label: "...",
-          value: "",
-          class: "intermediate_page click_disable"
         })
       }
 
