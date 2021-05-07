@@ -42,7 +42,7 @@ export default defineComponent({
       if (!props.endedAt || props.endedAt === "") return ""
 
       const eventStartDate = new Date(props.startedAt)
-      const eventEndDate = new Date(props.startedAt)
+      const eventEndDate = new Date(props.endedAt)
 
       const now = new Date()
       let eventStartStatusStyle
