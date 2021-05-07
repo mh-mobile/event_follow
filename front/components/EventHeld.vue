@@ -41,10 +41,15 @@ export default defineComponent({
       if (!props.startedAt || props.startedAt === "") return ""
       if (!props.endedAt || props.endedAt === "") return ""
 
+      const now = new Date()
       const eventStartDate = new Date(props.startedAt)
       const eventEndDate = new Date(props.endedAt)
+      const nextDate = (() => {
+        const date = new Date(now.getTime())
+        date.setDate(date.getDate() + 1)
+        return date
+      })()
 
-      const now = new Date()
       let eventStartStatusStyle
       let eventStartStatusLabel
       if (now >= eventStartDate && now <= eventEndDate) {
@@ -58,6 +63,14 @@ export default defineComponent({
       ) {
         eventStartStatusStyle = "event_status_today"
         eventStartStatusLabel = "本日開催"
+      } else if (
+        now < eventStartDate &&
+        nextDate.getFullYear() === eventStartDate.getFullYear() &&
+        nextDate.getMonth() === eventStartDate.getMonth() &&
+        nextDate.getDate() === eventStartDate.getDate()
+      ) {
+        eventStartStatusStyle = "event_status_tomorrow"
+        eventStartStatusLabel = "明日開催"
       } else if (now < eventStartDate) {
         eventStartStatusStyle = "event_status_preparation"
         eventStartStatusLabel = "開催前"
@@ -121,6 +134,10 @@ export default defineComponent({
       background-color: #f47721;
     }
 
+    .event_status_tomorrow {
+      background-color: #8560a8;
+    }
+
     .event_status_progress {
       background-color: #fd5c63;
     }
@@ -173,6 +190,10 @@ export default defineComponent({
 
     .event_status_today {
       background-color: #f47721;
+    }
+
+    .event_status_tomorrow {
+      background-color: #8560a8;
     }
 
     .event_status_progress {
