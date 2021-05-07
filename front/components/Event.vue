@@ -11,12 +11,13 @@ li.event_item(ref="root")
         .event_content_title
           a(:href="eventInfo.event.url" target="_blank")
             | {{ eventInfo.event.title }}
-        .event_content_thumbnail
-          img(:src="eventInfo.event.banner")
 
       .event_content_bottom
+        .event_content_thumbnail
+          img(:src="eventInfo.event.banner")
         .event_content_description
           | {{ sanitizedDescription }}
+
   #js-friends-list
     FriendsList(:eventId="eventId" :userIds="userIds" :friendsNumber="friendsNumber")
 </template>
@@ -134,36 +135,37 @@ export default defineComponent({
         .event_content_top {
           display: flex;
           flex-direction: row;
-          height: 40%;
 
           .event_content_title {
-            width: 80%;
+            width: 100%;
             font-size: 1.3em;
-            padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
             overflow-wrap: break-word;
           }
 
+        }
+
+        .event_content_bottom {
+
+          .event_content_description {
+            width: 100%;
+            margin-top: 10px;
+            overflow-wrap: break-word;
+          }
+
           .event_content_thumbnail {
             width: 20%;
+            float: right;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-bottom: 5px;
 
             img {
               width: 100%;
               height: 100%;
               object-fit: contain;
             }
-          }
-        }
-
-        .event_content_bottom {
-          display: flex;
-          flex-direction: column;
-
-          .event_content_description {
-            width: 100%;
-            margin-top: 10px;
-            overflow-wrap: break-word;
           }
         }
       }
@@ -187,14 +189,14 @@ export default defineComponent({
       flex-direction: row;
 
       .event_detail_left {
-        width: 70px;
+        width: 54px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
 
         .event_logo {
-          width: 70px;
+          width: 54px;
           height: auto;
           margin-top: 12px;
         }
@@ -209,48 +211,48 @@ export default defineComponent({
       }
 
       .event_detail_content {
-        width: calc(100% - 70px);
+        width: calc(100% - 54px);
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding-left: 26px;
+        padding-left: 16px;
         box-sizing: border-box;
         margin-top: -2px;
 
         .event_content_top {
           display: flex;
           flex-direction: row;
-          height: 40%;
 
           .event_content_title {
-            width: 80%;
+            width: 100%;
             font-size: 1em;
-            padding-right: 5px;
             font-family: YakuHanJP, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
               "Noto Sans JP", Meiryo, sans-serif;
             overflow-wrap: break-word;
           }
-
-          .event_content_thumbnail {
-            width: 20%;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-          }
         }
 
         .event_content_bottom {
-          display: flex;
-          flex-direction: column;
 
           .event_content_description {
             width: 100%;
             margin-top: 10px;
             font-size: 0.8em;
             overflow-wrap: break-word;
+          }
+
+          .event_content_thumbnail {
+            width: 20%;
+            float: right;
+            margin-top: 10px;
+            margin-left: 5px;
+            margin-bottom: 5px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
           }
         }
       }
