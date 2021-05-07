@@ -193,6 +193,10 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
 
+        select {
+          background-color: #ffffff;
+        }
+
         .event-modal-label {
           height: 40%;
           width: 100%;
@@ -296,6 +300,10 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
+        select {
+          background-color: #ffffff;
+        }
 
         .event-modal-label {
           height: 40%;
