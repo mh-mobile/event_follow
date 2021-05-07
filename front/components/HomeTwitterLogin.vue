@@ -202,7 +202,11 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 30em;
+
+  @media all and (min-width: 480px) {
+    min-width: 30em;
+  }
+
   padding: 20px;
   .title-container {
     display: flex;
@@ -233,7 +237,6 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-right: 20px;
       &:hover {
         opacity: 0.8;
       }
