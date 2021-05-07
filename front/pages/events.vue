@@ -53,7 +53,7 @@ export default defineComponent({
       events: [],
       totalPages: 0,
       currentPage: 1,
-      pageWindow: (root.$device.isDesktop) ? 2 : 1,
+      pageWindow: (root.$device.isDesktop) ? 2 : 0,
       eventSortType: "",
       timeFilterType: "",
       friendsFilterType: "",

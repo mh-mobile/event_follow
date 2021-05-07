@@ -34,7 +34,7 @@ export default defineComponent({
     const pages = computed(() => {
       const currentPage = props.currentPage ? props.currentPage : 1
       const totalPages = props.totalPages ? props.totalPages : 0
-      const pageWindow = props.pageWindow ? props.pageWindow : 2
+      const pageWindow = props.pageWindow ? props.pageWindow : 0
       let _pages = []
       _pages.push({
         label: "最初",
