@@ -269,9 +269,9 @@ export default defineComponent({
 
   .friends_list {
     width: 100%;
-    height: 80px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     padding: 20px 0;
@@ -284,7 +284,8 @@ export default defineComponent({
       background-color: #efe9e5;
       font-size: 1.5em;
       font-weight: bold;
-      margin-right: 10px;
+      margin-right: 5px;
+      margin-bottom: 5px;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -298,6 +299,7 @@ export default defineComponent({
     .friend_icon {
       overflow: hidden;
       margin-right: 5px;
+      margin-bottom: 5px;
       cursor: pointer;
       width: 50px;
       height: 50px;
@@ -388,9 +390,9 @@ export default defineComponent({
 
   .friends_list {
     width: 100%;
-    height: 80px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     padding: 20px 0;
@@ -403,7 +405,8 @@ export default defineComponent({
       background-color: #efe9e5;
       font-size: 1em;
       font-weight: bold;
-      margin-right: 10px;
+      margin-right: 4px;
+      margin-bottom: 5px;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -412,7 +415,8 @@ export default defineComponent({
     }
     .friend_icon {
       overflow: hidden;
-      margin-right: 5px;
+      margin-right: 4px;
+      margin-bottom: 5px;
       cursor: pointer;
       width: 30px;
       height: 30px;
