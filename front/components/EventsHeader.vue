@@ -1,7 +1,7 @@
 <template lang="pug">
 .event_list_header
   .event_header_top
-    .event_header_info(v-if="$device.isDesktop")
+    .event_header_info
       | 友達からのイベント情報
     .event_sort_filter_button#js-event-sort-filter
       EventSortFilter(:eventSortType="eventSortType" :timeFilterType="timeFilterType" :friendsFilterType="friendsFilterType")
@@ -111,6 +111,7 @@ export default defineComponent({
         margin-right: auto;
         font-size: 1em;
         font-weight: bold;
+        display: none;
       }
 
       .event_sort_filter_button {
