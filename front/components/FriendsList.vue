@@ -218,6 +218,7 @@ export default defineComponent({
           margin: 5px;
           .profile_icon {
             overflow: hidden;
+            margin-top: 5px;
             img {
               border-radius: 50%;
               width: 50px;
@@ -236,11 +237,11 @@ export default defineComponent({
           margin: 5px;
           box-sizing: border-box;
           .tweet_user {
-            height: 20px;
             color: #0085ad;
             margin: 5px;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             .twitter_user_name {
               color: #0085ad;
               font-weight: bold;
@@ -342,6 +343,7 @@ export default defineComponent({
           box-sizing: border-box;
           margin: 5px;
           .profile_icon {
+            margin-top: 3px;
             overflow: hidden;
             img {
               border-radius: 50%;
@@ -357,11 +359,11 @@ export default defineComponent({
           margin: 5px;
           box-sizing: border-box;
           .tweet_user {
-            height: 20px;
             color: #0085ad;
             margin: 5px;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             .twitter_user_name {
               color: #0085ad;
               font-weight: bold;
