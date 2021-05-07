@@ -312,6 +312,7 @@ export default defineComponent({
           color: #9f9fa3;
           padding: 2px 0;
           display: inline-block;
+          white-space: nowrap;
         }
 
         .event-modal-value {
