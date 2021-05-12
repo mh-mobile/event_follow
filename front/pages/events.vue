@@ -188,7 +188,7 @@ export default defineComponent({
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px 0;
+    padding: 0 0 20px;
     border-radius: 5px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
