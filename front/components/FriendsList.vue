@@ -272,6 +272,7 @@ export default defineComponent({
     justify-content: flex-start;
     padding: 20px 0;
     box-sizing: border-box;
+    margin-bottom: -5px;
     .friend_number {
       width: 50px;
       height: 50px;
@@ -392,8 +393,9 @@ export default defineComponent({
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 0;
+    padding: 20px 0 0;
     box-sizing: border-box;
+    margin-bottom: -5px;
     .friend_number {
       width: 30px;
       height: 30px;
