@@ -150,7 +150,7 @@ export default defineComponent({
 
           .event_content_description {
             width: 100%;
-            margin-top: 10px;
+            margin-top: 5px;
             overflow-wrap: break-word;
           }
 
@@ -236,7 +236,7 @@ export default defineComponent({
 
           .event_content_description {
             width: 100%;
-            margin-top: 10px;
+            margin-top: 5px;
             font-size: 0.8em;
             overflow-wrap: break-word;
           }
