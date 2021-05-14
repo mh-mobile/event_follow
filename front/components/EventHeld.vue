@@ -112,7 +112,6 @@ export default defineComponent({
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding-top: 5px;
 
       span {
         margin: 0 2px;
@@ -171,7 +170,6 @@ export default defineComponent({
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding-top: 5px;
 
       span {
         margin: 0 2px;
