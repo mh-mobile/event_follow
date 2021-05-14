@@ -100,7 +100,6 @@ export default defineComponent({
   .event_list_header {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
     .event_header_top {
       display: flex;
       flex-direction: row;
@@ -146,8 +145,8 @@ export default defineComponent({
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      margin-bottom: 1rem;
-      margin-top: 1rem;
+      margin-bottom: 20px;
+      margin-top: 20px;
     }
   }
 }
