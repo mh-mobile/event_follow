@@ -86,7 +86,7 @@ export default defineComponent({
               }
 
               store.commit("setAuth", auth)
-              Cookie.set("auth", auth)
+              Cookie.set("auth", auth, { expires: 365, secure: process.env.NODE_ENV !== 'development' })
               root.$router.replace("/events")
             })
             .catch((error) => {
