@@ -19,7 +19,7 @@ gem "kaminari"
 gem "clockwork"
 gem "rack-cors"
 gem "firebase-auth-rails"
-gem "skylight", "~> 5.0"
+gem "skylight", "~> 5.1"
 gem "sentry-ruby"
 gem "sentry-rails"
 
