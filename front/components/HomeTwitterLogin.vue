@@ -33,6 +33,7 @@ import {
 } from "@nuxtjs/composition-api"
 import Modal from "@/components/Modal.vue"
 import { useModalHelper } from "@/compositions/modal_helper"
+import { useCookieCryptoHelper } from "@/compositions/cookie_crypto_helper"
 import firebase from "firebase/app"
 import "firebase/auth"
 const Cookie = process.client ? require("js-cookie") : undefined
@@ -86,7 +87,9 @@ export default defineComponent({
               }
 
               store.commit("setAuth", auth)
-              Cookie.set("auth", auth, { expires: 365, secure: process.env.NODE_ENV !== 'development' })
+
+              const { encryptCookieValue } = useCookieCryptoHelper()
+              Cookie.set("auth", encryptCookieValue(JSON.stringify(auth), root.$config.cookieSecret), { expires: 365, secure: process.env.NODE_ENV !== 'development' })
               root.$router.replace("/events")
             })
             .catch((error) => {
