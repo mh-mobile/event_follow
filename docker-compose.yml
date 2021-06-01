@@ -64,6 +64,7 @@ services:
     image: event-front-development:1.0.0
     environment:
       SENTRY_DSN: $SENTRY_DSN
+      COOKIE_SECRET: $COOKIE_SECRET
     command: yarn run dev
     volumes:
       - ./front:/app
