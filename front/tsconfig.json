@@ -29,6 +29,7 @@
       "@nuxtjs/axios",
       "@nuxtjs/sentry",
       "@nuxtjs/device",
+      "@types/crypto-js",
       "jest"
     ]
   },
