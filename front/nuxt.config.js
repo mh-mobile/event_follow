@@ -48,6 +48,8 @@ export default {
     middleware: ["auth"]
   },
 
+  serverMiddleware: ["~/middleware/response_header.ts"],
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
