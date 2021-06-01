@@ -1,3 +1,5 @@
+const { COOKIE_SECRET } = process.env
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -82,6 +84,9 @@ export default {
         }
       }
     }
+  },
+  publicRuntimeConfig: {
+    cookieSecret: COOKIE_SECRET
   },
   env: {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
