@@ -2,12 +2,17 @@ const cookieParser = process.server ? require("cookieparser") : undefined
 import { useCookieCryptoHelper } from "@/compositions/cookie_crypto_helper"
 
 export const state = () => ({
-  auth: null
+  auth: null,
+  cookieSecret: null
 })
 
 export const mutations = {
   setAuth(state: { auth: string }, auth: string) {
     state.auth = auth
+  },
+
+  setCookieSecret(state: { cookieSecret: string }, cookieSecret: string) {
+    state.cookieSecret = cookieSecret
   }
 }
 
@@ -27,5 +32,6 @@ export const actions = {
       }
     }
     commit("setAuth", auth)
+    commit("setCookieSecret", $config.cookieSecret)
   }
 }
