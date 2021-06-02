@@ -87,7 +87,7 @@ export default {
       }
     }
   },
-  publicRuntimeConfig: {
+  privateRuntimeConfig: {
     cookieSecret: COOKIE_SECRET
   },
   env: {
