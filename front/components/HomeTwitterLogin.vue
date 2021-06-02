@@ -89,7 +89,7 @@ export default defineComponent({
               store.commit("setAuth", auth)
 
               const { encryptCookieValue } = useCookieCryptoHelper()
-              Cookie.set("auth", encryptCookieValue(JSON.stringify(auth), root.$config.cookieSecret), { expires: 365, secure: process.env.NODE_ENV !== 'development' })
+              Cookie.set("auth", encryptCookieValue(JSON.stringify(auth), store.state.cookieSecret), { expires: 365, secure: process.env.NODE_ENV !== 'development' })
               root.$router.replace("/events")
             })
             .catch((error) => {
