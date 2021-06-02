@@ -6,8 +6,8 @@
     .friend_icon(v-for="(userId, index) in userIdsArray" :key="`placeholder-${index}`" v-show="friends.length == 0")
       .noimage
     .friend_icon(v-for="(friend, index) in displayableFriends" :key="`frineds-${index}`" v-show="friends.length > 0")
-      a(:href="friendScreenName(friend)" target="_blank")
-        img(:src="friend.profile_image")
+      a(:href="friendScreenName(friend)" target="_blank"  v-if="$checkUrl(friendScreenName(friend))")
+        img(:src="friend.profile_image" v-if="$checkUrl(friend.profile_image)")
 
     Modal(@close="closeModal" v-if="modal")
       .event-modal-container
@@ -16,8 +16,8 @@
           li.tweet_item(v-for="tweet in tweets" :key="tweet.id")
             .friend_column
               .profile_icon
-                a(:href="friendScreenName(tweet.user)" target="_blank")
-                  img(:src="tweet.user.profile_image")
+                a(:href="friendScreenName(tweet.user)" target="_blank" v-if="$checkUrl(friendScreenName(tweet.user))")
+                  img(:src="tweet.user.profile_image" v-if="$checkUrl(tweet.user.profile_image)")
             .tweet_column
               .tweet_user
                 .twitter_user_name

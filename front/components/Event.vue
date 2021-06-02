@@ -9,12 +9,12 @@ li.event_item(ref="root")
     .event_detail_content
       .event_content_top
         .event_content_title
-          a(:href="eventInfo.event.url" target="_blank")
+          a(:href="eventInfo.event.url" target="_blank" v-if="$checkUrl(eventInfo.event.url)")
             | {{ eventInfo.event.title }}
 
       .event_content_bottom
         .event_content_thumbnail
-          img(:src="eventInfo.event.banner")
+          img(:src="eventInfo.event.banner" v-if="$checkUrl(eventInfo.event.banner)")
         .event_content_description
           | {{ sanitizedDescription }}
 
