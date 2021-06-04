@@ -36,6 +36,7 @@ services:
       RAILS_MASTER_KEY: $RAILS_MASTER_KEY
       REDIS_URL: $REDIS_URL
       API_SENTRY_DSN: $API_SENTRY_DSN
+      LOCKBOX_MASTER_KEY: $LOCKBOX_MASTER_KEY
     volumes:
       - ./api:/app
     depends_on:
