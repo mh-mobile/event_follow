@@ -28,6 +28,7 @@ env:
   REDIS_URL: ${{ secrets.REDIS_URL }}
   API_PORT: ${{ secrets.API_PORT }}
   CONTAINER_PORT: ${{ secrets.CONTAINER_PORT }}
+  LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
 
 jobs:
   image-cache-or-build:
