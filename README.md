@@ -148,6 +148,7 @@ Docker起動に必要な環境変数を定義します。
 | RAILS_MAX_THREADS | 10 | Railsの最大スレッド数 |
 | RAILS_MASTER_KEY | ※ master.keyの値を指定 | Railsのmaster.keyの値 |
 | REDIS_URL | redis://localhost:6379/12 | RedisのURLの値 |
+| LOCKBOX_MASTER_KEY | ※ [Lockbox.generate_key](https://github.com/ankane/lockbox#key-generation)で生成した値を指定  | アクセストークンやアクセストークンシークレットの暗号化に使用する[Lockbox](https://github.com/ankane/lockbox)のキーの値 |
 
 Firebaseのコンフィグの環境変数を定義します。
 [Firebase Console](https://console.firebase.google.com/?hl=JA)でFirebaseプロジェクトを作成し、
