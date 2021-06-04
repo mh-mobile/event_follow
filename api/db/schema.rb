@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_042432) do
+ActiveRecord::Schema.define(version: 2021_06_04_064754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(version: 2021_01_11_042432) do
 
   create_table "user_tokens", force: :cascade do |t|
     t.string "user_id", null: false
-    t.string "access_token", null: false
-    t.string "access_token_secret", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "access_token_ciphertext"
+    t.text "access_token_secret_ciphertext"
     t.index ["user_id"], name: "index_user_tokens_on_user_id"
   end
 
