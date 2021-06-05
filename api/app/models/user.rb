@@ -35,19 +35,20 @@ class User < ApplicationRecord
     name = auth.name
     profile_image = auth.profile_image_url_https
     twitter_id = auth.id_str
-    user = self.find_or_initialize_by(id: twitter_id)
-    user.uid = payload["sub"]
-    user_token = UserToken.find_or_initialize_by(user_id: user.id)
-    user_token.access_token = access_token
-    user_token.access_token_secret = access_token_secret
-    user.user_token = user_token
-    user.user_event_setting = UserEventSetting.find_or_create_by(user_id: user.id) unless user.user_event_setting.present?
-    user.id = twitter_id
-    user.screen_name = screen_name
-    user.name = name
-    user.profile_image = profile_image
-    user.save
-    user
+
+    self.find_or_initialize_by(id: twitter_id).tap do |user|
+      user.uid = payload["sub"]
+      user.user_token = UserToken.find_or_initialize_by(user_id: user.id).tap do |user_token|
+        user_token.access_token = access_token
+        user_token.access_token_secret = access_token_secret
+      end
+      user.user_event_setting = UserEventSetting.find_or_create_by(user_id: user.id) unless user.user_event_setting.present?
+      user.id = twitter_id
+      user.screen_name = screen_name
+      user.name = name
+      user.profile_image = profile_image
+      user.save
+    end
   end
 
   private
