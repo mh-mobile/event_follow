@@ -1,20 +1,14 @@
-# front
+# イベントフォローのフロントエンド(Nuxt.js)
 
-## Build Setup
+詳細は、[こちら](https://github.com/mh-mobile/event_follow/blob/develop/README.md)を参照してください。
 
-```bash
-# install dependencies
-$ yarn install
+# Author
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+* [Github](https://github.com/mh-mobile)
+* [Qiita](https://qiita.com/mh_mobiler)
+* [Twitter](https://twitter.com/mh_mobiler)
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# ライセンス
 
-# generate static project
-$ yarn generate
-```
+本ソフトウェアは、MITライセンスの元提供されています。
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
