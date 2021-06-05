@@ -306,7 +306,9 @@ $ docker-compose up
 
 ![tweets_sc](./docs/tweets_sc.png)
 
+# モバイルアプリ版
 
+Flutter実装のモバイルアプリ版は[mh-mobile/event_follow_mobile](https://github.com/mh-mobile/event_follow_mobile)のリポジトリを参照。
 
 # Author
 
