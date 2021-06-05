@@ -1,24 +1,14 @@
-# README
+# イベントフォローのバックエンド(Rails APIサーバ)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+詳細は、[こちら](https://github.com/mh-mobile/event_follow/blob/develop/README.md)を参照してください。
 
-Things you may want to cover:
+# Author
 
-* Ruby version
+* [Github](https://github.com/mh-mobile)
+* [Qiita](https://qiita.com/mh_mobiler)
+* [Twitter](https://twitter.com/mh_mobiler)
 
-* System dependencies
+# ライセンス
 
-* Configuration
+本ソフトウェアは、MITライセンスの元提供されています。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
