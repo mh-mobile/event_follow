@@ -1,4 +1,3 @@
-
 import CryptoJS from "crypto-js"
 
 export const useCookieCryptoHelper = () => {
@@ -16,4 +15,3 @@ export const useCookieCryptoHelper = () => {
     decryptCookieValue
   }
 }
-  
