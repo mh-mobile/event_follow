@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::EventsController < Api::BaseController
+class API::EventsController < API::BaseController
   before_action :set_sort_filter_condition
 
   def index

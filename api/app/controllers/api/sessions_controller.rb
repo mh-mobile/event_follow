@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::SessionsController < Api::BaseController
+class API::SessionsController < API::BaseController
   skip_before_action :authenticate_user
 
   def create

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::FriendshipsController < Api::BaseController
+class API::FriendshipsController < API::BaseController
   def index
     @users = User.where(id: find_user_ids)
   end
