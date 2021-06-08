@@ -26,4 +26,23 @@ class Event < ActiveRecord::Base
   validates :started_at, presence: true
   validates :ended_at, presence: true
   validates :url, presence: true
+
+  def self.convert_events(events, following)
+    events.map(&converter(following))
+  end
+
+  def self.converter(following)
+    Proc.new do |event|
+      friend_user_ids = event.tweets.pluck(:user_id).uniq.select do |user_id|
+        following.include?(user_id)
+      end
+      {
+        event: event,
+        extra: {
+          user_ids: friend_user_ids.join(","),
+          friends_number: friend_user_ids.length
+        }
+      }
+    end
+  end
 end

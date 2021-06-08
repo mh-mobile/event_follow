@@ -6,19 +6,7 @@ class API::EventsController < API::BaseController
   def index
     @events = Event.following_events(current_user).page(params[:page]).preload(tweets: :user)
     following = current_user.following.ids
-
-    @data = @events.map.with_index do |event, index|
-      friend_user_ids = event.tweets.pluck(:user_id).uniq.select do |user_id|
-        following.include?(user_id)
-      end
-      {
-        event: event,
-        extra: {
-          user_ids: friend_user_ids.join(","),
-          friends_number: friend_user_ids.length
-        }
-      }
-    end
+    @data = Event.convert_events(@events, following)
   end
 
   private
