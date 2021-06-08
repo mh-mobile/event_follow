@@ -21,7 +21,6 @@ class Event < ActiveRecord::Base
      scope.order(Arel.sql(Event.event_sort_condition(user_event_setting.event_sort_type)))
    }
 
-  validates :site_id, presence: true
   validates :site_event_id, presence: true
   validates :title, presence: true
   validates :started_at, presence: true
