@@ -11,12 +11,14 @@ jobs:
   reviewdog_rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
       - name: rubocop
         uses: reviewdog/action-rubocop@v1
         with:
-          rubocop_version: 1.8.1
+          rubocop_version: 1.11.0
           github_token: ${{ secrets.GITHUB_TOKEN }}
           rubocop_flags: --config api/.rubocop.yml api/
           reporter: github-pr-check
-
