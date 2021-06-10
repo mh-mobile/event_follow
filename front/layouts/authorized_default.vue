@@ -35,7 +35,8 @@ export default defineComponent({
       return {
         currentUser: null,
         logout: null,
-        deleteAccount: null
+        deleteAccount: null,
+        goToSetting: null,
       }
     }
 
