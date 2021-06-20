@@ -4,7 +4,7 @@ div
   .footer
     .footer-container
       .copyright
-        | &copy; event follow
+        | &copy; EVENT FOLLOW
       .github
         a(href="https://github.com/mh-mobile/event_follow" target="_blank")
           img(src="@/assets/github_logo.png")

@@ -310,6 +310,8 @@ $ docker-compose up
 
 Flutter実装のモバイルアプリ版は[mh-mobile/event_follow_mobile](https://github.com/mh-mobile/event_follow_mobile)のリポジトリを参照。
 
+[![App Store](./docs/app_store_badge.svg)](https://apps.apple.com/jp/app/event-follow/id1561648565)  
+
 # Author
 
 * [Github](https://github.com/mh-mobile)
