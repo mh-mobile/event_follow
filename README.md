@@ -208,6 +208,25 @@ docker-comopseを使用して、以下のコンテナを起動します。
 $ docker-compose up
 ```
 
+### 定期実行処理の起動
+
+各定期実行処理を実行するために、以下のClockworkの処理を実行します。
+
+```bash
+$ docker exec -it event_api bundle exec clockwork config/clock.rb
+```
+
+Clockworkの処理では、以下の定期実行のRubyプログラムを起動します。
+
+| 定期実行処理のRubyプログラム | 説明 |
+| --- | --- |
+| tweet_crawler.rb.rb | Twitterのイベント情報の取得 |
+| following_crawler.rb　| Twitterの友達（フォロー）の取得  | 
+| event_crawler.rb | イベントの詳細情報の取得  | 
+| retweet_crawler.rb | イベントに関するツイートのリツート・引用リツイート情報の取得  |
+| event_cleaner.rb | 過去のイベント情報のクリーンアップ処理  |
+
+
 ### アプリの動作確認
 
 Dockerの起動後に、ブラウザで[http://localhost:8080](http://localhost:8080)にアクセスします。
