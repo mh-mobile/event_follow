@@ -86,7 +86,7 @@
 
 ### インフラ
 
-- docker-compose（開発環境）
+- Docker Compose（開発環境）
 - HerokuのDockerによるデプロイ（本番環境）
   - Nuxt.jsのコンテナ
     - Webプロセス
@@ -205,7 +205,7 @@ docker-comopseを使用して、以下のコンテナを起動します。
 
 
 ```bash
-$ docker-compose up
+$ docker compose up
 ```
 
 ### 定期実行処理の起動
@@ -299,11 +299,11 @@ docker-comopseを使用して、以下のコンテナを起動します。
 |  Swagger UI  | Swagger UIのコンテナ  |
 |  Redoc  | Redocのコンテナ |
 
-コンテナを起動するために、api/docsに移動し、`docker-compose up`を実行します。
+コンテナを起動するために、api/docsに移動し、`docker compose up`を実行します。
 
 ```bash
 $ cd api/docs
-$ docker-compose up
+$ docker compose up
 ```
 
 | ツール    | URL    |
