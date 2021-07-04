@@ -86,7 +86,7 @@
 
 ### インフラ
 
-- docker-compose（開発環境）
+- Docker Compose（開発環境）
 - HerokuのDockerによるデプロイ（本番環境）
   - Nuxt.jsのコンテナ
     - Webプロセス
@@ -205,8 +205,27 @@ docker-comopseを使用して、以下のコンテナを起動します。
 
 
 ```bash
-$ docker-compose up
+$ docker compose up
 ```
+
+### 定期実行処理の起動
+
+各定期実行処理を実行するために、以下のClockworkの処理を実行します。
+
+```bash
+$ docker exec -it event_api bundle exec clockwork config/clock.rb
+```
+
+Clockworkの処理では、以下の定期実行のRubyプログラムを起動します。
+
+| 定期実行処理のRubyプログラム | 説明 |
+| --- | --- |
+| tweet_crawler.rb.rb | Twitterのイベント情報の取得 |
+| following_crawler.rb　| Twitterの友達（フォロー）の取得  | 
+| event_crawler.rb | イベントの詳細情報の取得  | 
+| retweet_crawler.rb | イベントに関するツイートのリツート・引用リツイート情報の取得  |
+| event_cleaner.rb | 過去のイベント情報のクリーンアップ処理  |
+
 
 ### アプリの動作確認
 
@@ -280,11 +299,11 @@ docker-comopseを使用して、以下のコンテナを起動します。
 |  Swagger UI  | Swagger UIのコンテナ  |
 |  Redoc  | Redocのコンテナ |
 
-コンテナを起動するために、api/docsに移動し、`docker-compose up`を実行します。
+コンテナを起動するために、api/docsに移動し、`docker compose up`を実行します。
 
 ```bash
 $ cd api/docs
-$ docker-compose up
+$ docker compose up
 ```
 
 | ツール    | URL    |
