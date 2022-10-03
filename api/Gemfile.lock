@@ -78,7 +78,7 @@ GEM
       activesupport
       committee (>= 3.0.0)
       railties
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
@@ -149,7 +149,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_xml (0.6.0)
-    multipart-post (2.1.1)
+    multipart-post (2.2.3)
     nio4r (2.5.7)
     nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
@@ -249,14 +249,12 @@ GEM
       ansi
       ast
     ruby-progressbar (1.11.0)
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     sentry-rails (4.2.2)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.2.0)
-    sentry-ruby (4.2.2)
+    sentry-ruby (5.5.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      faraday (>= 1.0)
-      sentry-ruby-core (= 4.2.2)
     sentry-ruby-core (4.2.2)
       concurrent-ruby
       faraday
