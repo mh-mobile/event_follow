@@ -26,7 +26,7 @@
     "@nuxtjs/sentry": "^5.0.1",
     "@types/crypto-js": "^4.0.1",
     "@types/jest": "^26.0.20",
-    "@types/sanitize-html": "^1.27.1",
+    "@types/sanitize-html": "^2.8.0",
     "cookieparser": "^0.1.0",
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
@@ -36,7 +36,7 @@
     "nuxt": "^2.14.6",
     "pug": "^3.0.1",
     "pug-plain-loader": "^1.1.0",
-    "sanitize-html": "^2.3.2",
+    "sanitize-html": "^2.8.0",
     "sass-loader": "^10.1.1"
   },
   "devDependencies": {
